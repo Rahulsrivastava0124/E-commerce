@@ -6,11 +6,9 @@ import { LoginAPI } from "../server/UserAPI";
 function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
   const SetUserNameChange = (e) => {
     setUserName(e.target.value);
   };
-
   const SetPasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -24,6 +22,7 @@ function Login() {
     console.log( LoginAPI(data));
   };
   return (
+    
     <>
       {/* <!-- Login Modal --> */}
       <Signup />

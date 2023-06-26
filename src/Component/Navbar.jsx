@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Account from "../Svg/Account.svg";
 import Cart from "../Svg/Cart.svg";
 import { CategoriesList } from "../Component/Categories_list";
@@ -8,7 +9,7 @@ export const Navbar = (props) => {
   const [CategoriesListShow, setCategoriesListShow] = useState(true);
   const [LoginStates, setLoginStates] = useState(false);
   const showCategories = () => {
-    if (CategoriesListShow === true){
+    if (CategoriesListShow === true) {
       setCategoriesListShow(false);
     } else {
       setCategoriesListShow(true);
@@ -24,11 +25,11 @@ export const Navbar = (props) => {
             <span className="navbar-brand mb-0 me-3 h1">Navbar</span>
             {/* navbar Links */}
             <ul className="navbar-nav nav nav-underline">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/Home">
-                  Home
-                </a>
-              </li>
+              {/* <li className="nav-item"> */}
+              <Link className="nav-link active" aria-current="page" to="/">
+                Home
+              </Link>
+              {/* </li> */}
               <li
                 className="nav-item curser-pointer"
                 onClick={() => showCategories()}
@@ -38,20 +39,20 @@ export const Navbar = (props) => {
                 </span>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="./Deals.jsx">
+                <Link className="nav-link" to="/Deals">
                   Deals
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link " href="/">
+                <Link className="nav-link " to="/WhatsNew">
                   What's New
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <Link className="nav-link" to="/Delivery">
                   {/* {Test} */}
                   Delivery
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

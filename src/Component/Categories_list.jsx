@@ -1,13 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const CategoriesList = (props) => {
   return (
     <div className="container bg-light rounded-3 mt-1">
       <ul className="nav nav-underline justify-content-between">
         <li className="nav-item">
-          <a className="nav-link text-dark " aria-current="page" href="/">
+          <Link
+            className="nav-link text-dark "
+            aria-current="page"
+            to="/Categories/Mobiles&Tablets"
+          >
             Mobiles & Tablets
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <a className="nav-link text-dark" href="/">

@@ -1,13 +1,9 @@
-
-function Whats_new(){
-
-        return(
-            <>
-            <h1> this is a Whats_new component.
-            </h1>
-            </>
-        )
-
+function WhatsNew() {
+  return (
+    <>
+      <h1> this is a Whats_new component.</h1>
+    </>
+  );
 }
 
-export default Whats_new;
+export default WhatsNew;
