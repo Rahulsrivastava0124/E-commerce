@@ -15,44 +15,50 @@ export const CategoriesList = (props) => {
           </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark" href="/">
+          <Link
+            className="nav-link text-dark"
+            to="/Categories/Laptops&Desktops"
+          >
             Laptops & Desktops
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark" href="/">
+          <Link className="nav-link text-dark" to="/Categories/Watches">
             Watches
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark " href="/">
+          <Link
+            className="nav-link text-dark "
+            to="/Categories/TV&Applications"
+          >
             TVs & Applications
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark " href="/">
+          <Link className="nav-link text-dark " to="/Categories/Fashion">
             Fashion
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark " href="/">
+          <Link className="nav-link text-dark " to="/Categories/Beauty">
             Beauty
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark " href="/">
+          <Link className="nav-link text-dark " to="/Categories/Home&Kitchen">
             Home & Kitchen
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark " href="/">
+          <Link className="nav-link text-dark " to="/Categories/Grocery">
             Grocery
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <span className="nav-link text-dark " type="button" href="/">
+          <Link className="nav-link text-dark " to="/Categories/Gifts">
             Gifts
-          </span>
+          </Link>
         </li>
       </ul>
     </div>
