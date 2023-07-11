@@ -19,10 +19,10 @@ export const Categories = (props) => {
 
   return (
     <>
-     
-        <h3 className="fw-bolder text-center"> {props.data?props.data:null} </h3>
-    
-
+      <h3 className="fw-bolder text-center">
+        {" "}
+        {props.data ? props.data : null}{" "}
+      </h3>
       <div className="container d-flex flex-wrap">
         {Array.isArray(ResData)
           ? ResData.map((element, tabIndex) => {
