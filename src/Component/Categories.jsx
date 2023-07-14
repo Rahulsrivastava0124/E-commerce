@@ -7,7 +7,6 @@ export const Categories = (props) => {
     fetch(`https://fakestoreapi.com/products/category/${data}`)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setResData(json);
       });
   };
@@ -15,7 +14,6 @@ export const Categories = (props) => {
     FetchProductAPI(props.data);
   }, [props.data]);
 
-  console.log(ResData);
   return (
     <>
       <h3 className="fw-bolder text-center">
@@ -25,33 +23,19 @@ export const Categories = (props) => {
       <div className="container d-flex flex-wrap">
         {Array.isArray(ResData) ? (
           ResData.map((element, tabIndex) => {
-            let Rating = Number.parseFloat(element.rating.rate).toFixed(0);
-            {
-              var rateArray = ["", "", "", "", ""];
+            let rating = element.rating.rate.toString().split(".");
+            let dec = `0.${rating[1]}`;
+            let decRating = parseFloat(dec).toFixed();
 
-              /* let RatingDecimaltoString = element.rating.rate.toString().slice();
-            let RatingDecimal=Number.parseFloat(RatingDecimaltoString).toFixed(0) */
-            }
-            {
-              /* console.log('====================================');
-            console.log(RatingDecimal);
-            console.log(RatingDecimaltoString);
-            console.log('===================================='); */
-            }
+            var rateArray = ["", "", "", "", ""];
 
-            for (let i = 0; i < Rating; i++) {
+            for (var i = 0; i < Number(rating[0]); i++) {
               rateArray[i] = "-fill";
             }
-            {
-              /* if (RatingDecimal === "1") {
-              i++;
+            if (decRating === "1") {
               rateArray[i] = "-half";
-            } */
             }
 
-            console.log("====================================");
-            console.log(rateArray);
-            console.log("====================================");
             return (
               <div
                 className="card m-3 border-0 shadow-sm"
