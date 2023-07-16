@@ -87,7 +87,7 @@ function Signup() {
     <>
       <div
         className="modal fade "
-        id="exampleModalToggle2"
+        id="SignUpModelToggle2"
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel2"
         tabIndex="-1"
@@ -247,7 +247,7 @@ function Signup() {
             <div className="modal-footer">
               <button
                 className="btn btn-danger"
-                data-bs-target="#exampleModalToggle"
+                data-bs-target="#LoginModalToggle"
                 data-bs-toggle="modal"
               >
                 Login

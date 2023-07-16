@@ -25,10 +25,12 @@ function Login() {
     
     <>
       {/* <!-- Login Modal --> */}
+      
+      {/* add signup model data  */}
       <Signup />
       <div
         className="modal fade"
-        id="exampleModalToggle"
+        id="LoginModalToggle"
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel"
         tabIndex="-1"
@@ -100,7 +102,7 @@ function Login() {
                   </button>
                   <button
                     className="btn btn-danger"
-                    data-bs-target="#exampleModalToggle2"
+                    data-bs-target="#SignUpModelToggle2"
                     data-bs-toggle="modal"
                   >
                     Create Account

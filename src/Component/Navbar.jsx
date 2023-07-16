@@ -76,7 +76,7 @@ export const Navbar = (props) => {
                 <button
                   type="button"
                   className="btn btn-primary me-3"
-                  data-bs-target="#exampleModalToggle"
+                  data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
                 >
                   Login

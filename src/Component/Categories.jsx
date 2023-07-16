@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import solidColorImage from "../image/solidColorImage.png";
+import { PreviewProduct } from "./PreviewProduct";
+import { Rating } from "../Function/Rating.js";
+import { WishListCall } from "../Function/WishList.js";
 export const Categories = (props) => {
   const [ResData, setResData] = useState("");
+  const [ProductpreviewData, setProductpreviewData] = useState(" ");
 
   const FetchProductAPI = (data) => {
     fetch(`https://fakestoreapi.com/products/category/${data}`)
@@ -23,33 +27,11 @@ export const Categories = (props) => {
       <div className="container d-flex flex-wrap">
         {Array.isArray(ResData) ? (
           ResData.map((element, tabIndex) => {
-            let rating = element.rating.rate.toString().split(".");
-            let dec = `0.${rating[1]}`;
-            let decRating = parseFloat(dec).toFixed();
-            var rateArray = ["", "", "", "", ""];
-            for (var i = 0; i < Number(rating[0]); i++) {
-              rateArray[i] = "-fill";
-            }
-            if (decRating === "1") {
-              rateArray[i] = "-half";
-            }
+            const rateArray = Rating(element.rating.rate);
             const WishList = (e) => {
-              if (e.target.classList[0] === "btn") {
-                var data = e.target.firstChild.classList[1];
-              } else {
-                data = e.target.classList[1];
-              }
-
-              let ClassData = document.querySelector(`.${data}`);
-
-              if (ClassData.classList.contains("bi-heart")) {
-                ClassData.classList.add("bi-heart-fill");
-                ClassData.classList.remove("bi-heart");
-              } else {
-                ClassData.classList.remove("bi-heart-fill");
-                ClassData.classList.add("bi-heart");
-              }
+              WishListCall(e);
             };
+
             return (
               <div
                 className="card m-3 border-0 shadow-sm"
@@ -86,17 +68,28 @@ export const Categories = (props) => {
                   </a>
                   <span
                     type="button"
-                    className="btn ScaleButton mx-2 rounded-circle shadow "
+                    className="btn ScaleButton mx-3 rounded-circle shadow fs-4"
                     onClick={(e) => WishList(e)}
                   >
                     <i
-                      className={`IconScale  ${element.category}${tabIndex} bi bi-heart fw-bolder `}
+                      className={`IconScale  ${element.category
+                        .split(" ")
+                        .join("")
+                        .split(`'`)
+                        .join("")}${tabIndex} bi bi-heart fw-bolder `}
                     ></i>
                   </span>
-                  <button type="button" className="btn btn-danger">
-                    <i className="bi bi-eye-fill"></i>
+                  <button
+                    type="button"
+                    className="btn rounded-circle ScaleButton shadow "
+                    data-bs-toggle="modal"
+                    data-bs-target="#productPreviewModal"
+                    onClick={() => setProductpreviewData(element)}
+                  >
+                    <i className="bi bi-eye-fill fs-4"></i>
                   </button>
                 </div>
+                <PreviewProduct data={ProductpreviewData} />
               </div>
             );
           })
