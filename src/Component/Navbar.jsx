@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Account from "../Svg/Account.svg";
-import Cart from "../Svg/Cart.svg";
 import { CategoriesList } from "../Component/Categories_list";
-import Login from "./Login";
+import { CartCanvas } from "../Component/CartCanvas";
+import Containers from "../containers/LoginContainer.js";
 
 export const Navbar = (props) => {
   const [CategoriesListShow, setCategoriesListShow] = useState(true);
@@ -15,7 +15,13 @@ export const Navbar = (props) => {
       setCategoriesListShow(true);
     }
   };
-
+  if (Object.keys(props.data).length === 0) {
+    console.log("props is not ");
+  } else {
+    if (LoginStates === false) {
+      setLoginStates(props.data.state.state);
+    }
+  }
   return (
     <div id="Navbar">
       <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
@@ -25,11 +31,9 @@ export const Navbar = (props) => {
             <span className="navbar-brand mb-0 me-3 h1">Navbar</span>
             {/* navbar Links */}
             <ul className="navbar-nav nav nav-underline">
-              {/* <li className="nav-item"> */}
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
               </Link>
-              {/* </li> */}
               <li
                 className="nav-item curser-pointer"
                 onClick={() => showCategories()}
@@ -70,7 +74,8 @@ export const Navbar = (props) => {
               {/* Account logo */}
               {LoginStates ? (
                 <span className="me-4 h6">
-                  <img src={Account} alt="Account" className="" /> {props.User}
+                  <img src={Account} alt="Account" className="" />{" "}
+                  {props.data.state.username ? props.data.state.username : null}
                 </span>
               ) : (
                 <button
@@ -83,16 +88,24 @@ export const Navbar = (props) => {
                 </button>
               )}
               {/* cart logo */}
-              <span>
-                <img src={Cart} alt="Account" className=" cart_logo" />
-              </span>
+              <button
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+                className="btn rounded-circle shadow "
+              >
+                <i className="bi fs-5 bi-cart3"></i>
+              </button>
             </div>
           </div>
         </div>
       </nav>
       {/* show  and hide CategoriesList is click  */}
       {CategoriesListShow ? <CategoriesList /> : null}
-      <Login />
+      {/* <Login /> */}
+      <Containers />
+      <CartCanvas />
     </div>
   );
 };

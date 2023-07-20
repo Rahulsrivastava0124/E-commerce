@@ -3,6 +3,7 @@ import solidColorImage from "../image/solidColorImage.png";
 import { PreviewProduct } from "./PreviewProduct";
 import { Rating } from "../Function/Rating.js";
 import { WishListCall } from "../Function/WishList.js";
+
 export const Categories = (props) => {
   const [ResData, setResData] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");

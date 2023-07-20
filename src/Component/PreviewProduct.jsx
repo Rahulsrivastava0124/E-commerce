@@ -4,31 +4,31 @@ export const PreviewProduct = (props) => {
   return (
     <>
       <div
-        class="modal fade"
+        className="modal fade"
         id="productPreviewModal"
-        tabIndex="-2"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
                 {props.data.title}
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className="container">
                 <img src={props.data.image} alt=" Productimage  " />
               </div>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button className="btn btn-warning" type="button">
                 Add to Cart
               </button>
@@ -39,7 +39,6 @@ export const PreviewProduct = (props) => {
           </div>
         </div>
       </div>
-      ;
     </>
   );
 };

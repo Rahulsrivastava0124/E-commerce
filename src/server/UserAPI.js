@@ -1,6 +1,6 @@
-//Received body data and call LoginAPI method 
-export const LoginAPI = (data) => {
-  fetch("https://fakestoreapi.com/auth/login", {
+//Received body data and call LoginAPI method
+export const LoginAPI = async (data) => {
+ const CallData= await fetch("https://fakestoreapi.com/auth/login", {
     method: "POST",
     headers: {
       Accepts: "application/json",
@@ -8,16 +8,21 @@ export const LoginAPI = (data) => {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
-    .then((json) => {
-      localStorage.setItem("Token", JSON.stringify(json));
-     
-    });
-    
-    return "true";
+    // .then((res) => res.json())
+    // .then((json) => {
+    //   localStorage.setItem("Token", JSON.stringify(json));
+      
+    // });
+    const resdata=await CallData.json();
+    console.log(resdata);
+    return {
+      data: resdata,
+      state:true,
+      username:data.username
+    }
 };
 
-//Received body data and call SignUpAPI method 
+//Received body data and call SignUpAPI method
 export const SignUpAPI = (data) => {
   fetch("https://fakestoreapi.com/users", {
     method: "POST",

@@ -3,29 +3,20 @@ import LoginLogo from "../Svg/LoginLogo.svg";
 import Signup from "./Signup";
 import { LoginAPI } from "../server/UserAPI";
 
-function Login() {
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const SetUserNameChange = (e) => {
-    setUserName(e.target.value);
-  };
-  const SetPasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+function Login(props) {
+  const [LoginData, setLoginData] = useState({ username: "", password: "" });
 
-  const SubmitLoginForm = (e) => {
+
+  const SubmitLoginForm = async (e) => {
     e.preventDefault();
-    const data = {
-      username,
-      password,
-    };
-    console.log( LoginAPI(data));
+    // if login is successful then close the modal and redirect to dashboard page else show error message in
+    props.addToCartHandler ({ state: await LoginAPI(LoginData) });
   };
+  console.log(" login", props.data);
   return (
-    
     <>
       {/* <!-- Login Modal --> */}
-      
+
       {/* add signup model data  */}
       <Signup />
       <div
@@ -69,8 +60,10 @@ function Login() {
                       className="form-control"
                       id="exampleInputUserName"
                       aria-describedby="emailHelp"
-                      value={username}
-                      onChange={(e) => SetUserNameChange(e)}
+                      value={LoginData.username}
+                      onChange={(e) =>
+                        setLoginData({ ...LoginData, username: e.target.value })
+                      }
                       required
                     />
                     <div id="emailHelp" className="form-text">
@@ -88,11 +81,15 @@ function Login() {
                       type="password"
                       className="form-control"
                       id="exampleInputPassword1"
-                      value={password}
-                      onChange={(e) => SetPasswordChange(e)}
+                      value={LoginData.password}
+                      onChange={(e) =>
+                        setLoginData({ ...LoginData, password: e.target.value })
+                      }
                       required
                     />
                   </div>
+                  
+              
                   <button
                     type="submit"
                     className="btn btn-primary me-2"

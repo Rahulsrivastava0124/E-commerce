@@ -2,84 +2,44 @@ import React, { useState } from "react";
 import { SignUpAPI } from "../server/UserAPI.js";
 
 function Signup() {
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [FirstName, setFirstName] = useState("");
-  const [LastName, setLastName] = useState("");
-  const [Address, setAddress] = useState("");
-  const [City, setCity] = useState("");
-  const [State, setState] = useState("");
-  const [Zip, setZip] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState("");
-  const [Check, setCheck] = useState("");
-
-  const InputEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const InputPassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const InputFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const InputLastName = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const InputAddress = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const InputCity = (e) => {
-    setCity(e.target.value);
-  };
-
-  const InputState = (e) => {
-    setState(e.target.value);
-  };
-
-  const InputZip = (e) => {
-    setZip(e.target.value);
-  };
-
-  const InputPhoneNumber = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-
-  const InputCheck = (e) => {
-    setCheck(e.target.checked);
-  };
-
+  const [SignupData, setSignupData] = useState({
+    Email: "",
+    Password: "",
+    FirstName: "",
+    LastName: "",
+    Address: "",
+    City: "",
+    State: "",
+    Zip: "",
+    PhoneNumber: "",
+    Check: "",
+  });
   const SubmitSignUp = (e) => {
     e.preventDefault();
 
-    if (!Check) {
+    if (!SignupData.Check) {
       alert("Please check the terms and conditions");
     }
     const data = {
-      email: Email,
-      username: FirstName + LastName,
-      password: Password,
+      email: SignupData.Email,
+      username: SignupData.FirstName + SignupData.LastName,
+      password: SignupData.Password,
       name: {
-        firstname: FirstName,
-        lastname: LastName,
+        firstname: SignupData.FirstName,
+        lastname: SignupData.LastName,
       },
       address: {
-        city: City,
-        street: State,
+        city: SignupData.City,
+        street: SignupData.State,
         number: 0,
-        zipcode: Zip,
+        zipcode: SignupData.Zip,
         geolocation: {
           lat: "4564654",
           long: "56456456",
         },
       },
-      phone: PhoneNumber,
+      phone: SignupData.PhoneNumber,
     };
-
     SignUpAPI(data);
   };
 
@@ -87,7 +47,7 @@ function Signup() {
     <>
       <div
         className="modal fade "
-        id="SignUpModelToggle2"
+        id="SignUpModelToggle2 "
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel2"
         tabIndex="-1"
@@ -118,8 +78,10 @@ function Signup() {
                     type="email"
                     className="form-control"
                     id="inputEmail4"
-                    value={Email}
-                    onChange={(e) => InputEmail(e)}
+                    value={SignupData.Email}
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, Email: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-md-6 ">
@@ -130,8 +92,10 @@ function Signup() {
                     type="password"
                     className="form-control"
                     id="inputPassword4"
-                    value={Password}
-                    onChange={(e) => InputPassword(e)}
+                    value={SignupData.Password}
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, Password: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-md-6">
@@ -142,8 +106,13 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="inputFirstName4"
-                    value={FirstName}
-                    onChange={(e) => InputFirstName(e)}
+                    value={SignupData.FirstName}
+                    onChange={(e) =>
+                      setSignupData({
+                        ...SignupData,
+                        FirstName: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="col-md-6 ">
@@ -154,8 +123,10 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="inputLastName4"
-                    value={LastName}
-                    onChange={(e) => InputLastName(e)}
+                    value={SignupData.LastName}
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, LastName: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-12">
@@ -167,8 +138,10 @@ function Signup() {
                     className="form-control"
                     id="inputAddress"
                     placeholder="1234 Main St"
-                    value={Address}
-                    onChange={(e) => InputAddress(e)}
+                    value={SignupData.Address}
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, Address: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-md-6">
@@ -179,8 +152,10 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="inputCity"
-                    value={City}
-                    onChange={(e) => InputCity(e)}
+                    value={SignupData.City}
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, City: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-md-4">
@@ -191,8 +166,10 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="inputState"
-                    value={State}
-                    onChange={(e) => InputState(e)}
+                    value={SignupData.State}
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, State: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-md-2">
@@ -203,8 +180,10 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="inputZip"
-                    value={Zip}
-                    onChange={(e) => InputZip(e)}
+                    value={ SignupData.Zip }
+                    onChange={(e) =>
+                      setSignupData({ ...SignupData, Zip: e.target.value })
+                    }
                   />
                 </div>
                 <div className="col-6">
@@ -215,8 +194,13 @@ function Signup() {
                     type="Number"
                     className="form-control"
                     id="inputPhoneNumber"
-                    value={PhoneNumber}
-                    onChange={(e) => InputPhoneNumber(e)}
+                    value={SignupData.PhoneNumber}
+                    onChange={(e) =>
+                      setSignupData({
+                        ...SignupData,
+                        PhoneNumber: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="col-12">
@@ -225,8 +209,10 @@ function Signup() {
                       className="form-check-input"
                       type="checkbox"
                       id="gridCheck"
-                      checked={Check}
-                      onChange={(e) => InputCheck(e)}
+                      checked={SignupData.Check}
+                      onChange={(e) =>
+                        setSignupData({ ...SignupData, Check: e.target.value })
+                      }
                     />
                     <label className="form-check-label" htmlFor="gridCheck">
                       Check me out
