@@ -12,7 +12,7 @@ function Login(props) {
     // if login is successful then close the modal and redirect to dashboard page else show error message in
     props.addToCartHandler ({ state: await LoginAPI(LoginData) });
   };
-  console.log(" login", props.data);
+  // console.log(" login", props);
   return (
     <>
       {/* <!-- Login Modal --> */}

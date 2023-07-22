@@ -1,5 +1,7 @@
 import { combineReducers } from "redux";
-import CardItems from "./Reducer";
+import { UserLogin } from "./LoginReducer";
+import {UserWish} from './WishListReducer'
 export default combineReducers({
-  CardItems,
+  UserLogin: UserLogin,
+  UserWish: UserWish,
 });

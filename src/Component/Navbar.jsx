@@ -15,13 +15,14 @@ export const Navbar = (props) => {
       setCategoriesListShow(true);
     }
   };
-  if (Object.keys(props.data).length === 0) {
+  if (Object.keys(props.data.UserLogin.LoginData).length === 0) {
     console.log("props is not ");
   } else {
     if (LoginStates === false) {
-      setLoginStates(props.data.state.state);
+      setLoginStates(props.data.UserLogin.LoginData.state.state);
     }
   }
+  // console.log(props.data);
   return (
     <div id="Navbar">
       <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
@@ -74,8 +75,12 @@ export const Navbar = (props) => {
               {/* Account logo */}
               {LoginStates ? (
                 <span className="me-4 h6">
-                  <img src={Account} alt="Account" className="" />{" "}
-                  {props.data.state.username ? props.data.state.username : null}
+                  <Link to="/Profile">
+                    <img src={Account} alt="Account" className="" />{" "}
+                    {props.data.UserLogin.LoginData.state.username
+                      ? props.data.UserLogin.LoginData.state.username
+                      : null}
+                  </Link>
                 </span>
               ) : (
                 <button

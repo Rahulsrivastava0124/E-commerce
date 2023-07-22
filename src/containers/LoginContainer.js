@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import Login from "../Component/Login.jsx";
-import { AddToCart } from "../Services/Actions/Actions";
+import {UserLogin } from "../Services/Actions/Actions";
 
 const mapStateToProps = (state) => ({
-  data: state.CardItems.cardData,
+  data: state,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addToCartHandler: (data) => dispatch(AddToCart(data)),
+  addToCartHandler: (data) => dispatch(UserLogin(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import solidColorImage from "../image/solidColorImage.png";
+import SolidColorImage from "../image/solidColorImage.png";
 import { PreviewProduct } from "./PreviewProduct";
 import { Rating } from "../Function/Rating.js";
-import { WishListCall } from "../Function/WishList.js";
 
 export const Categories = (props) => {
   const [ResData, setResData] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
-
   const FetchProductAPI = (data) => {
     fetch(`https://fakestoreapi.com/products/category/${data}`)
       .then((res) => res.json())
@@ -16,23 +14,55 @@ export const Categories = (props) => {
       });
   };
   useEffect(() => {
-    FetchProductAPI(props.data);
-  }, [props.data]);
+    console.log("Categories", props);
+    FetchProductAPI(props.link);
+    if (props.data.UserWish.length !== 0) {
+      for (let i = 0; i < props.data.UserWish.length; i++) {
+        if (props.data.UserWish[i].WishList.state.category === props.link) {
+          setTimeout(() => {
+            document
+              .getElementById(
+                `${props.data.UserWish[i].WishList.state.category}${props.data.UserWish[i].WishList.state.id}`
+              )
+              .classList.add("bi-heart-fill");
+            document
+              .getElementById(
+                `${props.data.UserWish[i].WishList.state.category}${props.data.UserWish[i].WishList.state.id}`
+              )
+              .classList.remove("bi-heart");
+          }, 1000);
+        }
+      }
+    }
+  }, [props]);
 
   return (
     <>
       <h3 className="fw-bolder text-center">
         {" "}
-        {props.data ? props.data : null}{" "}
+        {props.link ? props.link : null}{" "}
       </h3>
       <div className="container d-flex flex-wrap">
         {Array.isArray(ResData) ? (
           ResData.map((element, tabIndex) => {
             const rateArray = Rating(element.rating.rate);
-            const WishList = (e) => {
-              WishListCall(e);
+            const WishList = (e, element) => {
+              if (e.target.classList[0] === "btn") {
+                var data = e.target.firstChild.classList[1];
+              } else {
+                data = e.target.classList[1];
+              }
+              let ClassData = document.querySelector(`.${data}`);
+              if (ClassData.classList.contains("bi-heart")) {
+                ClassData.classList.add("bi-heart-fill");
+                ClassData.classList.remove("bi-heart");
+                props.AddTowishlist({ state: element });
+              } else {
+                ClassData.classList.remove("bi-heart-fill");
+                ClassData.classList.add("bi-heart");
+                props.RemoveTowishlist({state:element})
+              }
             };
-
             return (
               <div
                 className="card m-3 border-0 shadow-sm"
@@ -52,7 +82,7 @@ export const Categories = (props) => {
                   </p>
                   <div className="d-flex justify-content-between">
                     <h3 className="fw-bold text-primary">Rs.{element.price}</h3>
-                    <h7 className="text-success"> Instock </h7>
+                    <h className="text-success"> Instock </h>
                   </div>
                   <h6 className="text-decoration-line-through">
                     Rs.{element.price + 300}
@@ -70,14 +100,19 @@ export const Categories = (props) => {
                   <span
                     type="button"
                     className="btn ScaleButton mx-3 rounded-circle shadow fs-4"
-                    onClick={(e) => WishList(e)}
+                    onClick={(e) => WishList(e, element)}
                   >
                     <i
-                      className={`IconScale  ${element.category
+                      className={`IconScale ${element.category
                         .split(" ")
                         .join("")
                         .split(`'`)
-                        .join("")}${tabIndex} bi bi-heart fw-bolder `}
+                        .join("")}${element.id} bi bi-heart fw-bolder `}
+                      id={`${element.category
+                        .split(" ")
+                        .join("")
+                        .split(`'`)
+                        .join("")}${element.id}`}
                     ></i>
                   </span>
                   <button
@@ -101,7 +136,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -121,7 +156,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -141,7 +176,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -161,7 +196,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -181,7 +216,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -201,7 +236,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -221,7 +256,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>
@@ -241,7 +276,7 @@ export const Categories = (props) => {
               style={{ width: "18rem" }}
               aria-hidden="true"
             >
-              <img src={solidColorImage} alt="" />
+              <img src={SolidColorImage} alt="" />
               <div className="card-body">
                 <h5 className="card-title placeholder-glow">
                   <span className="placeholder col-6"></span>

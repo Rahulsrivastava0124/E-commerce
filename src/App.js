@@ -1,13 +1,13 @@
 import "./App.css";
 import { Home } from "./Component/Home";
 import NavbarContainer from "./containers/NavbarContainer";
+import CategoriesContainer from "./containers/CategoriesContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Deals from "./Component/Deals.jsx";
 import Delivery from "./Component/Delivery.jsx";
 import WhatsNew from "./Component/Whats_new.jsx";
-import { Categories } from "./Component/Categories.jsx";
 import { Error404 } from "./Component/404Error.jsx";
-// eslint-disable-next-line no-unused-vars
+import { Profile } from "./Component/Profile.jsx";
 
 function App() {
   return (
@@ -22,21 +22,23 @@ function App() {
           <Route Path="/*" element={<Error404 />} />
           <Route
             path="/Categories/men'sclothing"
-            element={<Categories data={"men's clothing"} />}
+            element={<CategoriesContainer link={"men's clothing"} />}
           />
           <Route
             path="/Categories/women'sclothing"
-            element={<Categories data={"women's clothing"} />}
+            element={<CategoriesContainer link={"women's clothing"} />}
           />
           <Route
             path="/Categories/electronics"
-            element={<Categories data={"electronics"} />}
+            element={<CategoriesContainer link={"electronics"} />}
           />
           <Route
             path="/Categories/jewelery"
-            element={<Categories data={"jewelery"} />}
+            element={<CategoriesContainer link={"jewelery"} />}
           />
+          <Route path="/Profile" element={<Profile/>} />
         </Routes>
+        {/* <CategoriesContainer /> */}
       </BrowserRouter>
     </div>
   );
