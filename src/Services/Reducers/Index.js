@@ -2,6 +2,6 @@ import { combineReducers } from "redux";
 import { UserLogin } from "./LoginReducer";
 import {UserWish} from './WishListReducer'
 export default combineReducers({
-  UserLogin: UserLogin,
-  UserWish: UserWish,
+  UserLogin,
+  UserWish,
 });

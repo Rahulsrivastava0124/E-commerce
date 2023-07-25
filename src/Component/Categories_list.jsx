@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { productsCategories } from "../server/productAPI.js";
 
 export const CategoriesList = (props) => {
   const [CategoriesListRes, setCategoriesListRes] = useState([]);
 
-  const getListData = () => {
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        setCategoriesListRes(json);
-      });
-  };
+  async function getData() {
+    setCategoriesListRes(await productsCategories());
+  }
 
   useEffect(() => {
-    getListData();
+    getData();
   }, []);
 
   return (

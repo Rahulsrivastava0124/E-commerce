@@ -22,7 +22,6 @@ export const Navbar = (props) => {
       setLoginStates(props.data.UserLogin.LoginData.state.state);
     }
   }
-  // console.log(props.data);
   return (
     <div id="Navbar">
       <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
@@ -74,12 +73,14 @@ export const Navbar = (props) => {
             <div id="Account">
               {/* Account logo */}
               {LoginStates ? (
-                <span className="me-4 h6">
-                  <Link to="/Profile">
+                <span className="me-4 h6 shadow rounded-1 p-2">
+                  <Link to="/Profile" className="text-decoration-none">
                     <img src={Account} alt="Account" className="" />{" "}
+                    <span className=" text-dark fw-bold">
                     {props.data.UserLogin.LoginData.state.username
                       ? props.data.UserLogin.LoginData.state.username
                       : null}
+                      </span>
                   </Link>
                 </span>
               ) : (

@@ -1,25 +1,20 @@
 //Received body data and call LoginAPI method
 export const LoginAPI = async (data) => {
- const CallData= await fetch("https://fakestoreapi.com/auth/login", {
+  const CallData = await fetch("https://fakestoreapi.com/auth/login", {
     method: "POST",
     headers: {
       Accepts: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  })
-    // .then((res) => res.json())
-    // .then((json) => {
-    //   localStorage.setItem("Token", JSON.stringify(json));
-      
-    // });
-    const resdata=await CallData.json();
-    console.log(resdata);
-    return {
-      data: resdata,
-      state:true,
-      username:data.username
-    }
+  });
+  const resdata = await CallData.json();
+  console.log(resdata);
+  return {
+    data: resdata,
+    state: true,
+    username: data.username,
+  };
 };
 
 //Received body data and call SignUpAPI method

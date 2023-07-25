@@ -1,7 +1,7 @@
 import "./App.css";
-import { Home } from "./Component/Home";
 import NavbarContainer from "./containers/NavbarContainer";
 import CategoriesContainer from "./containers/CategoriesContainer";
+import  HomeContainer from "./containers/HomeContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Deals from "./Component/Deals.jsx";
 import Delivery from "./Component/Delivery.jsx";
@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
         <NavbarContainer />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomeContainer />} />
           <Route path="/deals" element={<Deals />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/whatsnew" element={<WhatsNew />} />
@@ -38,7 +38,6 @@ function App() {
           />
           <Route path="/Profile" element={<Profile/>} />
         </Routes>
-        {/* <CategoriesContainer /> */}
       </BrowserRouter>
     </div>
   );
