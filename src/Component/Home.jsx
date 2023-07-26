@@ -4,10 +4,12 @@ import { AllProductData, productsCategories } from "../server/productAPI.js";
 import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./CardPlaceHolder";
+import { PreviewProduct } from "./PreviewProduct";
 
 export const Home = (props) => {
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState(""); // console.log("Home", props);
+  const [ProductpreviewData, setProductpreviewData] = useState(" ");
 
   const ArrayData = [];
   useEffect(() => {
@@ -31,6 +33,7 @@ export const Home = (props) => {
   console.log("home", props);
   return (
     <>
+     <PreviewProduct data={ProductpreviewData} />
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide mt-2"
@@ -135,6 +138,7 @@ export const Home = (props) => {
           productData.map((element, tabIndex) => {
             return (
               <ProductCardContainer
+                setProductpreviewData={setProductpreviewData}
                 element={element}
                 tabIndex={tabIndex}
                 link={props.link}

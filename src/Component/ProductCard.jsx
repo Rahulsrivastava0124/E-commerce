@@ -3,7 +3,8 @@ import { PreviewProduct } from "./PreviewProduct";
 import { Rating } from "../Function/Rating.js";
 
 const ProductCard = (props) => {
-  const [ProductpreviewData, setProductpreviewData] = useState(" ");
+  
+  console.log(props)
   const element = props.element;
   const tabIndex = props.element;
   useEffect(() => {
@@ -97,12 +98,12 @@ const ProductCard = (props) => {
           className="btn rounded-circle ScaleButton shadow "
           data-bs-toggle="modal"
           data-bs-target="#productPreviewModal"
-          onClick={() => setProductpreviewData(element)}
+          onClick={() => props.setProductpreviewData(element)}
         >
           <i className="bi bi-eye-fill fs-4"></i>
         </button>
       </div>
-      <PreviewProduct data={ProductpreviewData} />
+     
     </div>
   );
 };
