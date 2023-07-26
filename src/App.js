@@ -1,13 +1,14 @@
 import "./App.css";
 import NavbarContainer from "./containers/NavbarContainer";
 import CategoriesContainer from "./containers/CategoriesContainer";
-import  HomeContainer from "./containers/HomeContainer";
+import HomeContainer from "./containers/HomeContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Deals from "./Component/Deals.jsx";
 import Delivery from "./Component/Delivery.jsx";
 import WhatsNew from "./Component/Whats_new.jsx";
 import { Error404 } from "./Component/404Error.jsx";
 import { Profile } from "./Component/Profile.jsx";
+import Footer from "./Component/Footer.jsx";
 
 function App() {
   return (
@@ -36,8 +37,9 @@ function App() {
             path="/Categories/jewelery"
             element={<CategoriesContainer link={"jewelery"} />}
           />
-          <Route path="/Profile" element={<Profile/>} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -6,10 +6,14 @@ const ProductCard = (props) => {
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
   const element = props.element;
   const tabIndex = props.element;
-  useEffect( () => {
+  useEffect(() => {
     if (props.data.UserWish.length !== 0) {
       for (let i = 0; i < props.data.UserWish.length; i++) {
-        if (props.data.UserWish[i].WishList.state.category === props.link) {
+        if (
+          props.CardType === "Home"
+            ? true
+            : props.data.UserWish[i].WishList.state.category === props.link
+        ) {
           const GET_ID = `${props.data.UserWish[i].WishList.state.category
             .split(" ")
             .join("")

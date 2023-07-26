@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import { AllProductData, productsCategories } from "../server/productAPI.js";
 import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
+import ProductCardContainer from "../containers/ProductCardContainer.js";
+import CardPlaceHolder from "./CardPlaceHolder";
 
 export const Home = (props) => {
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState(""); // console.log("Home", props);
 
-  const Array = [];
+  const ArrayData = [];
   useEffect(() => {
     async function GetProductData() {
       setProductData(await AllProductData());
@@ -19,13 +21,14 @@ export const Home = (props) => {
   for (let index = 0; index < Categories.length; ) {
     productData.map((element) => {
       if (element.category === Categories[index]) {
-        Array.push(element);
+        ArrayData.push(element);
         index++;
       }
       return null;
     });
   }
 
+  console.log("home", props);
   return (
     <>
       <div
@@ -34,7 +37,7 @@ export const Home = (props) => {
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators">
-          {Array.map((element, index) => {
+          {ArrayData.map((element, index) => {
             return (
               <button
                 type="button"
@@ -49,7 +52,7 @@ export const Home = (props) => {
           })}
         </div>
         <div className="carousel-inner">
-          {Array.map((element, index) => {
+          {ArrayData.map((element, index) => {
             return (
               <div
                 className={`carousel-item ${index === 0 ? "active" : null}`}
@@ -63,7 +66,7 @@ export const Home = (props) => {
                 />
                 <div className="carousel-caption d-none d-md-block  text-start">
                   <div className="d-flex">
-                    <div >
+                    <div>
                       <img
                         className="rounded-1 imageTransparentBackground"
                         src={element.image}
@@ -121,6 +124,28 @@ export const Home = (props) => {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
+      </div>
+      <div className="container mt-3 rounded-1 shadow p-2">
+        <span className="fs-5"> Filter </span>
+        {/* Filters */}
+      </div>
+      <h2 className="text-center mt-2">Best Product,s</h2>
+      <div className="container d-flex flex-wrap mt-3">
+        {Array.isArray(productData) ? (
+          productData.map((element, tabIndex) => {
+            return (
+              <ProductCardContainer
+                element={element}
+                tabIndex={tabIndex}
+                link={props.link}
+                key={tabIndex}
+                CardType={"Home"}
+              />
+            );
+          })
+        ) : (
+          <CardPlaceHolder />
+        )}
       </div>
     </>
   );

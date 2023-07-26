@@ -1,5 +1,4 @@
 import React from "react";
-
 export const PreviewProduct = (props) => {
   return (
     <>
