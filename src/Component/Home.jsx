@@ -212,7 +212,7 @@ export const Home = (props) => {
         </div>
         {/* Filters */}
       </div>
-      <h2 className="text-center mt-2">Best Product,s</h2>
+      <h2 className="text-center mt-2">{SortProductItems}</h2>
       <div className="container d-flex flex-wrap mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
