@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { PreviewProduct } from "./PreviewProduct";
+import React, { useEffect } from "react";
 import { Rating } from "../Function/Rating.js";
 
 const ProductCard = (props) => {
-  
-  console.log(props)
-  const element = props.element;
+    const element = props.element;
   const tabIndex = props.element;
   useEffect(() => {
     if (props.data.UserWish.length !== 0) {
