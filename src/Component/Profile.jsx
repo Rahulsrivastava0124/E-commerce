@@ -29,7 +29,7 @@ export const Profile = (props) => {
       } else if (hour >= 12 && hour < 16) {
         setGreetingMessege({
           ...GreetingMessege,
-          message: "Good AfterNone",
+          message: "Good Afternoon",
           icon: afternoon,
         });
       } else if (hour >= 16 && hour < 19) {
@@ -48,7 +48,7 @@ export const Profile = (props) => {
     };
 
     Greeting();
-  }, []);
+  });
 
   const Card_Array = [
     {
