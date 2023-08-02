@@ -7,7 +7,7 @@ import Deals from "./Component/Deals.jsx";
 import Delivery from "./Component/Delivery.jsx";
 import WhatsNew from "./Component/Whats_new.jsx";
 import { Error404 } from "./Component/404Error.jsx";
-import { Profile } from "./Component/Profile.jsx";
+import ProfileContainer from "./containers/ProfileContainer";
 import Footer from "./Component/Footer.jsx";
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
             path="/Categories/jewelery"
             element={<CategoriesContainer link={"jewelery"} />}
           />
-          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Profile" element={<ProfileContainer />} />
         </Routes>
         <Footer />
       </BrowserRouter>

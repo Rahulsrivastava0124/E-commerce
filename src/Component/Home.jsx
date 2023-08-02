@@ -7,6 +7,8 @@ import CardPlaceHolder from "./CardPlaceHolder";
 import { PreviewProduct } from "./PreviewProduct";
 
 export const Home = (props) => {
+
+  console.log(props);
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
@@ -212,7 +214,11 @@ export const Home = (props) => {
         </div>
         {/* Filters */}
       </div>
-      <h2 className="text-center mt-2">{SortProductItems}</h2>
+      <h2 className="text-center mt-3 ">
+        {SortProductItems}
+        <hr/>
+      </h2>
+    
       <div className="container d-flex flex-wrap mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {

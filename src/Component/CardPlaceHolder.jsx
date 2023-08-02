@@ -1,5 +1,5 @@
 import React from 'react';
-import SolidColorImage from "../image/solidColorImage.png";
+import SolidColorImage from "../Svg/images/solidColorImage.png";
 
 const CardPlaceHolder = () => {
     return (

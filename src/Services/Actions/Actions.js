@@ -4,7 +4,6 @@ import {
   REMOVE_TO_CART,
   ADD_TO_WISHLIST,
   REMOVE_TO_WISHLIST,
-  PRODUCT_DATA,
 } from "../constant";
 export const AddToCart = (data) => {
   return {
@@ -40,10 +39,3 @@ export const UserLogin = (data) => {
     data: data,
   };
 };
-
-export const ProductData=(data)=>{
-  return {
-    type:PRODUCT_DATA,
-    data:data
-  }
-}
