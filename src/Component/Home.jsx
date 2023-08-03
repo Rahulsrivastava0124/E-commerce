@@ -7,7 +7,6 @@ import CardPlaceHolder from "./CardPlaceHolder";
 import { PreviewProduct } from "./PreviewProduct";
 
 export const Home = (props) => {
-
   console.log(props);
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
@@ -83,7 +82,9 @@ export const Home = (props) => {
             {ArrayData.map((element, index) => {
               return (
                 <div
-                  className={`carousel-item ${index === 0 ? "active" : null}`}
+                  className={`carousel-item border ${
+                    index === 0 ? "active" : null
+                  }`}
                   key={index}
                 >
                   <img
@@ -216,9 +217,9 @@ export const Home = (props) => {
       </div>
       <h2 className="text-center mt-3 ">
         {SortProductItems}
-        <hr/>
+        <hr />
       </h2>
-    
+
       <div className="container d-flex flex-wrap mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
@@ -229,7 +230,7 @@ export const Home = (props) => {
                 tabIndex={tabIndex}
                 link={props.link}
                 key={tabIndex}
-                CardType={"Home"}
+                CardType={SortProductItems}
               />
             );
           })

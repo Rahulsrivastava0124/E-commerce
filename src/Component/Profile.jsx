@@ -10,6 +10,7 @@ import locationIcon from "../Svg/GifImages/locationIcon.gif";
 import lockIcon from "../Svg/GifImages/lockIcon.gif";
 import paymentIcon from "../Svg/GifImages/paymentIcon.gif";
 import avatar from "../Svg/GifImages/avatar.gif";
+import { Link, Outlet } from "react-router-dom";
 
 export const Profile = (props) => {
   const [GreetingMessege, setGreetingMessege] = useState({
@@ -48,38 +49,49 @@ export const Profile = (props) => {
     };
 
     Greeting();
-  });
+  }, []);
+
+  const ClickedCard=(e)=>{
+    console.log(e);
+    e.target.classList.add('border-danger');
+  }
 
   const Card_Array = [
     {
       cardHeading: "Your orders",
       cardTitle: "Track,return,or buy Things again",
       CardIcon: productIcon,
+      Link: "YourOrder",
     },
     {
       cardHeading: "Login & Security",
       cardTitle: "Edit name,and mobile number",
       CardIcon: lockIcon,
+      Link: "Security",
     },
     {
       cardHeading: "Your Addresses",
       cardTitle: "Edit addresses for orders and gifts",
       CardIcon: locationIcon,
+      Link: "Addresses",
     },
     {
       cardHeading: "Payment options",
       cardTitle: "Edit or add payment methods",
       CardIcon: paymentIcon,
+      Link: "PaymentOptions",
     },
     {
       cardHeading: "Contact us",
-      cardTitle: "helping for contact amd messages",
+      cardTitle: "helping for contact and messages",
       CardIcon: contactIcon,
+      Link: "ContactUs",
     },
     {
       cardHeading: "Wishlist & Cart",
       cardTitle: "Your WishList items and Cart Items",
       CardIcon: cartIcon,
+      Link: "Cart",
     },
   ];
 
@@ -119,24 +131,30 @@ export const Profile = (props) => {
         <div className="d-flex flex-wrap mt-4 ">
           {Card_Array.map((element, index) => {
             return (
-              <div
-                className="border shadow m-2 p-4 rounded-4 cardScale"
-                style={{ width: "300px" }}
+              <Link
+                to={`/Profile/${element.Link}`}
                 key={index}
-                d-flex
+                className="text-decoration-none text-dark"
               >
-                <div>
-                  <img src={element.CardIcon} alt="CardImage" />
+                <div
+                  className="border shadow m-2 p-4 rounded-4 cardScale"
+                  style={{ width: "300px", height: "172px" }}
+                  onClick={(e)=>ClickedCard(e)}
+                >
+                  <div>
+                    <img src={element.CardIcon} alt="CardImage" />
+                  </div>
+                  <div>
+                    <h5>{element.cardHeading}</h5>
+                    <p>{element.cardTitle}</p>
+                  </div>
                 </div>
-                <div>
-                  <h5>{element.cardHeading}</h5>
-                  <p>{element.cardTitle}</p>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
       </div>
+      <Outlet />
     </>
   );
 };

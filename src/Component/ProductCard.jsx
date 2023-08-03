@@ -2,15 +2,18 @@ import React, { useEffect } from "react";
 import { Rating } from "../Function/Rating.js";
 
 const ProductCard = (props) => {
-    const element = props.element;
+  const element = props.element;
   const tabIndex = props.element;
   useEffect(() => {
     if (props.data.UserWish.length !== 0) {
       for (let i = 0; i < props.data.UserWish.length; i++) {
         if (
-          props.CardType === "Home"
+          props.CardType === "Home" ||
+          props.CardType === " " ||
+          props.CardType === "All Product"
             ? true
-            : props.data.UserWish[i].WishList.state.category === props.link
+            : props.data.UserWish[i].WishList.state.category ===
+              (props.CardType !== "Home" ? props.CardType : props.link)
         ) {
           const GET_ID = `${props.data.UserWish[i].WishList.state.category
             .split(" ")
@@ -100,7 +103,6 @@ const ProductCard = (props) => {
           <i className="bi bi-eye-fill fs-4"></i>
         </button>
       </div>
-     
     </div>
   );
 };
