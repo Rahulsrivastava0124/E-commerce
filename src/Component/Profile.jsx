@@ -48,7 +48,7 @@ export const Profile = (props) => {
     };
 
     Greeting();
-  });
+  },[]);
 
   const Card_Array = [
     {
