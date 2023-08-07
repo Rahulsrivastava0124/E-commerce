@@ -49,12 +49,11 @@ export const Profile = (props) => {
     };
 
     Greeting();
-  }, []);
+  });
 
-  const ClickedCard=(e)=>{
-    console.log(e);
-    e.target.classList.add('border-danger');
-  }
+const ClickedCard=(e)=>{
+console.log(e);
+}
 
   const Card_Array = [
     {
