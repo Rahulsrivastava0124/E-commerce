@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import LoginSecurity from '../Component/ProfileComponents/Security.jsx'
+import LoginSecurity from '../Component/Security.jsx'
 
 const mapStateToProps = (state, ownProps) => ({
     data:state

@@ -16,11 +16,11 @@ import Delivery from "./Component/Delivery.jsx";
 import WhatsNew from "./Component/Whats_new.jsx";
 import { Error404 } from "./Component/404Error.jsx";
 import Footer from "./Component/Footer.jsx";
-import Addresses from "./Component/ProfileComponents/Addresses.jsx";
-import ContactUs from "./Component/ProfileComponents/ContactUs.jsx";
-import PaymentOptions from "./Component/ProfileComponents/PaymentOptions.jsx";
-import YourOrder from "./Component/ProfileComponents/YourOrder.jsx";
-import Cart from "./Component/ProfileComponents/Cart.jsx";
+import Addresses from "./Component/Addresses.jsx";
+import ContactUs from "./Component/ContactUs.jsx";
+import PaymentOptions from "./Component/PaymentOptions.jsx";
+import YourOrder from "./Component/YourOrder.jsx";
+import CartAndWishList from "./Component/CartAndWishList.jsx";
 
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
           <Route path="/Profile" element={<ProfileContainer />}>
             <Route path="Security" element={<SecurityContainer />} />
             <Route path="Addresses" element={<Addresses />} />
-            <Route path="Cart" element={<Cart />} />
+            <Route path="Cart" element={<CartAndWishList />} />
             <Route path="PaymentOptions" element={<PaymentOptions />} />
             <Route path="YourOrder" element={<YourOrder />} />
             <Route path="ContactUs" element={<ContactUs />} />
