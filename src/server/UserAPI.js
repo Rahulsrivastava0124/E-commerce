@@ -38,3 +38,13 @@ export const SignUpAPI = (data) => {
       }
     });
 };
+
+
+// receive All user data 
+
+export const GetUsers = async () => {
+  const GetData = await fetch('https://fakestoreapi.com/users');
+  const ResGetData = await GetData.json();
+
+  return GetData;
+}
