@@ -64,10 +64,11 @@ export const Navbar = (props) => {
             {/* navbar search input */}
             <form className="me-3">
               <input
-                className="form-control me-2 border-0"
+                className="form-control me-2 border-0 rounded-pill"
                 type="search"
                 placeholder="Search 🔍"
                 aria-label="Search"
+                style={{width:"500px"}}
               />
             </form>
             <div id="Account">
@@ -99,9 +100,10 @@ export const Navbar = (props) => {
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"
-                className="btn rounded-circle shadow "
+                className="btn"
               >
                 <i className="bi fs-5 bi-cart3"></i>
+                 <span className="fw-bold">Cart</span>
               </button>
             </div>
           </div>

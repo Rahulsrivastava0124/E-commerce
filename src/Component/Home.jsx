@@ -68,7 +68,7 @@ export const Home = (props) => {
               return (
                 <button
                   type="button"
-                  data-bs-target="#carouselExampleAutoplaying"
+               data-bs-target="#carouselExampleAutoplaying"
                   data-bs-slide-to={index}
                   className={`${index === 0 ? "active" : ""}`}
                   aria-current="true"
@@ -119,7 +119,7 @@ export const Home = (props) => {
                             Read More..
                           </button>
                           <button className="btn btn-lg btn-primary m-4">
-                            Add to Cart
+                           Buy Now
                           </button>
                         </div>
                       </div>
