@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { GetUsers } from "../server/UserAPI";
+import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
 
 const LoginSecurity = (props) => {
   console.log("Security", props.data);
@@ -11,39 +13,26 @@ const LoginSecurity = (props) => {
     PhoneNumber: "",
   });
 
-  const EditUserInput = (e) => {
-    if (e.target.classList.contains("bi-x-lg")) {
-      e.target.parentElement.previousSibling.setAttribute("disabled", "");
-      e.target.classList.remove("bi-x-lg");
-      e.target.classList.add("bi-pen-fill");
-    } else if (e.target.classList.contains("btn")) {
-      let ItemData=e.target.children[0].classList;
-      if (e.target.children[0].classList.contains("bi-pen-fill")) {
-        e.target.previousSibling.removeAttribute("disabled");
-       ItemData.add("bi-x-lg");
-       ItemData.remove("bi-pen-fill");
-      } else {
-        e.target.previousSibling.setAttribute("disabled", "");
-       ItemData.remove("bi-x-lg");
-       ItemData.add("bi-pen-fill");
-      }
-    } else {
-      console.log("none");
-      if (e.target.classList.contains("bi")) {
-        e.target.parentElement.previousSibling.removeAttribute("disabled");
-        e.target.classList.add("bi-x-lg");
-        e.target.classList.remove("bi-pen-fill");
-      } else {
-        e.target.previousSibling.removeAttribute("disabled");
-        e.target.children[0].classList.add("bi-x-lg");
-        e.target.children[0].classList.remove("bi-pen-fill");
-      }
-    }
-  };
+  async function GetUsersSort() {
+    const ResData = await GetUsers(
+      props.data.UserLogin.LoginData.state.username
+    );
+    setLoginAndSecurityData({
+      ...LoginAndSecurityData,
+      UserName: ResData.username,
+      Email: ResData.email,
+      PhoneNumber: ResData.phone,
+      FirstName: ResData.name.firstname,
+      LastName: ResData.name.lastname,
+    });
+  }
 
+  useEffect(() => {
+    GetUsersSort();
+  }, []);
   return (
     <>
-      <h3 className="text-center">Login & Security </h3>
+      <h2 className="text-center">Login & Security </h2>
       <div className="container">
         <form className="row g-3 w-50 m-auto">
           <div className="col-12 input-group">
@@ -57,7 +46,7 @@ const LoginSecurity = (props) => {
             />
             <button
               className="btn btn-outline-secondary"
-              onClick={(e) => EditUserInput(e)}
+              onClick={(e) => InputEditEnableAndDisable(e)}
               type="button"
             >
               <i className="bi bi-pen-fill"></i>
@@ -74,7 +63,7 @@ const LoginSecurity = (props) => {
             />
             <button
               className="btn btn-outline-secondary"
-              onClick={(e) => EditUserInput(e)}
+              onClick={(e) => InputEditEnableAndDisable(e)}
               type="button"
             >
               <i className="bi bi-pen-fill"></i>
@@ -95,13 +84,13 @@ const LoginSecurity = (props) => {
             />
             <button
               className="btn btn-outline-secondary"
-              onClick={(e) => EditUserInput(e)}
+              onClick={(e) => InputEditEnableAndDisable(e)}
               type="button"
             >
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-          <div className="col-md-6 input-group " style={{ width: "auto" }}>
+          <div className="col-lg input-group " style={{ width: "auto" }}>
             <input
               type="text"
               className="form-control"
@@ -113,7 +102,7 @@ const LoginSecurity = (props) => {
             <button
               className="btn btn-outline-secondary"
               type="button"
-              onClick={(e) => EditUserInput(e)}
+              onClick={(e) => InputEditEnableAndDisable(e)}
             >
               <i className="bi bi-pen-fill"></i>
             </button>
@@ -130,7 +119,7 @@ const LoginSecurity = (props) => {
             />
             <button
               className="btn btn-outline-secondary"
-              onClick={(e) => EditUserInput(e)}
+              onClick={(e) => InputEditEnableAndDisable(e)}
               type="button"
             >
               <i className="bi bi-pen-fill"></i>

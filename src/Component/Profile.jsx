@@ -49,11 +49,11 @@ export const Profile = (props) => {
     };
 
     Greeting();
-  });
+  }, []);
 
-const ClickedCard=(e)=>{
-console.log(e);
-}
+  const ClickedCard = (e) => {
+    console.log(e);
+  };
 
   const Card_Array = [
     {
@@ -138,7 +138,7 @@ console.log(e);
                 <div
                   className="border shadow m-2 p-4 rounded-4 cardScale"
                   style={{ width: "300px", height: "172px" }}
-                  onClick={(e)=>ClickedCard(e)}
+                  onClick={(e) => ClickedCard(e)}
                 >
                   <div>
                     <img src={element.CardIcon} alt="CardImage" />
@@ -153,7 +153,7 @@ console.log(e);
           })}
         </div>
       </div>
-      <Outlet />
+      <Outlet/>
     </>
   );
 };

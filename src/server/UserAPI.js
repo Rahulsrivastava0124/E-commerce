@@ -39,12 +39,18 @@ export const SignUpAPI = (data) => {
     });
 };
 
+// receive All user data
 
-// receive All user data 
-
-export const GetUsers = async () => {
-  const GetData = await fetch('https://fakestoreapi.com/users');
+export const GetUsers = async (UserName) => {
+  const GetData = await fetch("https://fakestoreapi.com/users");
   const ResGetData = await GetData.json();
-
-  return GetData;
-}
+  let data;
+  ResGetData.map((Element, index) => {
+    if (UserName === Element.username) {
+      console.log(Element);
+      data = Element;
+    }
+    return null;
+  });
+  return data;
+};

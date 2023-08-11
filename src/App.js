@@ -8,20 +8,21 @@ import NavbarContainer from "./containers/NavbarContainer";
 import CategoriesContainer from "./containers/CategoriesContainer";
 import HomeContainer from "./containers/HomeContainer";
 import ProfileContainer from "./containers/ProfileContainer";
-import SecurityContainer from './containers/SecurityContainer'
+import SecurityContainer from "./containers/SecurityContainer";
+import ProtectedComponentContainer from "./containers/ProtectedComponentContainer";
+import UserAdressesContainer from "./containers/UserAdressesContainer";
 
 // import App Components
 import Deals from "./Component/Deals.jsx";
 import Delivery from "./Component/Delivery.jsx";
-import WhatsNew from "./Component/Whats_new.jsx";
+import WishList from "./Component/WishList.jsx";
 import { Error404 } from "./Component/404Error.jsx";
 import Footer from "./Component/Footer.jsx";
-import Addresses from "./Component/Addresses.jsx";
-import ContactUs from "./Component/ContactUs.jsx";
+import Addresses from "./Component/UserAddresses.jsx";
+import ContactUs from "./Component/UserContactUs.jsx";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
-import YourOrder from "./Component/YourOrder.jsx";
-import CartAndWishList from "./Component/CartAndWishList.jsx";
-
+import YourOrder from "./Component/UserYourOrder.jsx";
+import CartAndWishList from "./Component/UserCartAndWishList.jsx";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/" element={<HomeContainer />} />
           <Route path="/deals" element={<Deals />} />
           <Route path="/delivery" element={<Delivery />} />
-          <Route path="/whatsnew" element={<WhatsNew />} />
+          <Route path="/WishList" element={<WishList />} />
           <Route Path="*" element={<Error404 />} />
           <Route
             path="/Categories/men'sclothing"
@@ -50,9 +51,14 @@ function App() {
             path="/Categories/jewelery"
             element={<CategoriesContainer link={"jewelery"} />}
           />
-          <Route path="/Profile" element={<ProfileContainer />}>
+          <Route
+            path="/Profile"
+            element={
+              <ProtectedComponentContainer Component={ProfileContainer} />
+            }
+          >
             <Route path="Security" element={<SecurityContainer />} />
-            <Route path="Addresses" element={<Addresses />} />
+            <Route path="Addresses" element={<UserAdressesContainer />} />
             <Route path="Cart" element={<CartAndWishList />} />
             <Route path="PaymentOptions" element={<PaymentOptions />} />
             <Route path="YourOrder" element={<YourOrder />} />

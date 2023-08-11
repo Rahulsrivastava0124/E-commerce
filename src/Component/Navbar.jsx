@@ -48,8 +48,8 @@ export const Navbar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link " to="/WhatsNew">
-                  What's New
+                <Link className="nav-link " to="/WishList">
+                 WishList
                 </Link>
               </li>
               <li className="nav-item">
