@@ -47,10 +47,26 @@ export const GetUsers = async (UserName) => {
   let data;
   ResGetData.map((Element, index) => {
     if (UserName === Element.username) {
-      console.log(Element);
       data = Element;
     }
     return null;
   });
+  console.log(data);
   return data;
+};
+
+// Update user Data
+
+export const UpdateData = async (data) => {
+  const putData = await fetch(`https://fakestoreapi.com/users/${data.id}`, {
+    method: "PUT",
+    headers: {
+      Accepts: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const Resputdata = putData.json();
+
+  return Resputdata;
 };
