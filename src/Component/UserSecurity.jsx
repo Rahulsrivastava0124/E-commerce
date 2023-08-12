@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { GetUsers } from "../server/UserAPI";
+import { GetUsers ,UpdateData} from "../server/UserAPI";
 import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
-import { UpdateData } from "../server/UserAPI";
 
 const LoginSecurity = (props) => {
   console.log("Security", props.data);
@@ -21,7 +20,6 @@ const LoginSecurity = (props) => {
       props.data.UserLogin.LoginData.state.username
     );
     setResData(GetResData);
-    console.log(ResData);
     setLoginAndSecurityData({
       ...LoginAndSecurityData,
       UserName: GetResData.username,
@@ -31,14 +29,14 @@ const LoginSecurity = (props) => {
       LastName: GetResData.name.lastname,
     });
   }
-
+  console.log(ResData);
   useEffect(() => {
     GetUsersSort();
   }, []);
 
   const UpdateSecurityData = async (e) => {
     e.preventDefault();
-    let resData = ResData.data;
+    let resData = ResData;
     resData.username = LoginAndSecurityData.UserName;
     resData.email = LoginAndSecurityData.Email;
     resData.phone = LoginAndSecurityData.PhoneNumber;

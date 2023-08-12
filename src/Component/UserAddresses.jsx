@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
-import { GetUsers } from "../server/UserAPI";
+import { GetUsers, UpdateData } from "../server/UserAPI";
 
 const Addresses = (props) => {
   const [AddressData, setAddressData] = useState({
@@ -9,19 +9,32 @@ const Addresses = (props) => {
     number: "",
     zipcode: "",
   });
+  const [ResData, setResData] = useState("");
 
   async function setUserValue() {
-    const ResData = await GetUsers(
+    const GetResData = await GetUsers(
       props.data.UserLogin.LoginData.state.username
     );
+    setResData(GetResData);
     setAddressData({
       ...AddressData,
-      city: ResData.address.city,
-      street: ResData.address.street,
-      number: ResData.address.number,
-      zipcode: ResData.address.zipcode,
+      city: GetResData.address.city,
+      street: GetResData.address.street,
+      number: GetResData.address.number,
+      zipcode: GetResData.address.zipcode,
     });
   }
+
+  const UpdateAddress = async (e) => {
+    e.preventDefault();
+    let resData = ResData;
+    resData.city = AddressData.city;
+    resData.street = AddressData.street;
+    resData.number = AddressData.number;
+    resData.zipcode = AddressData.zipcode;
+    const UpdateResData = await UpdateData(resData);
+    console.log(UpdateResData);
+  };
 
   useEffect(() => {
     setUserValue();
@@ -31,7 +44,10 @@ const Addresses = (props) => {
     <>
       <h2 className="text-center">Your Addresses</h2>
       <div className="container">
-        <form className="row g-3 w-50 m-auto">
+        <form
+          className="row g-3 w-50 m-auto"
+          onSubmit={(e) => UpdateAddress(e)}
+        >
           <div className="col-12 input-group">
             <input
               type="text"
@@ -39,6 +55,9 @@ const Addresses = (props) => {
               placeholder="city"
               aria-label=" city"
               value={AddressData.city}
+              onChange={(e) =>
+                setAddressData({ ...AddressData, city: e.target.value })
+              }
               disabled
             />
             <button
@@ -56,6 +75,9 @@ const Addresses = (props) => {
               placeholder="street"
               aria-label="street"
               value={AddressData.street}
+              onChange={(e) =>
+                setAddressData({ ...AddressData, street: e.target.value })
+              }
               disabled
             />
             <button
@@ -77,6 +99,9 @@ const Addresses = (props) => {
               placeholder="number"
               aria-label="number"
               value={AddressData.number}
+              onChange={(e) =>
+                setAddressData({ ...AddressData, number: e.target.value })
+              }
               disabled
             />
             <button
@@ -94,6 +119,9 @@ const Addresses = (props) => {
               placeholder="zipcode"
               aria-label="zipcode"
               value={AddressData.zipcode}
+              onChange={(e) =>
+                setAddressData({ ...AddressData, zipcode: e.target.value })
+              }
               disabled
             />
             <button
@@ -104,6 +132,9 @@ const Addresses = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
+          <button type="submit" className="btn btn-primary">
+            Save
+          </button>
         </form>
       </div>
     </>
