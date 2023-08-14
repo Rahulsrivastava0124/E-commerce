@@ -48,9 +48,13 @@ const Addresses = (props) => {
           className="row g-3 w-50 m-auto"
           onSubmit={(e) => UpdateAddress(e)}
         >
-          <div className="col-12 input-group">
+          <label for="city" class="form-label">
+            city
+          </label>
+          <div className="col-12 input-group mt-0">
             <input
               type="text"
+              id="city"
               className="form-control "
               placeholder="city"
               aria-label=" city"
@@ -68,9 +72,13 @@ const Addresses = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-          <div className="col-12 input-group">
+          <label for="street" class="form-label">
+            street
+          </label>
+          <div className="col-12 input-group mt-0">
             <input
               type="text"
+              id="street"
               className="form-control"
               placeholder="street"
               aria-label="street"
@@ -88,49 +96,57 @@ const Addresses = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-
-          <div
-            className="col-md-6 input-group me-auto"
-            style={{ width: "auto" }}
-          >
-            <input
-              type="text"
-              className="form-control"
-              placeholder="number"
-              aria-label="number"
-              value={AddressData.number}
-              onChange={(e) =>
-                setAddressData({ ...AddressData, number: e.target.value })
-              }
-              disabled
-            />
-            <button
-              className="btn btn-outline-secondary"
-              onClick={(e) => InputEditEnableAndDisable(e)}
-              type="button"
-            >
-              <i className="bi bi-pen-fill"></i>
-            </button>
+          <div className="col-md-6" style={{ width: "auto" }}>
+            <label for="number" class="form-label">
+              number
+            </label>
+            <div className="input-group me-auto">
+              <input
+                type="text"
+                id="number"
+                className="form-control"
+                placeholder="number"
+                aria-label="number"
+                value={AddressData.number}
+                onChange={(e) =>
+                  setAddressData({ ...AddressData, number: e.target.value })
+                }
+                disabled
+              />
+              <button
+                className="btn btn-outline-secondary"
+                onClick={(e) => InputEditEnableAndDisable(e)}
+                type="button"
+              >
+                <i className="bi bi-pen-fill"></i>
+              </button>
+            </div>
           </div>
           <div className="col-lg input-group " style={{ width: "auto" }}>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="zipcode"
-              aria-label="zipcode"
-              value={AddressData.zipcode}
-              onChange={(e) =>
-                setAddressData({ ...AddressData, zipcode: e.target.value })
-              }
-              disabled
-            />
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={(e) => InputEditEnableAndDisable(e)}
-            >
-              <i className="bi bi-pen-fill"></i>
-            </button>
+            <label for="zipcode" class="form-label">
+              Zip Code
+            </label>
+            <div className="input-group">
+              <input
+                type="text"
+                id="zipcode"
+                className="form-control"
+                placeholder="zipcode"
+                aria-label="zipcode"
+                value={AddressData.zipcode}
+                onChange={(e) =>
+                  setAddressData({ ...AddressData, zipcode: e.target.value })
+                }
+                disabled
+              />
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={(e) => InputEditEnableAndDisable(e)}
+              >
+                <i className="bi bi-pen-fill"></i>
+              </button>
+            </div>
           </div>
           <button type="submit" className="btn btn-primary">
             Save

@@ -7,7 +7,9 @@ export default function ProtectedComponent(props) {
   useEffect(() => {
     if (Object.keys(props.data.UserLogin.LoginData).length === 0) {
       console.log("done");
-      navigate("/");
+      if (props.data.UserLogin.LoginData.state.state) {
+        navigate("/");
+      }
     }
   }, []);
 

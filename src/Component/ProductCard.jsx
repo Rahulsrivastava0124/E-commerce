@@ -55,7 +55,7 @@ const ProductCard = (props) => {
     >
       <img
         className="mx-auto pt-3 "
-        style={{ width: "250px", height: "200px" }}
+        style={{ width: "180px", height: "200px" }}
         src={element.image}
         alt="productImage"
       />

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { GetUsers ,UpdateData} from "../server/UserAPI";
+import { GetUsers, UpdateData } from "../server/UserAPI";
 import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
+import { velidateInput } from "../Function/VelidateInputInLength";
+import Toasts from "./Toasts";
 
 const LoginSecurity = (props) => {
   console.log("Security", props.data);
@@ -12,7 +14,10 @@ const LoginSecurity = (props) => {
     LastName: "",
     PhoneNumber: "",
   });
-
+  const [ToastsData, setToasts] = useState({
+    state: "hide",
+    info: { color: "", message: "" },
+  });
   const [ResData, setResData] = useState("");
 
   async function GetUsersSort() {
@@ -43,32 +48,44 @@ const LoginSecurity = (props) => {
     resData.name.firstname = LoginAndSecurityData.FirstName;
     resData.name.lastname = LoginAndSecurityData.LastName;
     const UpdateResData = await UpdateData(resData);
-    console.log(UpdateResData);
+    setToasts({
+      ...ToastsData,
+      state: "show",
+      info: { color: "success", message: "Login data is updated" },
+    });
   };
 
   return (
     <>
+      <Toasts Toastsdata={ToastsData} />
       <h2 className="text-center">Login & Security </h2>
       <div className="container">
         <form
           className="row g-3 w-50 m-auto"
           onSubmit={(e) => UpdateSecurityData(e)}
         >
-          <div className="col-12 input-group">
+          <label for="UserName" class="form-label">
+            User Name
+          </label>
+          <div className="col-12 input-group mt-0">
             <input
               type="text"
+              id="UserName"
               className="form-control "
               placeholder="UserName"
               aria-label=" username"
               value={LoginAndSecurityData.UserName}
-              onChange={(e) =>
+              onChange={(e) => {
                 setLoginAndSecurityData({
                   ...LoginAndSecurityData,
                   UserName: e.target.value,
-                })
-              }
+                });
+                velidateInput(e.target, 4);
+              }}
               disabled
+              required
             />
+
             <button
               className="btn btn-outline-secondary"
               onClick={(e) => InputEditEnableAndDisable(e)}
@@ -77,20 +94,26 @@ const LoginSecurity = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-          <div className="col-12 input-group">
+          <label for="Email" class="form-label">
+            Email
+          </label>
+          <div className="col-12 input-group mt-0">
             <input
-              type="text"
+              type="email"
+              id="Email"
               className="form-control"
               placeholder="Email"
               aria-label="Email"
               value={LoginAndSecurityData.Email}
-              onChange={(e) =>
+              onChange={(e) => {
                 setLoginAndSecurityData({
                   ...LoginAndSecurityData,
                   Email: e.target.value,
-                })
-              }
+                });
+                velidateInput(e.target, 10);
+              }}
               disabled
+              required
             />
             <button
               className="btn btn-outline-secondary"
@@ -100,71 +123,88 @@ const LoginSecurity = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-
-          <div
-            className="col-md-6 input-group me-auto"
-            style={{ width: "auto" }}
-          >
-            <input
-              type="text"
-              className="form-control"
-              placeholder="First Name"
-              aria-label="First Name"
-              value={LoginAndSecurityData.FirstName}
-              onChange={(e) =>
-                setLoginAndSecurityData({
-                  ...LoginAndSecurityData,
-                  FirstName: e.target.value,
-                })
-              }
-              disabled
-            />
-            <button
-              className="btn btn-outline-secondary"
-              onClick={(e) => InputEditEnableAndDisable(e)}
-              type="button"
-            >
-              <i className="bi bi-pen-fill"></i>
-            </button>
+          <div className="col-md-6 mt-2 " style={{ width: "auto" }}>
+            <label for="FirstName" class="form-label">
+              First Name
+            </label>
+            <div className="input-group me-auto">
+              <input
+                type="text"
+                className="form-control"
+                id="FirstName"
+                placeholder="First Name"
+                aria-label="First Name"
+                value={LoginAndSecurityData.FirstName}
+                onChange={(e) => {
+                  setLoginAndSecurityData({
+                    ...LoginAndSecurityData,
+                    FirstName: e.target.value,
+                  });
+                  velidateInput(e.target, 2);
+                }}
+                disabled
+                required
+              />
+              <button
+                className="btn btn-outline-secondary"
+                onClick={(e) => InputEditEnableAndDisable(e)}
+                type="button"
+              >
+                <i className="bi bi-pen-fill"></i>
+              </button>
+            </div>
           </div>
-          <div className="col-lg input-group " style={{ width: "auto" }}>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Last Name"
-              aria-label="Last Name"
-              value={LoginAndSecurityData.LastName}
-              onChange={(e) =>
-                setLoginAndSecurityData({
-                  ...LoginAndSecurityData,
-                  LastName: e.target.value,
-                })
-              }
-              disabled
-            />
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={(e) => InputEditEnableAndDisable(e)}
-            >
-              <i className="bi bi-pen-fill"></i>
-            </button>
+          <div className="col-lg  mt-2 " style={{ width: "auto" }}>
+            <label for="LastName" class="form-label">
+              Last Name
+            </label>
+            <div className="input-group">
+              <input
+                type="text"
+                id="LastName"
+                className="form-control"
+                placeholder="Last Name"
+                aria-label="Last Name"
+                value={LoginAndSecurityData.LastName}
+                onChange={(e) => {
+                  setLoginAndSecurityData({
+                    ...LoginAndSecurityData,
+                    LastName: e.target.value,
+                  });
+                  velidateInput(e.target, 2);
+                }}
+                disabled
+                required
+              />
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={(e) => InputEditEnableAndDisable(e)}
+              >
+                <i className="bi bi-pen-fill"></i>
+              </button>
+            </div>
           </div>
-
-          <div className="col-12 input-group">
+          <label for="PhoneNumber" class="form-label">
+            Phone Number
+          </label>
+          <div className="col-12 input-group mt-0">
             <input
               type="text"
+              id="PhoneNumber"
               className="form-control"
               placeholder="Phone Number"
               aria-label="Phone Number"
               value={LoginAndSecurityData.PhoneNumber}
-              onChange={(e) =>
+              onChange={(e) => {
                 setLoginAndSecurityData({
                   ...LoginAndSecurityData,
                   PhoneNumber: e.target.value,
-                })
-              }
+                });
+                velidateInput(e.target, 12);
+              }}
               disabled
+              required
             />
             <button
               className="btn btn-outline-secondary"
