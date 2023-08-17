@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { GetUsers, UpdateData } from "../server/UserAPI";
 import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
 import { velidateInput } from "../Function/VelidateInputInLength";
-import Toasts from "./Toasts";
+import { useNavigate } from "react-router-dom";
 
 const LoginSecurity = (props) => {
-  console.log("Security", props.data);
-
+  const navigate = useNavigate();
   const [LoginAndSecurityData, setLoginAndSecurityData] = useState({
     Email: "",
     UserName: "",
@@ -14,10 +13,7 @@ const LoginSecurity = (props) => {
     LastName: "",
     PhoneNumber: "",
   });
-  const [ToastsData, setToasts] = useState({
-    state: "hide",
-    info: { color: "", message: "" },
-  });
+
   const [ResData, setResData] = useState("");
 
   async function GetUsersSort() {
@@ -48,23 +44,23 @@ const LoginSecurity = (props) => {
     resData.name.firstname = LoginAndSecurityData.FirstName;
     resData.name.lastname = LoginAndSecurityData.LastName;
     const UpdateResData = await UpdateData(resData);
-    setToasts({
-      ...ToastsData,
-      state: "show",
-      info: { color: "success", message: "Login data is updated" },
+    navigate("/Profile", {
+      state: {
+        state: "show",
+        info: { color: "success", message: "Login data is updated" },
+      },
     });
   };
 
   return (
     <>
-      <Toasts Toastsdata={ToastsData} />
       <h2 className="text-center">Login & Security </h2>
       <div className="container">
         <form
           className="row g-3 w-50 m-auto"
           onSubmit={(e) => UpdateSecurityData(e)}
         >
-          <label for="UserName" class="form-label">
+          <label htmlFor="UserName" className="form-label">
             User Name
           </label>
           <div className="col-12 input-group mt-0">
@@ -94,7 +90,7 @@ const LoginSecurity = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-          <label for="Email" class="form-label">
+          <label htmlFor="Email" className="form-label">
             Email
           </label>
           <div className="col-12 input-group mt-0">
@@ -124,7 +120,7 @@ const LoginSecurity = (props) => {
             </button>
           </div>
           <div className="col-md-6 mt-2 " style={{ width: "auto" }}>
-            <label for="FirstName" class="form-label">
+            <label htmlFor="FirstName" className="form-label">
               First Name
             </label>
             <div className="input-group me-auto">
@@ -155,7 +151,7 @@ const LoginSecurity = (props) => {
             </div>
           </div>
           <div className="col-lg  mt-2 " style={{ width: "auto" }}>
-            <label for="LastName" class="form-label">
+            <label htmlFor="LastName" className="form-label">
               Last Name
             </label>
             <div className="input-group">
@@ -185,7 +181,7 @@ const LoginSecurity = (props) => {
               </button>
             </div>
           </div>
-          <label for="PhoneNumber" class="form-label">
+          <label htmlFor="PhoneNumber" className="form-label">
             Phone Number
           </label>
           <div className="col-12 input-group mt-0">

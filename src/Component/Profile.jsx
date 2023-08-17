@@ -10,9 +10,14 @@ import locationIcon from "../Svg/GifImages/locationIcon.gif";
 import lockIcon from "../Svg/GifImages/lockIcon.gif";
 import paymentIcon from "../Svg/GifImages/paymentIcon.gif";
 import avatar from "../Svg/GifImages/avatar.gif";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import Toasts from "./Toasts";
+import { useNavigate } from "react-router-dom";
 
 export const Profile = (props) => {
+  const nevigate = useNavigate();
+  const location = useLocation();
+  console.log(props);
   const [GreetingMessege, setGreetingMessege] = useState({
     message: "",
     icon: ``,
@@ -94,8 +99,15 @@ export const Profile = (props) => {
     },
   ];
 
+  const LogOutUser = () => {
+    const initialState = {};
+    props.UserLogOutHandler(initialState);
+    nevigate("/");
+  };
+
   return (
     <>
+      <Toasts Toastsdata={location.state} />
       <div className="container mt-2">
         <h2 className="text-center">User Profile</h2>
         <hr />
@@ -152,8 +164,13 @@ export const Profile = (props) => {
             );
           })}
         </div>
+        <div className="text-end">
+          <button className="btn btn-danger " onClick={() => LogOutUser()}>
+            Logout
+          </button>
+        </div>
       </div>
-      <Outlet/>
+      <Outlet />
     </>
   );
 };

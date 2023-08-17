@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function (props) {
+  useEffect(() => {
+    props.Toastsdata
+      ? setTimeout(() => {
+          document.querySelector(".show") === null
+            ? document.querySelector(".show").classList.remove("show")
+            : null;
+        }, 10)
+      : null;
+  });
+
   return (
     <>
       <div
-        class={`toast align-items-center overflow-auto m-auto text-bg-${props.Toastsdata.info.color} border-0 ${props.Toastsdata.state}`}
+        className={`toast align-items-center overflow-auto m-auto text-bg-${
+          props.Toastsdata ? props.Toastsdata.info.color : null
+        } border-0 ${props.Toastsdata ? props.Toastsdata.state : null}`}
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
       >
-        <div class="d-flex">
-          <div class="toast-body">{props.Toastsdata.info.message}</div>
+        <div className="d-flex">
+          <div className="toast-body">
+            {props.Toastsdata ? props.Toastsdata.info.message : null}
+          </div>
           <button
             type="button"
-            class="btn-close btn-close-white me-2 m-auto"
+            className="btn-close btn-close-white me-2 m-auto"
             data-bs-dismiss="toast"
             aria-label="Close"
           ></button>

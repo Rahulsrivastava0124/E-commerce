@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Account from "../Svg/Account.svg";
 import { CategoriesList } from "../Component/Categories_list";
@@ -15,13 +15,17 @@ export const Navbar = (props) => {
       setCategoriesListShow(true);
     }
   };
-  if (Object.keys(props.data.UserLogin.LoginData).length === 0) {
-    console.log("props is not ");
-  } else {
-    if (LoginStates === false) {
-      setLoginStates(props.data.UserLogin.LoginData.state.state);
+
+  useEffect(() => {
+    if (Object.keys(props.data.UserLogin.LoginData).length === 0) {
+      setLoginStates(false);
+    } else {
+      if (LoginStates === false) {
+        setLoginStates(props.data.UserLogin.LoginData.state.state);
+      }
     }
-  }
+  });
+
   return (
     <div id="Navbar">
       <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
@@ -49,7 +53,7 @@ export const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link " to="/WishList">
-                 WishList
+                  WishList
                 </Link>
               </li>
               <li className="nav-item">
@@ -68,7 +72,7 @@ export const Navbar = (props) => {
                 type="search"
                 placeholder="Search 🔍"
                 aria-label="Search"
-                style={{width:"500px"}}
+                style={{ width: "500px" }}
               />
             </form>
             <div id="Account">
@@ -78,10 +82,10 @@ export const Navbar = (props) => {
                   <Link to="/Profile" className="text-decoration-none">
                     <img src={Account} alt="Account" className="" />{" "}
                     <span className=" text-dark fw-bold">
-                    {props.data.UserLogin.LoginData.state.username
-                      ? props.data.UserLogin.LoginData.state.username
-                      : null}
-                      </span>
+                      {Object.keys(props.data.UserLogin.LoginData).length === 0
+                        ? null
+                        : props.data.UserLogin.LoginData.state.username}
+                    </span>
                   </Link>
                 </span>
               ) : (
@@ -103,7 +107,7 @@ export const Navbar = (props) => {
                 className="btn"
               >
                 <i className="bi fs-5 bi-cart3"></i>
-                 <span className="fw-bold">Cart</span>
+                <span className="fw-bold">Cart</span>
               </button>
             </div>
           </div>

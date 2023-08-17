@@ -33,7 +33,6 @@ const Addresses = (props) => {
     resData.number = AddressData.number;
     resData.zipcode = AddressData.zipcode;
     const UpdateResData = await UpdateData(resData);
-    console.log(UpdateResData);
   };
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const Addresses = (props) => {
           className="row g-3 w-50 m-auto"
           onSubmit={(e) => UpdateAddress(e)}
         >
-          <label for="city" class="form-label">
+          <label htmlFor="city" className="form-label">
             city
           </label>
           <div className="col-12 input-group mt-0">
@@ -72,7 +71,7 @@ const Addresses = (props) => {
               <i className="bi bi-pen-fill"></i>
             </button>
           </div>
-          <label for="street" class="form-label">
+          <label htmlFor="street" className="form-label">
             street
           </label>
           <div className="col-12 input-group mt-0">
@@ -97,7 +96,7 @@ const Addresses = (props) => {
             </button>
           </div>
           <div className="col-md-6" style={{ width: "auto" }}>
-            <label for="number" class="form-label">
+            <label htmlFor="number" className="form-label">
               number
             </label>
             <div className="input-group me-auto">
@@ -123,7 +122,7 @@ const Addresses = (props) => {
             </div>
           </div>
           <div className="col-lg input-group " style={{ width: "auto" }}>
-            <label for="zipcode" class="form-label">
+            <label htmlFor="zipcode" className="form-label">
               Zip Code
             </label>
             <div className="input-group">

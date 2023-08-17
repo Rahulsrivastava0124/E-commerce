@@ -6,17 +6,15 @@ import { LoginAPI } from "../server/UserAPI";
 function Login(props) {
   const [LoginData, setLoginData] = useState({ username: "", password: "" });
 
-
   const SubmitLoginForm = async (e) => {
     e.preventDefault();
     // if login is successful then close the modal and redirect to dashboard page else show error message in
-    props.addToCartHandler ({ state: await LoginAPI(LoginData) });
+    props.addToLoginHandler({ state: await LoginAPI(LoginData) });
   };
   // console.log(" login", props);
   return (
     <>
       {/* <!-- Login Modal --> */}
-
       {/* add signup model data  */}
       <Signup />
       <div
@@ -88,8 +86,7 @@ function Login(props) {
                       required
                     />
                   </div>
-                  
-              
+
                   <button
                     type="submit"
                     className="btn btn-primary me-2"
