@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Addresses from "../Component/UserAddresses";
+import Addresses from "../Component/UserComponents/UserAddresses";
 
 const mapStateToProps = (state, ownProps) => ({
   data: state,

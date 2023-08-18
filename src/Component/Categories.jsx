@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import CardPlaceHolder from "../Component/CardPlaceHolder";
+import CardPlaceHolder from "../Component/LoadingStructer/CardPlaceHolder";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
-import { PreviewProduct } from "./PreviewProduct";
+import { PreviewProduct } from "./CardComponents/PreviewProduct";
 
 export const Categories = (props) => {
   const [ProductpreviewData, setProductpreviewData] = useState(" ");

@@ -15,14 +15,13 @@ import UserAdressesContainer from "./containers/UserAdressesContainer";
 // import App Components
 import Deals from "./Component/Deals.jsx";
 import Delivery from "./Component/Delivery.jsx";
-import WishList from "./Component/WishList.jsx";
-import { Error404 } from "./Component/404Error.jsx";
-import Footer from "./Component/Footer.jsx";
-import Addresses from "./Component/UserAddresses.jsx";
-import ContactUs from "./Component/UserContactUs.jsx";
+import WishList from "./Component/UserComponents/WishList";
+import { Error404 } from "./Component/Error/404Error";
+import Footer from "./Component/Footer/Footer";
+import ContactUs from "./Component/UserComponents/UserContactUs";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
-import YourOrder from "./Component/UserYourOrder.jsx";
-import CartAndWishList from "./Component/UserCartAndWishList.jsx";
+import YourOrder from "./Component/UserComponents/UserYourOrder";
+import CartAndWishList from "./Component/UserComponents/UserCartAndWishList";
 
 function App() {
   return (

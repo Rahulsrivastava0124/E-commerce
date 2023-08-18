@@ -3,8 +3,8 @@ import "../App.css";
 import { AllProductData, productsCategories } from "../server/productAPI.js";
 import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
-import CardPlaceHolder from "./CardPlaceHolder";
-import { PreviewProduct } from "./PreviewProduct";
+import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
+import { PreviewProduct } from "./CardComponents/PreviewProduct";
 
 export const Home = (props) => {
   console.log(props);
@@ -116,7 +116,7 @@ export const Home = (props) => {
                         </p>
                         <div>
                           <button className="btn btn-lg btn-warning my-3">
-                            Read More..
+                            Add to Cart
                           </button>
                           <button className="btn btn-lg btn-primary m-4">
                            Buy Now

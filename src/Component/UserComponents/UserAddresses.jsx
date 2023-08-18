@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
-import { GetUsers, UpdateData } from "../server/UserAPI";
+import { InputEditEnableAndDisable } from "../../Function/InputEditEnableAndDisable";
+import { GetUsers, UpdateData } from "../../server/UserAPI";
 
 const Addresses = (props) => {
   const [AddressData, setAddressData] = useState({

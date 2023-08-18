@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Rating } from "../Function/Rating.js";
+import { Rating } from "../../Function/Rating.js";
 
 const ProductCard = (props) => {
   const element = props.element;

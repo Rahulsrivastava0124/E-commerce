@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ProductCard from "../Component/ProductCard.jsx";
+import ProductCard from "../Component/CardComponents/ProductCard";
 import { WishListToCart, RemoveWishList } from "../Services/Actions/Actions";
 
 const mapStateToProps = (state, ownProps) => ({
