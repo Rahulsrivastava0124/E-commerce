@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { GetUsers, UpdateData } from "../server/UserAPI";
-import { InputEditEnableAndDisable } from "../Function/InputEditEnableAndDisable";
-import { velidateInput } from "../Function/VelidateInputInLength";
+import { GetUsers, UpdateData } from "../../server/UserAPI";
+import { InputEditEnableAndDisable } from "../../Function/InputEditEnableAndDisable";
+import { velidateInput } from "../../Function/VelidateInputInLength";
 import { useNavigate } from "react-router-dom";
 
 const LoginSecurity = (props) => {

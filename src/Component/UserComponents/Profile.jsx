@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import afternoon from "../Svg/images/afternoon.png";
-import evening from "../Svg/images/evening.png";
-import morning from "../Svg/images/morning.png";
-import night from "../Svg/images/night.png";
-import productIcon from "../Svg/GifImages/productIcon.gif";
-import cartIcon from "../Svg/GifImages/cartIcon.gif";
-import contactIcon from "../Svg/GifImages/contactIcon.gif";
-import locationIcon from "../Svg/GifImages/locationIcon.gif";
-import lockIcon from "../Svg/GifImages/lockIcon.gif";
-import paymentIcon from "../Svg/GifImages/paymentIcon.gif";
-import avatar from "../Svg/GifImages/avatar.gif";
+import afternoon from "../../Svg/images/afternoon.png";
+import evening from "../../Svg/images/evening.png";
+import morning from "../../Svg/images/morning.png";
+import night from "../../Svg/images/night.png";
+import productIcon from "../../Svg/GifImages/productIcon.gif";
+import cartIcon from "../../Svg/GifImages/cartIcon.gif";
+import contactIcon from "../../Svg/GifImages/contactIcon.gif";
+import locationIcon from "../../Svg/GifImages/locationIcon.gif";
+import lockIcon from "../../Svg/GifImages/lockIcon.gif";
+import paymentIcon from "../../Svg/GifImages/paymentIcon.gif";
+import avatar from "../../Svg/GifImages/avatar.gif";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import Toasts from "./Toasts";
+import Toasts from "../Toasts";
 import { useNavigate } from "react-router-dom";
 
 export const Profile = (props) => {
