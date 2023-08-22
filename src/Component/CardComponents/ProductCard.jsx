@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Rating } from "../../Function/Rating.js";
 
 const ProductCard = (props) => {
+  console.log(props);
   const element = props.element;
   const tabIndex = props.element;
   useEffect(() => {
@@ -20,16 +21,18 @@ const ProductCard = (props) => {
             .join("")
             .split(`'`)
             .join("")}${props.data.UserWish[i].WishList.state.id}`;
+          console.log(GET_ID);
           setTimeout(() => {
             document.getElementById(GET_ID).classList.add("bi-heart-fill");
             document.getElementById(GET_ID).classList.remove("bi-heart");
-          }, 1000);
+          }, 100);
         }
       }
     }
   }, [props]);
 
   const rateArray = Rating(element.rating.rate);
+
   const WishList = (e, element) => {
     if (e.target.classList[0] === "btn") {
       var data = e.target.firstChild.classList[1];
@@ -50,12 +53,12 @@ const ProductCard = (props) => {
   return (
     <div
       className="card m-3 border-0 shadow-sm"
-      style={{ width: "18rem" }}
+      style={{ width: "17rem",height:"fit-contant"}}
       key={tabIndex}
     >
       <img
         className="mx-auto pt-3 "
-        style={{ width: "180px", height: "200px" }}
+        style={{ width: "180px", height: "160px" }}
         src={element.image}
         alt="productImage"
       />
@@ -69,39 +72,45 @@ const ProductCard = (props) => {
         <h6 className="text-decoration-line-through">
           Rs.{element.price + 300}
         </h6>
-        <h5>
-          {rateArray.map((element, index) => {
-            return <i className={`bi bi-star${element}`} key={index}></i>;
-          })}
-        </h5>
-        <a href="/" className="btn btn-primary">
-          Add to cart
-        </a>
-        <span
-          type="button"
-          className="btn ScaleButton mx-3 rounded-circle shadow fs-4"
-          onClick={(e) => WishList(e, element)}
-        >
-          <i
-            className={`IconScale ${element.category
-              .split(" ")
-              .join("")
-              .split(`'`)
-              .join("")}${element.id} bi bi-heart fw-bolder `}
-            id={`${element.category.split(" ").join("").split(`'`).join("")}${
-              element.id
-            }`}
-          ></i>
-        </span>
-        <button
-          type="button"
-          className="btn rounded-circle ScaleButton shadow "
-          data-bs-toggle="modal"
-          data-bs-target="#productPreviewModal"
-          onClick={() => props.setProductpreviewData(element)}
-        >
-          <i className="bi bi-eye-fill fs-4"></i>
-        </button>
+        <div className="d-flex align-items-center">
+          <h5 className="fs-6">
+            {rateArray.map((element, index) => {
+              return <i className={`  bi bi-star${element}`} key={index}></i>;
+            })}
+          </h5>
+          <div>
+            <a href="/" className="btn ScaleButton">
+              <i class="bi bi-cart-plus fs-5"></i>
+            </a>
+            <span
+              type="button"
+              className="btn ScaleButton "
+              onClick={(e) => WishList(e, element)}
+            >
+              <i
+                className={`IconScale ${element.category
+                  .split(" ")
+                  .join("")
+                  .split(`'`)
+                  .join("")}${element.id} bi bi-heart fs-5`}
+                id={`${element.category
+                  .split(" ")
+                  .join("")
+                  .split(`'`)
+                  .join("")}${element.id}`}
+              ></i>
+            </span>
+            <button
+              type="button"
+              className="btn ScaleButton"
+              data-bs-toggle="modal"
+              data-bs-target="#productPreviewModal"
+              onClick={() => props.setProductpreviewData(element)}
+            >
+              <i className="bi bi-eye-fill fs-5"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
