@@ -50,19 +50,35 @@ function App() {
             path="/Categories/jewelery"
             element={<CategoriesContainer link={"jewelery"} />}
           />
-          <Route
-            path="/Profile"
-            element={
-              <ProtectedComponentContainer Component={ProfileContainer} />
-            }
-          >
-            <Route path="Security" element={<SecurityContainer />} />
-            <Route path="Addresses" element={<UserAdressesContainer />} />
-            <Route path="Cart" element={<CartAndWishList />} />
-            <Route path="PaymentOptions" element={<PaymentOptions />} />
+          <Route path="/Profile" element={<ProfileContainer />}>
+            <Route
+              path="Security"
+              element={
+                <ProtectedComponentContainer Component={SecurityContainer} />
+              }
+            />
+            <Route
+              path="Addresses"
+              element={
+                <ProtectedComponentContainer
+                  Component={UserAdressesContainer}
+                />
+              }
+            />
+            
+            <Route
+              path="PaymentOptions"
+              element={
+                <ProtectedComponentContainer Component={PaymentOptions} />
+              }
+            />
             <Route path="YourOrder" element={<YourOrder />} />
-            <Route path="ContactUs" element={<ContactUs />} />
+            <Route
+              path="ContactUs"
+              element={<ProtectedComponentContainer Component={ContactUs} />}
+            />
           </Route>
+          <Route path="Cart" element={<CartAndWishList />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -143,7 +143,7 @@ export const Profile = (props) => {
           {Card_Array.map((element, index) => {
             return (
               <Link
-                to={`/Profile/${element.Link}`}
+                to={element.Link === "Cart" ? "/Cart" : element.Link}
                 key={index}
                 className="text-decoration-none text-dark"
               >

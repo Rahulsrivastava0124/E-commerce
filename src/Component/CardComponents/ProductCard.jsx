@@ -53,7 +53,7 @@ const ProductCard = (props) => {
   return (
     <div
       className="card m-3 border-0 shadow-sm"
-      style={{ width: "17rem",height:"fit-contant"}}
+      style={{ width: "17rem", height: "fit-contant" }}
       key={tabIndex}
     >
       <img
@@ -72,7 +72,7 @@ const ProductCard = (props) => {
         <h6 className="text-decoration-line-through">
           Rs.{element.price + 300}
         </h6>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center justify-content-between">
           <h5 className="fs-6">
             {rateArray.map((element, index) => {
               return <i className={`  bi bi-star${element}`} key={index}></i>;

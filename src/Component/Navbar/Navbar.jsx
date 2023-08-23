@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Account from "../../Svg/Account.svg";
 import { CategoriesList } from "../Navbar/Categories_list";
 import { CartCanvas } from "../LoadingStructer/CartCanvas";
 import Containers from "../../containers/LoginContainer";
 
 export const Navbar = (props) => {
+  const Navigate=useNavigate();
   const [CategoriesListShow, setCategoriesListShow] = useState(true);
   const [LoginStates, setLoginStates] = useState(false);
   const showCategories = () => {
@@ -99,15 +100,18 @@ export const Navbar = (props) => {
                 </button>
               )}
               {/* cart logo */}
-              <button
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"
-                className="btn"
-              >
+              <button className="btn" onClick={()=>Navigate("/Cart")}>
                 <i className="bi fs-5 bi-cart3"></i>
                 <span className="fw-bold">Cart</span>
+                <span
+                  className="btn"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasRight"
+                  aria-controls="offcanvasRight"
+                >
+                  <i class="bi bi-chevron-down"></i>
+                </span>
               </button>
             </div>
           </div>
