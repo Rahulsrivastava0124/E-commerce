@@ -15,7 +15,6 @@ export const InputEditEnableAndDisable=(e)=>{
           ItemData.add("bi-pen-fill");
         }
       } else {
-        console.log("none");
         if (e.target.classList.contains("bi")) {
           e.target.parentElement.previousSibling.removeAttribute("disabled");
           e.target.classList.add("bi-x-lg");

@@ -26,42 +26,42 @@ const ContactUs = () => {
                 <label for="UserFirstName">First Name</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="UserFirstName"
                   placeholder="Rahul "
                 />
               </div>
-              <div class=" mb-3 col-md-6">
+              <div className=" mb-3 col-md-6">
                 <label for="UserLastName">Last Name</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="UserLastName"
                   placeholder="Srivastva"
                 />
               </div>
-              <div class=" mb-3">
+              <div className=" mb-3">
                 <label for="floatingInput">Email address</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="floatingInput"
                   placeholder="name@example.com"
                 />
               </div>
-              <div class=" mb-3">
+              <div className=" mb-3">
                 <label for="floatingPhone">Phone Number</label>
                 <input
                   type="tel"
-                  class="form-control"
+                  className="form-control"
                   id="floatingPhone"
                   placeholder="Phone Number"
                 />
               </div>
-              <div class="">
+              <div className="">
                 <label for="floatingTextarea2">Comments</label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   placeholder="Leave a comment here"
                   id="floatingTextarea2"
                   style={{ height: "100px}" }}

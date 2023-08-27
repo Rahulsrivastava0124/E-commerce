@@ -30,7 +30,6 @@ const LoginSecurity = (props) => {
       LastName: GetResData.name.lastname,
     });
   }
-  console.log(ResData);
   useEffect(() => {
     GetUsersSort();
   }, []);

@@ -9,7 +9,6 @@ export const LoginAPI = async (data) => {
     body: JSON.stringify(data),
   });
   const resdata = await CallData.json();
-  console.log(resdata);
   return {
     data: resdata,
     state: true,
@@ -32,7 +31,6 @@ export const SignUpAPI = (data) => {
       if (!json || json === null) {
         alert("Error");
       } else {
-        console.log(json);
         localStorage.setItem("ID", json.id);
         localStorage.setItem("Data", JSON.stringify(data));
       }
@@ -51,7 +49,6 @@ export const GetUsers = async (UserName) => {
     }
     return null;
   });
-  console.log(data);
   return data;
 };
 

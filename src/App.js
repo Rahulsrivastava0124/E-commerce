@@ -11,6 +11,7 @@ import ProfileContainer from "./containers/ProfileContainer";
 import SecurityContainer from "./containers/SecurityContainer";
 import ProtectedComponentContainer from "./containers/ProtectedComponentContainer";
 import UserAdressesContainer from "./containers/UserAdressesContainer";
+import CartContainer from "./containers/CartContainer";
 
 // import App Components
 import Deals from "./Component/Deals.jsx";
@@ -21,7 +22,6 @@ import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
 import YourOrder from "./Component/UserComponents/UserYourOrder";
-import CartAndWishList from "./Component/UserComponents/UserCartAndWishList";
 
 function App() {
   return (
@@ -65,20 +65,21 @@ function App() {
                 />
               }
             />
-            
+
             <Route
               path="PaymentOptions"
               element={
                 <ProtectedComponentContainer Component={PaymentOptions} />
               }
             />
-            <Route path="YourOrder" element={<YourOrder />} />
             <Route
               path="ContactUs"
-              element={<ProtectedComponentContainer Component={ContactUs} />}
+              element={< ContactUs />}
             />
           </Route>
-          <Route path="Cart" element={<CartAndWishList />} />
+          <Route path="Cart" element={<CartContainer />} />
+          <Route path="YourOrder" element={<YourOrder />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>

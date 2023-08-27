@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Account from "../../Svg/Account.svg";
 import { CategoriesList } from "../Navbar/Categories_list";
-import { CartCanvas } from "../LoadingStructer/CartCanvas";
+import CartCanvasContainer from "../../containers/CartCanvasContainer";
 import Containers from "../../containers/LoginContainer";
 
 export const Navbar = (props) => {
-  const Navigate=useNavigate();
+  const Navigate = useNavigate();
   const [CategoriesListShow, setCategoriesListShow] = useState(true);
   const [LoginStates, setLoginStates] = useState(false);
   const showCategories = () => {
@@ -28,7 +28,7 @@ export const Navbar = (props) => {
   });
 
   return (
-    <div id="Navbar">
+    <div id="Navbar " className="">
       <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
         <div className="container-md">
           {/* navbar logo */}
@@ -92,7 +92,7 @@ export const Navbar = (props) => {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-primary me-3"
+                  className="btn btn-primary me-3 "
                   data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
                 >
@@ -100,17 +100,26 @@ export const Navbar = (props) => {
                 </button>
               )}
               {/* cart logo */}
-              <button className="btn" onClick={()=>Navigate("/Cart")}>
-                <i className="bi fs-5 bi-cart3"></i>
-                <span className="fw-bold">Cart</span>
+              <button className="btn  p-0">
+                <i
+                  className="bi fs-5 bi-cart3 "
+                  onClick={() => Navigate("/Cart")}
+                > <span className="fw-bold">Cart</span></i>
+               
                 <span
-                  className="btn"
+                  className="btn position-relative p-1"
                   type="button"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   aria-controls="offcanvasRight"
                 >
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
+                  <span
+                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger "
+                    style={{ fontSize: "x-small" }}
+                  >
+                    {props.data.AddToCart.length}
+                  </span>
                 </span>
               </button>
             </div>
@@ -121,7 +130,7 @@ export const Navbar = (props) => {
       {CategoriesListShow ? <CategoriesList /> : null}
       {/* <Login /> */}
       <Containers />
-      <CartCanvas />
+      <CartCanvasContainer />
     </div>
   );
 };
