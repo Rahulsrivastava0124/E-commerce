@@ -1,10 +1,13 @@
 import React from 'react';
 
-const WishListCart = () => {
+const WishListCart = (props) => {
     return (
-        <div>
+        <>
             <h1 className="text-center">WishList & Cart</h1>
-        </div>
+            <div>
+                
+            </div>
+        </>
     );
 }
 

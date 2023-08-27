@@ -16,5 +16,4 @@ export const WishListCall = (e, element, props) => {
     ClassData.classList.add("bi-heart");
   }
 
-  console.log("WishList", props);
 };

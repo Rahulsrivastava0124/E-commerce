@@ -7,7 +7,6 @@ import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
 import { PreviewProduct } from "./CardComponents/PreviewProduct";
 
 export const Home = (props) => {
-  console.log(props);
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");

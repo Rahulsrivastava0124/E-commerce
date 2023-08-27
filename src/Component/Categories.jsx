@@ -16,7 +16,6 @@ export const Categories = (props) => {
   };
 
   useEffect(() => {
-    // console.log("Categories", props);
     FetchProductAPI(props.link);
   }, [props]);
 

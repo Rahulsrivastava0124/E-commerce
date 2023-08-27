@@ -10,7 +10,7 @@ export const UserWish = (state = [], action) => {
           state[index].WishList.state.category === action.data.state.category
         ) {
           if (state[index].WishList.state.id === action.data.state.id) {
-            state.splice(index, index === 0 ? 1 : index);
+            state.splice(index, index === 0 ? 1 : index++);
           }
         }
       }

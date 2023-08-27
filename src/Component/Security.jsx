@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { GetUsers } from "../server/UserAPI";
 
 const LoginSecurity = (props) => {
-  console.log("Security", props.data);
 
   const [LoginAndSecurityData, setLoginAndSecurityData] = useState({
     Email: "",
@@ -13,7 +12,6 @@ const LoginSecurity = (props) => {
   });
 
   async function getUsersData() {
-   console.log( await GetUsers());
   }
 
   useEffect(() => {
@@ -37,7 +35,6 @@ const LoginSecurity = (props) => {
         ItemData.add("bi-pen-fill");
       }
     } else {
-      console.log("none");
       if (e.target.classList.contains("bi")) {
         e.target.parentElement.previousSibling.removeAttribute("disabled");
         e.target.classList.add("bi-x-lg");

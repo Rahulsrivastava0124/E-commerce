@@ -11,7 +11,6 @@ function Login(props) {
     // if login is successful then close the modal and redirect to dashboard page else show error message in
     props.addToLoginHandler({ state: await LoginAPI(LoginData) });
   };
-  // console.log(" login", props);
   return (
     <>
       {/* <!-- Login Modal --> */}

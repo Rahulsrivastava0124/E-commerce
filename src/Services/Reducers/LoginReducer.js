@@ -13,7 +13,7 @@ export function UserLogin(state = initialState, action) {
       };
       // eslint-disable-next-line no-unreachable
       break;
-    
+
     default:
       return state;
   }

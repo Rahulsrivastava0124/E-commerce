@@ -17,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 export const Profile = (props) => {
   const nevigate = useNavigate();
   const location = useLocation();
-  console.log(props);
   const [GreetingMessege, setGreetingMessege] = useState({
     message: "",
     icon: ``,
@@ -57,7 +56,6 @@ export const Profile = (props) => {
   }, []);
 
   const ClickedCard = (e) => {
-    console.log(e);
   };
 
   const Card_Array = [

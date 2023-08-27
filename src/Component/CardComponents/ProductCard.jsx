@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Rating } from "../../Function/Rating.js";
 
 const ProductCard = (props) => {
-  console.log(props);
   const element = props.element;
   const tabIndex = props.element;
   useEffect(() => {
@@ -21,7 +20,6 @@ const ProductCard = (props) => {
             .join("")
             .split(`'`)
             .join("")}${props.data.UserWish[i].WishList.state.id}`;
-          console.log(GET_ID);
           setTimeout(() => {
             document.getElementById(GET_ID).classList.add("bi-heart-fill");
             document.getElementById(GET_ID).classList.remove("bi-heart");
@@ -49,6 +47,11 @@ const ProductCard = (props) => {
       ClassData.classList.add("bi-heart");
       props.RemoveTowishlist({ state: element });
     }
+  };
+
+  const AddToCart = (e, element) => {
+    props.AddToCartHandler({ state: element });
+
   };
   return (
     <div
@@ -79,8 +82,11 @@ const ProductCard = (props) => {
             })}
           </h5>
           <div>
-            <a href="/" className="btn ScaleButton">
-              <i class="bi bi-cart-plus fs-5"></i>
+            <a
+              className="btn ScaleButton"
+              onClick={(e) => AddToCart(e, element)}
+            >
+              <i className="bi bi-cart-plus fs-5"></i>
             </a>
             <span
               type="button"
