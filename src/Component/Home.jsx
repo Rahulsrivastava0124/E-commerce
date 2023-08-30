@@ -114,10 +114,10 @@ export const Home = (props) => {
                           {element.description.slice(0, 200)}
                         </p>
                         <div>
-                          <button className="btn btn-lg btn-warning my-3">
+                          <button className="btn btn-warning my-3">
                             Add to Cart
                           </button>
-                          <button className="btn btn-lg btn-primary m-4">
+                          <button className="btn btn-primary m-4">
                            Buy Now
                           </button>
                         </div>

@@ -111,14 +111,14 @@ export const CartCanvas = (props) => {
                   </li>
                   <li className="list-group-item  d-flex justify-content-between">
                     <p className="fw-normal mb-1">5% online payment discount</p>
-                    <p className="mb-0">
-                      <i className="bi bi-currency-rupee "></i>
+                    <p className="mb-0 text-success">
+                      -<i className="bi bi-currency-rupee "></i>
                       {(((price + ShippingCharge) / 100) * 5).toFixed(2)}
                     </p>
                   </li>
                   <li className="list-group-item  d-flex justify-content-between">
                     <p className="fw-bold mb-1">Grande total</p>
-                    <p className="mb-0">
+                    <p className="mb-0 fs-5 fw-bold">
                       <i className="bi bi-currency-rupee "></i>
                       {(
                         price +
@@ -148,7 +148,9 @@ export const CartCanvas = (props) => {
                 <button
                   className="btn btn-primary"
                   onClick={() =>
-                    navigate("YourOrder", { state:{OrderData:props.data.AddToCart }})
+                    navigate("CheckOut", {
+                      state: { OrderData: props.data.AddToCart },
+                    })
                   }
                   data-bs-dismiss="offcanvas"
                 >
