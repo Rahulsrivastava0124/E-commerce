@@ -33,7 +33,10 @@ export const Navbar = (props) => {
         <div className="container-md">
           {/* navbar logo */}
           <div className="d-flex align-items-center">
-            <span className="navbar-brand mb-0 me-3 h1">Navbar</span>
+            <span className="navbar-brand mb-0 me-3 h1 d-flex">
+              <span className="text-primary">On</span>
+              <span className="text-warning">Market</span>
+            </span>
             {/* navbar Links */}
             <ul className="navbar-nav nav nav-underline">
               <Link className="nav-link active" aria-current="page" to="/">
@@ -100,14 +103,17 @@ export const Navbar = (props) => {
                 </button>
               )}
               {/* cart logo */}
-              <button className="btn  p-0">
+              <button className="btn btnActiveBorderNone p-0">
                 <i
                   className="bi fs-5 bi-cart3 "
                   onClick={() => Navigate("/Cart")}
-                > <span className="fw-bold">Cart</span></i>
-               
+                >
+                  {" "}
+                  <span className="fw-bold">Cart</span>
+                </i>
+
                 <span
-                  className="btn position-relative p-1"
+                  className="btn btnActiveBorderNone position-relative p-1"
                   type="button"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"

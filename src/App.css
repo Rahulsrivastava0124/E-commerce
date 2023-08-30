@@ -32,3 +32,7 @@ a:hover {
   transition: 0.2s;
   cursor: pointer;
 }
+
+.btnActiveBorderNone:active{
+border:none !important;
+}
