@@ -51,7 +51,6 @@ const ProductCard = (props) => {
 
   const AddToCart = (e, element) => {
     props.AddToCartHandler({ state: element });
-
   };
   return (
     <div
