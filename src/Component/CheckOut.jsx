@@ -270,6 +270,7 @@ export default function BuyItems(props) {
                       Apply
                     </button>
                   </div>
+                  </div>
                 </form>
                 <h6 className="">Terms & Conditions</h6>
                 <ul style={{ fontSize: "smaller" }}>
