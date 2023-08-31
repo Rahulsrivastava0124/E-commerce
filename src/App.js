@@ -12,7 +12,8 @@ import SecurityContainer from "./containers/SecurityContainer";
 import ProtectedComponentContainer from "./containers/ProtectedComponentContainer";
 import UserAdressesContainer from "./containers/UserAdressesContainer";
 import CartContainer from "./containers/CartContainer";
-import BuyItemsContainer from "./containers/CheckOutContainer";
+import CheckOutContainer from "./containers/CheckOutContainer";
+
 
 // import App Components
 import Deals from "./Component/Deals.jsx";
@@ -80,7 +81,7 @@ function App() {
           </Route>
           <Route path="Cart" element={<CartContainer />} />
           <Route path="YourOrder" element={<YourOrder />} />
-          <Route path='CheckOut' element={<BuyItemsContainer />} />
+          <Route path='CheckOut' element={<CheckOutContainer />} />
 
         </Routes>
         <Footer />
