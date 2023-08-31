@@ -258,18 +258,15 @@ export default function BuyItems(props) {
                     <input
                       type="text"
                       className="form-control"
-
                       id="inputRedeemCode"
                       placeholder="Enter 16-digit gift card number"
                       required
                     />
-
-                  <div className="col-auto">
-                    <button type="submit" className="btn btn-primary mb-3">
-
-                      Apply
-                    </button>
-                  </div>
+                    <div className="col-auto">
+                      <button type="submit" className="btn btn-primary mb-3">
+                        Apply
+                      </button>
+                    </div>
                   </div>
                 </form>
                 <h6 className="">Terms & Conditions</h6>
@@ -309,7 +306,7 @@ export default function BuyItems(props) {
       .setAttribute("checked", "true");
   }, [props]);
 
-  console.log("checkout",props);
+  console.log("checkout", props);
 
   const PaymentMethodSelecter = (e) => {
     document
@@ -322,11 +319,10 @@ export default function BuyItems(props) {
     e.target.setAttribute("checked", "true");
     setPaymentMethod(e.target.attributes[3].nodeValue);
   };
-  
+
   return (
     <>
       <div className="d-flex mt-4 mx-5 flex-warp">
-
         <div className="container ms-5" style={{ width: "1900px" }}>
           <h6>
             {" "}
@@ -380,7 +376,6 @@ export default function BuyItems(props) {
               <div className="border rounded p-2">{Apply}</div>
             </div>
             <div className=" mt-4 d-flex">
-
               <ul className="list-group me-4 " style={{ width: "330px" }}>
                 <li className="list-group-item">
                   <input
@@ -444,17 +439,12 @@ export default function BuyItems(props) {
                     onClick={(e) => PaymentMethodSelecter(e)}
                   />
                   <label className="form-check-label" htmlFor="fivethRadio">
-
-           
                     Case on Delivery(COD)
                   </label>
                 </li>
               </ul>
               <div className=" container border rounded p-2 ">
-
                 {PaymentDiv[PaymentMethod]}
-
-               
               </div>
             </div>
           </div>
@@ -463,7 +453,6 @@ export default function BuyItems(props) {
         <div className="container border rounded p-4 ms-4">
           <OrderSummmeryContainer element={props.data.AddToCart} />
         </div>
-
       </div>
     </>
   );
