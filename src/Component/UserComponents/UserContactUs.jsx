@@ -23,7 +23,7 @@ const ContactUs = () => {
           >
             <form className="row">
               <div className="mb-3 col-md-6">
-                <label for="UserFirstName">First Name</label>
+                <label htmlFor="UserFirstName">First Name</label>
                 <input
                   type="text"
                   className="form-control"
@@ -32,7 +32,7 @@ const ContactUs = () => {
                 />
               </div>
               <div className=" mb-3 col-md-6">
-                <label for="UserLastName">Last Name</label>
+                <label htmlFor="UserLastName">Last Name</label>
                 <input
                   type="email"
                   className="form-control"
@@ -41,7 +41,7 @@ const ContactUs = () => {
                 />
               </div>
               <div className=" mb-3">
-                <label for="floatingInput">Email address</label>
+                <label htmlFor="floatingInput">Email address</label>
                 <input
                   type="email"
                   className="form-control"
@@ -50,7 +50,7 @@ const ContactUs = () => {
                 />
               </div>
               <div className=" mb-3">
-                <label for="floatingPhone">Phone Number</label>
+                <label htmlFor="floatingPhone">Phone Number</label>
                 <input
                   type="tel"
                   className="form-control"
@@ -59,7 +59,7 @@ const ContactUs = () => {
                 />
               </div>
               <div className="">
-                <label for="floatingTextarea2">Comments</label>
+                <label htmlFor="floatingTextarea2">Comments</label>
                 <textarea
                   className="form-control"
                   placeholder="Leave a comment here"
