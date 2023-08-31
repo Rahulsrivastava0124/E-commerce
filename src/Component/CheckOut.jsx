@@ -252,18 +252,21 @@ export default function BuyItems(props) {
                   Gift card value will be deducted from your total amount. You
                   can redeem partial amount from your gift card.
                 </span>
+
                 <form className="row g-3 mt-2 justify-content-between">
                   <div className="col-auto w-75">
                     <input
                       type="text"
                       className="form-control"
+
                       id="inputRedeemCode"
                       placeholder="Enter 16-digit gift card number"
                       required
                     />
-                  </div>
+
                   <div className="col-auto">
                     <button type="submit" className="btn btn-primary mb-3">
+
                       Apply
                     </button>
                   </div>
@@ -322,6 +325,7 @@ export default function BuyItems(props) {
   return (
     <>
       <div className="d-flex mt-4 mx-5 flex-warp">
+
         <div className="container ms-5" style={{ width: "1900px" }}>
           <h6>
             {" "}
@@ -375,6 +379,7 @@ export default function BuyItems(props) {
               <div className="border rounded p-2">{Apply}</div>
             </div>
             <div className=" mt-4 d-flex">
+
               <ul className="list-group me-4 " style={{ width: "330px" }}>
                 <li className="list-group-item">
                   <input
@@ -438,19 +443,26 @@ export default function BuyItems(props) {
                     onClick={(e) => PaymentMethodSelecter(e)}
                   />
                   <label className="form-check-label" htmlFor="fivethRadio">
+
+           
                     Case on Delivery(COD)
                   </label>
                 </li>
               </ul>
               <div className=" container border rounded p-2 ">
+
                 {PaymentDiv[PaymentMethod]}
+
+               
               </div>
             </div>
           </div>
         </div>
+
         <div className="container border rounded p-4 ms-4">
           <OrderSummmeryContainer element={props.data.AddToCart} />
         </div>
+
       </div>
     </>
   );
