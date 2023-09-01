@@ -24,6 +24,7 @@ import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
 import YourOrder from "./Component/UserComponents/UserYourOrder";
+import { PreviewProduct } from "./Component/CardComponents/PreviewProduct";
 
 function App() {
   return (
@@ -82,6 +83,7 @@ function App() {
           <Route path="Cart" element={<CartContainer />} />
           <Route path="YourOrder" element={<YourOrder />} />
           <Route path='CheckOut' element={<CheckOutContainer />} />
+          <Route path='ProductPreview' element={<PreviewProduct />} />
 
         </Routes>
         <Footer />

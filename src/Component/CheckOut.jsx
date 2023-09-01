@@ -82,16 +82,19 @@ export default function BuyItems(props) {
         <div className="mt-3">
           <h6>Pay using UPI ID</h6>
           <p className="mb-">Enter UPI ID (Google Pay, BHIM & more)</p>
-          <input
-            type="text"
-            name=""
-            id=""
-            className="form-control"
-            placeholder="Enter your UPI ID"
-          />
-          <button className="btn btn-primary container mt-3" disabled>
-            PLACE ORDER
-          </button>
+          <form action="">
+            <input
+              type="text"
+              name=""
+              id=""
+              className="form-control"
+              placeholder="Enter your UPI ID"
+              required
+            />
+            <button className="btn btn-primary container mt-3" disabled>
+              PLACE ORDER
+            </button>
+          </form>
         </div>
         {PaymentOptionsCommonCode}
       </div>
@@ -99,46 +102,52 @@ export default function BuyItems(props) {
     CreditDebitCard: (
       <div>
         <span>Pay Using Credit Or Debit Cards</span>
-        <div className="row">
-          <div className="col-12">
-            <input
-              type="text"
-              className="form-control my-2"
-              placeholder="Card Number"
-              aria-label="Card Number"
-            />
+        <form action="">
+          <div className="row">
+            <div className="col-12">
+              <input
+                type="text"
+                className="form-control my-2"
+                placeholder="Card Number"
+                aria-label="Card Number"
+                required
+              />
+            </div>
+            <div className="col-6">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="MM/YY"
+                aria-label="MM/YY"
+                required
+              />
+            </div>
+            <div className="col-5 d-flex align-items-center ">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="CVV"
+                aria-label="CVV"
+                required
+              />
+              <i className="bi bi-credit-card-2-back-fill fs-3 mx-4"></i>
+            </div>
+            <div className="col-12">
+              <input
+                type="text"
+                className="form-control my-2"
+                placeholder="Name on the Card"
+                aria-label="Name on the Card"
+                required
+              />
+            </div>
           </div>
-          <div className="col-6">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="MM/YY"
-              aria-label="MM/YY"
-            />
+          <div className="d-grid">
+            <button type="submit" className="btn btn-outline-primary">
+              PLACE ORDER
+            </button>
           </div>
-          <div className="col-5 d-flex align-items-center ">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="CVV"
-              aria-label="CVV"
-            />
-            <i className="bi bi-credit-card-2-back-fill fs-3 mx-4"></i>
-          </div>
-          <div className="col-12">
-            <input
-              type="text"
-              className="form-control my-2"
-              placeholder="Name on the Card"
-              aria-label="Name on the Card"
-            />
-          </div>
-        </div>
-        <div className="d-grid">
-          <button type="submit" className="btn btn-outline-primary">
-            PLACE ORDER
-          </button>
-        </div>
+        </form>
         {PaymentOptionsCommonCode}
       </div>
     ),
@@ -222,7 +231,7 @@ export default function BuyItems(props) {
     ),
   };
   let RedeemCode = (
-    <div className="d-flex justify-content-between align-items-center my-2">
+    <div className="d-flex justify-content-between align-items-center my-2 px-2">
       <span>
         <span className="fw-bold">Redeem gift card</span>
         <p>Gift card value will be deducted from your total amount</p>
@@ -253,7 +262,7 @@ export default function BuyItems(props) {
                   can redeem partial amount from your gift card.
                 </span>
 
-                <form className="row g-3 mt-2 justify-content-between">
+                <form className="row g-3 mt-2">
                   <div className="col-auto w-75">
                     <input
                       type="text"
@@ -262,11 +271,11 @@ export default function BuyItems(props) {
                       placeholder="Enter 16-digit gift card number"
                       required
                     />
-                    <div className="col-auto">
-                      <button type="submit" className="btn btn-primary mb-3">
-                        Apply
-                      </button>
-                    </div>
+                  </div>
+                  <div className="col-auto">
+                    <button type="submit" className="btn btn-primary mb-3">
+                      Apply
+                    </button>
                   </div>
                 </form>
                 <h6 className="">Terms & Conditions</h6>
@@ -293,6 +302,7 @@ export default function BuyItems(props) {
 
   const GetUserData = async () => {
     if (Object.keys(props.data.UserLogin.LoginData).length !== 0) {
+      // debugger;
       setUserData(
         await GetUsers(props.data.UserLogin.LoginData.state.username)
       );
@@ -362,6 +372,7 @@ export default function BuyItems(props) {
                 </div>
                 <span className="mb-0">
                   {UserData.username},{UserData.username},{UserData.username}
+                  {/* {console.log(UserData.name.firstname)} */}
                 </span>
                 <span>{UserData.phone}</span>
               </div>
@@ -451,7 +462,9 @@ export default function BuyItems(props) {
         </div>
 
         <div className="container border rounded p-4 ms-4">
-          <OrderSummmeryContainer element={props.data.AddToCart} />
+          <OrderSummmeryContainer
+            element={location.state===null?props.data.AddToCart:location.state}
+          />
         </div>
       </div>
     </>

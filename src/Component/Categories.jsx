@@ -21,7 +21,6 @@ export const Categories = (props) => {
 
   return (
     <>
-      <PreviewProduct data={ProductpreviewData} />
       <h3 className="fw-bolder text-center">
         {" "}
         {props.link ? props.link : null}{" "}

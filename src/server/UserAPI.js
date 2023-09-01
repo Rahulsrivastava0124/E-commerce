@@ -40,6 +40,7 @@ export const SignUpAPI = (data) => {
 // receive All user data
 
 export const GetUsers = async (UserName) => {
+  // debugger;
   const GetData = await fetch("https://fakestoreapi.com/users");
   const ResGetData = await GetData.json();
   let data;

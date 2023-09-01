@@ -20,6 +20,8 @@ export default function OrderSummery(props) {
     <div>
       <h5>Order summary</h5>
       {props.element.map((element, index) => {
+
+        console.log("line no.24",element);
         price = price + element.Cart.state.price;
         return (
           <div
