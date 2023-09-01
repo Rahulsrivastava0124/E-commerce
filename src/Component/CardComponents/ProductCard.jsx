@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { Rating } from "../../Function/Rating.js";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = (props) => {
+  const navigate = useNavigate();
   const element = props.element;
   const tabIndex = props.element;
   useEffect(() => {
@@ -108,9 +110,7 @@ const ProductCard = (props) => {
             <button
               type="button"
               className="btn ScaleButton"
-              data-bs-toggle="modal"
-              data-bs-target="#productPreviewModal"
-              onClick={() => props.setProductpreviewData(element)}
+              onClick={() => navigate("/ProductPreview", { state: element })}
             >
               <i className="bi bi-eye-fill fs-5"></i>
             </button>

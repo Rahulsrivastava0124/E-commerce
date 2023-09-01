@@ -55,7 +55,6 @@ export const Home = (props) => {
   }
   return (
     <>
-      <PreviewProduct data={ProductpreviewData} />
       {Array.isArray(productData) ? (
         <div
           id="carouselExampleAutoplaying"
