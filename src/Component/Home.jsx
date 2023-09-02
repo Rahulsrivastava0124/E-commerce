@@ -66,7 +66,7 @@ export const Home = (props) => {
               return (
                 <button
                   type="button"
-               data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-target="#carouselExampleAutoplaying"
                   data-bs-slide-to={index}
                   className={`${index === 0 ? "active" : ""}`}
                   aria-current="true"
@@ -117,7 +117,7 @@ export const Home = (props) => {
                             Add to Cart
                           </button>
                           <button className="btn btn-primary m-4">
-                           Buy Now
+                            Buy Now
                           </button>
                         </div>
                       </div>
@@ -128,19 +128,19 @@ export const Home = (props) => {
             })}
           </div>
           <button
-            className="carousel-control-prev"
+            className="carousel-control-prev z-0"
             type="button"
             data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev"
           >
             <span
-              className="carousel-control-prev-icon"
+              className="carousel-control-prev-icon "
               aria-hidden="true"
             ></span>
             <span className="visually-hidden">Previous</span>
           </button>
           <button
-            className="carousel-control-next"
+            className="carousel-control-next z-0"
             type="button"
             data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="next"
@@ -221,6 +221,7 @@ export const Home = (props) => {
       <div className="container d-flex flex-wrap mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
+            console.log(ArraySortProductData);
             return (
               <ProductCardContainer
                 setProductpreviewData={setProductpreviewData}

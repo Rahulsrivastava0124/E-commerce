@@ -66,7 +66,6 @@ const ProductCard = (props) => {
     let countNo = 1;
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
-        console.log(props.data.AddToCart[i].Cart.state.count);
         countNo = props.data.AddToCart[i].Cart.state.count;
       }
     }
@@ -75,22 +74,35 @@ const ProductCard = (props) => {
       click: true,
       Count: countNo,
     });
+    console.log(countNo);
   };
   const RemoveItems = () => {
     props.RemoveToCartHandler({ state: props.element });
 
-    let countNo = 1;
+    let countNo = 0;
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
         console.log(props.data.AddToCart[i].Cart.state.count);
         countNo = props.data.AddToCart[i].Cart.state.count;
       }
     }
-    setAddToCardIcon({
-      ...AddToCardIcon,
-      click: true,
-      Count: countNo,
-    });
+    countNo === 0
+      ? setAddToCardIcon({
+          divElement: (
+            <i
+              className="bi bi-cart-plus fs-5"
+              onClick={(e) => AddToCart(e, element)}
+            ></i>
+          ),
+          click: false,
+          Count: 0,
+        })
+      : setAddToCardIcon({
+          ...AddToCardIcon,
+          click: true,
+          Count: countNo,
+        });
+    console.log(countNo);
   };
   return (
     <div
@@ -122,16 +134,22 @@ const ProductCard = (props) => {
           </h5>
         </div>
         <div className="d-flex align-items-center justify-content-between">
-          <span className=" btn ScaleButton">
+          <span className=" ScaleButton">
             {AddToCardIcon.click === false ? (
               AddToCardIcon.divElement
             ) : (
-              <div className="border rounded d-flex align-items-center">
-                <span className="btn" onClick={() => RemoveItems()}>
+              <div className="border rounded d-flex align-items-center border-primary-subtle">
+                <span
+                  className="btn btn-sm btn-primary rounded-end-0"
+                  onClick={() => RemoveItems()}
+                >
                   <i class="bi bi-dash"></i>
                 </span>
-                <span>{AddToCardIcon.Count}</span>
-                <span onClick={() => AddToCart()} className="btn">
+                <span className="px-3">{AddToCardIcon.Count}</span>
+                <span
+                  onClick={() => AddToCart()}
+                  className="btn btn-sm btn-primary rounded-start-0"
+                >
                   <i class="bi bi-plus"></i>
                 </span>
               </div>
