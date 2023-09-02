@@ -28,7 +28,7 @@ export const Navbar = (props) => {
   });
 
   return (
-    <div id="Navbar " className="">
+    <div id="Navbar " className="position-sticky top-0 z-1">
       <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
         <div className="container-md">
           {/* navbar logo */}
@@ -49,22 +49,6 @@ export const Navbar = (props) => {
                 <span className="nav-link">
                   Categories <span>{CategoriesListShow ? "▼" : "△"}</span>
                 </span>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Deals">
-                  Deals
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link " to="/WishList">
-                  WishList
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Delivery">
-                  {/* {Test} */}
-                  Delivery
-                </Link>
               </li>
             </ul>
           </div>

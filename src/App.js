@@ -16,9 +16,6 @@ import CheckOutContainer from "./containers/CheckOutContainer";
 
 
 // import App Components
-import Deals from "./Component/Deals.jsx";
-import Delivery from "./Component/Delivery.jsx";
-import WishList from "./Component/UserComponents/WishList";
 import { Error404 } from "./Component/Error/404Error";
 import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
@@ -33,9 +30,6 @@ function App() {
         <NavbarContainer />
         <Routes>
           <Route path="/" element={<HomeContainer />} />
-          <Route path="/deals" element={<Deals />} />
-          <Route path="/delivery" element={<Delivery />} />
-          <Route path="/WishList" element={<WishList />} />
           <Route Path="*" element={<Error404 />} />
           <Route
             path="/Categories/men'sclothing"
