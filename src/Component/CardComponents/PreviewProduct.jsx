@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 export const PreviewProduct = (props) => {
   const navigate = useNavigate();
-  console.log(props);
   const location = useLocation();
   console.log(location);
   return (
@@ -16,7 +15,7 @@ export const PreviewProduct = (props) => {
             state: [
               {
                 Cart: {
-                  state: location.state,
+                  state: { element: location.state,count:1 },
                 },
               },
             ],

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "../../Function/Rating.js";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,16 @@ const ProductCard = (props) => {
   const navigate = useNavigate();
   const element = props.element;
   const tabIndex = props.element;
+  const [AddToCardIcon, setAddToCardIcon] = useState({
+    divElement: (
+      <i
+        className="bi bi-cart-plus fs-5"
+        onClick={(e) => AddToCart(e, element)}
+      ></i>
+    ),
+    click: false,
+    Count: 0,
+  });
   useEffect(() => {
     if (props.data.UserWish.length !== 0) {
       for (let i = 0; i < props.data.UserWish.length; i++) {
@@ -51,8 +61,36 @@ const ProductCard = (props) => {
     }
   };
 
-  const AddToCart = (e, element) => {
-    props.AddToCartHandler({ state: element });
+  const AddToCart = async () => {
+    await props.AddToCartHandler({ state: { element: props.element } });
+    let countNo = 1;
+    for (let i = 0; i < props.data.AddToCart.length; i++) {
+      if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
+        console.log(props.data.AddToCart[i].Cart.state.count);
+        countNo = props.data.AddToCart[i].Cart.state.count;
+      }
+    }
+    setAddToCardIcon({
+      ...AddToCardIcon,
+      click: true,
+      Count: countNo,
+    });
+  };
+  const RemoveItems = () => {
+    props.RemoveToCartHandler({ state: props.element });
+
+    let countNo = 1;
+    for (let i = 0; i < props.data.AddToCart.length; i++) {
+      if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
+        console.log(props.data.AddToCart[i].Cart.state.count);
+        countNo = props.data.AddToCart[i].Cart.state.count;
+      }
+    }
+    setAddToCardIcon({
+      ...AddToCardIcon,
+      click: true,
+      Count: countNo,
+    });
   };
   return (
     <div
@@ -61,7 +99,7 @@ const ProductCard = (props) => {
       key={tabIndex}
     >
       <img
-        className="mx-auto pt-3 "
+        className="mx-auto pt-3"
         style={{ width: "180px", height: "160px" }}
         src={element.image}
         alt="productImage"
@@ -73,48 +111,54 @@ const ProductCard = (props) => {
           <h3 className="fw-bold text-primary">Rs.{element.price}</h3>
           <h className="text-success"> Instock </h>
         </div>
-        <h6 className="text-decoration-line-through">
-          Rs.{element.price + 300}
-        </h6>
         <div className="d-flex align-items-center justify-content-between">
+          <h6 className="text-decoration-line-through">
+            Rs.{element.price + 300}
+          </h6>
           <h5 className="fs-6">
             {rateArray.map((element, index) => {
               return <i className={`  bi bi-star${element}`} key={index}></i>;
             })}
           </h5>
-          <div>
-            <a
-              className="btn ScaleButton"
-              onClick={(e) => AddToCart(e, element)}
-            >
-              <i className="bi bi-cart-plus fs-5"></i>
-            </a>
-            <span
-              type="button"
-              className="btn ScaleButton "
-              onClick={(e) => WishList(e, element)}
-            >
-              <i
-                className={`IconScale ${element.category
-                  .split(" ")
-                  .join("")
-                  .split(`'`)
-                  .join("")}${element.id} bi bi-heart fs-5`}
-                id={`${element.category
-                  .split(" ")
-                  .join("")
-                  .split(`'`)
-                  .join("")}${element.id}`}
-              ></i>
-            </span>
-            <button
-              type="button"
-              className="btn ScaleButton"
-              onClick={() => navigate("/ProductPreview", { state: element })}
-            >
-              <i className="bi bi-eye-fill fs-5"></i>
-            </button>
-          </div>
+        </div>
+        <div className="d-flex align-items-center justify-content-between">
+          <span className=" btn ScaleButton">
+            {AddToCardIcon.click === false ? (
+              AddToCardIcon.divElement
+            ) : (
+              <div className="border rounded d-flex align-items-center">
+                <span className="btn" onClick={() => RemoveItems()}>
+                  <i class="bi bi-dash"></i>
+                </span>
+                <span>{AddToCardIcon.Count}</span>
+                <span onClick={() => AddToCart()} className="btn">
+                  <i class="bi bi-plus"></i>
+                </span>
+              </div>
+            )}
+          </span>
+          <span
+            className="btn ScaleButton "
+            onClick={(e) => WishList(e, element)}
+          >
+            <i
+              className={`IconScale ${element.category
+                .split(" ")
+                .join("")
+                .split(`'`)
+                .join("")}${element.id} bi bi-heart fs-5`}
+              id={`${element.category.split(" ").join("").split(`'`).join("")}${
+                element.id
+              }`}
+            ></i>
+          </span>
+          <button
+            type="button"
+            className="btn ScaleButton"
+            onClick={() => navigate("/ProductPreview", { state: element })}
+          >
+            <i className="bi bi-eye-fill fs-5"></i>
+          </button>
         </div>
       </div>
     </div>
