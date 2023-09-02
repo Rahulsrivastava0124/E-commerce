@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import OrderSummmeryContainer from "../../containers/OrderSummmeryContainer";
 export const CartCanvas = (props) => {
   const navigate = useNavigate();
-  console.log(props);
   return (
     <>
       <div

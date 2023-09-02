@@ -13,7 +13,6 @@ import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
 
 export default function BuyItems(props) {
   const location = useLocation();
-  console.log(location);
   const [UserData, setUserData] = useState("");
   const [PaymentMethod, setPaymentMethod] = useState("UPI");
   let PaymentOptionsCommonCode = (
@@ -316,7 +315,6 @@ export default function BuyItems(props) {
       .setAttribute("checked", "true");
   }, [props]);
 
-  console.log("checkout", props);
 
   const PaymentMethodSelecter = (e) => {
     document
@@ -372,7 +370,6 @@ export default function BuyItems(props) {
                 </div>
                 <span className="mb-0">
                   {UserData.username},{UserData.username},{UserData.username}
-                  {/* {console.log(UserData.name.firstname)} */}
                 </span>
                 <span>{UserData.phone}</span>
               </div>

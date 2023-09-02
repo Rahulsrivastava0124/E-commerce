@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AddtoCart from "../Svg/AddToCart.gif";
-import { useLocation } from "react-router-dom";
 
 export default function OrderSummery(props) {
-    console.log("OrderSummery",props);
-    const [elementData, setelementData] = useState("")
+  const [Count, setCount] = useState(0);
   let price = 0;
   const [ShippingCharge, setShippingCharge] = useState(40);
   useEffect(() => {
@@ -12,17 +10,20 @@ export default function OrderSummery(props) {
       setShippingCharge(0);
     }
   }, []);
+
   const RemoveItems = (element) => {
     props.RemoveToCartHandler({ state: element });
+  };
+
+  const AddToCartfun = (element) => {
+    props.AddToCartHandler({ state: { element } });
   };
 
   return (
     <div>
       <h5>Order summary</h5>
       {props.element.map((element, index) => {
-
-        console.log("line no.24",element);
-        price = price + element.Cart.state.price;
+        price = price + element.Cart.state.element.price*element.Cart.state.count;
         return (
           <div
             className="d-flex bg-white mb-2 p-2 rounded shadow-sm align-items-center justify-content-between"
@@ -30,26 +31,36 @@ export default function OrderSummery(props) {
           >
             <div className="d-flex align-items-center ">
               <img
-                src={element.Cart.state.image}
+                src={element.Cart.state.element.image}
                 alt=""
                 style={{ width: "56px", height: "56px" }}
                 className="rounded"
               />
               <div className="mx-2">
-                <p className="mb-0">{element.Cart.state.title.slice(0, 25)}</p>
+                <p className="mb-0">
+                  {element.Cart.state.element.title.slice(0, 25)}
+                </p>
                 <p className="fw-bold">
-                  <i class="bi bi-currency-rupee"></i>
-                  {element.Cart.state.price}
+                  <i className="bi bi-currency-rupee"></i>
+                  {element.Cart.state.element.price}
                 </p>
               </div>
             </div>
-            <button className="btn" onClick={() => RemoveItems(element)}>
-              <i className="bi bi-trash3"></i>
-            </button>
+            <div className="border rounded d-flex align-items-center">
+              <span className="btn" onClick={() => RemoveItems(element.Cart.state.element)}>
+                <i class="bi bi-dash"></i>
+              </span>
+              <span>{element.Cart.state.count}</span>
+              <span
+                onClick={(e) => AddToCartfun(element.Cart.state.element)}
+                className="btn"
+              >
+                <i class="bi bi-plus"></i>
+              </span>
+            </div>
           </div>
         );
       })}
-
       {props.element.length === 0 ? (
         <div className="text-center">
           <img src={AddtoCart} alt="CartImage" className="w-100" />
