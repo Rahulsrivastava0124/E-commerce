@@ -14,7 +14,7 @@ export const CategoriesList = (props) => {
   }, []);
 
   return (
-    <div className="container bg-light rounded-3 mt-1">
+    <div className=" bg-light border-top">
       <ul className="nav nav-underline justify-content-evenly align-items-center">
         {CategoriesListRes.map((element, index) => {
           return (

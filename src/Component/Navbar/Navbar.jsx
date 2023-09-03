@@ -29,7 +29,7 @@ export const Navbar = (props) => {
 
   return (
     <div id="Navbar " className="position-sticky top-0 z-1">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2 rounded-3">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary ">
         <div className="container-md">
           {/* navbar logo */}
           <div className="d-flex align-items-center">
@@ -82,6 +82,11 @@ export const Navbar = (props) => {
                   className="btn btn-primary me-3 "
                   data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
+                  onClick={() => {
+                    document
+                      .getElementsByClassName("modal-backdrop")[0]
+                      .classList.remove("modal-backdrop");
+                  }}
                 >
                   Login
                 </button>

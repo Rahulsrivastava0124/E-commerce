@@ -41,10 +41,7 @@ function Login(props) {
                 <div className="container">
                   <img src={LoginLogo} alt="login logo" />
                 </div>
-                <form
-                  className="me-3 mt-3  container"
-                 
-                >
+                <form className="me-3 mt-3  container">
                   <div className="mb-3 text-start ">
                     <label
                       htmlFor="exampleInputUserName"
@@ -95,7 +92,7 @@ function Login(props) {
                     Login
                   </button>
                   <button
-                  type="button"
+                    type="button"
                     className="btn btn-danger"
                     data-bs-target="#SignUpModelToggle2"
                     data-bs-toggle="modal"

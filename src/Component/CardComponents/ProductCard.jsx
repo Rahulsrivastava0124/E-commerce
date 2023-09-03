@@ -61,8 +61,8 @@ const ProductCard = (props) => {
     }
   };
 
-  const AddToCart = async () => {
-    await props.AddToCartHandler({ state: { element: props.element } });
+  const AddToCart =  () => {
+     props.AddToCartHandler({ state: { element: props.element } });
     let countNo = 1;
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {

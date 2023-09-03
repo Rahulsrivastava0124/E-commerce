@@ -13,6 +13,7 @@ import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
 
 export default function BuyItems(props) {
   const location = useLocation();
+  console.log(location);
   const [UserData, setUserData] = useState("");
   const [PaymentMethod, setPaymentMethod] = useState("UPI");
   let PaymentOptionsCommonCode = (
@@ -315,7 +316,6 @@ export default function BuyItems(props) {
       .setAttribute("checked", "true");
   }, [props]);
 
-
   const PaymentMethodSelecter = (e) => {
     document
       .getElementsByClassName("SelectedPayment")[0]
@@ -460,7 +460,9 @@ export default function BuyItems(props) {
 
         <div className="container border rounded p-4 ms-4">
           <OrderSummmeryContainer
-            element={location.state===null?props.data.AddToCart:location.state}
+            element={
+              location.state === null ? props.data.AddToCart : location.state
+            }
           />
         </div>
       </div>

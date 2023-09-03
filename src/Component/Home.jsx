@@ -5,8 +5,11 @@ import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
 import { PreviewProduct } from "./CardComponents/PreviewProduct";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Home = (props) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
@@ -53,6 +56,7 @@ export const Home = (props) => {
       return null;
     });
   }
+
   return (
     <>
       {Array.isArray(productData) ? (
@@ -113,11 +117,11 @@ export const Home = (props) => {
                           {element.description.slice(0, 200)}
                         </p>
                         <div>
-                          <button className="btn btn-warning my-3">
+                          <button
+                            className="btn btn-warning my-3"
+                            onClick={(e) => AddToCart(element)}
+                          >
                             Add to Cart
-                          </button>
-                          <button className="btn btn-primary m-4">
-                            Buy Now
                           </button>
                         </div>
                       </div>
@@ -221,7 +225,6 @@ export const Home = (props) => {
       <div className="container d-flex flex-wrap mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
-            console.log(ArraySortProductData);
             return (
               <ProductCardContainer
                 setProductpreviewData={setProductpreviewData}
