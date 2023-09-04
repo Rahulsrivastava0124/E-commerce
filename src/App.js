@@ -13,6 +13,7 @@ import ProtectedComponentContainer from "./containers/ProtectedComponentContaine
 import UserAdressesContainer from "./containers/UserAdressesContainer";
 import CartContainer from "./containers/CartContainer";
 import CheckOutContainer from "./containers/CheckOutContainer";
+import PreviewProductContainer from "./containers/PreviewProductContainer";
 
 
 // import App Components
@@ -21,7 +22,6 @@ import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
 import YourOrder from "./Component/UserComponents/UserYourOrder";
-import { PreviewProduct } from "./Component/CardComponents/PreviewProduct";
 
 function App() {
   return (
@@ -77,7 +77,7 @@ function App() {
           <Route path="Cart" element={<CartContainer />} />
           <Route path="YourOrder" element={<YourOrder />} />
           <Route path='CheckOut' element={<CheckOutContainer />} />
-          <Route path='ProductPreview' element={<PreviewProduct />} />
+          <Route path='ProductPreview' element={<PreviewProductContainer />} />
 
         </Routes>
         <Footer />
