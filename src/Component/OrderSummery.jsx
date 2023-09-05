@@ -48,14 +48,14 @@ export default function OrderSummery(props) {
             </div>
             <div className="border rounded d-flex align-items-center border-primary-subtle">
               <span className="btn btn-sm btn-primary rounded-end-0" onClick={() => RemoveItems(element.Cart.state.element)}>
-                <i class="bi bi-dash"></i>
+                <i className="bi bi-dash"></i>
               </span>
               <span className="px-3">{element.Cart.state.count}</span>
               <span
                 onClick={(e) => AddToCartfun(element.Cart.state.element)}
                 className="btn btn-sm btn-primary rounded-start-0"
               >
-                <i class="bi bi-plus"></i>
+                <i className="bi bi-plus"></i>
               </span>
             </div>
           </div>

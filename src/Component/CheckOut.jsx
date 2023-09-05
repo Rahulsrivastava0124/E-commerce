@@ -13,7 +13,6 @@ import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
 
 export default function BuyItems(props) {
   const location = useLocation();
-  console.log(location);
   const [UserData, setUserData] = useState("");
   const [PaymentMethod, setPaymentMethod] = useState("UPI");
   let PaymentOptionsCommonCode = (

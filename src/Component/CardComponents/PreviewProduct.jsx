@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Rating } from "../../Function/Rating";
 import { useLocation, useNavigate } from "react-router-dom";
 export const PreviewProduct = (props) => {
-  console.log(props);
+
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+
   const [Price, setPrice] = useState(location.state.price);
   const [Count, setCount] = useState(1);
   const rateArray = Rating(location.state.rating.rate);
@@ -22,7 +22,6 @@ export const PreviewProduct = (props) => {
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (location.state.id === props.data.AddToCart[i].Cart.state.element.id) {
         setCount(props.data.AddToCart[i].Cart.state.count);
-        console.log(props.data.AddToCart[i].Cart.state.count);
       }
     }
   
@@ -69,7 +68,7 @@ useEffect(() => {
                 </h6>
               </div>
               <span className="fs-3 fw-bold text-body-tertiary">
-                <i class="bi bi-currency-rupee"></i>
+                <i className="bi bi-currency-rupee"></i>
                 {location.state.price}
               </span>
               <span
@@ -127,7 +126,7 @@ useEffect(() => {
             </div>
             <div className="border rounded p-2 shadow-sm">
               <h5>
-                <i class="bi bi-currency-rupee"></i>
+                <i className="bi bi-currency-rupee"></i>
                 {Price*Count}
               </h5>
               <span
@@ -161,14 +160,14 @@ useEffect(() => {
                         className="btn btn-sm btn-primary rounded-end-0"
                         onClick={() => RemoveItems(location.state)}
                       >
-                        <i class="bi bi-dash"></i>
+                        <i className="bi bi-dash"></i>
                       </span>
                       <span className="px-3">{Count}</span>
                       <span
                         onClick={(e) => AddToCart(location.state)}
                         className="btn btn-sm btn-primary rounded-start-0"
                       >
-                        <i class="bi bi-plus"></i>
+                        <i className="bi bi-plus"></i>
                       </span>
                     </div>
                   </span>
@@ -179,7 +178,7 @@ useEffect(() => {
                   className="btn btn-primary"
                   onClick={(e) => AddToCart(location.state)}
                 >
-                  <i class="bi bi-cart2"></i> Add To Cart
+                  <i className="bi bi-cart2"></i> Add To Cart
                 </button>
               </div>
             </div>

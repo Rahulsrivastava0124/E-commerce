@@ -3,7 +3,6 @@ import { ADD_TO_CART, REMOVE_TO_CART } from "../constant";
 export const AddToCart = (state = [], action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            console.log("action", action.data, "state", state);
             if (!action.data.state.hasOwnProperty('count')) {
                 action.data.state['count'] = 1;
             }
@@ -17,10 +16,8 @@ export const AddToCart = (state = [], action) => {
                 }
 
             }
-            console.log(match);
             return match ? [...state, { Cart: action.data }] : [...state];
         case REMOVE_TO_CART:
-            console.log("action", action.data, "state", state);
             for (let i = 0; i < state.length; i++) {
 
                 if (state[i].Cart.state.element.id === action.data.state.id) {

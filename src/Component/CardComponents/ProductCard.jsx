@@ -114,7 +114,6 @@ const ProductCard = (props) => {
           click: true,
           Count: countNo,
         });
-    console.log(countNo);
   };
   return (
     <div
@@ -178,14 +177,14 @@ const ProductCard = (props) => {
                   className="btn btn-sm btn-primary rounded-end-0"
                   onClick={() => RemoveItems()}
                 >
-                  <i class="bi bi-dash"></i>
+                  <i className="bi bi-dash"></i>
                 </span>
                 <span className="px-3">{countNo}</span>
                 <span
                   onClick={() => AddToCart()}
                   className="btn btn-sm btn-primary rounded-start-0"
                 >
-                  <i class="bi bi-plus"></i>
+                  <i className="bi bi-plus"></i>
                 </span>
               </div>
             )}
