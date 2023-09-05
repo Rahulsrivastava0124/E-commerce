@@ -11,7 +11,7 @@ import ProfileContainer from "./containers/ProfileContainer";
 import SecurityContainer from "./containers/SecurityContainer";
 import ProtectedComponentContainer from "./containers/ProtectedComponentContainer";
 import UserAdressesContainer from "./containers/UserAdressesContainer";
-import CartContainer from "./containers/CartContainer";
+import WishListContainer from "./containers/WishListContainer";
 import CheckOutContainer from "./containers/CheckOutContainer";
 import PreviewProductContainer from "./containers/PreviewProductContainer";
 
@@ -74,7 +74,7 @@ function App() {
               element={< ContactUs />}
             />
           </Route>
-          <Route path="Cart" element={<CartContainer />} />
+          <Route path="WishList" element={<WishListContainer />} />
           <Route path="YourOrder" element={<YourOrder />} />
           <Route path='CheckOut' element={<CheckOutContainer />} />
           <Route path='ProductPreview' element={<PreviewProductContainer />} />

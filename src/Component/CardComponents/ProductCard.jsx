@@ -145,7 +145,6 @@ const ProductCard = (props) => {
           </h5>
         </div>
         <div className="d-flex align-items-center justify-content-between">
-          
           <span
             className="btn ScaleButton "
             onClick={(e) => WishList(e, element)}

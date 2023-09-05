@@ -8,7 +8,6 @@ import cartIcon from "../../Svg/GifImages/cartIcon.gif";
 import contactIcon from "../../Svg/GifImages/contactIcon.gif";
 import locationIcon from "../../Svg/GifImages/locationIcon.gif";
 import lockIcon from "../../Svg/GifImages/lockIcon.gif";
-import paymentIcon from "../../Svg/GifImages/paymentIcon.gif";
 import avatar from "../../Svg/GifImages/avatar.gif";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Toasts from "../Toasts";
@@ -78,19 +77,13 @@ export const Profile = (props) => {
       Link: "Addresses",
     },
     {
-      cardHeading: "Payment options",
-      cardTitle: "Edit or add payment methods",
-      CardIcon: paymentIcon,
-      Link: "PaymentOptions",
-    },
-    {
       cardHeading: "Contact us",
       cardTitle: "helping for contact and messages",
       CardIcon: contactIcon,
       Link: "ContactUs",
     },
     {
-      cardHeading: "Wishlist & Cart",
+      cardHeading: "Wishlist",
       cardTitle: "Your WishList items and Cart Items",
       CardIcon: cartIcon,
       Link: "Cart",

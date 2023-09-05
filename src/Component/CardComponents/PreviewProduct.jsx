@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Rating } from "../../Function/Rating";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 export const PreviewProduct = (props) => {
 
-  const navigate = useNavigate();
   const location = useLocation();
-
   const [Price, setPrice] = useState(location.state.price);
   const [Count, setCount] = useState(1);
   const rateArray = Rating(location.state.rating.rate);

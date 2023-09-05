@@ -50,6 +50,9 @@ export const Navbar = (props) => {
                   Categories <span>{CategoriesListShow ? "▼" : "△"}</span>
                 </span>
               </li>
+              <Link className="nav-link " to="/WishList">
+                WishList
+              </Link>
             </ul>
           </div>
           <div className="d-flex align-items-center">
@@ -66,7 +69,7 @@ export const Navbar = (props) => {
             <div id="Account">
               {/* Account logo */}
               {LoginStates ? (
-                <span className="me-4 h6 shadow rounded-1 p-2">
+                <span className="me-4 h6 shadow rounded-pill bg-danger-subtle pt-1 p-2">
                   <Link to="/Profile" className="text-decoration-none">
                     <img src={Account} alt="Account" className="" />{" "}
                     <span className=" text-dark fw-bold">
