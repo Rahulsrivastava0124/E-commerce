@@ -8,14 +8,31 @@ const ProductCard = (props) => {
   const tabIndex = props.element;
   const [AddToCardIcon, setAddToCardIcon] = useState({
     divElement: (
-      <i
-        className="bi bi-cart-plus fs-5"
+      <span
+        className="btn btn-primary btn-sm pt-0"
         onClick={(e) => AddToCart(e, element)}
-      ></i>
+      >
+        <i className="bi bi-cart-plus fs-5 me-1 "></i>
+        Add To Cart
+      </span>
     ),
     click: false,
     Count: 0,
   });
+
+  const [countNo, setcountNo] = useState(0);
+
+  const getCountData = () => {
+    for (let i = 0; i < props.data.AddToCart.length; i++) {
+      if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
+        setcountNo(
+          props.data.AddToCart[i].Cart.state.count === undefined
+            ? 0
+            : props.data.AddToCart[i].Cart.state.count
+        );
+      }
+    }
+  };
   useEffect(() => {
     if (props.data.UserWish.length !== 0) {
       for (let i = 0; i < props.data.UserWish.length; i++) {
@@ -39,6 +56,7 @@ const ProductCard = (props) => {
         }
       }
     }
+    getCountData();
   }, [props]);
 
   const rateArray = Rating(element.rating.rate);
@@ -61,38 +79,32 @@ const ProductCard = (props) => {
     }
   };
 
-  const AddToCart =  () => {
-     props.AddToCartHandler({ state: { element: props.element } });
-    let countNo = 1;
-    for (let i = 0; i < props.data.AddToCart.length; i++) {
-      if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
-        countNo = props.data.AddToCart[i].Cart.state.count;
-      }
-    }
+  const AddToCart = () => {
+    props.AddToCartHandler({ state: { element: props.element } });
     setAddToCardIcon({
       ...AddToCardIcon,
       click: true,
       Count: countNo,
     });
-    console.log(countNo);
   };
   const RemoveItems = () => {
     props.RemoveToCartHandler({ state: props.element });
-
-    let countNo = 0;
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (props.element.id === props.data.AddToCart[i].Cart.state.element.id) {
-        console.log(props.data.AddToCart[i].Cart.state.count);
-        countNo = props.data.AddToCart[i].Cart.state.count;
+        setcountNo(props.data.AddToCart[i].Cart.state.count);
       }
     }
-    countNo === 0
+
+    countNo === 1
       ? setAddToCardIcon({
           divElement: (
-            <i
-              className="bi bi-cart-plus fs-5"
+            <span
+              className="btn btn-primary btn-sm pt-0"
               onClick={(e) => AddToCart(e, element)}
-            ></i>
+            >
+              <i className="bi bi-cart-plus fs-5 me-1 "></i>
+              Add To Cart
+            </span>
           ),
           click: false,
           Count: 0,
@@ -134,27 +146,7 @@ const ProductCard = (props) => {
           </h5>
         </div>
         <div className="d-flex align-items-center justify-content-between">
-          <span className=" ScaleButton">
-            {AddToCardIcon.click === false ? (
-              AddToCardIcon.divElement
-            ) : (
-              <div className="border rounded d-flex align-items-center border-primary-subtle">
-                <span
-                  className="btn btn-sm btn-primary rounded-end-0"
-                  onClick={() => RemoveItems()}
-                >
-                  <i class="bi bi-dash"></i>
-                </span>
-                <span className="px-3">{AddToCardIcon.Count}</span>
-                <span
-                  onClick={() => AddToCart()}
-                  className="btn btn-sm btn-primary rounded-start-0"
-                >
-                  <i class="bi bi-plus"></i>
-                </span>
-              </div>
-            )}
-          </span>
+          
           <span
             className="btn ScaleButton "
             onClick={(e) => WishList(e, element)}
@@ -177,6 +169,27 @@ const ProductCard = (props) => {
           >
             <i className="bi bi-eye-fill fs-5"></i>
           </button>
+          <span className=" ">
+            {AddToCardIcon.click === false ? (
+              AddToCardIcon.divElement
+            ) : (
+              <div className="border rounded d-flex align-items-center border-primary-subtle">
+                <span
+                  className="btn btn-sm btn-primary rounded-end-0"
+                  onClick={() => RemoveItems()}
+                >
+                  <i class="bi bi-dash"></i>
+                </span>
+                <span className="px-3">{countNo}</span>
+                <span
+                  onClick={() => AddToCart()}
+                  className="btn btn-sm btn-primary rounded-start-0"
+                >
+                  <i class="bi bi-plus"></i>
+                </span>
+              </div>
+            )}
+          </span>
         </div>
       </div>
     </div>
