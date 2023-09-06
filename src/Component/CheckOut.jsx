@@ -222,7 +222,10 @@ export default function BuyItems(props) {
           everyone’s safety, we advise paying online to limit contact and help
           stop the spread of the virus.
         </p>
-        <button className="btn btn-outline-primary mt-4 container">
+        <button
+          className="btn btn-outline-primary mt-4 container"
+          onClick={() => OrderItems(props.data.AddToCart)}
+        >
           PLACE ORDER
         </button>
         {PaymentOptionsCommonCode}
@@ -327,6 +330,16 @@ export default function BuyItems(props) {
     setPaymentMethod(e.target.attributes[3].nodeValue);
   };
 
+  const OrderItems = (element) => {
+    props.AddToOrderList({
+      state: {
+        element,
+        date: new Date(),
+        orderId: Math.trunc(Math.random() * 1000000000),
+        
+      },
+    });
+  };
   return (
     <>
       <div className="d-flex mt-4 mx-5 flex-warp">
@@ -457,7 +470,7 @@ export default function BuyItems(props) {
           </div>
         </div>
 
-        <div className="container border rounded p-4 ms-4">
+        <div className="container border rounded p-4 ms-4 h-100 mt-5">
           <OrderSummmeryContainer
             element={
               location.state === null ? props.data.AddToCart : location.state

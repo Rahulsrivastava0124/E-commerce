@@ -14,6 +14,7 @@ import UserAdressesContainer from "./containers/UserAdressesContainer";
 import WishListContainer from "./containers/WishListContainer";
 import CheckOutContainer from "./containers/CheckOutContainer";
 import PreviewProductContainer from "./containers/PreviewProductContainer";
+import YourOrderContainer from "./containers/UserYourOrderContainer";
 
 
 // import App Components
@@ -21,7 +22,6 @@ import { Error404 } from "./Component/Error/404Error";
 import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
-import YourOrder from "./Component/UserComponents/UserYourOrder";
 
 function App() {
   return (
@@ -75,7 +75,7 @@ function App() {
             />
           </Route>
           <Route path="WishList" element={<WishListContainer />} />
-          <Route path="YourOrder" element={<YourOrder />} />
+          <Route path="/Profile/YourOrder" element={<YourOrderContainer />} />
           <Route path='CheckOut' element={<CheckOutContainer />} />
           <Route path='ProductPreview' element={<PreviewProductContainer />} />
 

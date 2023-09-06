@@ -4,8 +4,8 @@ import { AllProductData, productsCategories } from "../server/productAPI.js";
 import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
-import { PreviewProduct } from "./CardComponents/PreviewProduct";
 import { useLocation, useNavigate } from "react-router-dom";
+
 
 export const Home = (props) => {
   const location = useLocation();
@@ -239,6 +239,7 @@ export const Home = (props) => {
         ) : (
           <CardPlaceHolder />
         )}
+        
       </div>
     </>
   );

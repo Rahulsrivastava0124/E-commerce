@@ -5,6 +5,7 @@ import {
   REMOVE_TO_WISHLIST,
   LOGOUT,
   LOGIN,
+  ADD_TO_ORDER,
 
 } from "../constant";
 export const AddToCart = (data) => {
@@ -44,6 +45,14 @@ export const UserLogin = (data) => {
 export const UserLogOut = (data) => {
   return {
     type: LOGOUT,
+    data: data,
+  }
+}
+
+
+export const OrderData = (data) => {
+  return {
+    type: ADD_TO_ORDER,
     data: data,
   }
 }
