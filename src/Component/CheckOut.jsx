@@ -8,10 +8,11 @@ import azpay from "../Svg/images/azpay.webp";
 import mobikwik from "../Svg/images/mobikwik.webp";
 import phonepe from "../Svg/images/phonepe.webp";
 import freecharge from "../Svg/images/freecharge.webp";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
 
 export default function BuyItems(props) {
+  const navigate = useNavigate();
   const location = useLocation();
   const [UserData, setUserData] = useState("");
   const [PaymentMethod, setPaymentMethod] = useState("UPI");
@@ -331,14 +332,16 @@ export default function BuyItems(props) {
   };
 
   const OrderItems = (element) => {
+    let date = new Date();
+    let orderId = Math.trunc(Math.random() * 1000000000);
     props.AddToOrderList({
       state: {
         element,
-        date: new Date(),
-        orderId: Math.trunc(Math.random() * 1000000000),
-        
+        date,
+        orderId,
       },
     });
+    navigate("./OrderPlaced", { state: { element, date, orderId } });
   };
   return (
     <>

@@ -16,7 +16,7 @@ export const CartCanvas = (props) => {
             className="offcanvas-title text-primary fw-bold"
             id="offcanvasRightLabel"
           >
-            My Cart
+            Your Cart 
           </h5>
           <button
             type="button"

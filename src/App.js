@@ -22,7 +22,7 @@ import { Error404 } from "./Component/Error/404Error";
 import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
 import PaymentOptions from "./Component/PaymentOptions.jsx";
-
+import OrderPlaced from './Component/OrderPlaced'
 function App() {
   return (
     <div className="App">
@@ -75,10 +75,10 @@ function App() {
             />
           </Route>
           <Route path="WishList" element={<WishListContainer />} />
-          <Route path="/Profile/YourOrder" element={<YourOrderContainer />} />
+          <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} />
           <Route path='CheckOut' element={<CheckOutContainer />} />
           <Route path='ProductPreview' element={<PreviewProductContainer />} />
-
+          <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced }/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

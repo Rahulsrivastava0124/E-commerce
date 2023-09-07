@@ -5,7 +5,7 @@ import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import FooterFeature from '../Component/Footer/FooterFeature'
 
 export const Home = (props) => {
   const location = useLocation();
@@ -239,8 +239,8 @@ export const Home = (props) => {
         ) : (
           <CardPlaceHolder />
         )}
-        
       </div>
+      <FooterFeature/>
     </>
   );
 };

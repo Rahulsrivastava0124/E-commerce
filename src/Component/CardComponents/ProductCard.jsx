@@ -131,7 +131,7 @@ const ProductCard = (props) => {
         <h5 className="card-title">{element.title.slice(0, 20)}</h5>
         <p className="card-text">{element.description.slice(0, 50)}</p>
         <div className="d-flex justify-content-between">
-          <h3 className="fw-bold text-primary">Rs.{element.price}</h3>
+          <h3 className="fw-bold text-primary-emphasis">Rs.{element.price}</h3>
           <h className="text-success"> Instock </h>
         </div>
         <div className="d-flex align-items-center justify-content-between">

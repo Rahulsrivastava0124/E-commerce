@@ -7,7 +7,7 @@ import Containers from "../../containers/LoginContainer";
 
 export const Navbar = (props) => {
   const Navigate = useNavigate();
-  const [CategoriesListShow, setCategoriesListShow] = useState(true);
+  const [CategoriesListShow, setCategoriesListShow] = useState(false);
   const [LoginStates, setLoginStates] = useState(false);
   const showCategories = () => {
     if (CategoriesListShow === true) {
@@ -86,39 +86,33 @@ export const Navbar = (props) => {
                   data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
                   onClick={() => {
-                    document
-                      .getElementsByClassName("modal-backdrop")[0]
-                      .classList.remove("modal-backdrop");
+                    document.getElementsByClassName("modal-backdrop")[0] !==
+                    undefined
+                      ? document
+                          .getElementsByClassName("modal-backdrop")[0]
+                          .classList.remove("modal-backdrop")
+                      : null;
                   }}
                 >
                   Login
                 </button>
               )}
               {/* cart logo */}
-              <button className="btn btnActiveBorderNone p-0">
+              <button className="btn btnActiveBorderNone position-relative p-0">
                 <i
-                  className="bi fs-5 bi-cart3 "
-                  onClick={() => Navigate("/Cart")}
-                >
-                  {" "}
-                  <span className="fw-bold">Cart</span>
-                </i>
-
-                <span
-                  className="btn btnActiveBorderNone position-relative p-1"
+                  className="bi fs-4 bi-cart3 "
                   type="button"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   aria-controls="offcanvasRight"
                 >
-                  <i className="bi bi-chevron-down"></i>
                   <span
                     className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger "
                     style={{ fontSize: "x-small" }}
                   >
                     {props.data.AddToCart.length}
                   </span>
-                </span>
+                </i>
               </button>
             </div>
           </div>

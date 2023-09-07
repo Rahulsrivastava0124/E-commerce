@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import AddtoCart from "../Svg/AddToCart.gif";
 
 export default function OrderSummery(props) {
-  const [Count, setCount] = useState(0);
   let price = 0;
   const [ShippingCharge, setShippingCharge] = useState(40);
   useEffect(() => {
@@ -21,9 +20,15 @@ export default function OrderSummery(props) {
 
   return (
     <div>
-      <h5>Order summary</h5>
+      <h5 className="d-flex justify-content-between mb-3">
+        <span>Order summary</span>
+        <span >
+          <span class="badge text-bg-primary rounded-circle">{props.element.length}</span>
+        </span>
+      </h5>
       {props.element.map((element, index) => {
-        price = price + element.Cart.state.element.price*element.Cart.state.count;
+        price =
+          price + element.Cart.state.element.price * element.Cart.state.count;
         return (
           <div
             className="d-flex bg-white mb-2 p-2 rounded shadow-sm align-items-center justify-content-between"
@@ -47,7 +52,10 @@ export default function OrderSummery(props) {
               </div>
             </div>
             <div className="border rounded d-flex align-items-center border-primary-subtle">
-              <span className="btn btn-sm btn-primary rounded-end-0" onClick={() => RemoveItems(element.Cart.state.element)}>
+              <span
+                className="btn btn-sm btn-primary rounded-end-0"
+                onClick={() => RemoveItems(element.Cart.state.element)}
+              >
                 <i className="bi bi-dash"></i>
               </span>
               <span className="px-3">{element.Cart.state.count}</span>
