@@ -126,12 +126,12 @@ const YourOrder = (props) => {
                         </h6>
                         <h6>
                           {" "}
-                          Order Succesfull on{" "}
+                          Order Succesfull delivered on{" "}
                           <span className="ms-1">
                             {months[element.OrderData.state.date.getMonth()]}
                           </span>
                           <span className="ms-1">
-                            {element.OrderData.state.date.getDate()},
+                            {element.OrderData.state.date.getDate()+5},
                           </span>
                           <span className="ms-1">
                             {element.OrderData.state.date.getFullYear()}

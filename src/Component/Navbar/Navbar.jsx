@@ -90,7 +90,7 @@ export const Navbar = (props) => {
                     undefined
                       ? document
                           .getElementsByClassName("modal-backdrop")[0]
-                          .classList.remove("modal-backdrop")
+                          .classList.add("z-0")
                       : null;
                   }}
                 >

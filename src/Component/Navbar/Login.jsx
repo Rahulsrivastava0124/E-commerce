@@ -17,7 +17,7 @@ function Login(props) {
       {/* add signup model data  */}
       <Signup />
       <div
-        className="modal fade"
+        className="modal fade "
         id="LoginModalToggle"
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel"

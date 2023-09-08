@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import success from "../Svg/GifImages/success.gif";
 
@@ -7,6 +7,7 @@ export default function OrderPlaced() {
   const location = useLocation();
   let price = 0;
   let Delivery = 0;
+
   location.state.element.forEach((element) => {
     price = price + element.Cart.state.element.price * element.Cart.state.count;
   });
@@ -51,7 +52,7 @@ export default function OrderPlaced() {
               <span className="ms-1">
                 {months[location.state.date.getMonth()]}
               </span>
-              <span className="ms-1">{location.state.date.getDate()},</span>
+              <span className="ms-1">{location.state.date.getDate()+7},</span>
               <span className="ms-1">{location.state.date.getFullYear()}</span>
             </span>{" "}
             and is currenty in progress
