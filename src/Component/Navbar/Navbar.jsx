@@ -87,10 +87,10 @@ export const Navbar = (props) => {
                   data-bs-toggle="modal"
                   onClick={() => {
                     document.getElementsByClassName("modal-backdrop")[0] !==
-                    undefined
+                      undefined
                       ? document
-                          .getElementsByClassName("modal-backdrop")[0]
-                          .classList.add("z-0")
+                        .getElementsByClassName("modal-backdrop")[0]
+                        .classList.add("z-0")
                       : null;
                   }}
                 >

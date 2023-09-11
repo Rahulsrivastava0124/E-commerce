@@ -46,8 +46,8 @@ function Signup() {
   return (
     <>
       <div
-        className="modal fade "
-        id="SignUpModelToggle2 "
+        className="modal fade"
+        id="SignUpModelToggle2"
         aria-hidden="true"
         aria-labelledby="exampleModalToggleLabel2"
         tabIndex="-1"
@@ -180,7 +180,7 @@ function Signup() {
                     type="text"
                     className="form-control"
                     id="inputZip"
-                    value={ SignupData.Zip }
+                    value={SignupData.Zip}
                     onChange={(e) =>
                       setSignupData({ ...SignupData, Zip: e.target.value })
                     }
