@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Account from "../../Svg/Account.svg";
 import { CategoriesList } from "../Navbar/Categories_list";
 import CartCanvasContainer from "../../containers/CartCanvasContainer";
-import Containers from "../../containers/LoginContainer";
+import LoginContainers from "../../containers/LoginContainer";
 
 export const Navbar = (props) => {
   const Navigate = useNavigate();
@@ -87,10 +87,10 @@ export const Navbar = (props) => {
                   data-bs-toggle="modal"
                   onClick={() => {
                     document.getElementsByClassName("modal-backdrop")[0] !==
-                      undefined
+                    undefined
                       ? document
-                        .getElementsByClassName("modal-backdrop")[0]
-                        .classList.add("z-0")
+                          .getElementsByClassName("modal-backdrop")[0]
+                          .classList.add("z-0")
                       : null;
                   }}
                 >
@@ -119,9 +119,9 @@ export const Navbar = (props) => {
         </div>
       </nav>
       {/* show  and hide CategoriesList is click  */}
-      {CategoriesListShow ? <CategoriesList /> : null}
+      <CategoriesList />
       {/* <Login /> */}
-      <Containers />
+      {props.data.UserLogin.LoginData === true ? null : <LoginContainers />}
       <CartCanvasContainer />
     </div>
   );

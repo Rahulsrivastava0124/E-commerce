@@ -22,8 +22,10 @@ export default function OrderSummery(props) {
     <div>
       <h5 className="d-flex justify-content-between mb-3">
         <span>Order summary</span>
-        <span >
-          <span class="badge text-bg-primary rounded-circle">{props.element.length}</span>
+        <span>
+          <span class="badge text-bg-primary rounded-circle">
+            {props.element.length}
+          </span>
         </span>
       </h5>
       {props.element.map((element, index) => {

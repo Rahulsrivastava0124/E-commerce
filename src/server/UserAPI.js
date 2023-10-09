@@ -8,12 +8,13 @@ export const LoginAPI = async (data) => {
     },
     body: JSON.stringify(data),
   });
+
   const resdata = await CallData.json();
   return {
     data: resdata,
     state: true,
     username: data.username,
-  };
+  }
 };
 
 //Received body data and call SignUpAPI method
@@ -38,7 +39,6 @@ export const SignUpAPI = (data) => {
 };
 
 // receive All user data
-
 export const GetUsers = async (UserName) => {
   // debugger;
   const GetData = await fetch("https://fakestoreapi.com/users");

@@ -54,8 +54,7 @@ export const Profile = (props) => {
     Greeting();
   }, []);
 
-  const ClickedCard = (e) => {
-  };
+  const ClickedCard = (e) => {};
 
   const Card_Array = [
     {
@@ -86,7 +85,7 @@ export const Profile = (props) => {
       cardHeading: "Wishlist",
       cardTitle: "Your WishList items and Cart Items",
       CardIcon: cartIcon,
-      Link: "Cart",
+      Link: "/WishList",
     },
   ];
 

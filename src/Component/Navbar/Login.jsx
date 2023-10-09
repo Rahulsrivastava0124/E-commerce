@@ -5,12 +5,24 @@ import { LoginAPI } from "../../server/UserAPI";
 
 function Login(props) {
   const [LoginData, setLoginData] = useState({ username: "", password: "" });
-
+  const [Loading, setLoading] = useState(true);
   const SubmitLoginForm = async (e) => {
     e.preventDefault();
+    setLoading(false);
     // if login is successful then close the modal and redirect to dashboard page else show error message in
-    props.addToLoginHandler({ state: await LoginAPI(LoginData) });
+    const LoginToken = await LoginAPI(LoginData);
+    setLoading(LoginToken.state);
+    props.addToLoginHandler({ state: LoginToken });
   };
+
+  const checkInput = (data) => {
+    if (data.username === "" || data.password === "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   return (
     <>
       {/* <!-- Login Modal --> */}
@@ -81,13 +93,20 @@ function Login(props) {
                       required
                     />
                   </div>
-
                   <button
                     type="submit"
-                    className="btn btn-primary me-2"
-                    data-bs-dismiss="modal"
+                    className={`btn btn-primary me-2 ${
+                      Loading === false ? "disabled" : null
+                    } ${checkInput(LoginData) === false ? "disabled" : null}`}
+                    // data-bs-dismiss="modal"
                     onClick={(e) => SubmitLoginForm(e)}
                   >
+                    {Loading === false ? (
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        aria-hidden="true"
+                      ></span>
+                    ) : null}
                     Login
                   </button>
                   <button
