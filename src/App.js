@@ -29,7 +29,7 @@ function App() {
       <BrowserRouter>
         <NavbarContainer />
         <Routes>
-          <Route path="/" element={<HomeContainer />} />
+          <Route path="/E-commerce" element={<HomeContainer />} />
           <Route Path="*" element={<Error404 />} />
           <Route
             path="/Categories/men'sclothing"

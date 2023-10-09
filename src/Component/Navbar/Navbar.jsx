@@ -39,7 +39,7 @@ export const Navbar = (props) => {
             </span>
             {/* navbar Links */}
             <ul className="navbar-nav nav nav-underline">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link active" aria-current="page" to="/E-commerce">
                 Home
               </Link>
               <li
