@@ -66,7 +66,7 @@ export default function OrderPlaced() {
             </button>
             <button
               className="btn btn-outline-primary mx-2"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/E-commerce")}
             >
               {" "}
               Shop More

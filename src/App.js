@@ -21,7 +21,6 @@ import YourOrderContainer from "./containers/UserYourOrderContainer";
 import { Error404 } from "./Component/Error/404Error";
 import Footer from "./Component/Footer/Footer";
 import ContactUs from "./Component/UserComponents/UserContactUs";
-import PaymentOptions from "./Component/PaymentOptions.jsx";
 import OrderPlaced from './Component/OrderPlaced'
 function App() {
   return (
@@ -63,12 +62,6 @@ function App() {
               }
             />
 
-            <Route
-              path="PaymentOptions"
-              element={
-                <ProtectedComponentContainer Component={PaymentOptions} />
-              }
-            />
             <Route
               path="ContactUs"
               element={< ContactUs />}

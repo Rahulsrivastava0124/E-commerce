@@ -6,7 +6,7 @@ export default function ProtectedComponent(props) {
   const navigate = useNavigate();
   useEffect(() => {
     if (Object.keys(props.data.UserLogin.LoginData).length === 0) {
-      navigate("/");
+      navigate("/E-commerce");
     }
   }, []);
 
