@@ -4,12 +4,10 @@ import { AllProductData, productsCategories } from "../server/productAPI.js";
 import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
-import { useLocation, useNavigate } from "react-router-dom";
 import FooterFeature from "../Component/Footer/FooterFeature";
 
 export const Home = (props) => {
-  const location = useLocation();
-  const navigate = useNavigate();
+
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
