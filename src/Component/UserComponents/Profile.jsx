@@ -92,7 +92,7 @@ export const Profile = (props) => {
   const LogOutUser = () => {
     const initialState = {};
     props.UserLogOutHandler(initialState);
-    nevigate("/");
+    nevigate("/E-commerce");
   };
 
   return (
