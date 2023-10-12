@@ -78,31 +78,31 @@ export default function OrderPlaced() {
               style={{ border: "3px solid black" }}
             />
             <span className="mx-5 ">
-              <i class="bi bi-check-circle-fill fs-3 text-success"></i>
+              <i className="bi bi-check-circle-fill fs-3 text-success"></i>
               <p style={{ width: "100px" }} className="fw-bold ">
                 ORDER CONFIRMED
               </p>
             </span>
             <span className="mx-5 ">
-              <i class="bi bi-check-circle-fill fs-3"></i>
+              <i className="bi bi-check-circle-fill fs-3"></i>
               <p style={{ width: "100px" }} className="fw-bold ">
                 START PRODUCTION
               </p>
             </span>
             <span className="mx-5 ">
-              <i class="bi bi-check-circle-fill fs-3"></i>
+              <i className="bi bi-check-circle-fill fs-3"></i>
               <p style={{ width: "100px" }} className="fw-bold ">
                 QUALITY CHECK
               </p>
             </span>
             <span className="mx-5 ">
-              <i class="bi bi-check-circle-fill fs-3"></i>
+              <i className="bi bi-check-circle-fill fs-3"></i>
               <p style={{ width: "100px" }} className="fw-bold ">
                 DISPATCHED ITEM{" "}
               </p>
             </span>
             <span className="mx-5 ">
-              <i class="bi bi-check-circle-fill fs-3"></i>
+              <i className="bi bi-check-circle-fill fs-3"></i>
               <p style={{ width: "100px" }} className="fw-bold ">
                 PRODUCT DELIVERED
               </p>
@@ -112,7 +112,7 @@ export default function OrderPlaced() {
       </div>
       <div className=" p-4">
         <h5 className="my-3">
-          <i class="bi bi-truck"></i> DELIVERY ADDRESS
+          <i className="bi bi-truck"></i> DELIVERY ADDRESS
         </h5>
         <p className="pe-5">
           {" "}
@@ -120,7 +120,7 @@ export default function OrderPlaced() {
         </p>
         <hr />
         <h5 className="my-3">
-          <i class="bi bi-receipt"></i> BELLING ADDRESS
+          <i className="bi bi-receipt"></i> BELLING ADDRESS
         </h5>
         <p className="pe-5">
           {" "}
@@ -137,14 +137,14 @@ export default function OrderPlaced() {
         <h6 className="d-flex justify-content-between">
           <span>Sub Total</span>
           <span>
-            <i class="bi bi-currency-rupee"></i>
+            <i className="bi bi-currency-rupee"></i>
             {price.toFixed(2)}
           </span>
         </h6>
         <h6 className="d-flex justify-content-between">
           <span>Delivery</span>
           <span>
-            <i class="bi bi-currency-rupee"></i>
+            <i className="bi bi-currency-rupee"></i>
             {Delivery}
           </span>
         </h6>
@@ -152,7 +152,7 @@ export default function OrderPlaced() {
         <h6 className="d-flex justify-content-between">
           <span> Total</span>
           <span>
-            <i class="bi bi-currency-rupee"></i>
+            <i className="bi bi-currency-rupee"></i>
             {price.toFixed(2) + Delivery}
           </span>
         </h6>

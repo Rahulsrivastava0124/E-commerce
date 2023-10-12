@@ -5,7 +5,7 @@ import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
 import { useLocation, useNavigate } from "react-router-dom";
-import FooterFeature from '../Component/Footer/FooterFeature'
+import FooterFeature from "../Component/Footer/FooterFeature";
 
 export const Home = (props) => {
   const location = useLocation();
@@ -57,6 +57,9 @@ export const Home = (props) => {
     });
   }
 
+  const AddToCart = (e, element) => {
+    props.AddToCartHandler({ state: { element } });
+  };
   return (
     <>
       {Array.isArray(productData) ? (
@@ -119,7 +122,7 @@ export const Home = (props) => {
                         <div>
                           <button
                             className="btn btn-warning my-3"
-                            onClick={(e) => AddToCart(element)}
+                            onClick={(e) => AddToCart(e,element)}
                           >
                             Add to Cart
                           </button>
@@ -240,7 +243,7 @@ export const Home = (props) => {
           <CardPlaceHolder />
         )}
       </div>
-      <FooterFeature/>
+      <FooterFeature />
     </>
   );
 };

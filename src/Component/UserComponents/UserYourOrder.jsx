@@ -101,7 +101,7 @@ const YourOrder = (props) => {
                           <h6>
                             {" "}
                             Order Details{" "}
-                            <i class="bi bi-arrow-right-short"></i>
+                            <i className="bi bi-arrow-right-short"></i>
                           </h6>
                         </h6>
                       </div>

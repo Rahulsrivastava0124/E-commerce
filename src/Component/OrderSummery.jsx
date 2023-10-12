@@ -23,7 +23,7 @@ export default function OrderSummery(props) {
       <h5 className="d-flex justify-content-between mb-3">
         <span>Order summary</span>
         <span>
-          <span class="badge text-bg-primary rounded-circle">
+          <span className="badge text-bg-primary rounded-circle">
             {props.element.length}
           </span>
         </span>
@@ -136,7 +136,9 @@ export default function OrderSummery(props) {
             <div className="d-flex  justify-content-between align-items-center ">
               <div className="d-flex align-items-center">
                 <i className="bi bi-cart fs-3"></i>
-                <p className="mb-0 mx-2">{props.element.length} Items</p>
+                <p className="mb-0 mx-2 text-center">
+                  {props.element.length} Items
+                </p>
               </div>
               <div>
                 <h5 className="mb-0 fw-bold">

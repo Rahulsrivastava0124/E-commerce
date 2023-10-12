@@ -30,7 +30,15 @@ export const Navbar = (props) => {
   return (
     <div id="Navbar " className="position-sticky top-0 z-1">
       <nav className="navbar navbar-expand-lg bg-body-tertiary ">
-        <div className="container-md">
+        <div className="container-md m-0">
+          <div className="nav_phone_menu_icon">
+            <input type="checkbox" id="checkbox" />
+            <label htmlFor="checkbox" className="toggle">
+              <div className="bars" id="bar1"></div>
+              <div className="bars" id="bar2"></div>
+              <div className="bars" id="bar3"></div>
+            </label>
+          </div>
           {/* navbar logo */}
           <div className="d-flex align-items-center">
             <span className="navbar-brand mb-0 me-3 h1 d-flex">
@@ -38,8 +46,12 @@ export const Navbar = (props) => {
               <span className="text-warning">Market</span>
             </span>
             {/* navbar Links */}
-            <ul className="navbar-nav nav nav-underline">
-              <Link className="nav-link active" aria-current="page" to="/E-commerce">
+            <ul className="navbar-nav nav nav-underline nav-phone-menu">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/E-commerce"
+              >
                 Home
               </Link>
               <li
@@ -59,7 +71,7 @@ export const Navbar = (props) => {
             {/* navbar search input */}
             <form className="me-3">
               <input
-                className="form-control me-2 border-0 rounded-pill"
+                className="form-control me-2 border-0 rounded-pill nav-search"
                 type="search"
                 placeholder="Search 🔍"
                 aria-label="Search"
@@ -119,7 +131,7 @@ export const Navbar = (props) => {
         </div>
       </nav>
       {/* show  and hide CategoriesList is click  */}
-      <CategoriesList />
+      {CategoriesListShow ? <CategoriesList /> : null}
       {/* <Login /> */}
       {props.data.UserLogin.LoginData === true ? null : <LoginContainers />}
       <CartCanvasContainer />

@@ -41,13 +41,13 @@ const WishListCart = (props) => {
                       <h6>{Element.WishList.state.title.slice(0, 45)}...</h6>
                       <h6>
                         {Element.WishList.state.rating.rate}
-                        <i class="bi bi-star ms-1"></i>
+                        <i className="bi bi-star ms-1"></i>
                         <span className="text-success ms-2">
                           {Element.WishList.state.rating.count}Reviews
                         </span>
                       </h6>
                       <span className="fw-bold fs-5 text-body-tertiary">
-                        <i class="bi bi-currency-rupee"></i>
+                        <i className="bi bi-currency-rupee"></i>
                         {Element.WishList.state.price}
                       </span>
                     </div>
@@ -56,7 +56,7 @@ const WishListCart = (props) => {
                         className="btn btn-primary me-2"
                         onClick={() => AddToCart(Element.WishList.state)}
                       >
-                        <i class="bi bi-cart3 me-1"></i> Add to Cart
+                        <i className="bi bi-cart3 me-1"></i> Add to Cart
                       </span>
                       <span
                         className="btn btn-outline-danger"

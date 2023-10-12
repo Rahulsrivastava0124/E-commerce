@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import css in app Component
 import "./App.css";
-
+import './Responsive.css'
 // import Redux Container Components
 import NavbarContainer from "./containers/NavbarContainer";
 import CategoriesContainer from "./containers/CategoriesContainer";

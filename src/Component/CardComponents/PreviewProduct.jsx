@@ -32,7 +32,7 @@ useEffect(() => {
   return (
     <>
       <div className=" d-flex" style={{ margin: "40px 150px 40px 150px" }}>
-        <div className=" container w-25 shadow-sm rounded d-flex align-items-center">
+        <div className=" container m-0 w-25 shadow-sm rounded d-flex align-items-center">
           <img
             src={location.state.image}
             className="rounded"
