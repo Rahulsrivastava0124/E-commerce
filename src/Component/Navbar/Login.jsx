@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import LoginLogo from "../../Svg/LoginLogo.svg";
 import Signup from "./Signup";
 import { LoginAPI } from "../../server/UserAPI";
-import { useNavigate } from "react-router-dom";
 
 function Login(props) {
   const [LoginData, setLoginData] = useState({ username: "", password: "" });
   const [Loading, setLoading] = useState(true);
-  const [LoginStates, setLoginStates] = useState(true);
 
-  const naviagte = useNavigate();
+  console.log(props);
 
   const SubmitLoginForm = async (e) => {
     e.preventDefault();
@@ -19,7 +17,6 @@ function Login(props) {
     setLoading(LoginToken.state);
     document.getElementById("CloseLoginButton").click();
     props.addToLoginHandler({ state: LoginToken });
-    setLoginStates(false);
   };
 
   const checkInput = (data) => {
@@ -34,7 +31,7 @@ function Login(props) {
     <>
       {/* <!-- Login Modal --> */}
       {/* add signup model data  */}
-      {LoginStates ? (
+      {!props.LoginState ? (
         <>
           {" "}
           <div
@@ -112,11 +109,9 @@ function Login(props) {
                       </div>
                       <button
                         type="submit"
-                        className={`btn btn-primary me-2 ${
-                          Loading === false ? "disabled" : null
-                        } ${
-                          checkInput(LoginData) === false ? "disabled" : null
-                        }`}
+                        className={`btn btn-primary me-2 ${Loading === false ? "disabled" : null
+                          } ${checkInput(LoginData) === false ? "disabled" : null
+                          }`}
                         // data-bs-dismiss="modal"
                         onClick={(e) => SubmitLoginForm(e)}
                       >

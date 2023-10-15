@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Account from "../../Svg/Account.svg";
 import { CategoriesList } from "../Navbar/Categories_list";
 import CartCanvasContainer from "../../containers/CartCanvasContainer";
 import LoginContainers from "../../containers/LoginContainer";
 
 export const Navbar = (props) => {
-  const Navigate = useNavigate();
+  console.log(props);
   const [CategoriesListShow, setCategoriesListShow] = useState(false);
   const [LoginStates, setLoginStates] = useState(false);
   const showCategories = () => {
@@ -81,7 +81,7 @@ export const Navbar = (props) => {
             <div id="Account">
               {/* Account logo */}
               {LoginStates ? (
-                <span className="me-4 h6 shadow rounded-pill bg-danger-subtle pt-1 p-2">
+                <span className="me-4 h6 shadow rounded-pill bg-danger-subtle pt-1 p-2" >
                   <Link to="/Profile" className="text-decoration-none">
                     <img src={Account} alt="Account" className="" />{" "}
                     <span className=" text-dark fw-bold">
@@ -133,7 +133,9 @@ export const Navbar = (props) => {
       {/* show  and hide CategoriesList is click  */}
       {CategoriesListShow ? <CategoriesList /> : null}
       {/* <Login /> */}
-      {props.data.UserLogin.LoginData === true ? null : <LoginContainers />}
+      {props.data.UserLogin.LoginData === true ? null : (
+        <LoginContainers LoginState={LoginStates} />
+      )}
       <CartCanvasContainer />
     </div>
   );

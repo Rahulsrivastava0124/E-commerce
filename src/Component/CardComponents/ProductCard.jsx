@@ -38,11 +38,11 @@ const ProductCard = (props) => {
       for (let i = 0; i < props.data.UserWish.length; i++) {
         if (
           props.CardType === "Home" ||
-          props.CardType === " " ||
-          props.CardType === "All Product"
+            props.CardType === " " ||
+            props.CardType === "All Product"
             ? true
             : props.data.UserWish[i].WishList.state.category ===
-              (props.CardType !== "Home" ? props.CardType : props.link)
+            (props.CardType !== "Home" ? props.CardType : props.link)
         ) {
           const GET_ID = `${props.data.UserWish[i].WishList.state.category
             .split(" ")
@@ -62,19 +62,12 @@ const ProductCard = (props) => {
   const rateArray = Rating(element.rating.rate);
 
   const WishList = (e, element) => {
-    if (e.target.classList[0] === "btn") {
-      var data = e.target.firstChild.classList[1];
-    } else {
-      data = e.target.classList[1];
-    }
-    let ClassData = document.querySelector(`.${data}`);
-    if (ClassData.classList.contains("bi-heart")) {
-      ClassData.classList.add("bi-heart-fill");
-      ClassData.classList.remove("bi-heart");
+
+    if (!e.target.classList.contains("wishlist-Add")) {
+      e.target.classList.add("wishlist-Add");
       props.AddTowishlist({ state: element });
     } else {
-      ClassData.classList.remove("bi-heart-fill");
-      ClassData.classList.add("bi-heart");
+      e.target.classList.remove("wishlist-Add");
       props.RemoveTowishlist({ state: element });
     }
   };
@@ -97,23 +90,23 @@ const ProductCard = (props) => {
 
     countNo === 1
       ? setAddToCardIcon({
-          divElement: (
-            <span
-              className="btn btn-primary btn-sm pt-0"
-              onClick={(e) => AddToCart(e, element)}
-            >
-              <i className="bi bi-cart-plus fs-5 me-1 "></i>
-              Add To Cart
-            </span>
-          ),
-          click: false,
-          Count: 0,
-        })
+        divElement: (
+          <span
+            className="btn btn-primary btn-sm pt-0"
+            onClick={(e) => AddToCart(e, element)}
+          >
+            <i className="bi bi-cart-plus fs-5 me-1 "></i>
+            Add To Cart
+          </span>
+        ),
+        click: false,
+        Count: 0,
+      })
       : setAddToCardIcon({
-          ...AddToCardIcon,
-          click: true,
-          Count: countNo,
-        });
+        ...AddToCardIcon,
+        click: true,
+        Count: countNo,
+      });
   };
   return (
     <div
@@ -147,7 +140,7 @@ const ProductCard = (props) => {
         <div className="d-flex align-items-center justify-content-between">
           <span
             className="btn ScaleButton "
-            // onClick={(e) => WishList(e, element)}
+            onClick={(e) => WishList(e, element)}
           >
             <div className="heart-container" title="Like">
               <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
