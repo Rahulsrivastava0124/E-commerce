@@ -341,6 +341,7 @@ export default function BuyItems(props) {
         orderId,
       },
     });
+    props.AddToCartHandler({state:"Order Succesfull"})
     navigate("./OrderPlaced", { state: { element, date, orderId } });
   };
   return (

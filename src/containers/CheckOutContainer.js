@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import component from '../Component/CheckOut'
-import { OrderData, RemoveToCart } from '../Services/Actions/Actions'
+import { OrderData, AddToCart } from '../Services/Actions/Actions'
 
 
 
@@ -9,7 +9,9 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch)=>({
-    AddToOrderList:(data)=>(dispatch(OrderData(data)))
+    AddToOrderList:(data)=>(dispatch(OrderData(data))),
+    AddToCartHandler: (data) => dispatch(AddToCart(data))
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(component)
