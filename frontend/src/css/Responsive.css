@@ -1,0 +1,19 @@
+@media (max-width: 360px) {
+  .nav-search {
+    width: auto !important;
+  }
+}
+@media (max-width: 1200px) {
+  .nav-phone-menu {
+    display: none !important;
+  }
+
+  .nav_phone_menu_icon {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px){
+ .container-md {
+    max-width: 1355px;}
+}
