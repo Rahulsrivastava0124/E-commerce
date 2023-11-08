@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/E-commerce/static/css/main.9ea1df21.css",
-    "main.js": "/E-commerce/static/js/main.a1d67b2a.js",
+    "main.js": "/E-commerce/static/js/main.ced7ef64.js",
     "static/media/AddToCart.gif": "/E-commerce/static/media/AddToCart.65f64d9ba7207e473372.gif",
     "static/media/avatar.gif": "/E-commerce/static/media/avatar.eb2714b8d2cac3ea7847.gif",
     "static/media/ContactUs.jpg": "/E-commerce/static/media/ContactUs.13b798d6ec4d62e3e4d2.jpg",
@@ -34,10 +34,10 @@
     "static/media/hdfcLogo.webp": "/E-commerce/static/media/hdfcLogo.99eca2e11ad8eca4ea44.webp",
     "static/media/COD.webp": "/E-commerce/static/media/COD.0bead347bd85205cdfce.webp",
     "main.9ea1df21.css.map": "/E-commerce/static/css/main.9ea1df21.css.map",
-    "main.a1d67b2a.js.map": "/E-commerce/static/js/main.a1d67b2a.js.map"
+    "main.ced7ef64.js.map": "/E-commerce/static/js/main.ced7ef64.js.map"
   },
   "entrypoints": [
     "static/css/main.9ea1df21.css",
-    "static/js/main.a1d67b2a.js"
+    "static/js/main.ced7ef64.js"
   ]
 }
