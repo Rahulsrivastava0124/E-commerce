@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/E-commerce/static/css/main.4eb1852c.css",
-    "main.js": "/E-commerce/static/js/main.cb53ec7c.js",
+    "main.css": "/E-commerce/static/css/main.86676d7b.css",
+    "main.js": "/E-commerce/static/js/main.b90099a2.js",
     "static/media/AddToCart.gif": "/E-commerce/static/media/AddToCart.65f64d9ba7207e473372.gif",
     "static/media/avatar.gif": "/E-commerce/static/media/avatar.eb2714b8d2cac3ea7847.gif",
     "static/media/ContactUs.jpg": "/E-commerce/static/media/ContactUs.13b798d6ec4d62e3e4d2.jpg",
@@ -33,11 +33,11 @@
     "static/media/Account.svg": "/E-commerce/static/media/Account.2cd00a9d87dffb782fe89b31248cd187.svg",
     "static/media/hdfcLogo.webp": "/E-commerce/static/media/hdfcLogo.99eca2e11ad8eca4ea44.webp",
     "static/media/COD.webp": "/E-commerce/static/media/COD.0bead347bd85205cdfce.webp",
-    "main.4eb1852c.css.map": "/E-commerce/static/css/main.4eb1852c.css.map",
-    "main.cb53ec7c.js.map": "/E-commerce/static/js/main.cb53ec7c.js.map"
+    "main.86676d7b.css.map": "/E-commerce/static/css/main.86676d7b.css.map",
+    "main.b90099a2.js.map": "/E-commerce/static/js/main.b90099a2.js.map"
   },
   "entrypoints": [
-    "static/css/main.4eb1852c.css",
-    "static/js/main.cb53ec7c.js"
+    "static/css/main.86676d7b.css",
+    "static/js/main.b90099a2.js"
   ]
 }
