@@ -36,16 +36,27 @@ type Query{
   getUser(_id:ID!):User
 }
 
-
 # Mutation for server
 type Mutation{
     Login(LoginData:LoginInput!):Token
     Signin(SigninData:SigninInput!):User
     UpdateUser(UpdateData:UpdateInput!):UpdateState
+    AddressUpdate(AddressData:AddressInput!):UpdateState
+    
 }
 
 # Mutation inputs
+input AddressInput{
+    _id:ID!
+    city:String!
+    street:String!
+    zipcode:String!
+    number:String!
+}
+
 input UpdateInput{
+    lastName:String!
+    firstName:String!
     phone:String!
     _id:ID!
 }

@@ -22,7 +22,17 @@ data: Login(LoginData: $Logindata) {
 `
 export const UpdatePhone = gql`
 mutation UpdateUser($updateData:UpdateInput!){
-  UpdateUser(UpdateData:$updateData){
+  acknowledgment:UpdateUser(UpdateData:$updateData){
+    acknowledged
+    matchedCount
+    modifiedCount
+  }
+}
+`
+
+export const UserUpdateAddress = gql`
+mutation AddressUpdate($AddressData:AddressInput!){
+  acknowledgment:AddressUpdate(AddressData:$AddressData){
     acknowledged
     matchedCount
     modifiedCount

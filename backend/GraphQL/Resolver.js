@@ -30,7 +30,26 @@ const resolvers = {
             return await signin.save()
         },
         UpdateUser: async (_, { UpdateData }) => {
-            const UpdateUser = Signin.updateOne({ _id: UpdateData._id }, { $set: { phone: UpdateData.phone } })
+            const UpdateUser = Signin.updateOne({ _id: UpdateData._id }, {
+                $set: {
+                    phone: UpdateData.phone,
+                    lastName: UpdateData.lastName,
+                    firstName: UpdateData.firstName
+                }
+            })
+            return await UpdateUser
+        },
+        AddressUpdate: async (_, { AddressData }) => {
+            const UpdateUser = Signin.updateOne({ _id: AddressData._id }, {
+                $set: {
+                    address: {
+                        city: AddressData.city,
+                        number: AddressData.number,
+                        street: AddressData.street,
+                        zipcode: AddressData.zipcode
+                    }
+                }
+            })
             return await UpdateUser
         }
 

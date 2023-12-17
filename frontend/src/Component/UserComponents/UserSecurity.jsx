@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { getUser } from "../../gql/Query";
 import Loading from "../LoadingStructer/Loading"
 import { UpdatePhone } from "../../gql/mutation";
+import { toast } from 'react-toastify'
 const LoginSecurity = (props) => {
   const navigate = useNavigate();
   const [LoginAndSecurityData, setLoginAndSecurityData] = useState({
@@ -20,42 +21,45 @@ const LoginSecurity = (props) => {
     }
   })
 
-  if (loading) {
-    console.log("loading");
-  };
-
+  if (error) {
+    console.log(error.message);
+  }
   useEffect(() => {
     if (data) {
       setLoginAndSecurityData(data.user)
     }
   }, [data]);
-  const [UpdateUserPhone, { loading: Updateuserloading, error: Updateusererror, data: Updateuserdata }] = useMutation(UpdatePhone,{
-    refetchQueries:[getUser,getUser]
+
+  const [UpdateUserPhone, { loading: Updateuserloading, error: Updateusererror, data: Updateuserdata }] = useMutation(UpdatePhone, {
+    refetchQueries: [getUser, getUser]
   })
   const UpdateSecurityData = async (e) => {
     e.preventDefault();
     if (data.phone !== LoginAndSecurityData.phone) {
       const Updata = {
         _id: props.data.UserLogin.LoginData.state._id,
-        phone: LoginAndSecurityData.phone
+        phone: LoginAndSecurityData.phone,
+        lastName: LoginAndSecurityData.lastName,
+        firstName: LoginAndSecurityData.firstName
       }
-      console.log(Updata);
       UpdateUserPhone({
         variables: {
           updateData: Updata
         }
       })
+
     }
     if (Updateuserdata) {
       console.log(data);
+      toast.warning(" user detail update !")
     }
-    
+
   };
 
   return (
     <>
 
-      {loading ? <Loading /> : <>
+      {loading || Updateuserloading ? <Loading /> : <>
         <h2 className="text-center">Login & Security </h2>
         <div className="container">
           <form
@@ -72,7 +76,7 @@ const LoginSecurity = (props) => {
                 className="form-control "
                 placeholder="UserName"
                 aria-label=" username"
-                value={LoginAndSecurityData.firstName + " " + LoginAndSecurityData.lastName}
+                value={LoginAndSecurityData.firstName + LoginAndSecurityData.lastName}
                 disabled
                 required
               />
@@ -124,7 +128,13 @@ const LoginSecurity = (props) => {
                   disabled
                   required
                 />
-
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={(e) => InputEditEnableAndDisable(e)}
+                  type="button"
+                >
+                  <i className="bi bi-pen-fill"></i>
+                </button>
               </div>
             </div>
             <div className="col-lg  mt-2 " style={{ width: "auto" }}>
@@ -149,7 +159,13 @@ const LoginSecurity = (props) => {
                   disabled
                   required
                 />
-
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={(e) => InputEditEnableAndDisable(e)}
+                  type="button"
+                >
+                  <i className="bi bi-pen-fill"></i>
+                </button>
               </div>
             </div>
             <label htmlFor="PhoneNumber" className="form-label">

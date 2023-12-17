@@ -7,6 +7,12 @@ export const getUser = gql`
             lastName
             email
             phone
+            address{
+                number
+                street
+                zipcode
+                city
+            }
         }
     }
 `
