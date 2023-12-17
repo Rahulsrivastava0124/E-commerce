@@ -46,7 +46,7 @@ function App() {
             path="/Categories/jewelery"
             element={<CategoriesContainer link={"jewelery"} />}
           />
-          <Route path="/Profile" element={<ProfileContainer />}>
+          <Route path="/E-commerce/Profile" element={<ProfileContainer />}>
             <Route
               path="Security"
               element={
@@ -67,11 +67,11 @@ function App() {
               element={< ContactUs />}
             />
           </Route>
-          <Route path="WishList" element={<WishListContainer />} />
+          <Route path="/E-commerce/WishList" element={<WishListContainer />} />
           <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} />
-          <Route path='CheckOut' element={<CheckOutContainer />} />
-          <Route path='ProductPreview' element={<PreviewProductContainer />} />
-          <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced }/>} />
+          <Route path='/E-commerce/CheckOut' element={<CheckOutContainer />} />
+          <Route path='/E-commerce/ProductPreview' element={<PreviewProductContainer />} />
+          <Route path="/E-commerce/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

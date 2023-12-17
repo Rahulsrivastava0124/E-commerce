@@ -45,7 +45,7 @@ export const Home = (props) => {
     GetProductData();
   }, []);
 
-  for (let index = 0; index < Categories.length; ) {
+  for (let index = 0; index < Categories.length;) {
     productData.map((element) => {
       if (element.category === Categories[index]) {
         ArrayData.push(element);
@@ -60,6 +60,7 @@ export const Home = (props) => {
   };
   return (
     <>
+      
       {Array.isArray(productData) ? (
         <div
           id="carouselExampleAutoplaying"
@@ -85,9 +86,8 @@ export const Home = (props) => {
             {ArrayData.map((element, index) => {
               return (
                 <div
-                  className={`carousel-item border ${
-                    index === 0 ? "active" : null
-                  }`}
+                  className={`carousel-item border ${index === 0 ? "active" : null
+                    }`}
                   key={index}
                 >
                   <img
@@ -120,7 +120,7 @@ export const Home = (props) => {
                         <div>
                           <button
                             className="btn btn-warning my-3"
-                            onClick={(e) => AddToCart(e,element)}
+                            onClick={(e) => AddToCart(e, element)}
                           >
                             Add to Cart
                           </button>
@@ -175,11 +175,11 @@ export const Home = (props) => {
           </div>
         </div>
       )}
-      <div className="container mt-3 rounded-1 shadow p-2 d-flex justify-content-between align-items-center">
+      <div className="container mt-3 rounded-1 shadow p-2 d-flex flex-wrap justify-content-between align-items-center">
         <div className="">
           <span className="fs-5"> Filter </span>
         </div>
-        <div className="text-end d-flex">
+        <div className="text-end d-flex flex-wrap">
           <span className="d-flex align-items-center mx-1">
             <button
               className=" btn d-flex align-items-center badge border border-primary-subtle rounded-pill bg-warning-subtle text-primary-emphasis ActiveFilter"

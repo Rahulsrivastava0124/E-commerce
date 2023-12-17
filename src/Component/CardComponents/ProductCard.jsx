@@ -127,7 +127,7 @@ const ProductCard = (props) => {
           <h3 className="fw-bold text-primary-emphasis">Rs.{element.price}</h3>
           <span className="text-success"> Instock </span>
         </div>
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="d-flex  align-items-center justify-content-between">
           <h6 className="text-decoration-line-through">
             Rs.{element.price + 300}
           </h6>
@@ -188,7 +188,7 @@ const ProductCard = (props) => {
           <button
             type="button"
             className="btn ScaleButton"
-            onClick={() => navigate("/ProductPreview", { state: element })}
+            onClick={() => navigate("/E-commerce/ProductPreview", { state: element })}
           >
             <i className="bi bi-eye-fill fs-5"></i>
           </button>

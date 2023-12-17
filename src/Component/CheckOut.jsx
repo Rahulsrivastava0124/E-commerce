@@ -342,12 +342,12 @@ export default function BuyItems(props) {
       },
     });
     props.AddToCartHandler({state:"Order Succesfull"})
-    navigate("./OrderPlaced", { state: { element, date, orderId } });
+    navigate("/E-commerce/CheckOut/OrderPlaced", { state: { element, date, orderId } });
   };
   return (
     <>
-      <div className="d-flex mt-4 mx-5 flex-warp">
-        <div className="container ms-5" style={{ width: "1900px" }}>
+      <div className="d-flex mt-4 mx-5 flex-wrap">
+        <div className="container Check_out ms-5 w-50" >
           <h6>
             {" "}
             Hi{" "}
@@ -474,7 +474,7 @@ export default function BuyItems(props) {
           </div>
         </div>
 
-        <div className="container border rounded p-4 ms-4 h-100 mt-5">
+        <div className="container border  rounded p-4 ms-4 h-100 mt-5" style={{maxWidth:"fit-content"}}>
           <OrderSummmeryContainer
             element={
               location.state === null ? props.data.AddToCart : location.state

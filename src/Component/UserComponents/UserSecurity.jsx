@@ -43,7 +43,7 @@ const LoginSecurity = (props) => {
     resData.name.firstname = LoginAndSecurityData.FirstName;
     resData.name.lastname = LoginAndSecurityData.LastName;
     const UpdateResData = await UpdateData(resData);
-    navigate("/Profile", {
+    navigate("E-commerce/Profile", {
       state: {
         state: "show",
         info: { color: "success", message: "Login data is updated" },

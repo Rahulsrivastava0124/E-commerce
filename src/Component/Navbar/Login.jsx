@@ -7,8 +7,6 @@ function Login(props) {
   const [LoginData, setLoginData] = useState({ username: "", password: "" });
   const [Loading, setLoading] = useState(true);
 
-  console.log(props);
-
   const SubmitLoginForm = async (e) => {
     e.preventDefault();
     setLoading(false);

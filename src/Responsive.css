@@ -7,13 +7,71 @@
   .nav-phone-menu {
     display: none !important;
   }
+  .WishList_empty_logo{
+    width: 70vw;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
 
   .nav_phone_menu_icon {
     display: block;
   }
+  .navbar-nav-responsive {
+    display: block !important;
+    position: absolute;
+    top: 57px;
+    background-color: aquamarine;
+    width: 200px;
+    flex-direction: column;
+    left: 4px;
+    border-radius: 5px;
+    padding: 6px 6px;
+  }
+  .navbar-nav-responsive a,
+  li {
+    padding-bottom: 5px;
+  }
 }
 
-@media (min-width: 1200px){
- .container-md {
-    max-width: 1355px;}
+@media (min-width: 100px) {
+  .container-md {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .Footer_Feature button {
+    margin: 0px 20px 0px 20px !important;
+    width: auto !important;
+    margin-bottom: 5px !important;
+  }
+  .Footer_Feature {
+    flex-wrap: wrap !important;
+    
+  }
+  
+}
+
+@media (max-width: 550px) {
+  .Nav_Login_btn {
+    display: none;
+  }
+  .Nav_search_input {
+    display: none;
+  }
+
+  .Phone_search_input {
+    display: block !important;
+  }
+  .Check_out{
+    margin-left: 0px !important;
+  }
+}
+
+@media (max-width:1340px) {
+  .Check_out{
+    max-width:80VW;
+
+  }
 }

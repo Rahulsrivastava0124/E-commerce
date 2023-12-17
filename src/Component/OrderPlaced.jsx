@@ -27,7 +27,6 @@ export default function OrderPlaced() {
     "Dec",
   ];
 
-  console.log(location);
   return (
     <div className="d-flex ">
       <div className="w-75 bg-success text-center pt-5 ">

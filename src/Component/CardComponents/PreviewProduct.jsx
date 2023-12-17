@@ -16,18 +16,18 @@ export const PreviewProduct = (props) => {
     props.RemoveToCartHandler({ state: element });
   };
 
-  const getCountData=()=>{
+  const getCountData = () => {
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (location.state.id === props.data.AddToCart[i].Cart.state.element.id) {
         setCount(props.data.AddToCart[i].Cart.state.count);
       }
     }
-  
+
   }
-   
-useEffect(() => {
- getCountData()
-}, [props])
+
+  useEffect(() => {
+    getCountData()
+  }, [props])
 
   return (
     <>
@@ -125,7 +125,7 @@ useEffect(() => {
             <div className="border rounded p-2 shadow-sm">
               <h5>
                 <i className="bi bi-currency-rupee"></i>
-                {Price*Count}
+                {Price * Count}
               </h5>
               <span
                 className="fst-italic text-body-tertiary fw-medium m-2"

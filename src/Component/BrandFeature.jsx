@@ -8,7 +8,7 @@ import logo from "../Svg/images/logo.png";
 
 export default function BrandFeature() {
   return (
-    <div className="border rounded  mt-5 p-4 bg-warning-subtle h-100">
+    <div className="border rounded mt-5 p-4 bg-warning-subtle h-100">
       <div className="container text-center mt-4">
         <img
           src={logo}
@@ -22,7 +22,7 @@ export default function BrandFeature() {
           <span className="text-warning ">Market</span>
         </h1>
       </div>
-      <div className="d-flex mt-4 align-items-center">
+      <div className="d-flex flex-wrap justify-content-center mt-4 align-items-center">
         <img
           src={AppQRCode}
           alt=""

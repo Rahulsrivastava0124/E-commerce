@@ -10,13 +10,12 @@ const WishListCart = (props) => {
   };
 
   const AddToCart = (element) => {
-    console.log(element);
     props.AddToCartHandler({ state: { element } });
   };
   return (
     <>
-      <div className="container d-flex mt-5 ">
-        <div className=" p-3" style={{ width: "-webkit-fill-available" }}>
+      <div className="container d-flex flex-wrap mt-5 ">
+        <div className=" p-3 w-50" style={{ width: "-webkit-fill-available" }}>
           <h2 className="mb-4">WishList</h2>
           <h5 className=" fw-bold">Items <span className="fw-bold text-warning">({props.data.UserWish.length})</span> </h5>
           {props.data.UserWish.length != 0 ? (
@@ -70,7 +69,7 @@ const WishListCart = (props) => {
               );
             })
           ) : (
-            <div className="text-center mt-5">
+            <div className="text-center WishList_empty_logo mt-5 m-auto">
               <img
                 src={NoItems}
                 alt=""

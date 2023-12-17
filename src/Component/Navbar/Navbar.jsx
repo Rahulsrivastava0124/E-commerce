@@ -6,9 +6,9 @@ import CartCanvasContainer from "../../containers/CartCanvasContainer";
 import LoginContainers from "../../containers/LoginContainer";
 
 export const Navbar = (props) => {
-  console.log(props);
   const [CategoriesListShow, setCategoriesListShow] = useState(false);
   const [LoginStates, setLoginStates] = useState(false);
+  const [PhoneMenuList, setPhoneMenuList] = useState(false);
   const showCategories = () => {
     if (CategoriesListShow === true) {
       setCategoriesListShow(false);
@@ -29,11 +29,12 @@ export const Navbar = (props) => {
 
   return (
     <div id="Navbar " className="position-sticky top-0 z-1">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary" >
         <div className="container-md m-0">
-          <div className="nav_phone_menu_icon">
+          {/* menu button for phone */}
+          <div className="nav_phone_menu_icon" >
             <input type="checkbox" id="checkbox" />
-            <label htmlFor="checkbox" className="toggle">
+            <label htmlFor="checkbox" className="toggle" onClick={(e) => setPhoneMenuList(!PhoneMenuList)}>
               <div className="bars" id="bar1"></div>
               <div className="bars" id="bar2"></div>
               <div className="bars" id="bar3"></div>
@@ -46,12 +47,12 @@ export const Navbar = (props) => {
               <span className="text-warning">Market</span>
             </span>
             {/* navbar Links */}
-            <ul className="navbar-nav nav nav-underline nav-phone-menu">
+            <ul className={`navbar-nav nav nav-underline nav-phone-menu ${PhoneMenuList ? "navbar-nav-responsive" : null}`}>
               <Link
                 className="nav-link active"
                 aria-current="page"
                 to="/E-commerce"
-              >
+              ><i className="bi bi-house mx-1"></i>
                 Home
               </Link>
               <li
@@ -59,30 +60,28 @@ export const Navbar = (props) => {
                 onClick={() => showCategories()}
               >
                 <span className="nav-link">
+                  <i className="bi bi-list mx-1"></i>
                   Categories <span>{CategoriesListShow ? "▼" : "△"}</span>
                 </span>
               </li>
-              <Link className="nav-link " to="/WishList">
-                WishList
+              <Link className="nav-link " to="/E-commerce/WishList">
+                <i className="bi bi-bag-heart-fill mx-1"></i>  WishList
               </Link>
             </ul>
           </div>
           <div className="d-flex align-items-center">
-            {/* navbar search input */}
-            <form className="me-3">
-              <input
-                className="form-control me-2 border-0 rounded-pill nav-search"
-                type="search"
-                placeholder="Search 🔍"
-                aria-label="Search"
-                style={{ width: "500px" }}
-              />
-            </form>
+            <div class="Search_input-wrapper me-2" >
+              <button class="Search_icon">
+                <i class="bi bi-search"></i>
+              </button>
+              <input placeholder="search.." class="Search_input" name="text" type="text" />
+            </div>
+          
             <div id="Account">
               {/* Account logo */}
               {LoginStates ? (
                 <span className="me-4 h6 shadow rounded-pill bg-danger-subtle pt-1 p-2" >
-                  <Link to="/Profile" className="text-decoration-none">
+                  <Link to="E-commerce/Profile" className="text-decoration-none">
                     <img src={Account} alt="Account" className="" />{" "}
                     <span className=" text-dark fw-bold">
                       {Object.keys(props.data.UserLogin.LoginData).length === 0
@@ -94,15 +93,15 @@ export const Navbar = (props) => {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-primary me-3 "
+                  className="btn btn-primary me-3 Nav_Login_btn "
                   data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
                   onClick={() => {
                     document.getElementsByClassName("modal-backdrop")[0] !==
-                    undefined
+                      undefined
                       ? document
-                          .getElementsByClassName("modal-backdrop")[0]
-                          .classList.add("z-0")
+                        .getElementsByClassName("modal-backdrop")[0]
+                        .classList.add("z-0")
                       : null;
                   }}
                 >

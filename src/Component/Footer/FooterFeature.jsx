@@ -9,7 +9,7 @@ import freecharge from "../../Svg/images/freecharge.webp";
 export default function FooterFeature() {
   return (
     <div className="container border rounded p-3 mt-5">
-      <div className="d-flex justify-content-around pt-3 ">
+      <div className="d-flex flex-wrap justify-content-around pt-3 ">
         <div className=" text-center ">
           <img
             src={FastDelivery}
@@ -46,7 +46,7 @@ export default function FooterFeature() {
           <i className="bi bi-shield-fill-check "></i> 100% Payment Protection,
           Easy Return Policy100% Payment Protection, Easy Return Policy
         </span>
-        <div className="d-flex my-3 align-items-center">
+        <div className="d-flex justify-content-evenly my-3  Footer_Feature align-items-center">
           <button className="d-flex flex-column p-3 m-1 rounded  btn-outline-light align-items-center w-25 btn">
             <img src={azpay} alt="" style={{ width: "150px" }} />
           </button>

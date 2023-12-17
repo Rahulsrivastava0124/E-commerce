@@ -3,7 +3,6 @@ import BrandFeature from "../BrandFeature";
 import logo from "../../Svg/images/logo.png";
 
 const YourOrder = (props) => {
-  console.log(props);
   const months = [
     "Jan",
     "Feb",
