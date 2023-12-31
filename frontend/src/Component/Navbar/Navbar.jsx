@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Account from "../../Svg/Account.svg";
-import { CategoriesList } from "../Navbar/Categories_list";
+import { CategoriesList } from "./Categories_list";
 import CartCanvasContainer from "../../containers/CartCanvasContainer";
 import LoginContainers from "../../containers/LoginContainer";
+import Logo from "../../Svg/images/logo.png"
+
 
 export const Navbar = (props) => {
   const [CategoriesListShow, setCategoriesListShow] = useState(false);
@@ -40,7 +42,8 @@ export const Navbar = (props) => {
           </div>
           {/* navbar logo */}
           <div className="d-flex align-items-center">
-            <span className="navbar-brand mb-0 me-3 h1 d-flex">
+            <span className="navbar-brand mb-0 me-3 h1 d-flex align-items-center">
+              <span ><img src={Logo} alt="Nav_logo" style={{width:"80px",height:"60px"}}/></span>
               <span className="text-primary">On</span>
               <span className="text-warning">Market</span>
             </span>
@@ -82,7 +85,7 @@ export const Navbar = (props) => {
               {LoginStates ? (
                 <span className="me-4 h6 shadow rounded-pill bg-danger-subtle pt-1 p-2">
                   <Link to="/Profile" className="text-decoration-none">
-                    <img src={Account} alt="Account" className="" />{" "}
+                    <img src={Account} alt="Account" className="" />
                     <span className=" text-dark fw-bold">
                       {Object.keys(props.data.UserLogin.LoginData).length === 0
                         ? null
@@ -113,7 +116,6 @@ export const Navbar = (props) => {
               <button className="btn btnActiveBorderNone position-relative p-0">
                 <i
                   className="bi fs-4 bi-cart3 "
-                  type="button"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   aria-controls="offcanvasRight"
@@ -130,7 +132,7 @@ export const Navbar = (props) => {
           </div>
         </div>
       </nav>
-      {/* show  and hide CategoriesList is click  */}
+      {/* show  and hide CategoriesList is clicked  */}
       <CategoriesList />
       {/* <Login /> */}
       {props.data.UserLogin.LoginData === true ? null : <LoginContainers />}

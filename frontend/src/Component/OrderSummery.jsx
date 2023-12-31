@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AddtoCart from "../Svg/AddToCart.gif";
+import {useNavigate} from "react-router-dom";
 
 export default function OrderSummery(props) {
+
+  let navigate=useNavigate();
   let price = 0;
   const [ShippingCharge, setShippingCharge] = useState(40);
   useEffect(() => {

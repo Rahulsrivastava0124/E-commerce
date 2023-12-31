@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import ProtectedComponent from "../Component/ProtectedComponent";
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   data: state,
 });
 

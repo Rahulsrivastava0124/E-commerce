@@ -5,7 +5,7 @@ export const PreviewProduct = (props) => {
 
   const location = useLocation();
   const [Price, setPrice] = useState(location.state.price);
-  const [Count, setCount] = useState(1);
+  const [Count, setCount] = useState(0);
   const rateArray = Rating(location.state.rating.rate);
 
   const AddToCart = (element) => {
@@ -125,7 +125,7 @@ useEffect(() => {
             <div className="border rounded p-2 shadow-sm">
               <h5>
                 <i className="bi bi-currency-rupee"></i>
-                {Price*Count}
+                {Price*(!Count?1:Count)}
               </h5>
               <span
                 className="fst-italic text-body-tertiary fw-medium m-2"

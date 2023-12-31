@@ -188,3 +188,6 @@ a:hover {
   transition-duration: 0.5s;
   transform: rotate(180deg);
 }
+.Check_out_Address_list{
+  width: calc(100% - 20px);
+}

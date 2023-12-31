@@ -83,7 +83,7 @@ function App() {
           </Route>
           <Route path="WishList" element={<WishListContainer />} />
           <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} />
-          <Route path='CheckOut' element={<CheckOutContainer />} />
+          <Route path='/CheckOut' element={<CheckOutContainer/>} />
           <Route path='ProductPreview' element={<PreviewProductContainer />} />
           <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced} />} />
         </Routes>
