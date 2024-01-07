@@ -14,10 +14,15 @@ type User{
     lastName:String
     email:String
     phone:String
-    address:Address
+    Address:[Address]
 }
 
 type Address{
+    name:String,
+    country:String,
+    type:String,
+    select:Boolean,
+    state:String,
     city:String,
     street:String,
     number:String,
@@ -48,10 +53,15 @@ type Mutation{
 # Mutation inputs
 input AddressInput{
     _id:ID!
+    name:String!
+    country:String!
+    type:String!
+    state:String!
     city:String!
+    select:Boolean!
     street:String!
-    zipcode:String!
     number:String!
+    zipcode:String!
 }
 
 input UpdateInput{

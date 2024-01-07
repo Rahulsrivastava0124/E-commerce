@@ -2,24 +2,47 @@ import mongoose from 'mongoose';
 
 const SigninSchema = mongoose.Schema(
     {
-        address: {
-            city: {
-                type: String,
-                default: "city"
-            },
-            street: {
-                type: String,
-                default: "street"
-            },
-            number: {
-                type: String,
-                default: "number"
-            },
-            zipcode: {
-                type: String,
-                default: "zipcode"
+        Address: [
+            {
+                country: {
+                    type: String,
+                    default: "Country"
+                },
+                state: {
+                    type: String,
+                    default: "State"
+                },
+                name: {
+                    type: String,
+                    default: "Geast"
+
+                },
+                type: {
+                    type: String,
+                    default: ""
+                },
+                select: {
+                    type: Boolean,
+                    default: "false"
+                },
+                city: {
+                    type: String,
+                    default: "city"
+                },
+                street: {
+                    type: String,
+                    default: "street"
+                },
+                number: {
+                    type: String,
+                    default: "number"
+                },
+                zipcode: {
+                    type: String,
+                    default: "zipcode"
+                }
             }
-        },
+        ],
         email: {
             type: String,
             required: true

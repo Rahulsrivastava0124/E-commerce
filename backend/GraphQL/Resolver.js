@@ -6,7 +6,7 @@ const Signin = mongoose.model("Signin")
 
 const resolvers = {
     Query: {
-        getUser: async (_, { _id }) => await Signin.findOne()
+        getUser: async (_, { _id }) => await Signin.findOne({}).populate("Address")
     },
     Mutation: {
         Login: async (_, { LoginData }) => {
@@ -40,14 +40,20 @@ const resolvers = {
             return await UpdateUser
         },
         AddressUpdate: async (_, { AddressData }) => {
+            console.log(AddressData)
             const UpdateUser = Signin.updateOne({ _id: AddressData._id }, {
-                $set: {
-                    address: {
+                $push: {
+                    Address: [{
+                        name:AddressData.name,
                         city: AddressData.city,
                         number: AddressData.number,
                         street: AddressData.street,
-                        zipcode: AddressData.zipcode
-                    }
+                        select:AddressData.select,
+                        zipcode: AddressData.zipcode,
+                        state:AddressData.state,
+                        country:AddressData.country,
+                        type:AddressData.type,
+                    }]
                 }
             })
             return await UpdateUser

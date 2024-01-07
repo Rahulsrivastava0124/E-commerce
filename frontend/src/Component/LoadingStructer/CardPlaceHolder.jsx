@@ -9,7 +9,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top" alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -29,7 +29,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top"  alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -49,7 +49,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage}  className="rounded-top" alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -69,7 +69,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top"  alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -89,7 +89,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top"  alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -109,7 +109,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top"  alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -129,7 +129,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top"  alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>
@@ -149,7 +149,7 @@ const CardPlaceHolder = () => {
           style={{ width: "18rem" }}
           aria-hidden="true"
         >
-          <img src={SolidColorImage} alt="" />
+          <img src={SolidColorImage} className="rounded-top"  alt="" />
           <div className="card-body">
             <h5 className="card-title placeholder-glow">
               <span className="placeholder col-6"></span>

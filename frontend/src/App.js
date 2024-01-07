@@ -68,19 +68,18 @@ function App() {
               }
             />
             <Route
-              path="Addresses"
-              element={
-                <ProtectedComponentContainer
-                  Component={UserAdressesContainer}
-                />
-              }
-            />
-
-            <Route
               path="ContactUs"
               element={< ContactUs />}
             />
           </Route>
+          <Route
+              path="/profile/Addresses"
+              element={
+                <ProtectedComponentContainer
+                    Component={UserAdressesContainer}
+                />
+              }
+          />
           <Route path="WishList" element={<WishListContainer />} />
           <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} />
           <Route path='/CheckOut' element={<CheckOutContainer/>} />
