@@ -33,10 +33,14 @@ const Addresses = (props) => {
         }
     }, [getUserData])
 
-    const EditAddress = (data, index) => {
-        setEditAddressData(true)
-        setFormData(data);
+    const EditAddress = (data, value) => {
+        if (value) {
+            setFormData(data);
+        } else {
+            setFormData(Inputs)
+        }
         document.getElementById("AddressInputModal_btn").click();
+        setEditAddressData(true)
     }
 
     return (
@@ -47,12 +51,15 @@ const Addresses = (props) => {
                               Edit = {EditAddressData}
                 />
                 <h2 className = "ms-5 my-4 ">Your Addresses</h2>
+                <button
+                    className = "d-none"
+                    data-bs-toggle = "modal"
+                    id = "AddressInputModal_btn"
+                    data-bs-target = "#AddressInputModal">
+                </button>
                 <div className = "container-md d-flex  flex-wrap m-auto">
                     <div className = "dotted_border Address_card bg-body-tertiary mx-3 d-flex justify-content-evenly align-items-center mb-4"
-                         data-bs-toggle = "modal"
-                         id = "AddressInputModal_btn"
-                         data-bs-target = "#AddressInputModal"
-                    >
+                         onClick = {() => EditAddress(Inputs, false)}>
                         <i className = "bi bi-plus-lg fs-1"></i>
                     </div>
                     {
@@ -74,7 +81,7 @@ const Addresses = (props) => {
                                             <span className = "badge m-2 text-bg-primary span_btn">Active</span> :
                                             <span className = " btn m-2 btn-sm span_btn btn-outline-primary rounded-3 py-0 fw-bold">select</span>}
                                         <span className = "m-2"
-                                              onClick = {(e) => EditAddress(data, index)}>
+                                              onClick = {(e) => EditAddress(data, true)}>
                                                 <i className = "bi bi-pencil-square text-primary span_btn"></i></span>
                                         <span className = ""><i className = "bi m-2 bi-trash3 span_btn text-danger"></i>
                                             </span>
