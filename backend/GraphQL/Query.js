@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-core";
+import {gql} from "apollo-server-core";
 
 const typeDefs = gql`
 # Schema
@@ -26,8 +26,8 @@ type Address{
     city:String,
     street:String,
     number:String,
-    zipcode:String
-    
+    zipcode:String,
+    _id:ID
 }
 
 type UpdateState{
@@ -47,10 +47,14 @@ type Mutation{
     Signin(SigninData:SigninInput!):User
     UpdateUser(UpdateData:UpdateInput!):UpdateState
     AddressUpdate(AddressData:AddressInput!):UpdateState
-    
+    RemoveAddress(RemoveAddress:RemoveAddressInput!):UpdateState
 }
 
 # Mutation inputs
+input RemoveAddressInput{
+    _id:ID!
+    userID:ID!
+}
 input AddressInput{
     _id:ID!
     name:String!

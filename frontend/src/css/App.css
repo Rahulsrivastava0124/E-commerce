@@ -204,3 +204,7 @@ a:hover {
     min-width: 300px;
     height: 250px;
 }
+
+.span_btn{
+    cursor: pointer;
+}

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { GetUsers } from "../server/UserAPI";
+import React, {useEffect, useState} from "react";
 import axisLogo from "../Svg/images/axisLogo.webp";
 import hdfcLogo from "../Svg/images/hdfcLogo.webp";
 import iciciLogo from "../Svg/images/iciciLogo.webp";
@@ -8,11 +7,10 @@ import azpay from "../Svg/images/azpay.webp";
 import mobikwik from "../Svg/images/mobikwik.webp";
 import phonepe from "../Svg/images/phonepe.webp";
 import freecharge from "../Svg/images/freecharge.webp";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
-import { useLazyQuery } from "@apollo/client";
-import { getUser } from "../gql/Query";
-import login from "./Navbar/Login";
+import {useLazyQuery} from "@apollo/client";
+import {getUser} from "../gql/Query";
 
 export default function BuyItems(props) {
     const navigate = useNavigate();
@@ -373,7 +371,7 @@ export default function BuyItems(props) {
                     </span>
                 </h6>
                 <div className="mt-4">
-                    <h5 className="">Delivery Address</h5>
+                    <h5 className="">Delivery Address'</h5>
 
                     {!loading && data ? (<div className="border p-3 mt-3 rounded ">
                         <ul className="list-group">
@@ -384,7 +382,7 @@ export default function BuyItems(props) {
                                     value=""
                                     id="firstRadio"
                                     checked />
-                                <label className="form-check-label Check_out_Address_list"
+                                <label className="form-check-label Check_out_Address'_list"
                                     htmlFor="firstRadio"
 
                                 >
@@ -403,7 +401,7 @@ export default function BuyItems(props) {
                                                 HOME
                                             </span></div>
                                         <span className="mb-0">
-                                            {!data ? null : data.user.address.street}, {!data ? null : data.user.address.city}, {!data ? null : data.user.address.zipcode}
+                                            {!data ? null : data.user.Address.street}, {!data ? null : data.user.Address.city}, {!data ? null : data.user.Address.zipcode}
                                         </span><br /><span>{!data ? null : data.user.phone}</span>
                                     </div>
                                 </label>
@@ -411,7 +409,7 @@ export default function BuyItems(props) {
                         </ul>
                     </div>) : !data ? "Please Login ..." : "loading"}<br />
                     <span className="bg-success-subtle btn btn-success text-success mt-3">
-                        {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW ADDRESS" : "ADD TO ADDRESS"}
+                        {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW Address" : "ADD TO Address'"}
                     </span>
                     <div className="mt-4">
                         <h5>Choose payment method</h5>

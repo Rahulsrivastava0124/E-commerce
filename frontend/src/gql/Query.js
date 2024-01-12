@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from "@apollo/client";
 
 export const getUser = gql`
     query getUser($id:ID!){
@@ -17,6 +17,7 @@ export const getUser = gql`
                 street
                 number
                 zipcode
+                _id
             }
         }
     }

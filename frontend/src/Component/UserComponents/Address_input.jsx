@@ -7,19 +7,8 @@ import {toast} from "react-toastify";
 
 
 const AddressInput = (props) => {
-    const Inputs = {
-        name: "",
-        street: "",
-        country: "",
-        type: "",
-        select: false,
-        state: "",
-        city: "",
-        number: "",
-        zipcode: ""
-    }
 
-    const [AddressInputData, setAddressInputData] = useState(Inputs)
+    const [AddressInputData, setAddressInputData] = useState(props.InputValue)
 
     const [updateAddress, {loading, data, error}] = useMutation(UserUpdateAddress, {
         refetchQueries: [getUser, getUser]
@@ -45,7 +34,8 @@ const AddressInput = (props) => {
             document.getElementById("close_model_btn").click();
             setAddressInputData(Inputs);
         }
-    }, [data]);
+        setAddressInputData(props.InputValue)
+    }, [data,props]);
 
     return (
         <>
@@ -54,8 +44,8 @@ const AddressInput = (props) => {
                  tabIndex = "-1"
                  aria-labelledby = "AddressInputModalLabel"
                  aria-hidden = "true">
-                <div className = "modal-dialog modal-lg">
-                    <div className = "modal-content">
+                <div className = "modal-dialog modal-lg modal-dialog-centered">
+                    <div className = "modal-content bg-body-secondary">
                         <div className = "modal-header">
                             <h1 className = "modal-title fs-5"
                                 id = "exampleModalLabel">Add Address</h1>
@@ -204,10 +194,13 @@ const AddressInput = (props) => {
                                                 Active Address
                                             </label>
                                         </div>
-                                        <div className = "text-center my-2">
+                                        <div className = "text-lg-end my-2">
                                             <button type = "submit"
-                                                    className = "btn btn-primary">Add
+                                                    className = "btn btn-primary ms-2">Add
                                             </button>
+                                            {props.Edit?<button type = "submit"
+                                                     className = "btn btn-warning ms-2">Update
+                                            </button>:null}
                                         </div>
                                     </form>
                             }
