@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {getUser} from "../../gql/Query";
 import Loading from "../LoadingStructer/Loading";
 import AddressInput from "./Address_input";
@@ -11,6 +11,13 @@ const Addresses = (props) => {
             id: props.data.UserLogin.LoginData.state._id
         }
     })
+
+    const [RemoveAddress, {
+        loading: removeAddressLoading,
+        data: removeAddressData,
+        error: removeAddressError
+    }] = useMutation()
+
 
     const Inputs = {
         name: "",

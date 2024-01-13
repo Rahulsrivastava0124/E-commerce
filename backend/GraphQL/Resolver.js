@@ -63,15 +63,10 @@ const resolvers = {
             })
             return await UpdateUser
         },
-        RemoveAddress: async (_, {RemoveAddress}) => {
-            const RemoveAddressData = signin.findOneAndUpdate({_id: RemoveAddress.userId}, {
-                $pull: {
-                    Address: {
-                        _id: RemoveAddress._id
-                    }
-                }
-            })
 
+        RemoveAddress: async (_, {RemoveAddress}) => {
+            console.log(RemoveAddress)
+            const RemoveAddressData = signin.findById(RemoveAddress._id)
             return await RemoveAddressData
         }
     }
