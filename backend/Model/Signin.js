@@ -4,6 +4,10 @@ const SigninSchema = mongoose.Schema(
     {
         Address: [
             {
+                uniqueID: {
+                    type: String,
+                    required: true
+                },
                 country: {
                     type: String,
                     default: "Country"

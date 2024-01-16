@@ -8,6 +8,7 @@ export const getUser = gql`
             email
             phone
             Address{
+                uniqueID
                 name
                 country
                 type

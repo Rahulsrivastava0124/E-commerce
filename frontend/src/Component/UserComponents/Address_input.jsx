@@ -32,10 +32,10 @@ const AddressInput = (props) => {
         if (data) {
             toast.warning(" Address in updated !")
             document.getElementById("close_model_btn").click();
-            setAddressInputData(Inputs);
+            setAddressInputData(props.InputValue);
         }
         setAddressInputData(props.InputValue)
-    }, [data,props]);
+    }, [data, props.InputValue]);
 
     return (
         <>

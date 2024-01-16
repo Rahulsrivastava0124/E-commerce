@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from "@apollo/client";
 
 export const Signin = gql`
 mutation SignIn($signinData:SigninInput!){
@@ -39,4 +39,12 @@ mutation AddressUpdate($AddressData:AddressInput!){
   }
 }
 `
-
+export const RemoveAddress = gql`
+    mutation($removeAddress: RemoveAddressInput!) {
+        RemoveAddress(RemoveAddress: $removeAddress) {
+            Address{
+                type
+                uniqueID
+            }
+        }
+    }`

@@ -3,6 +3,7 @@ import {useMutation, useQuery} from "@apollo/client";
 import {getUser} from "../../gql/Query";
 import Loading from "../LoadingStructer/Loading";
 import AddressInput from "./Address_input";
+import {RemoveAddress} from "../../gql/mutation";
 
 const Addresses = (props) => {
     const [AddressData, setAddressData] = useState([]);
@@ -12,12 +13,27 @@ const Addresses = (props) => {
         }
     })
 
-    const [RemoveAddress, {
-        loading: removeAddressLoading,
-        data: removeAddressData,
-        error: removeAddressError
-    }] = useMutation()
+    const [RemoveAddressData, {
+        loading: removeLoading,
+        data: removeData,
+        error: removeError
+    }] = useMutation(RemoveAddress, {
+        refetchQueries: [
+            getUser, getUser
+        ]
+    })
 
+    const RemoveAddressCard = async (CardId) => {
+        console.log(CardId)
+        await RemoveAddressData({
+            variables: {
+                removeAddress: {
+                    userID: props.data.UserLogin.LoginData.state._id,
+                    _id: CardId
+                }
+            }
+        })
+    }
 
     const Inputs = {
         name: "",
@@ -36,7 +52,9 @@ const Addresses = (props) => {
 
     useEffect(() => {
         if (getUserData) {
-            setAddressData(getUserData.user.Address)
+            if (getUserData !== []) {
+                setAddressData(getUserData.user.Address)
+            }
         }
     }, [getUserData])
 
@@ -74,7 +92,7 @@ const Addresses = (props) => {
                             return (
                                 <div className = {`Address_card  border p-3 bg-body-tertiary rounded-3 mx-3 position-relative mb-4 ${data.select ?
                                     "border-success" : null}`}
-                                     key = {data._id}>
+                                     key = {data.uniqueID}>
                                     <div className = "d-flex justify-content-between">
                                         <p className = "fw-bold m-0"> {data.name}</p>
                                         <span className = "badge bg-secondary text-bg-primary">{data.type}</span>
@@ -90,7 +108,8 @@ const Addresses = (props) => {
                                         <span className = "m-2"
                                               onClick = {(e) => EditAddress(data, true)}>
                                                 <i className = "bi bi-pencil-square text-primary span_btn"></i></span>
-                                        <span className = ""><i className = "bi m-2 bi-trash3 span_btn text-danger"></i>
+                                        <span className = ""
+                                              onClick = {() => RemoveAddressCard(data.uniqueID)}><i className = "bi m-2 bi-trash3 span_btn text-danger"></i>
                                             </span>
                                     </div>
                                 </div>

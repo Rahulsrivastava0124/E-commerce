@@ -8,10 +8,10 @@ const Signin = mongoose.model("Signin")
 
 const resolvers = {
     Query: {
-        getUser: async (_, {_id}) => await Signin.findOne({}).populate("Address")
-    },
-    Mutation: {
+        getUser: async (_, {_id}) => await Signin.findOne({_id})
+    }, Mutation: {
         Login: async (_, {LoginData}) => {
+
             const findUser = await Signin.findOne({email: LoginData.email})
             if (!findUser) {
                 throw new Error("email is does not exit !")
@@ -26,17 +26,14 @@ const resolvers = {
         Signin: async (_, {SigninData}) => {
             const hasedPassword = await bcrypt.hash(SigninData.password, 12)
             const signin = new Signin({
-                ...SigninData,
-                password: hasedPassword,
+                ...SigninData, password: hasedPassword,
             })
             return await signin.save()
         },
         UpdateUser: async (_, {UpdateData}) => {
             const UpdateUser = Signin.updateOne({_id: UpdateData._id}, {
                 $set: {
-                    phone: UpdateData.phone,
-                    lastName: UpdateData.lastName,
-                    firstName: UpdateData.firstName
+                    phone: UpdateData.phone, lastName: UpdateData.lastName, firstName: UpdateData.firstName
                 }
             })
             return await UpdateUser
@@ -49,6 +46,7 @@ const resolvers = {
             const UpdateUser = Signin.updateOne({_id: AddressData._id}, {
                 $push: {
                     Address: [{
+                        uniqueID: new Date().getTime().toString() + Math.floor(Math.random() * 1000000),
                         name: AddressData.name,
                         city: AddressData.city,
                         number: AddressData.number,
@@ -66,7 +64,7 @@ const resolvers = {
 
         RemoveAddress: async (_, {RemoveAddress}) => {
             console.log(RemoveAddress)
-            const RemoveAddressData = signin.findById(RemoveAddress._id)
+            const RemoveAddressData = await signin.findOneAndUpdate({_id: RemoveAddress.userID}, {$pull: {Address: {uniqueID: RemoveAddress._id}}}, {new: true})
             return await RemoveAddressData
         }
     }

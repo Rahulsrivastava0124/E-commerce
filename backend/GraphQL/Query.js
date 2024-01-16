@@ -18,6 +18,7 @@ type User{
 }
 
 type Address{
+    uniqueID:String,
     name:String,
     country:String,
     type:String,
@@ -47,7 +48,7 @@ type Mutation{
     Signin(SigninData:SigninInput!):User
     UpdateUser(UpdateData:UpdateInput!):UpdateState
     AddressUpdate(AddressData:AddressInput!):UpdateState
-    RemoveAddress(RemoveAddress:RemoveAddressInput!):UpdateState
+    RemoveAddress(RemoveAddress:RemoveAddressInput!):User
 }
 
 # Mutation inputs
