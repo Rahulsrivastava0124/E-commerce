@@ -3,7 +3,8 @@ import {useMutation, useQuery} from "@apollo/client";
 import {getUser} from "../../gql/Query";
 import Loading from "../LoadingStructer/Loading";
 import AddressInput from "./Address_input";
-import {RemoveAddress} from "../../gql/mutation";
+import { RemoveAddress} from "../../gql/mutation";
+import {toast} from "react-toastify";
 
 const Addresses = (props) => {
     const [AddressData, setAddressData] = useState([]);
@@ -23,8 +24,8 @@ const Addresses = (props) => {
         ]
     })
 
+
     const RemoveAddressCard = async (CardId) => {
-        console.log(CardId)
         await RemoveAddressData({
             variables: {
                 removeAddress: {
@@ -33,6 +34,7 @@ const Addresses = (props) => {
                 }
             }
         })
+        toast.success("Address is deleted successfull")
     }
 
     const Inputs = {
@@ -52,20 +54,22 @@ const Addresses = (props) => {
 
     useEffect(() => {
         if (getUserData) {
-            if (getUserData !== []) {
+            if (getUserData != []) {
                 setAddressData(getUserData.user.Address)
             }
         }
-    }, [getUserData])
+        if (getUserError){
+            toast.error("get user data error ")
+        }
+        if (removeError){
+            toast.error("Address remove error")
+        }
+    }, [getUserData,getUserError,removeError])
 
     const EditAddress = (data, value) => {
-        if (value) {
+        setEditAddressData(value)
             setFormData(data);
-        } else {
-            setFormData(Inputs)
-        }
         document.getElementById("AddressInputModal_btn").click();
-        setEditAddressData(true)
     }
 
     return (

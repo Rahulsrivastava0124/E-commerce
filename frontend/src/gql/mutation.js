@@ -30,14 +30,14 @@ mutation UpdateUser($updateData:UpdateInput!){
 }
 `
 
-export const UserUpdateAddress = gql`
-mutation AddressUpdate($AddressData:AddressInput!){
-  acknowledgment:AddressUpdate(AddressData:$AddressData){
-    acknowledged
-    matchedCount
-    modifiedCount
-  }
-}
+export const NewAddress = gql`
+    mutation NewAddress($AddressData:AddressInput!){
+        acknowledgment:NewAddress(AddressData:$AddressData){
+            acknowledged
+            matchedCount
+            modifiedCount
+        }
+    }
 `
 export const RemoveAddress = gql`
     mutation($removeAddress: RemoveAddressInput!) {
@@ -48,3 +48,11 @@ export const RemoveAddress = gql`
             }
         }
     }`
+
+export const EditUserAddres =gql`
+    mutation($UpdateData: AddressDataInput!) {
+	UpdateAddress(UpdateAddressData: $UpdateData) {
+		Update
+	}
+}
+`
