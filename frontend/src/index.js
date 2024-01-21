@@ -10,15 +10,18 @@ import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
-  cache: new InMemoryCache({ addTypename: false })
+  cache: new InMemoryCache({ addTypename: false }),
+  headers: {
+    authorization: localStorage.getItem("Token") || ""
+  }
 })
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-  <ApolloProvider client={client}>
-    <Provider store={store}>
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
         <App />
-    </Provider>
-  </ApolloProvider>
-    </React.StrictMode>
+      </Provider>
+    </ApolloProvider>
+  </React.StrictMode>
 );

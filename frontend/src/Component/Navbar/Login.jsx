@@ -13,13 +13,15 @@ function Login(props) {
       variables: {
         Logindata: LoginData
       }
+    }).then(() => {
+      document.getElementById("LoginClosebtn").click();
     })
   };
   useEffect(() => {
     if (data) {
       props.addToLoginHandler({ state: data.data });
-      document.getElementById("LoginClosebtn").click();
       toast.success("hello" + " " + data.data.username)
+      localStorage.setItem("Token",data.data.token)
     }
     if (error) {
       toast.error(error.message)

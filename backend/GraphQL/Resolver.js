@@ -2,17 +2,16 @@ import mongoose from "mongoose"
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from "../config.js";
-import signin from "../Model/Signin.js";
 
-const Signin = mongoose.model("Signin")
+const User = mongoose.model("User")
 
 const resolvers = {
     Query: {
-        getUser: async (_, { _id }) => await Signin.findOne({ _id })
+        getUser: async (_, { _id }) => await User.findOne({ _id })
     }, Mutation: {
         Login: async (_, { LoginData }) => {
 
-            const findUser = await Signin.findOne({ email: LoginData.email })
+            const findUser = await User.findOne({ email: LoginData.email })
             if (!findUser) {
                 throw new Error("email is does not exit !")
             }
@@ -24,12 +23,13 @@ const resolvers = {
             return { token, username: findUser.firstName, _id: findUser._id }
         }, Signin: async (_, { SigninData }) => {
             const hasedPassword = await bcrypt.hash(SigninData.password, 12)
-            const signin = new Signin({
+            const signin = new User({
                 ...SigninData, password: hasedPassword,
             })
             return await signin.save()
-        }, UpdateUser: async (_, { UpdateData }) => {
-            return Signin.updateOne({ _id: UpdateData._id }, {
+        }, UpdateUser: async (_, { UpdateData },{userId}) => {
+            if (!userId) throw new Error("You are not loggined");
+            return User.updateOne({ _id: UpdateData._id }, {
                 $set: {
                     phone: UpdateData.phone, lastName: UpdateData.lastName, firstName: UpdateData.firstName
                 }
@@ -39,7 +39,7 @@ const resolvers = {
         // Address Update is Add new User Address in UserAddress Array and return a acknowledgment
 
         NewAddress: async (_, { AddressData }) => {
-            return Signin.updateOne({ _id: AddressData._id }, {
+            return User.updateOne({ _id: AddressData._id }, {
                 $push: {
                     Address: [{
                         uniqueID: new Date().getTime().toString() + Math.floor(Math.random() * 1000000),
@@ -59,7 +59,7 @@ const resolvers = {
 
         // remove Address is remove the data in address Array and return new Array data
         RemoveAddress: async (_, { RemoveAddress }) => {
-            return signin.findOneAndUpdate({ _id: RemoveAddress.userID },
+            return User.findOneAndUpdate({ _id: RemoveAddress.userID },
                 { $pull: { Address: { uniqueID: RemoveAddress._id } } },
                 { new: true });
         },
@@ -67,7 +67,7 @@ const resolvers = {
 
         //Edit the existing Address data in edit function and return Update or 
         UpdateAddress: async (_, { UpdateAddressData }) => {
-            const EditAddressData = await signin.findOneAndUpdate(
+            const EditAddressData = await User.findOneAndUpdate(
                 { 'Address._id': UpdateAddressData.AddressId }, {
                 $set: {
                     'Address.$': {

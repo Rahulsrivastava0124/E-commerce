@@ -23,6 +23,7 @@ export const Categories = (props) => {
 
   return (
     <>
+    
       <h3 className="fw-bolder text-center">
         {" "}
         {props.link ? props.link : null}

@@ -82,7 +82,7 @@ export default function OrderSummery(props) {
           <div className="text-center">
             <button
               className="btn btn-primary text-center"
-              onClick={() => navigate("/E-commerce")}
+              onClick={() => navigate("/")}
               data-bs-dismiss="offcanvas"
             >
               Shop now

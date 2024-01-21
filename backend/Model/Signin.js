@@ -70,4 +70,4 @@ const SigninSchema = mongoose.Schema(
     }
 );
 
-export default mongoose.model('Signin', SigninSchema);
+export default mongoose.model('User', SigninSchema);

@@ -52,7 +52,7 @@ export const Navbar = (props) => {
               <Link
                 className="nav-link active"
                 aria-current="page"
-                to="/E-commerce"
+                to="/"
               >
                 Home
               </Link>

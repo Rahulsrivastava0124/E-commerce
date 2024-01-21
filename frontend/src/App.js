@@ -24,6 +24,7 @@ import OrderPlaced from './Component/OrderPlaced'
 
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Admin_login_page from "./Component/Admin/Admin_login_page";
 function App() {
   return (
     <div className="App">
@@ -39,10 +40,11 @@ function App() {
           draggable
           pauseOnHover
           theme="colored"
+          stacked
         />
         <NavbarContainer />
         <Routes>
-          <Route path="/E-commerce" element={<HomeContainer />} />
+          <Route path="/" element={<HomeContainer />} />
           <Route Path="*" element={<Error404 />} />
           <Route
             path="/Categories/men'sclothing"
@@ -73,18 +75,19 @@ function App() {
             />
           </Route>
           <Route
-              path="/profile/Addresses"
-              element={
-                <ProtectedComponentContainer
-                    Component={UserAdressesContainer}
-                />
-              }
+            path="/profile/Addresses"
+            element={
+              <ProtectedComponentContainer
+                Component={UserAdressesContainer}
+              />
+            }
           />
           <Route path="WishList" element={<WishListContainer />} />
           <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} />
-          <Route path='/CheckOut' element={<CheckOutContainer/>} />
+          <Route path='/CheckOut' element={<CheckOutContainer />} />
           <Route path='ProductPreview' element={<PreviewProductContainer />} />
           <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced} />} />
+          <Route path="/Admin/Admin_login" element={<Admin_login_page/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
