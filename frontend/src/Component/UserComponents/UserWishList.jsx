@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import BrandFeature from "../BrandFeature";
 import NoItems from "../../Svg/GifImages/NoItems.gif";
+import NavbarContainer from "../../containers/NavbarContainer";
+import Footer from "../Footer/Footer";
 
 const WishListCart = (props) => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const WishListCart = (props) => {
   };
   return (
     <>
+      <NavbarContainer />
       <div className="container d-flex mt-5 ">
         <div className=" p-3" style={{ width: "-webkit-fill-available" }}>
           <h2 className="mb-4">WishList</h2>
@@ -81,8 +84,9 @@ const WishListCart = (props) => {
             </div>
           )}
         </div>
-        <BrandFeature/>
+        <BrandFeature />
       </div>
+      <Footer />
     </>
   );
 };

@@ -5,6 +5,7 @@ import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
 import { useLocation, useNavigate } from "react-router-dom";
 import FooterFeature from '../Component/Footer/FooterFeature'
+import NavbarContainer from "../containers/NavbarContainer.js";
 
 export const Home = (props) => {
   const location = useLocation();
@@ -58,6 +59,7 @@ export const Home = (props) => {
 
   return (
     <>
+    <NavbarContainer/>
       {Array.isArray(productData) ? (
         <div
           id="carouselExampleAutoplaying"

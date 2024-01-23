@@ -11,6 +11,8 @@ import {useLocation, useNavigate} from "react-router-dom";
 import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
 import {useLazyQuery} from "@apollo/client";
 import {getUser} from "../gql/Query";
+import NavbarContainer from "../containers/NavbarContainer";
+import Footer from "./Footer/Footer";
 
 export default function BuyItems(props) {
     const navigate = useNavigate();
@@ -354,7 +356,9 @@ export default function BuyItems(props) {
         navigate("./OrderPlaced", { state: { element, date, orderId } });
     };
     console.log(data, loading, UserData)
-    return (<>
+    return (
+    <>
+    <NavbarContainer/>
         <div className="d-flex mt-4 mx-5 flex-warp">
             <div className="container ms-5"
                 style={{ width: "1900px" }}>
@@ -502,5 +506,7 @@ export default function BuyItems(props) {
                 />
             </div>
         </div>
-    </>);
+        <Footer/>
+    </>
+    );
 }

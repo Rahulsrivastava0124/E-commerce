@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { productsCategories } from "../../server/productAPI.js";
+import NavbarContainer from "../../containers/NavbarContainer.js";
 
 export const CategoriesList = (props) => {
   const [CategoriesListRes, setCategoriesListRes] = useState([]);
@@ -8,12 +9,13 @@ export const CategoriesList = (props) => {
   async function getData() {
     setCategoriesListRes(await productsCategories());
   }
-
+  
   useEffect(() => {
     getData();
   }, []);
 
   return (
+    <>
     <div className=" bg-light border-top">
       <ul className="nav nav-underline justify-content-evenly align-items-center">
         {CategoriesListRes.map((element, index) => {
@@ -31,5 +33,6 @@ export const CategoriesList = (props) => {
         })}
       </ul>
     </div>
+    </>
   );
 };

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CardPlaceHolder from "../Component/LoadingStructer/CardPlaceHolder";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
-import FooterFeature from "../Component/Footer/FooterFeature";
+import NavbarContainer from "../containers/NavbarContainer.js";
+import Footer from "./Footer/Footer.jsx";
 
 export const Categories = (props) => {
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
@@ -23,7 +24,7 @@ export const Categories = (props) => {
 
   return (
     <>
-    
+<NavbarContainer/>
       <h3 className="fw-bolder text-center">
         {" "}
         {props.link ? props.link : null}
@@ -45,8 +46,8 @@ export const Categories = (props) => {
         ) : (
           <CardPlaceHolder />
         )}
-        <FooterFeature />
       </div>
+      <Footer/>
     </>
   );
 };
