@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ProtectedComponent from "../Component/ProtectedComponent";
+import ProtectedComponent from "../Component/ProtectedRoutes/ProtectedComponent";
 
 const mapStateToProps = (state) => ({
   data: state,

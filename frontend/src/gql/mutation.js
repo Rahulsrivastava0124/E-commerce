@@ -56,3 +56,11 @@ export const EditUserAddres =gql`
 	}
 }
 `
+
+export const Admin_Login=gql`
+mutation($AdminData: Admin_login_input!) {
+	AdminLogin(Admin_login_data: $AdminData) {
+		token
+	}
+}
+`

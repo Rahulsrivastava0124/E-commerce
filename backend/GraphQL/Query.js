@@ -55,9 +55,15 @@ const typeDefs = gql`
         NewAddress(AddressData:AddressInput!):UpdateState
         RemoveAddress(RemoveAddress:RemoveAddressInput!):User
         UpdateAddress(UpdateAddressData:AddressDataInput!):Modified
+        AdminLogin(Admin_login_data:Admin_login_input!):Token
     }
 
     # Mutation inputs
+input Admin_login_input{
+    Email:String!
+    Password:String!
+}
+
     input AddressD{
         uniqueID:String!,
         name:String!,

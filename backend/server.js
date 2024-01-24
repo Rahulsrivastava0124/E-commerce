@@ -4,6 +4,7 @@ import typeDefs from "./GraphQL/Query.js";
 import mongoose from "mongoose";
 import { JWT_SECRET, MONGO_DB } from "./config.js";
 import "./Model/Signin.js";
+import './Model/AdminLogin.js'
 import jwt from "jsonwebtoken";
 
 // Connect to Mongodb Cluster
