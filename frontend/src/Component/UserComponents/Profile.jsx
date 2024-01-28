@@ -92,6 +92,7 @@ export const Profile = (props) => {
   const LogOutUser = () => {
     const initialState = {};
     props.UserLogOutHandler(initialState);
+    localStorage.removeItem('Token')
     nevigate("/");
   };
 

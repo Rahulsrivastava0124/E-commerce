@@ -8,13 +8,12 @@ const ProductCard = (props) => {
   const tabIndex = props.element;
   const [AddToCardIcon, setAddToCardIcon] = useState({
     divElement: (
-      <span
-        className="btn btn-primary btn-sm pt-0"
-        onClick={(e) => AddToCart(e, element)}
-      >
-        <i className="bi bi-cart-plus fs-5 me-1 "></i>
-        Add To Cart
-      </span>
+      <button class="CartBtn rounded-pill" onClick={(e) => AddToCart(e, element)}>
+        <span class="IconContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
+        </span>
+        <p class="text mb-0">Add to Cart</p>
+      </button>
     ),
     click: false,
     Count: 0,
@@ -33,16 +32,17 @@ const ProductCard = (props) => {
       }
     }
   };
+
   useEffect(() => {
     if (props.data.UserWish.length !== 0) {
       for (let i = 0; i < props.data.UserWish.length; i++) {
         if (
           props.CardType === "Home" ||
-          props.CardType === " " ||
-          props.CardType === "All Product"
+            props.CardType === " " ||
+            props.CardType === "All Product"
             ? true
             : props.data.UserWish[i].WishList.state.category ===
-              (props.CardType !== "Home" ? props.CardType : props.link)
+            (props.CardType !== "Home" ? props.CardType : props.link)
         ) {
           const GET_ID = `${props.data.UserWish[i].WishList.state.category
             .split(" ")
@@ -97,23 +97,22 @@ const ProductCard = (props) => {
 
     countNo === 1
       ? setAddToCardIcon({
-          divElement: (
-            <span
-              className="btn btn-primary btn-sm pt-0"
-              onClick={(e) => AddToCart(e, element)}
-            >
-              <i className="bi bi-cart-plus fs-5 me-1 "></i>
-              Add To Cart
+        divElement: (
+          <button class="CartBtn rounded-pill" onClick={(e) => AddToCart(e, element)}>
+            <span class="IconContainer">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
             </span>
-          ),
-          click: false,
-          Count: 0,
-        })
+            <p class="text mb-0">Cart</p>
+          </button>
+        ),
+        click: false,
+        Count: 0,
+      })
       : setAddToCardIcon({
-          ...AddToCardIcon,
-          click: true,
-          Count: countNo,
-        });
+        ...AddToCardIcon,
+        click: true,
+        Count: countNo,
+      });
   };
   return (
     <div
@@ -147,7 +146,6 @@ const ProductCard = (props) => {
         <div className="d-flex align-items-center justify-content-between">
           <span
             className="btn ScaleButton "
-            // onClick={(e) => WishList(e, element)}
           >
             <div className="heart-container" title="Like">
               <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
@@ -181,16 +179,7 @@ const ProductCard = (props) => {
                 </svg>
               </div>
             </div>
-            {/* <i
-              className={`IconScale ${element.category
-                .split(" ")
-                .join("")
-                .split(`'`)
-                .join("")}${element.id} bi bi-heart fs-5`}
-              id={`${element.category.split(" ").join("").split(`'`).join("")}${
-                element.id
-              }`}
-            ></i> */}
+
           </span>
           <button
             type="button"
@@ -203,9 +192,9 @@ const ProductCard = (props) => {
             {AddToCardIcon.click === false ? (
               AddToCardIcon.divElement
             ) : (
-              <div className="border rounded d-flex align-items-center border-primary-subtle">
+              <div className="border rounded d-flex align-items-center border-warning-subtle">
                 <span
-                  className="btn btn-sm btn-primary rounded-end-0"
+                  className="btn btn-sm btn-warning rounded-end-0"
                   onClick={() => RemoveItems()}
                 >
                   <i className="bi bi-dash"></i>
@@ -213,7 +202,7 @@ const ProductCard = (props) => {
                 <span className="px-3">{countNo}</span>
                 <span
                   onClick={() => AddToCart()}
-                  className="btn btn-sm btn-primary rounded-start-0"
+                  className="btn btn-sm btn-warning rounded-start-0"
                 >
                   <i className="bi bi-plus"></i>
                 </span>

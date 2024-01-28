@@ -8,13 +8,17 @@ const Admin_Login = mongoose.model("Admin_login")
 const resolvers = {
     Query: {
         getUser: async (_, { _id }) => await User.findOne({ _id })
-    }, Mutation: {
+    },
+
+    Mutation: {
         Login: async (_, { LoginData }) => {
+            console.log(LoginData);
             const findUser = await User.findOne({ email: LoginData.email })
             if (!findUser) {
                 throw new Error("email is does not exit !")
             }
-            const passwordCheck = bcrypt.compare(LoginData.password, findUser.password)
+            const passwordCheck = await bcrypt.compare(LoginData.password, findUser.password)
+            console.log(passwordCheck);
             if (!passwordCheck) {
                 throw new Error("email and password is invalide")
             }

@@ -53,7 +53,7 @@ export const Navbar = (props) => {
                 className="nav-link active"
                 aria-current="page"
                 to="/"
-              >
+              ><i className="bi bi-house me-1"></i>
                 Home
               </Link>
               <li
@@ -61,11 +61,12 @@ export const Navbar = (props) => {
                 onClick={() => showCategories()}
               >
                 <span className="nav-link">
+                <i className="bi bi-list me-1"></i>
                   Categories <span>{CategoriesListShow ? "▼" : "△"}</span>
                 </span>
               </li>
               <Link className="nav-link " to="/WishList">
-                WishList
+              <i className="bi bi-bag-heart"></i>  WishList
               </Link>
             </ul>
           </div>
@@ -97,9 +98,10 @@ export const Navbar = (props) => {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-primary me-3 "
+                  className="btn btn-primary me-3 rounded-pill px-3 "
                   data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
+                  id="nav_login_pill_arrow"
                   onClick={() => {
                     document.getElementsByClassName("modal-backdrop")[0] !==
                       undefined
@@ -110,6 +112,7 @@ export const Navbar = (props) => {
                   }}
                 >
                   Login
+                  <i class="bi bi-arrow-right ms-2 "></i>
                 </button>
               )}
               {/* cart logo */}

@@ -6,22 +6,33 @@ import { LoginUser } from '../../gql/mutation'
 import { toast } from "react-toastify";
 function Login(props) {
   const [LoginData, setLoginData] = useState({ email: "", password: "" });
+  const [user_login_password_show, setuser_login_password_show] = useState(false)
   const [Loginuser, { loading, data, error }] = useMutation(LoginUser)
   const SubmitLoginForm = async (e) => {
     e.preventDefault();
-    await Loginuser({
-      variables: {
-        Logindata: LoginData
-      }
-    }).then(() => {
-      document.getElementById("LoginClosebtn").click();
-    })
+    if (LoginData.email == "") {
+      toast.error("Email is required !")
+      return
+    } else if (LoginData.password == "") {
+      toast.error("password is required !")
+      return
+    }else{
+
+      await Loginuser({
+        variables: {
+          Logindata: LoginData
+        }
+      }).then(() => {
+        document.getElementById("LoginClosebtn").click();
+      })
+    }
+
   };
   useEffect(() => {
     if (data) {
       props.addToLoginHandler({ state: data.data });
       toast.success("hello" + " " + data.data.username)
-      localStorage.setItem("Token",data.data.token)
+      localStorage.setItem("Token", data.data.token)
     }
     if (error) {
       toast.error(error.message)
@@ -74,10 +85,10 @@ function Login(props) {
                       id="exampleInputUserName"
                       aria-describedby="emailHelp"
                       value={LoginData.email}
+                      required
                       onChange={(e) =>
                         setLoginData({ ...LoginData, email: e.target.value })
                       }
-                      required
                     />
                     <div id="emailHelp" className="form-text">
                       We'll never share your email with anyone else.
@@ -91,21 +102,21 @@ function Login(props) {
                       Password
                     </label>
                     <input
-                      type="password"
+                      type={user_login_password_show?"text":"password"}
                       className="form-control"
                       id="exampleInputPassword1"
                       value={LoginData.password}
+                      required
                       onChange={(e) =>
                         setLoginData({ ...LoginData, password: e.target.value })
                       }
-                      required
                     />
+                    <i class={`bi bi-${user_login_password_show?'eye-slash' :"eye"} ${user_login_password_show?'text-primary' :"text-dark"} text-primary h5`} id="user_login_password_show" onClick={()=>setuser_login_password_show(!user_login_password_show)}></i>
                   </div>
                   <button
                     type="submit"
-                    className={`btn btn-primary me-2 ${loading ? "disabled" : null
+                    className={`btn btn-primary me-2 ${loading || (LoginData.email == "" && LoginData.password == "") ? "disabled" : null
                       }`}
-                    // data-bs-dismiss="modal"
                     onClick={(e) => SubmitLoginForm(e)}
                   >
                     {loading ? (

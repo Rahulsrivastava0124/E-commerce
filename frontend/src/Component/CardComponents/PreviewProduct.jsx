@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Rating } from "../../Function/Rating";
 import { useLocation } from "react-router-dom";
+import NavbarContainer from "../../containers/NavbarContainer";
+import Footer from '../Footer/Footer'
 export const PreviewProduct = (props) => {
 
   const location = useLocation();
@@ -16,21 +18,22 @@ export const PreviewProduct = (props) => {
     props.RemoveToCartHandler({ state: element });
   };
 
-  const getCountData=()=>{
+  const getCountData = () => {
     for (let i = 0; i < props.data.AddToCart.length; i++) {
       if (location.state.id === props.data.AddToCart[i].Cart.state.element.id) {
         setCount(props.data.AddToCart[i].Cart.state.count);
       }
     }
-  
+
   }
-   
-useEffect(() => {
- getCountData()
-}, [props])
+
+  useEffect(() => {
+    getCountData()
+  }, [props])
 
   return (
     <>
+    <NavbarContainer/>
       <div className=" d-flex" style={{ margin: "40px 150px 40px 150px" }}>
         <div className=" container w-25 shadow-sm rounded d-flex align-items-center">
           <img
@@ -125,7 +128,7 @@ useEffect(() => {
             <div className="border rounded p-2 shadow-sm">
               <h5>
                 <i className="bi bi-currency-rupee"></i>
-                {Price*(!Count?1:Count)}
+                {(Price * (!Count ? 1 : Count)).toFixed(2)}
               </h5>
               <span
                 className="fst-italic text-body-tertiary fw-medium m-2"
@@ -183,6 +186,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
+     <Footer/>
     </>
   );
 };
