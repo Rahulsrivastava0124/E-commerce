@@ -12,6 +12,8 @@ import avatar from "../../Svg/GifImages/avatar.gif";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Toasts from "../Toasts";
 import { useNavigate } from "react-router-dom";
+import NavbarContainer from "../../containers/NavbarContainer";
+import Footer from '../Footer/Footer'
 
 export const Profile = (props) => {
   const nevigate = useNavigate();
@@ -98,6 +100,7 @@ export const Profile = (props) => {
 
   return (
     <>
+    <NavbarContainer/>
       <Toasts Toastsdata={location.state} />
       <div className="container mt-2">
         <h2 className="text-center">User Profile</h2>
@@ -114,7 +117,7 @@ export const Profile = (props) => {
               {GreetingMessege.message}
               <img
                 className="mx-1"
-                style={{ width: "30px" }}
+                style={{ width: "60px" }}
                 src={GreetingMessege.icon}
                 alt={GreetingMessege.message}
               />
@@ -162,6 +165,7 @@ export const Profile = (props) => {
         </div>
       </div>
       <Outlet />
+      <Footer/>
     </>
   );
 };
