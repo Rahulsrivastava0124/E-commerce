@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { productsCategories } from "../../server/productAPI.js";
-import NavbarContainer from "../../containers/NavbarContainer.js";
 
 export const CategoriesList = (props) => {
   const [CategoriesListRes, setCategoriesListRes] = useState([]);
@@ -20,13 +19,13 @@ export const CategoriesList = (props) => {
       <ul className="nav nav-underline justify-content-evenly align-items-center">
         {CategoriesListRes.map((element, index) => {
           return (
-            <li className="nav-item " key={index}>
+            <li className="nav-item" key={index}>
               <Link
                 className="nav-link text-dark "
                 aria-current="page"
                 to={`/Categories/${element.split(" ").join("")}`}
               >
-                {element}
+               <span>{element}</span> 
               </Link>
             </li>
           );

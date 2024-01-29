@@ -24,8 +24,8 @@ export const Categories = (props) => {
 
   return (
     <>
-<NavbarContainer/>
-      <h3 className="fw-bolder text-center">
+      <NavbarContainer />
+      <h3 className="fw-bolder text-center text-capitalize">
         {" "}
         {props.link ? props.link : null}
         {""}
@@ -47,7 +47,7 @@ export const Categories = (props) => {
           <CardPlaceHolder />
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

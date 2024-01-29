@@ -12,14 +12,12 @@ const resolvers = {
 
     Mutation: {
         Login: async (_, { LoginData }) => {
-            console.log(LoginData);
             const findUser = await User.findOne({ email: LoginData.email })
             if (!findUser) {
                 throw new Error("email is does not exit !")
             }
-            const passwordCheck = await bcrypt.compare(LoginData.password, findUser.password)
-            console.log(passwordCheck);
-            if (!passwordCheck) {
+            const passwodCheck = await bcrypt.compare(LoginData.password, findUser.password)
+            if (!passwodCheck) {
                 throw new Error("email and password is invalide")
             }
             const token = jwt.sign({ userId: findUser._id }, JWT_SECRET);

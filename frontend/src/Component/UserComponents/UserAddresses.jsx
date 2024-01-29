@@ -92,9 +92,9 @@ const Addresses = (props) => {
                         <div class="modal-body">
                             Are you sure you want to <span className="text-warning">Remove</span> your <span className="text-warning">Address</span>?
                             <div className="border rounded mt-2 p-2 bg-danger-subtle text-capitalize text-danger-emphasis">
-                                <span className="fw-bold">{!RemoveData == "" ? RemoveData.name : null}</span><br/>
-                                <span>{!RemoveData == "" ? RemoveData.street : null}</span><br/>
-                                <span>{!RemoveData==""? RemoveData.number:null}</span>
+                                <span className="fw-bold">{!RemoveData == "" ? RemoveData.name : null}</span><br />
+                                <span>{!RemoveData == "" ? RemoveData.street : null}</span><br />
+                                <span>{!RemoveData == "" ? RemoveData.number : null}</span>
                             </div>
                         </div>
                         <div className="d-flex justify-content-around w-75">
