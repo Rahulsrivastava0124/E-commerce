@@ -59,9 +59,9 @@ export const Navbar = (props) => {
             </div>
             <div className="d-flex align-items-center">
               {/* navbar search input */}
-              <form className="me-3">
+              <form className="me-3 ">
                 <input
-                  className="form-control me-2 border-0 rounded-pill nav-search"
+                  className="form-control me-2  rounded-pill nav-search border border-primary-subtle "
                   type="search"
                   placeholder="Search 🔍"
                   aria-label="Search"
@@ -85,6 +85,7 @@ export const Navbar = (props) => {
                 ) : (
                   <button
                     type="button"
+                    style={{border:"6px solid #ffffffb5"}}
                     className="btn btn-primary me-3 rounded-pill px-3 "
                     data-bs-target="#LoginModalToggle"
                     data-bs-toggle="modal"

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import LoginLogo from "../../Svg/LoginLogo.svg";
+import LoginLogo from "../../Svg/LoginLogo.gif";
 import Signup from "./Signup";
 import { useMutation } from "@apollo/client";
 import { LoginUser } from '../../gql/mutation'
 import { toast } from "react-toastify";
+import Loading from "../LoadingStructer/Loading";
 function Login(props) {
   const [LoginData, setLoginData] = useState({ email: "", password: "" });
   const [user_login_password_show, setuser_login_password_show] = useState(false)
@@ -16,7 +17,7 @@ function Login(props) {
     } else if (LoginData.password == "") {
       toast.error("password is required !")
       return
-    }else{
+    } else {
 
       await Loginuser({
         variables: {
@@ -54,90 +55,84 @@ function Login(props) {
       >
         <div className="modal-dialog modal-lg modal-dialog-centered">
           <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                User Login
-              </h1>
-              <button
-                type="button"
-                id="LoginClosebtn"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <div className="d-flex">
-                <div className="container">
-                  <img src={LoginLogo} alt="login logo" />
-                </div>
-                <form className="me-3 mt-3  container">
-                  <div className="mb-3 text-start ">
-                    <label
-                      htmlFor="exampleInputUserName"
-                      className="form-label"
-                    >
-                      User Name
-                    </label>
-                    <input
-                      type="UserName"
-                      className="form-control"
-                      id="exampleInputUserName"
-                      aria-describedby="emailHelp"
-                      value={LoginData.email}
-                      required
-                      onChange={(e) =>
-                        setLoginData({ ...LoginData, email: e.target.value })
-                      }
-                    />
-                    <div id="emailHelp" className="form-text">
-                      We'll never share your email with anyone else.
+
+            {loading ? <Loading /> :
+
+              <div className="modal-body p-0 ">
+                <div className="d-flex justify-content-around align-items-center">
+                  <div className="w-50 ">
+                    <img src={LoginLogo} alt="login logo" style={{ width: "-webkit-fill-available" }} className="rounded-3" />
+                  </div>
+                  <form className="pe-3 pt-3 w-auto">
+                    <h3 className="text-primary">Login</h3>
+                    <div className="mb-3 text-start mt-4">
+                      <label
+                        htmlFor="exampleInputUserName"
+                        className="form-label"
+                      >
+                        User Name
+                      </label>
+                      <input
+                        type="UserName"
+                        className="form-control"
+                        id="exampleInputUserName"
+                        aria-describedby="emailHelp"
+                        value={LoginData.email}
+                        required
+                        onChange={(e) =>
+                          setLoginData({ ...LoginData, email: e.target.value })
+                        }
+                      />
+                      <div id="emailHelp" className="form-text">
+                        We'll never share your email with anyone else.
+                      </div>
                     </div>
-                  </div>
-                  <div className="mb-3 text-start">
-                    <label
-                      htmlFor="exampleInputPassword1"
-                      className="form-label"
-                    >
-                      Password
-                    </label>
-                    <input
-                      type={user_login_password_show?"text":"password"}
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      value={LoginData.password}
-                      required
-                      onChange={(e) =>
-                        setLoginData({ ...LoginData, password: e.target.value })
-                      }
-                    />
-                    <i class={`bi bi-${user_login_password_show?'eye-slash' :"eye"} ${user_login_password_show?'text-primary' :"text-dark"} text-primary h5`} id="user_login_password_show" onClick={()=>setuser_login_password_show(!user_login_password_show)}></i>
-                  </div>
-                  <button
-                    type="submit"
-                    className={`btn btn-primary me-2 ${loading || (LoginData.email == "" && LoginData.password == "") ? "disabled" : null
-                      }`}
-                    onClick={(e) => SubmitLoginForm(e)}
-                  >
-                    {loading ? (
-                      <span
-                        className="spinner-border spinner-border-sm"
-                        aria-hidden="true"
-                      ></span>
-                    ) : null}
-                    Login
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    data-bs-target="#SignUpModelToggle2"
-                    data-bs-toggle="modal"
-                  >
-                    Create Account
-                  </button>
-                </form>
-              </div>
-            </div>
+                    <div className="mb-2 text-start">
+                      <label
+                        htmlFor="exampleInputPassword1"
+                        className="form-label"
+                      >
+                        Password
+                      </label>
+                      <input
+                        type={user_login_password_show ? "text" : "password"}
+                        className="form-control"
+                        id="exampleInputPassword1"
+                        value={LoginData.password}
+                        required
+                        onChange={(e) =>
+                          setLoginData({ ...LoginData, password: e.target.value })
+                        }
+                      />
+                      <i class={`bi bi-${user_login_password_show ? 'eye-slash' : "eye"} ${user_login_password_show ? 'text-primary' : "text-dark"} text-primary h5`} id="user_login_password_show" onClick={() => setuser_login_password_show(!user_login_password_show)}></i>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                      <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" style={{ cursor: "pointer" }} role="switch" id="flexSwitchCheckDefault" />
+                        <label class="form-check-label form-text" for="flexSwitchCheckDefault">Remember me</label>
+                      </div>
+                      <span className="text-primary form-text" style={{ cursor: "pointer" }}> Forget password ?</span>
+                    </div>
+                    <div className="d-grid container">
+                      <button
+                        type="submit"
+                        className={`btn btn-primary me-2 fw-bold ${loading || (LoginData.email == "" && LoginData.password == "") ? "disabled" : null
+                          }`}
+                        onClick={(e) => SubmitLoginForm(e)}
+                      >
+                        Login
+                      </button>
+                    </div>
+                    <h6 className="d-flex justify-content-evenly my-3 form-text"><span>Don't have an account?</span><span className="text-primary" style={{ cursor: "pointer" }} data-bs-target="#SignUpModelToggle2"
+                      data-bs-toggle="modal" >Sign Up</span>
+                    </h6>
+                    <div className="d-flex justify-content-evenly my-4">
+                      <button className=" btn btn-light border"><i class="bi bi-google text-primary px-2"></i>Google</button>
+                      <button className=" btn btn-light border"><i class="bi bi-apple text-secondary px-2"></i>Apple</button>
+                    </div>
+                  </form>
+                </div>
+              </div>}
           </div>
         </div>
       </div>
