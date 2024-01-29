@@ -63,7 +63,7 @@ function Login(props) {
                   <div className="w-50 ">
                     <img src={LoginLogo} alt="login logo" style={{ width: "-webkit-fill-available" }} className="rounded-3" />
                   </div>
-                  <div className="bg-body-secondary rounded-end-3">
+                  <div className="bg-body-secondary rounded-end-3 w-100">
                     <form className="pe-3 pt-3 w-auto px-5">
                       <h3 className="text-primary">Login</h3>
                       <div className="mb-3 text-start mt-4">
