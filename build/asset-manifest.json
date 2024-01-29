@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/E-commerce/static/css/main.86676d7b.css",
+    "main.js": "/E-commerce/static/js/main.b90099a2.js",
+    "static/media/AddToCart.gif": "/E-commerce/static/media/AddToCart.65f64d9ba7207e473372.gif",
+    "static/media/avatar.gif": "/E-commerce/static/media/avatar.eb2714b8d2cac3ea7847.gif",
+    "static/media/ContactUs.jpg": "/E-commerce/static/media/ContactUs.13b798d6ec4d62e3e4d2.jpg",
+    "static/media/locationIcon.gif": "/E-commerce/static/media/locationIcon.dbb52a500a64243b228a.gif",
+    "static/media/solidColorImage.png": "/E-commerce/static/media/solidColorImage.e6a58893244b3ed2d161.png",
+    "static/media/evening.png": "/E-commerce/static/media/evening.2214936563c8a9109105.png",
+    "static/media/logo.png": "/E-commerce/static/media/logo.59b45593f8db135e0c33.png",
+    "static/media/LoginLogo.svg": "/E-commerce/static/media/LoginLogo.cb250ce380ede9791cffdee1c764d17c.svg",
+    "static/media/night.png": "/E-commerce/static/media/night.37252e987bf00231731b.png",
+    "static/media/afternoon.png": "/E-commerce/static/media/afternoon.6811f3b58df2459cce39.png",
+    "static/media/productIcon.gif": "/E-commerce/static/media/productIcon.2a95438d48cc34cc876e.gif",
+    "static/media/NoItems.gif": "/E-commerce/static/media/NoItems.d50bc3c83e596cb91134.gif",
+    "static/media/SolidColorBackground.jpg": "/E-commerce/static/media/SolidColorBackground.056d6162687e10b23679.jpg",
+    "static/media/morning.png": "/E-commerce/static/media/morning.41151bfed353da332a6d.png",
+    "static/media/trackOrder.svg": "/E-commerce/static/media/trackOrder.54aee7411957605b17e21349c0120960.svg",
+    "static/media/offers.svg": "/E-commerce/static/media/offers.d273fd024788945161077496df8867ad.svg",
+    "static/media/phonepe.webp": "/E-commerce/static/media/phonepe.86d517ffe6230a535c80.webp",
+    "static/media/freecharge.webp": "/E-commerce/static/media/freecharge.019cf88a5790d9c09fc8.webp",
+    "static/media/mobikwik.webp": "/E-commerce/static/media/mobikwik.6ef6e2ad914de29aa591.webp",
+    "static/media/iciciLogo.webp": "/E-commerce/static/media/iciciLogo.d514ded7d20ab0bf907b.webp",
+    "static/media/APPSTORE.webp": "/E-commerce/static/media/APPSTORE.284d80a13d66b1b465fa.webp",
+    "static/media/PLAYSTORE.webp": "/E-commerce/static/media/PLAYSTORE.8d274cad05859c124753.webp",
+    "static/media/azpay.webp": "/E-commerce/static/media/azpay.0322f69755a18152f3a4.webp",
+    "index.html": "/E-commerce/index.html",
+    "static/media/axisLogo.webp": "/E-commerce/static/media/axisLogo.3a8dc1c2b7c9a39f7cc0.webp",
+    "static/media/sbiLogo.webp": "/E-commerce/static/media/sbiLogo.9997f747196177e8d61e.webp",
+    "static/media/AppQRCode.webp": "/E-commerce/static/media/AppQRCode.fb458af60df372597210.webp",
+    "static/media/FastDelivery.webp": "/E-commerce/static/media/FastDelivery.3ae9e33163d9d8f3c695.webp",
+    "static/media/Account.svg": "/E-commerce/static/media/Account.2cd00a9d87dffb782fe89b31248cd187.svg",
+    "static/media/hdfcLogo.webp": "/E-commerce/static/media/hdfcLogo.99eca2e11ad8eca4ea44.webp",
+    "static/media/COD.webp": "/E-commerce/static/media/COD.0bead347bd85205cdfce.webp",
+    "main.86676d7b.css.map": "/E-commerce/static/css/main.86676d7b.css.map",
+    "main.b90099a2.js.map": "/E-commerce/static/js/main.b90099a2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86676d7b.css",
+    "static/js/main.b90099a2.js"
+  ]
+}
