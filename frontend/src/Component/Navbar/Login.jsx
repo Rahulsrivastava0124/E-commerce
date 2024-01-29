@@ -63,7 +63,7 @@ function Login(props) {
                   <div className="w-50 ">
                     <img src={LoginLogo} alt="login logo" style={{ width: "-webkit-fill-available" }} className="rounded-3" />
                   </div>
-                  <div className="bg-body-secondary rounded-end-3 w-100">
+                  <div className="bg-body-secondary rounded-end-3 w-100 pe-3">
                     <form className="pe-3 pt-3 w-auto px-5">
                       <h3 className="text-primary">Login</h3>
                       <div className="mb-3 text-start mt-4">
@@ -128,8 +128,8 @@ function Login(props) {
                         data-bs-toggle="modal" >Sign Up</span>
                       </h6>
                       <div className="d-flex justify-content-evenly py-4">
-                        <button className=" btn btn-light border rounded-pill"><i class="bi bi-google text-primary px-2"></i>Google</button>
-                        <button className=" btn btn-light border rounded-pill"><i class="bi bi-apple text-secondary px-2"></i>Apple</button>
+                        <button className=" btn btn-light border rounded-pill px-4"><i class="bi bi-google text-primary px-2"></i>Google</button>
+                        <button className=" btn btn-light border rounded-pill px-4"><i class="bi bi-apple text-secondary px-2"></i>Apple</button>
                       </div>
                     </form>
                   </div>
