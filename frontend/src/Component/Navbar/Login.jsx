@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { LoginUser } from '../../gql/mutation'
 import { toast } from "react-toastify";
 import Loading from "../LoadingStructer/Loading";
+import BrandName from '../BrandName'
 function Login(props) {
   const [LoginData, setLoginData] = useState({ email: "", password: "" });
   const [user_login_password_show, setuser_login_password_show] = useState(false)
@@ -63,7 +64,10 @@ function Login(props) {
                 </div>
                 <div className="bg-body-secondary rounded-end-3 w-100 pe-3">
                   <form className="pe-3 pt-3 w-auto px-5">
-                    <h3 className="text-primary">Login</h3>
+                    <span className="text-primary d-flex justify-content-between align-items-center">
+                      <span className="h3">Login</span>
+                      <span><BrandName /></span>
+                    </span>
                     <div className="mb-3 text-start mt-4">
                       <label
                         htmlFor="exampleInputUserName"

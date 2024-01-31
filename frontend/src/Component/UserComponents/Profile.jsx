@@ -103,8 +103,6 @@ export const Profile = (props) => {
     <NavbarContainer/>
       <Toasts Toastsdata={location.state} />
       <div className="container mt-2">
-        <h2 className="text-center">User Profile</h2>
-        <hr />
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <h2 className="text-primary">
