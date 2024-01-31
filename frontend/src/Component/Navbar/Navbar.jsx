@@ -100,7 +100,7 @@ export const Navbar = (props) => {
                     }}
                   >
                     Login
-                    <i class="bi bi-arrow-right ms-2 "></i>
+                    <i className="bi bi-arrow-right ms-2 "></i>
                   </button>
                 )}
                 {/* cart logo */}

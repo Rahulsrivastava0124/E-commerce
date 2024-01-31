@@ -23,7 +23,7 @@ function Login(props) {
         variables: {
           Logindata: LoginData
         }
-      }).then(() => {
+      }).then((data) => {
         document.getElementById("LoginClosebtn").click();
       })
     }
@@ -55,11 +55,9 @@ function Login(props) {
       >
         <div className="modal-dialog modal-lg modal-dialog-centered">
           <div className="modal-content">
-
-            {loading ? <Loading /> :
-
               <div className="modal-body p-0  ">
                 <div className="d-flex align-items-center justify-content-between">
+                  <button className="btn btn-close " data-bs-dismiss="modal" id="LoginClosebtn"></button>
                   <div className="w-50 ">
                     <img src={LoginLogo} alt="login logo" style={{ width: "-webkit-fill-available" }} className="rounded-3" />
                   </div>
@@ -105,12 +103,12 @@ function Login(props) {
                             setLoginData({ ...LoginData, password: e.target.value })
                           }
                         />
-                        <i class={`bi bi-${user_login_password_show ? 'eye-slash' : "eye"} ${user_login_password_show ? 'text-primary' : "text-dark"} text-primary h5`} id="user_login_password_show" onClick={() => setuser_login_password_show(!user_login_password_show)}></i>
+                        <i className={`bi bi-${user_login_password_show ? 'eye-slash' : "eye"} ${user_login_password_show ? 'text-primary' : "text-dark"} text-primary h5`} id="user_login_password_show" onClick={() => setuser_login_password_show(!user_login_password_show)}></i>
                       </div>
                       <div className="d-flex justify-content-between">
-                        <div class="form-check form-switch mb-3">
-                          <input class="form-check-input" type="checkbox" style={{ cursor: "pointer" }} role="switch" id="flexSwitchCheckDefault" />
-                          <label class="form-check-label form-text" for="flexSwitchCheckDefault">Remember me</label>
+                        <div className="form-check form-switch mb-3">
+                          <input className="form-check-input" type="checkbox" style={{ cursor: "pointer" }} role="switch" id="flexSwitchCheckDefault" />
+                          <label className="form-check-label form-text" or="flexSwitchCheckDefault">Remember me</label>
                         </div>
                         <span className="text-primary form-text" style={{ cursor: "pointer" }}> Forget password ?</span>
                       </div>
@@ -127,14 +125,14 @@ function Login(props) {
                       <h6 className="d-flex justify-content-evenly my-3 form-text"><span>Don't have an account?</span><span className="text-primary" style={{ cursor: "pointer" }} data-bs-target="#SignUpModelToggle2"
                         data-bs-toggle="modal" >Sign Up</span>
                       </h6>
-                      <div className="d-flex justify-content-evenly py-4">
-                        <button className=" btn btn-outline-primary border border-primary rounded-pill px-4"><i class="bi bi-google  px-2"></i>Google</button>
-                        <button className=" btn btn-outline-secondary border border-secondary rounded-pill px-4"><i class="bi bi-apple  px-2"></i>Apple</button>
-                      </div>
                     </form>
+                      <div className="d-flex justify-content-evenly py-4">
+                        <button className=" btn btn-outline-primary border border-primary rounded-pill px-4"><i className="bi bi-google  px-2"></i>Google</button>
+                        <button className=" btn btn-outline-secondary border border-secondary rounded-pill px-4"><i className="bi bi-apple  px-2"></i>Apple</button>
+                      </div>
                   </div>
                 </div>
-              </div>}
+              </div>
           </div>
         </div>
       </div>

@@ -82,14 +82,14 @@ const Addresses = (props) => {
             {/* model open button */}
             <span data-bs-toggle="modal" data-bs-target="#RemoveAddressModal" id="RemoveAddressButton"></span>
             {/* <!-- Modal --> */}
-            <div class="modal fade" id="RemoveAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered w-25">
-                    <div class="modal-content p-3 d-flex align-items-center">
+            <div className="modal fade" id="RemoveAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered w-25">
+                    <div className="modal-content p-3 d-flex align-items-center">
                         <span style={{ width: "50px", height: "50px" }} className="d-flex align-items-center justify-content-center bg-danger-subtle rounded-circle">
-                            <i class="bi bi-exclamation-triangle h3 text-danger"></i>
+                            <i className="bi bi-exclamation-triangle h3 text-danger"></i>
                         </span>
                         <h5 className="fw-semibold mt-1">Remove Address</h5>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             Are you sure you want to <span className="text-warning">Remove</span> your <span className="text-warning">Address</span>?
                             <div className="border rounded mt-2 p-2 bg-danger-subtle text-capitalize text-danger-emphasis">
                                 <span className="fw-bold">{!RemoveData == "" ? RemoveData.name : null}</span><br />
@@ -99,7 +99,7 @@ const Addresses = (props) => {
                         </div>
                         <div className="d-flex justify-content-around w-75">
                             <button className="btn btn-outline-secondary w-50" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                            <button className="btn btn-danger ms-4 w-50 " onClick={() => RemoveAddressCard(RemoveData.uniqueID)} data-bs-dismiss="modal" aria-label="Close" ><i class="bi bi-trash me-2"></i> Delete</button>
+                            <button className="btn btn-danger ms-4 w-50 " onClick={() => RemoveAddressCard(RemoveData.uniqueID)} data-bs-dismiss="modal" aria-label="Close" ><i className="bi bi-trash me-2"></i> Delete</button>
                         </div>
                     </div>
                 </div>
