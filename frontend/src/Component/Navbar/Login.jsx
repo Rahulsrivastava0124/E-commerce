@@ -136,9 +136,9 @@ function Login(props) {
                       data-bs-toggle="modal" >Sign Up</span>
                     </h6>
                   </form>
-                  <div className="d-flex justify-content-evenly py-4">
-                    <button className=" btn btn-outline-primary border border-primary rounded-pill px-4"><i className="bi bi-google  px-2"></i>Google</button>
-                    <button className=" btn btn-outline-secondary border border-secondary rounded-pill px-4"><i className="bi bi-apple  px-2"></i>Apple</button>
+                  <div className="d-flex justify-content-evenly py-4 px-5">
+                    <button className=" btn btn-outline-primary border border-primary rounded px-4"><i className="bi bi-google  px-2"></i>Google</button>
+                    <button className=" btn btn-outline-secondary border border-secondary rounded px-4"><i className="bi bi-apple  px-2"></i>Apple</button>
                   </div>
                 </div>
               </div>

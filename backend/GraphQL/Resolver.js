@@ -23,6 +23,7 @@ const resolvers = {
             const token = jwt.sign({ userId: findUser._id }, JWT_SECRET);
             return { token, username: findUser.firstName, _id: findUser._id }
         }, Signin: async (_, { SigninData }) => {
+            if (SigninData.password == "" || SigninData.firstName == "" || SigninData.lastName == "" || SigninData.email == "") throw new Error(" All field are required ")
             const hasedPassword = await bcrypt.hash(SigninData.password, 12)
             const signin = new User({
                 ...SigninData, password: hasedPassword,
