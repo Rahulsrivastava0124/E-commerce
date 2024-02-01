@@ -9,14 +9,17 @@ import BrandName from "../BrandName.jsx";
 function Signup() {
   const [SigninUser, { loading, data, error }] = useMutation(Signin)
   const [SignupData, setSignupData] = useState({
-    Email: "",
-    Password: "",
-    FirstName: "",
-    LastName: "",
+    Email: ``,
+    Password: ``,
+    FirstName: ``,
+    LastName: ``,
   });
+
   const SubmitSigninForm = (e) => {
     e.preventDefault();
-
+    if (SignupData.Email.length <= 8 || SignupData.FirstName <= 3 || SignupData.LastName <= 3 || SignupData.Password <= 5) {
+      return toast.warning("fill tha inputs !")
+    }
     const userdata = {
       email: SignupData.Email,
       password: SignupData.Password,
@@ -35,12 +38,12 @@ function Signup() {
       document.getElementById("SigninLoginBtn").click()
       toast.success(" Account Created Successfull")
     }
-
     if (error) {
       console.log(error.message);
       toast.error(error.message)
     }
   }, [data, error])
+
   return (
     <>
       <div
@@ -60,16 +63,16 @@ function Signup() {
                 <span className="text-primary h4">Sign Up</span>
                 <span><BrandName /></span>
               </span>
-              <form className="row g-3 px-5">
+              <form className="row g-3 px-5 needs-validation was-validated" nonvalidate>
                 <div className="col-md-6">
-                  <label htmlFor="inputFirstName4" className="form-label">
+                  <label className="form-label">
                     First Name
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="inputFirstName4"
                     value={SignupData.FirstName}
+                    required
                     onChange={(e) =>
                       setSignupData({
                         ...SignupData,
@@ -90,6 +93,7 @@ function Signup() {
                     onChange={(e) =>
                       setSignupData({ ...SignupData, LastName: e.target.value })
                     }
+                    required
                   />
                 </div>
                 <div className="col-md-12">
@@ -104,6 +108,7 @@ function Signup() {
                     onChange={(e) =>
                       setSignupData({ ...SignupData, Email: e.target.value })
                     }
+                    required
                   />
                 </div>
                 <div className="col-md-12 ">
@@ -118,10 +123,11 @@ function Signup() {
                     onChange={(e) =>
                       setSignupData({ ...SignupData, Password: e.target.value })
                     }
+                    required
                   />
                 </div>
                 <div class="form-check px-5 pb-1 ">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required />
                   <label class="form-check-label form-text fw-bold" for="flexCheckDefault">
                     I,ve read and agree with Terms of Service and our <br></br>privacy  policy
                   </label>
@@ -157,8 +163,8 @@ function Signup() {
                   className="text-primary"
                   data-bs-target="#LoginModalToggle"
                   data-bs-toggle="modal"
-                  style={{cursor:"pointer"}}
-                  >
+                  style={{ cursor: "pointer" }}
+                >
                   Login
                 </span>
               </span>
