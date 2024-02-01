@@ -4,8 +4,8 @@ import Signup from "./Signup";
 import { useMutation } from "@apollo/client";
 import { LoginUser } from '../../gql/mutation'
 import { toast } from "react-toastify";
-import Loading from "../LoadingStructer/Loading";
 import BrandName from '../BrandName'
+
 function Login(props) {
   const [LoginData, setLoginData] = useState({ email: "", password: "" });
   const [user_login_password_show, setuser_login_password_show] = useState(false)
@@ -63,7 +63,8 @@ function Login(props) {
                   <img src={LoginLogo} alt="login logo" style={{ width: "-webkit-fill-available" }} className="rounded-3" />
                 </div>
                 <div className="bg-body-secondary rounded-end-3 w-100 pe-3">
-                  <form className="pe-3 pt-3 w-auto px-5">
+                  <span className="btn btn-close  position-absolute  p-2 " style={{ right: "0px" }} data-bs-dismiss="modal"></span>
+                  <form className="pe-3 pt-3 w-auto px-5 ">
                     <span className="text-primary d-flex justify-content-between align-items-center">
                       <span className="h3">Login</span>
                       <span><BrandName /></span>

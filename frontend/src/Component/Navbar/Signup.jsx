@@ -14,11 +14,12 @@ function Signup() {
     FirstName: ``,
     LastName: ``,
   });
+  const [velidateInputs, setvelidateInputs] = useState(false)
 
   const SubmitSigninForm = (e) => {
     e.preventDefault();
     if (SignupData.Email.length <= 8 || SignupData.FirstName <= 3 || SignupData.LastName <= 3 || SignupData.Password <= 5) {
-      return toast.warning("fill tha inputs !")
+      return setvelidateInputs(true)
     }
     const userdata = {
       email: SignupData.Email,
@@ -59,11 +60,12 @@ function Signup() {
               <img src={SignupLogo} alt="" className="rounded-3" />
             </div>
             <div className="modal-body text-start bg-body-secondary rounded-end-3 px-5">
+            <span className="btn btn-close  position-absolute  p-2 " style={{ right: "0px",top:"0px" }} data-bs-dismiss="modal"></span>
               <span className="d-flex justify-content-between pb-3 px-5">
                 <span className="text-primary h4">Sign Up</span>
                 <span><BrandName /></span>
               </span>
-              <form className="row g-3 px-5 needs-validation was-validated" nonvalidate>
+              <form className={`row g-3 px-5 ${velidateInputs ? "needs-validation was-validated" : null}`} nonvalidate>
                 <div className="col-md-6">
                   <label className="form-label">
                     First Name
