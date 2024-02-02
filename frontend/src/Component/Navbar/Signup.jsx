@@ -14,11 +14,14 @@ function Signup() {
     FirstName: ``,
     LastName: ``,
   });
+
+
   const [velidateInputs, setvelidateInputs] = useState(false)
 
   const SubmitSigninForm = (e) => {
     e.preventDefault();
-    if (SignupData.Email.length <= 8 || SignupData.FirstName <= 3 || SignupData.LastName <= 3 || SignupData.Password <= 5) {
+    let checkBox = document.getElementById("term_checkBox").checked
+    if (SignupData.Email.length <= 8 || SignupData.FirstName <= 3 || SignupData.LastName <= 3 || SignupData.Password <= 5 || checkBox == false) {
       return setvelidateInputs(true)
     }
     const userdata = {
@@ -60,12 +63,12 @@ function Signup() {
               <img src={SignupLogo} alt="" className="rounded-3" />
             </div>
             <div className="modal-body text-start bg-body-secondary rounded-end-3 px-5">
-            <span className="btn btn-close  position-absolute  p-2 " style={{ right: "0px",top:"0px" }} data-bs-dismiss="modal"></span>
+              <span className="btn btn-close  position-absolute  p-2 " style={{ right: "0px", top: "0px" }} data-bs-dismiss="modal"></span>
               <span className="d-flex justify-content-between pb-3 px-5">
                 <span className="text-primary h4">Sign Up</span>
                 <span><BrandName /></span>
               </span>
-              <form className={`row g-3 px-5 ${velidateInputs ? "needs-validation was-validated" : null}`} nonvalidate>
+              <form className={`row g-3 px-5 ${velidateInputs ? "needs-validation was-validated" : null}`} nonvalidate="">
                 <div className="col-md-6">
                   <label className="form-label">
                     First Name
@@ -128,9 +131,9 @@ function Signup() {
                     required
                   />
                 </div>
-                <div class="form-check px-5 pb-1 ">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required />
-                  <label class="form-check-label form-text fw-bold" for="flexCheckDefault">
+                <div className="form-check px-5 pb-1 ">
+                  <input className="form-check-input" type="checkbox" value="" id="term_checkBox" required />
+                  <label className="form-check-label form-text fw-bold"htmlFor="term_checkBox">
                     I,ve read and agree with Terms of Service and our <br></br>privacy  policy
                   </label>
                 </div>
@@ -157,7 +160,7 @@ function Signup() {
                 <button className=" btn btn-outline-primary border border-primary rounded px-4 w-50"><i className="bi bi-google  px-2"></i>Google</button>
                 <button className=" btn btn-outline-secondary border border-secondary rounded px-4 w-50 ms-4"><i className="bi bi-apple  px-2"></i>Apple</button>
               </div>
-              <span className="text-center d-flex justify-content-center mb-2  fw-bold">
+              <span className="text-center d-flex justify-content-center mb-2 ">
                 <span>
                   Already have an account ?
                 </span>
