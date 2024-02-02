@@ -1,4 +1,4 @@
-import {gql} from "apollo-server-core";
+import { gql } from "apollo-server-core";
 
 const typeDefs = gql`
     # Schema
@@ -47,18 +47,30 @@ const typeDefs = gql`
         getUser(_id:ID!):User
     }
 
+    type ErrorMessage{
+    message:String
+}
+    # Unions 
+    union LoginToken = Token | ErrorMessage
+
     # Mutation for server
     type Mutation{
         Login(LoginData:LoginInput!):Token
+        LoginWithToken(LoginTokenData:LoginTokenInput!):LoginToken
         Signin(SigninData:SigninInput!):User
         UpdateUser(UpdateData:UpdateInput!):UpdateState
         NewAddress(AddressData:AddressInput!):UpdateState
         RemoveAddress(RemoveAddress:RemoveAddressInput!):User
         UpdateAddress(UpdateAddressData:AddressDataInput!):Modified
         AdminLogin(Admin_login_data:Admin_login_input!):Token
+
     }
 
     # Mutation inputs
+input  LoginTokenInput{
+    Token:String
+}
+
 input Admin_login_input{
     Email:String!
     Password:String!

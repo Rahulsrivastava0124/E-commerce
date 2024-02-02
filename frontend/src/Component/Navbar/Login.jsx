@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import BrandName from '../BrandName'
 
 function Login(props) {
+  console.log(props);
   const [LoginData, setLoginData] = useState({ email: "", password: "" });
   const [user_login_password_show, setuser_login_password_show] = useState(false)
   const [Loginuser, { loading, data, error }] = useMutation(LoginUser)
@@ -19,7 +20,6 @@ function Login(props) {
       toast.error("password is required !")
       return
     } else {
-
       await Loginuser({
         variables: {
           Logindata: LoginData
@@ -34,6 +34,9 @@ function Login(props) {
     if (data) {
       props.addToLoginHandler({ state: data.data });
       toast.success("hello" + " " + data.data.username)
+      if (!(document.getAnimations("Login_checkBox").checked)) {
+        localStorage.setItem("Token", data.data.token)
+      }
       localStorage.setItem("Token", data.data.token)
     }
     if (error) {
@@ -112,15 +115,15 @@ function Login(props) {
                     </div>
                     <div className="d-flex justify-content-between">
                       <div className="form-check form-switch mb-3">
-                        <input className="form-check-input" type="checkbox" style={{ cursor: "pointer" }} role="switch" id="flexSwitchCheckDefault" />
-                        <label className="form-check-label form-text" or="flexSwitchCheckDefault">Remember me</label>
+                        <input className="form-check-input" type="checkbox" style={{ cursor: "pointer" }} role="switch" id="Login_checkBox" />
+                        <label className="form-check-label form-text" or="Login_checkBox">Remember me</label>
                       </div>
                       <span className="text-primary form-text" style={{ cursor: "pointer" }}> Forget password ?</span>
                     </div>
                     <div className="d-grid container">
                       {
-                        loading ? <button class="btn btn-primary me-2" type="button" disabled>
-                          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        loading ? <button className="btn btn-primary me-2" type="button" disabled>
+                          <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
                           <span role="status" className="fw-bold">Loading...</span>
                         </button> : <button
                           type="submit"

@@ -6,6 +6,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./Services/Reducers/Index";
 import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
+import AppContainer from "./containers/AppContainer";
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const client = new ApolloClient({
@@ -20,7 +21,7 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <App />
+      <AppContainer/>
       </Provider>
     </ApolloProvider>
   </React.StrictMode>

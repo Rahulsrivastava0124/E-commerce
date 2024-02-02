@@ -5,6 +5,7 @@ import { JWT_SECRET } from "../config.js";
 
 const User = mongoose.model("User")
 const Admin_Login = mongoose.model("Admin_login")
+
 const resolvers = {
     Query: {
         getUser: async (_, { _id }) => await User.findOne({ _id })
@@ -22,14 +23,37 @@ const resolvers = {
             }
             const token = jwt.sign({ userId: findUser._id }, JWT_SECRET);
             return { token, username: findUser.firstName, _id: findUser._id }
-        }, Signin: async (_, { SigninData }) => {
+        },
+        // login the user using a token  
+        LoginWithToken: async (_, { LoginTokenData }) => {
+            try {
+                let { userId } = jwt.verify(LoginTokenData.Token, JWT_SECRET)
+                const { _id, firstName } = await User.findById(userId)
+                const token = jwt.sign({ userId: _id }, JWT_SECRET);
+                return { __typename: "Token", token, username: firstName, _id: _id }
+            } catch (error) {
+                return {
+                    __typename: "ErrorMessage",
+                    message: error.message
+                }
+            }
+
+
+
+
+
+        },
+        // User Signup with some data like firstName, LastName, Email, password and response the  token  of this user
+        Signin: async (_, { SigninData }) => {
             if (SigninData.password == "" || SigninData.firstName == "" || SigninData.lastName == "" || SigninData.email == "") throw new Error(" All field are required ")
             const hasedPassword = await bcrypt.hash(SigninData.password, 12)
             const signin = new User({
                 ...SigninData, password: hasedPassword,
             })
             return await signin.save()
-        }, UpdateUser: async (_, { UpdateData }, { userId }) => {
+        },
+        //update the user phone number 
+        UpdateUser: async (_, { UpdateData }, { userId }) => {
             if (!userId) throw new Error("You are not loggined");
             return User.updateOne({ _id: UpdateData._id }, {
                 $set: {

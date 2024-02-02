@@ -6,3 +6,4 @@ export const REMOVE_TO_WISHLIST="REMOVE_TO_WISHLIST";
 export const PRODUCT_DATA="PRODUCT_DATA";
 export const LOGOUT="LOGOUT";
 export const ADD_TO_ORDER="ADD_TO_ORDER"
+

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 // import css in app Component
 import "./css/App.css";
 import './css/Responsive.css'
@@ -7,7 +7,8 @@ import AdminRoutes from './Routes/AdminRoutes'
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <div className="App">
       <BrowserRouter>
