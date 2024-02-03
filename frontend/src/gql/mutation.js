@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const Signin = gql`
 mutation SignIn($signinData:SigninInput!){
@@ -20,6 +20,24 @@ data: Login(LoginData: $Logindata) {
   }
 }
 `
+
+export const LoginWithToken = gql`
+mutation($Token: LoginTokenInput!) {
+	LoginWithToken(LoginTokenData: $Token) {
+		... on Token {
+			__typename
+			token
+			username
+			_id
+		}
+		... on ErrorMessage {
+			__typename
+			message
+		}
+	}
+}
+`
+
 export const UpdatePhone = gql`
 mutation UpdateUser($updateData:UpdateInput!){
   acknowledgment:UpdateUser(UpdateData:$updateData){
@@ -49,7 +67,7 @@ export const RemoveAddress = gql`
         }
     }`
 
-export const EditUserAddres =gql`
+export const EditUserAddres = gql`
     mutation($UpdateData: AddressDataInput!) {
 	UpdateAddress(UpdateAddressData: $UpdateData) {
 		Update
@@ -57,7 +75,7 @@ export const EditUserAddres =gql`
 }
 `
 
-export const Admin_Login=gql`
+export const Admin_Login = gql`
 mutation($AdminData: Admin_login_input!) {
 	AdminLogin(Admin_login_data: $AdminData) {
 		token
