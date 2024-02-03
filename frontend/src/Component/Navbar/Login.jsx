@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import BrandName from '../BrandName'
 
 function Login(props) {
-  console.log(props);
   const [LoginData, setLoginData] = useState({ email: "", password: "" });
   const [user_login_password_show, setuser_login_password_show] = useState(false)
   const [Loginuser, { loading, data, error }] = useMutation(LoginUser)

@@ -6,9 +6,13 @@ import UserRoutes from './Routes/UserRoutes'
 import AdminRoutes from './Routes/AdminRoutes'
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
 
 function App(props) {
-  console.log(props);
+  useEffect(() => {
+    console.log("App UseEffect is call ");
+  })
+
   return (
     <div className="App">
       <BrowserRouter>
