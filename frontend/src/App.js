@@ -13,49 +13,47 @@ import Loading from "./Component/LoadingStructer/Loading";
 
 function App(props) {
   const [TokenLogin, { data, loading, error }] = useMutation(LoginWithToken)
-  const [TokenUserLogin, setTokenUserLogin] = useState("")
   useEffect(() => {
     if (localStorage.getItem("Token")) {
       TokenLogin({ variables: { Token: { Token: localStorage.getItem('Token') } } })
-    }
-    console.log("App useEffect call");
-    if (data) {
-      console.log("res", data);
-      // props.UserTokenLoginHandler({ state: data.LoginWithToken })
     }
   }, [])
 
   useEffect(() => {
     if (data) {
-      console.log("res", data);
-      props.UserTokenLoginHandler({ state: data.LoginWithToken })
+      if (data.LoginWithToken.__typename == "Token") {
+        console.log("res", data);
+        props.UserTokenLoginHandler({ state: data.LoginWithToken })
+      } else {
+        console.log(data.LoginWithToken.message);
+      }
     }
   }, [data])
 
   return (
     loading ? <Loading /> :
-    <div className="App">
-      <BrowserRouter>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-          stacked
-        />
+      <div className="App">
+        <BrowserRouter>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            stacked
+          />
 
-        <Routes>
-          {UserRoutes},
-          {AdminRoutes}
-        </Routes>
-      </BrowserRouter>
-    </div>
+          <Routes>
+            {UserRoutes},
+            {AdminRoutes}
+          </Routes>
+        </BrowserRouter>
+      </div>
   );
 }
 

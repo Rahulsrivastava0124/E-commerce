@@ -24,8 +24,12 @@ const server = new ApolloServer({
     context: ({ req }) => {
         const { authorization } = req.headers;
         if (authorization) {
-            const { userId } = jwt.verify(authorization, JWT_SECRET);
-            return { userId };
+            try {
+                const { userId } = jwt.verify(authorization, JWT_SECRET);
+                return { userId };
+            } catch (error) {
+                console.log(error.message);
+            }
         }
     },
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
