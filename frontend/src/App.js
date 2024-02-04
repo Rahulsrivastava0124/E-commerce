@@ -31,7 +31,6 @@ function App(props) {
   }, [data])
 
   return (
-    loading ? <Loading /> :
       <div className="App">
         <BrowserRouter>
           <ToastContainer

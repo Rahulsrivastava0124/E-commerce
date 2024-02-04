@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./css/index.css";
 import { legacy_createStore as createStore } from "redux";
@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import rootReducer from "./Services/Reducers/Index";
 import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
 import AppContainer from "./containers/AppContainer";
+import Loading from "./Component/LoadingStructer/Loading";
+import { useEffect } from "react";
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const client = new ApolloClient({
@@ -16,6 +18,7 @@ const client = new ApolloClient({
   }
 })
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
