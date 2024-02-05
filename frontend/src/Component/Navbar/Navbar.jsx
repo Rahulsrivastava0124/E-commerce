@@ -35,7 +35,6 @@ export const Navbar = (props) => {
             {/* navbar logo */}
             <div className="d-flex align-items-center">
               <span className="navbar-brand mb-0 me-3 h1 d-flex align-items-center">
-                <span ><img src={Logo} alt="Nav_logo" style={{ width: "80px", height: "60px" }} /></span>
                 <span className="text-primary">On</span>
                 <span className="text-warning">Market</span>
               </span>
@@ -71,9 +70,9 @@ export const Navbar = (props) => {
               <div id="Account">
                 {/* Account logo */}
                 {LoginStates ? (
-                  <span className="me-4 h6 shadow rounded-pill bg-danger-subtle pt-1 p-2">
+                  <span className="me-4 h6 shadow-sm rounded pt-1 p-2 text-center ">
                     <Link to="/Profile" className="text-decoration-none">
-                      <img src={Account} alt="Account" className="" />
+                      <img src={Account} alt="Account" className="mx-2" />
                       <span className=" text-dark fw-bold">
                         {Object.keys(props.data.UserLogin.LoginData).length === 0
                           ? null
@@ -85,7 +84,7 @@ export const Navbar = (props) => {
                 ) : (
                   <button
                     type="button"
-                    style={{border:"6px solid #ffffffb5"}}
+                    style={{ border: "6px solid #ffffffb5" }}
                     className="btn btn-primary me-3 rounded-pill px-3 "
                     data-bs-target="#LoginModalToggle"
                     data-bs-toggle="modal"
