@@ -122,13 +122,12 @@ const ProductCard = (props) => {
     >
       <img
         className="mx-auto pt-3"
-        style={{ width: "180px", height: "160px" }}
+        style={{ width: "140px", height: "140px" }}
         src={element.image}
         alt="productImage"
       />
       <div className="card-body">
-        <h5 className="card-title">{element.title.slice(0, 20)}</h5>
-        <p className="card-text">{element.description.slice(0, 50)}...</p>
+        <h6 className="card-title">{element.title.slice(0, 20)}</h6>
         <div className="d-flex justify-content-between">
           <h3 className="fw-bold text-primary-emphasis">Rs.{element.price}</h3>
           <span className="text-success"> Instock </span>
