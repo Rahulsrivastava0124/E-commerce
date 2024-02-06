@@ -73,7 +73,7 @@ export const Navbar = (props) => {
                   <span className="me-4 h6 shadow-sm rounded pt-1 p-2 text-center ">
                     <Link to="/Profile" className="text-decoration-none">
                       <img src={Account} alt="Account" className="mx-2" />
-                      <span className=" text-dark fw-bold">
+                      <span className=" text-dark fw-bold text-capitalize ">
                         {Object.keys(props.data.UserLogin.LoginData).length === 0
                           ? null
                           : props.data.UserLogin.LoginData.state.username}
