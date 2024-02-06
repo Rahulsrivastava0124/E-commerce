@@ -9,10 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LoginWithToken } from "./gql/mutation";
-import Loading from "./Component/LoadingStructer/Loading";
+import { toast } from 'react-toastify'
 
 function App(props) {
-  const [TokenLogin, { data, loading, error }] = useMutation(LoginWithToken)
+  const [TokenLogin, { data }] = useMutation(LoginWithToken)
   useEffect(() => {
     if (localStorage.getItem("Token")) {
       TokenLogin({ variables: { Token: { Token: localStorage.getItem('Token') } } })
@@ -22,37 +22,37 @@ function App(props) {
   useEffect(() => {
     if (data) {
       if (data.LoginWithToken.__typename == "Token") {
-        console.log("res", data);
         props.UserTokenLoginHandler({ state: data.LoginWithToken })
       } else {
-        console.log(data.LoginWithToken.message);
+        toast.error(data.LoginWithToken.message, { position: "buttom-right" });
+        localStorage.removeItem("Token");
       }
     }
   }, [data])
 
   return (
-      <div className="App">
-        <BrowserRouter>
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-            stacked
-          />
+    <div className="App">
+      <BrowserRouter>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          stacked
+        />
 
-          <Routes>
-            {UserRoutes},
-            {AdminRoutes}
-          </Routes>
-        </BrowserRouter>
-      </div>
+        <Routes>
+          {UserRoutes},
+          {AdminRoutes}
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

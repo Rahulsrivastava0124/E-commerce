@@ -1,9 +1,10 @@
 import React from "react";
 import BrandFeature from "../BrandFeature";
 import logo from "../../Svg/images/logo.png";
+import Footer from "../Footer/Footer";
+import NavbarContainer from "../../containers/NavbarContainer";
 
 const YourOrder = (props) => {
-  console.log(props);
   const months = [
     "Jan",
     "Feb",
@@ -21,6 +22,7 @@ const YourOrder = (props) => {
 
   return (
     <>
+      <NavbarContainer />
       <div className="container d-flex mb-5 ">
         <div className="conatiner w-100 p-2 me-5">
           <h2>Your Orders </h2>
@@ -131,7 +133,7 @@ const YourOrder = (props) => {
                             {months[element.OrderData.state.date.getMonth()]}
                           </span>
                           <span className="ms-1">
-                            {element.OrderData.state.date.getDate()+5},
+                            {element.OrderData.state.date.getDate() + 5},
                           </span>
                           <span className="ms-1">
                             {element.OrderData.state.date.getFullYear()}
@@ -168,6 +170,7 @@ const YourOrder = (props) => {
           <BrandFeature />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
