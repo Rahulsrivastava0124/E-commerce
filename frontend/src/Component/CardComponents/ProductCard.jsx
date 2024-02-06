@@ -117,7 +117,7 @@ const ProductCard = (props) => {
   return (
     <div
       className="card m-3 border-0 shadow-sm"
-      style={{ width: "17rem", height: "fit-contant" }}
+      style={{ width: "16rem", height: "fit-contant" }}
       key={tabIndex}
     >
       <img
@@ -128,7 +128,7 @@ const ProductCard = (props) => {
       />
       <div className="card-body">
         <h5 className="card-title">{element.title.slice(0, 20)}</h5>
-        <p className="card-text">{element.description.slice(0, 50)}</p>
+        <p className="card-text">{element.description.slice(0, 50)}...</p>
         <div className="d-flex justify-content-between">
           <h3 className="fw-bold text-primary-emphasis">Rs.{element.price}</h3>
           <span className="text-success"> Instock </span>

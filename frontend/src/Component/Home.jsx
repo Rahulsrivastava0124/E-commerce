@@ -224,7 +224,7 @@ export const Home = (props) => {
         <hr />
       </h2>
 
-      <div className="container d-flex flex-wrap mt-3">
+      <div className=" d-flex flex-wrap justify-content-center mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
             return (
