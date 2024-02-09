@@ -3,12 +3,28 @@ import { Link } from "react-router-dom";
 import Account from "../../Svg/Account.svg";
 import CartCanvasContainer from "../../containers/CartCanvasContainer";
 import LoginContainers from "../../containers/LoginContainer";
-import Logo from "../../Svg/images/logo.png"
 
 
 export const Navbar = (props) => {
   const [LoginStates, setLoginStates] = useState(false);
-
+  const NavLink = [
+    {
+      Link_name: "Home",
+      path: "/",
+      active: true,
+      icon: <i className="bi bi-house me-1"></i>
+    }, {
+      Link_name: "Categories",
+      path: "/Categories",
+      active: false,
+      icon: <i className="bi bi-list me-1"></i>
+    }, {
+      Link_name: "Wishlist",
+      path: "/WishList",
+      active: false,
+      icon: <i className="bi bi-bag-heart"></i>
+    },
+  ];
   useEffect(() => {
     if (Object.keys(props.data.UserLogin.LoginData).length === 0) {
       setLoginStates(false);
@@ -18,6 +34,7 @@ export const Navbar = (props) => {
       }
     }
   });
+
 
   return (
     <>
@@ -40,20 +57,23 @@ export const Navbar = (props) => {
               </span>
               {/* navbar Links */}
               <ul className="navbar-nav nav nav-underline nav-phone-menu">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/"
-                ><i className="bi bi-house me-1"></i>
-                  Home
-                </Link>
-                <Link className="nav-link">
-                  <i className="bi bi-list me-1"></i>
-                  Categories
-                </Link>
-                <Link className="nav-link " to="/WishList">
-                  <i className="bi bi-bag-heart"></i>  WishList
-                </Link>
+                {
+                  NavLink.map((data, index) => {
+                    return (
+                      <Link
+                        className={`nav-link ${data.active ? 'active' : ''}`}
+                        aria-current="page"
+                        to={data.path}
+                        key={index}
+                      >
+                        {data.icon}
+                        {data.Link_name}
+                      </Link>
+                    )
+                  })
+                }
+
+
               </ul>
             </div>
             <div className="d-flex align-items-center">
@@ -73,11 +93,10 @@ export const Navbar = (props) => {
                   <span className="me-4 h6 shadow-sm rounded pt-1 p-2 text-center ">
                     <Link to="/Profile" className="text-decoration-none">
                       <img src={Account} alt="Account" className="mx-2" />
-                      <span className=" text-dark fw-bold text-capitalize ">
+                      <span className=" text-dark  text-capitalize ">
                         {Object.keys(props.data.UserLogin.LoginData).length === 0
                           ? null
                           : props.data.UserLogin.LoginData.state.username}
-
                       </span>
                     </Link>
                   </span>

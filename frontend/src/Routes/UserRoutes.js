@@ -15,6 +15,7 @@ import YourOrderContainer from "../containers/UserYourOrderContainer";
 import { Error404 } from "../Component/Error/404Error";
 import ContactUs from "../Component/UserComponents/UserContactUs";
 import OrderPlaced from '../Component/OrderPlaced'
+import Main_Categories from '../Component/Categories/Main_Categories';
 
 export default [
     <Route path="/" element={<HomeContainer />} key="home" />,
@@ -59,5 +60,6 @@ export default [
     <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} key="yourOrder" />,
     <Route path='/CheckOut' element={<CheckOutContainer />} key="checkout" />,
     <Route path='ProductPreview' element={<PreviewProductContainer />} key="productpreview" />,
-    <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced} key="orderPlaced" />} key="" />
+    <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced} key="orderPlaced" />} key="orderplaced" />,
+    <Route path='/Categories' element={<Main_Categories />} ></Route>
 ]
