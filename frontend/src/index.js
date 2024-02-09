@@ -6,12 +6,11 @@ import { Provider } from "react-redux";
 import rootReducer from "./Services/Reducers/Index";
 import { InMemoryCache, ApolloClient, ApolloProvider } from "@apollo/client";
 import AppContainer from "./containers/AppContainer";
-import Loading from "./Component/LoadingStructer/Loading";
-import { useEffect } from "react";
+
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const client = new ApolloClient({
-  uri: "http://localhost:4000/",
+  uri: "http://localhost:4400/",
   cache: new InMemoryCache({ addTypename: false }),
   headers: {
     authorization: localStorage.getItem("Token") || ""

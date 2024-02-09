@@ -8,8 +8,8 @@ import logo from "../Svg/images/logo.png";
 
 export default function BrandFeature() {
   return (
-    <div className="border rounded  mt-5 p-4 bg-warning-subtle h-100">
-      <div className="container text-center mt-4">
+    <div className="border rounded   p-4 bg-warning-subtle h-100">
+      <div className="container text-center ">
         <img
           src={logo}
           className="rounded"

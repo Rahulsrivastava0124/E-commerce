@@ -35,6 +35,6 @@ const server = new ApolloServer({
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
-server.listen().then(({ url }) => {
+server.listen(4400).then(({ url }) => {
     console.log("your server is started on ", url);
 });
