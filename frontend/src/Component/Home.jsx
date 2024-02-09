@@ -94,12 +94,10 @@ export const Home = (props) => {
                     }`}
                   key={index}
                 >
-                  <img
-                    src={SolidColorBackground}
-                    className="d-block w-100 rounded-1"
-                    alt={element.title}
+                  <div
+                    className="d-block w-100 rounded-1 slider-container"
                     style={{ height: "500px" }}
-                  />
+                  >
                   <div className="carousel-caption d-none d-md-block  text-start">
                     <div className="d-flex">
                       <div>
@@ -131,6 +129,7 @@ export const Home = (props) => {
                         </div>
                       </div>
                     </div>
+                  </div>
                   </div>
                 </div>
               );
