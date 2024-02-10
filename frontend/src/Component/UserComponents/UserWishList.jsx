@@ -7,12 +7,11 @@ import Footer from "../Footer/Footer";
 
 const WishListCart = (props) => {
   const navigate = useNavigate();
-  const RemoveToWishList = (Element) => {
-    props.RemoveToWishListHandler({ state: Element });
+  const RemoveToWishList = (element) => {
+    props.RemoveToWishListHandler({ state: {element} });
   };
 
   const AddToCart = (element) => {
-    console.log(element);
     props.AddToCartHandler({ state: { element } });
   };
   return (
@@ -30,40 +29,40 @@ const WishListCart = (props) => {
                   className="container border rounded d-flex p-2 my-2 align-items-center"
                 >
                   <img
-                    src={Element.WishList.state.image}
+                    src={Element.WishList.state.element.image}
                     style={{ width: "100px", height: "80px" }}
                     alt=""
                     onClick={() =>
                       navigate("/ProductPreview", {
-                        state: Element.WishList.state,
+                        state: Element.WishList.state.element,
                       })
                     }
                   />
                   <div className="d-flex mx-2 container justify-content-between align-items-center">
                     <div>
-                      <h6>{Element.WishList.state.title.slice(0, 45)}...</h6>
+                      <h6>{Element.WishList.state.element.title.slice(0, 45)}...</h6>
                       <h6>
-                        {Element.WishList.state.rating.rate}
+                        {Element.WishList.state.element.rating.rate}
                         <i className="bi bi-star ms-1"></i>
                         <span className="text-success ms-2">
-                          {Element.WishList.state.rating.count}Reviews
+                          {Element.WishList.state.element.rating.count}Reviews
                         </span>
                       </h6>
                       <span className="fw-bold fs-5 text-body-tertiary">
                         <i className="bi bi-currency-rupee"></i>
-                        {Element.WishList.state.price}
+                        {Element.WishList.state.element.price}
                       </span>
                     </div>
                     <div className="d-flex">
                       <span
                         className="btn btn-primary me-2"
-                        onClick={() => AddToCart(Element.WishList.state)}
+                        onClick={() => AddToCart(Element.WishList.state.element)}
                       >
                         <i className="bi bi-cart3 me-1"></i> Add to Cart
                       </span>
                       <span
                         className="btn btn-outline-danger"
-                        onClick={() => RemoveToWishList(Element.WishList.state)}
+                        onClick={() => RemoveToWishList(Element.WishList.state.element)}
                       >
                         <i className="bi bi-trash"></i>
                       </span>

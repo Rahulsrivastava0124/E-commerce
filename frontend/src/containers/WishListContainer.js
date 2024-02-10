@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { AddToCart, RemoveToCart, RemoveWishList } from "../Services/Actions/Actions";
+import { AddToCart, RemoveWishList } from "../Services/Actions/Actions";
 import WishList from "../Component/UserComponents/UserWishList";
 
 const mapStateToProps = (state, ownProps) => ({
