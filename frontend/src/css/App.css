@@ -12,6 +12,10 @@ a:hover {
   transition: 0.2s;
 }
 
+.ScaleButtonSmall:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
 .imageTransparentBackground {
   mix-blend-mode: multiply;
 }

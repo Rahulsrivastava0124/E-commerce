@@ -24,7 +24,7 @@ export default function Main_Categories() {
           {
             Product_categories.map((data, index) => {
               return (
-                <div className="card ScaleButton" style={{ width: "18rem", height: "10rem" }} key={index}>
+                <div className="card ScaleButtonSmall" style={{ width: "18rem", height: "10rem" }} key={index}>
                   <Link to={`/Categories/${data.split(" ").join("")}`} className={`card-body nav-link rounded bg-${CardColor[index]}-subtle  d-flex align-items-center justify-content-center`} >
                     <h3 className={`text-capitalize text-${CardColor[index]}`}>{data}</h3>
                   </Link>

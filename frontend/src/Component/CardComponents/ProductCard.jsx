@@ -115,8 +115,8 @@ const ProductCard = (props) => {
       });
   };
   return (
-    <div key={tabIndex}>
-      <div className="card  p-0 m-3 mb-2 border-0  shadow-sm"
+    <div key={tabIndex} >
+      <div className="card  p-0 m-3 mb-2 border-0 rounded shadow-sm ScaleButtonSmall"
         style={{ width: "16rem", height: "fit-contant", cursor:"pointer" }}
       >
         <div className="card-body text-center p-0 "
