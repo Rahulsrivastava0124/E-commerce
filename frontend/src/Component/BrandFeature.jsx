@@ -28,7 +28,7 @@ export default function BrandFeature() {
           alt=""
           style={{ width: "150px", height: "150px" }}
         />
-        <div className="px-4 ">
+        <div className="px-3 ">
           <h6 className="mb-3">Download the app to Track you Order and get</h6>
           <h6>notification on offers and delivery</h6>
           <div className="d-flex mt-3">
@@ -49,7 +49,7 @@ export default function BrandFeature() {
       <div className="mt-3">
         <h5>Download Benefits</h5>
         <div className="d-flex justify-content-between align-items-center text-center">
-          <div className="px-4">
+          <div className="px-3">
             <img
               src={trackOrder}
               className=" mb-2"
@@ -58,7 +58,7 @@ export default function BrandFeature() {
             />
             <p>Get Exciting Offers</p>
           </div>
-          <div className="px-4">
+          <div className="px-3">
             <img
               src={offers}
               className=" mb-2"
@@ -67,7 +67,7 @@ export default function BrandFeature() {
             />
             <p> Easy To Track Orders</p>
           </div>
-          <div className="px-4">
+          <div className="px-3">
             <img
               src={trackOrder}
               className=" mb-2"

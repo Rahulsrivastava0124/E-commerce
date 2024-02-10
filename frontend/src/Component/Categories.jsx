@@ -25,7 +25,7 @@ export const Categories = (props) => {
   return (
     <>
       <NavbarContainer />
-      <h3 className="fw-bolder text-center text-capitalize">
+      <h3 className="fw-bolder text-center text-capitalize my-4">
         {" "}
         {props.link ? props.link : null}
         {""}

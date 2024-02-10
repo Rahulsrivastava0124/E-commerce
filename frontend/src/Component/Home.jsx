@@ -9,8 +9,6 @@ import NavbarContainer from "../containers/NavbarContainer.js";
 import Footer from "./Footer/Footer.jsx";
 
 export const Home = (props) => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");

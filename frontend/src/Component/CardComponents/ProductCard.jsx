@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const ProductCard = (props) => {
   const navigate = useNavigate();
   const element = props.element;
-  const tabIndex = props.element;
+  const tabIndex = props.element.id;
   const [AddToCardIcon, setAddToCardIcon] = useState({
     divElement: (
       <button className="CartBtn rounded" onClick={(e) => AddToCart(e, element)}>
@@ -115,34 +115,37 @@ const ProductCard = (props) => {
       });
   };
   return (
-    <div
-      className="card m-3 border-0 shadow-sm"
-      style={{ width: "16rem", height: "fit-contant" }}
-      key={tabIndex}
-    >
-      <img
-        className="mx-auto pt-3"
-        style={{ width: "140px", height: "140px" }}
-        src={element.image}
-        alt="productImage"
-      />
-      <div className="card-body">
-        <h6 className="card-title">{element.title.slice(0, 20)}</h6>
-        <div className="d-flex justify-content-between">
-          <h3 className="fw-bold text-primary-emphasis">Rs.{element.price}</h3>
-          <span className="text-success"> Instock </span>
+    <div key={tabIndex}>
+      <div className="card  p-0 m-3 mb-2 border-0  shadow-sm"
+        style={{ width: "16rem", height: "fit-contant", cursor:"pointer" }}
+      >
+        <div className="card-body text-center p-0 "
+          onClick={() => navigate("/ProductPreview", { state: element })}>
+          <img
+            className="mx-auto pt-3"
+            style={{ width: "140px", height: "140px" }}
+            src={element.image}
+            alt="productImage"
+          />
+          <div className="card-body text-start pb-0">
+            <h6 className="card-title">{element.title.slice(0, 20)}</h6>
+            <div className="d-flex justify-content-between">
+              <h3 className="fw-bold text-primary-emphasis">Rs.{element.price}</h3>
+              <span className="text-success"> Instock </span>
+            </div>
+            <div className="d-flex align-items-center justify-content-between">
+              <h6 className="text-decoration-line-through">
+                Rs.{element.price + 300}
+              </h6>
+              <h5 className="fs-6">
+                {rateArray.map((element, index) => {
+                  return <i className={`bi bi-star${element}`} key={index}></i>;
+                })}
+              </h5>
+            </div>
+          </div>
         </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <h6 className="text-decoration-line-through">
-            Rs.{element.price + 300}
-          </h6>
-          <h5 className="fs-6">
-            {rateArray.map((element, index) => {
-              return <i className={`bi bi-star${element}`} key={index}></i>;
-            })}
-          </h5>
-        </div>
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between mx-3 mb-3">
           <span
             className="btn ScaleButton "
           >
@@ -178,15 +181,7 @@ const ProductCard = (props) => {
                 </svg>
               </div>
             </div>
-
           </span>
-          <button
-            type="button"
-            className="btn ScaleButton"
-            onClick={() => navigate("/ProductPreview", { state: element })}
-          >
-            <i className="bi bi-eye-fill fs-5"></i>
-          </button>
           <span className=" ">
             {AddToCardIcon.click === false ? (
               AddToCardIcon.divElement

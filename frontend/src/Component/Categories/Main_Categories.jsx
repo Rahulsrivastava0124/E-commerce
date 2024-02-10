@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import NavbarContainer from '../../containers/NavbarContainer'
 import Footer from '../Footer/Footer'
 import { productsCategories } from '../../server/productAPI'
+import { Link } from 'react-router-dom'
 
 
 export default function Main_Categories() {
   const [Product_categories, setProduct_categories] = useState([])
-const CardColor =["primary-subtle", "secondary-subtle", "success-subtle", "warning-subtle"]
+  const CardColor = ["primary", "secondary", "success", "warning"]
   useEffect(() => {
     async function getdata() {
       setProduct_categories(await productsCategories());
@@ -24,9 +25,9 @@ const CardColor =["primary-subtle", "secondary-subtle", "success-subtle", "warni
             Product_categories.map((data, index) => {
               return (
                 <div className="card ScaleButton" style={{ width: "18rem", height: "10rem" }} key={index}>
-                  <div className={`card-body  bg-${CardColor[index]} d-flex align-items-center justify-content-center`}>
-                    <h3 className='text-capitalize'>{data}</h3>
-                  </div>
+                  <Link to={`/Categories/${data.split(" ").join("")}`} className={`card-body nav-link rounded bg-${CardColor[index]}-subtle  d-flex align-items-center justify-content-center`} >
+                    <h3 className={`text-capitalize text-${CardColor[index]}`}>{data}</h3>
+                  </Link>
                 </div>
               )
             })

@@ -22,7 +22,7 @@ export const Navbar = (props) => {
       Link_name: "Wishlist",
       path: "/WishList",
       active: false,
-      icon: <i className="bi bi-bag-heart"></i>
+      icon: <i className="bi bi-bag-heart me-1"></i>
     },
   ];
   useEffect(() => {
