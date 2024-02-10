@@ -21,7 +21,7 @@ const ProductCard = (props) => {
 
   const [WishList, setWishList] = useState(false)
   let WishList_btn = (
-    <button className="CartBtn rounded text-bg-light" onClick={(e) => setWishList(true)}>
+    <button className="CartBtn rounded text-bg-light" onClick={(e) => Add_WishList()}>
       <span className="IconContainer">
         <i class="bi bi-heart-fill"></i>
       </span>
@@ -110,6 +110,11 @@ const ProductCard = (props) => {
         Count: countNo,
       });
   };
+
+  const Add_WishList = (element) => {
+    props.AddTowishlist({ state: { element: props.element } })
+    setWishList(true)
+  }
   return (
     <div key={tabIndex} >
       <div className="card  p-0 m-3 mb-2 border-0 rounded shadow-sm ScaleButtonSmall"
