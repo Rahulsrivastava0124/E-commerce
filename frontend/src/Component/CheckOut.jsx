@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axisLogo from "../Svg/images/axisLogo.webp";
 import hdfcLogo from "../Svg/images/hdfcLogo.webp";
 import iciciLogo from "../Svg/images/iciciLogo.webp";
@@ -7,14 +7,15 @@ import azpay from "../Svg/images/azpay.webp";
 import mobikwik from "../Svg/images/mobikwik.webp";
 import phonepe from "../Svg/images/phonepe.webp";
 import freecharge from "../Svg/images/freecharge.webp";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import OrderSummmeryContainer from "../containers/OrderSummmeryContainer";
-import {useLazyQuery} from "@apollo/client";
-import {getUser} from "../gql/Query";
+import { useLazyQuery } from "@apollo/client";
+import { getUser } from "../gql/Query";
 import NavbarContainer from "../containers/NavbarContainer";
 import Footer from "./Footer/Footer";
 
 export default function BuyItems(props) {
+
     const navigate = useNavigate();
     const location = useLocation();
     const [PaymentMethod, setPaymentMethod] = useState("UPI");
@@ -322,12 +323,11 @@ export default function BuyItems(props) {
                 variables: {
                     id: props.data.UserLogin.LoginData.state._id
                 }
-            }).then(console.log(data));
-
+            }).then((data) => {
+                console.log("get user data ", data.data.user.Address);
+            });
 
         }
-
-
         document
             .getElementsByClassName("SelectedPayment")[0]
             .setAttribute("checked", "true");
@@ -355,158 +355,171 @@ export default function BuyItems(props) {
         });
         navigate("./OrderPlaced", { state: { element, date, orderId } });
     };
-    console.log(data, loading, UserData)
     return (
-    <>
-    <NavbarContainer/>
-        <div className="d-flex mt-4 mx-5 flex-warp">
-            <div className="container ms-5"
-                style={{ width: "1900px" }}>
-                <h6>
-                    {" "}
-                    Hi{" "}
-                    <span className="text-capitalize">
-                        {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? props.data.UserLogin.LoginData.state.username : "Geast"}
-                    </span>
-                    , Welcome to{" "}
-                    <span className="">
-                        <span className="text-primary">On</span>
-                        <span className="text-warning">Market</span>
-                    </span>
-                </h6>
-                <div className="mt-4">
-                    <h5 className="">Delivery Address'</h5>
-
-                    {!loading && data ? (<div className="border p-3 mt-3 rounded ">
-                        <ul className="list-group">
-                            <li className="list-group-item">
-                                <input className="form-check-input me-1"
-                                    type="radio"
-                                    name="listGroupRadio"
-                                    value=""
-                                    id="firstRadio"
-                                    checked />
-                                <label className="form-check-label Check_out_Address'_list"
-                                    htmlFor="firstRadio"
-
-                                >
-                                    <div className="">
-                                        <div className="d-flex justify-content-between ">
-                                            <span className="text-capitalize fw-bold">
-                                                {!data ? null : data.user.firstName}{!data ? null : data.user.lastName}
-                                                <span
-                                                    className="text-body-tertiary"
-                                                    style={{ fontSize: "smaller" }}
-                                                >
-                                                    (default)
-                                                </span>
-                                            </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
-                                                style={{ fontSize: "x-small" }}>
-                                                HOME
-                                            </span></div>
-                                        <span className="mb-0">
-                                            {!data ? null : data.user.Address.street}, {!data ? null : data.user.Address.city}, {!data ? null : data.user.Address.zipcode}
-                                        </span><br /><span>{!data ? null : data.user.phone}</span>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>) : !data ? "Please Login ..." : "loading"}<br />
-                    <span className="bg-success-subtle btn btn-success text-success mt-3">
-                        {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW Address" : "ADD TO Address'"}
-                    </span>
+        <>
+            <NavbarContainer />
+            <div className="d-flex mt-4 mx-5 flex-warp">
+                <div className="container ms-5"
+                    style={{ width: "1900px" }}>
+                    <h6>
+                        {" "}
+                        Hi{" "}
+                        <span className="text-capitalize">
+                            {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? props.data.UserLogin.LoginData.state.username : "Geast"}
+                        </span>
+                        , Welcome to{" "}
+                        <span className="">
+                            <span className="text-primary">On</span>
+                            <span className="text-warning">Market</span>
+                        </span>
+                    </h6>
                     <div className="mt-4">
-                        <h5>Choose payment method</h5>
-                        <div className="border rounded p-2 shadow">{Apply}</div>
-                    </div>
-                    <div className=" mt-4 d-flex ">
-                        <ul className="list-group me-4 shadow"
-                            style={{ width: "330px" }}>
-                            <li className="list-group-item">
-                                <input
-                                    className="form-check-input me-1 SelectedPayment"
-                                    type="radio"
-                                    name="listGroupRadio"
-                                    value=""
-                                    id="UPI"
-                                    onClick={(e) => PaymentMethodSelecter(e)}
-                                />
-                                <label className="form-check-label"
-                                    htmlFor="firstRadio">
-                                    UPI
-                                </label>
-                            </li>
-                            <li className="list-group-item">
-                                <input
-                                    className="form-check-input me-1"
-                                    type="radio"
-                                    name="listGroupRadio"
-                                    value=""
-                                    id="CreditDebitCard"
-                                    onClick={(e) => PaymentMethodSelecter(e)}
-                                />
-                                <label className="form-check-label"
-                                    htmlFor="secondRadio">
-                                    Credit/Debit Card
-                                </label>
-                            </li>
-                            <li className="list-group-item">
-                                <input
-                                    className="form-check-input me-1"
-                                    type="radio"
-                                    name="listGroupRadio"
-                                    value=""
-                                    id="NetBanking"
-                                    onClick={(e) => PaymentMethodSelecter(e)}
-                                />
-                                <label className="form-check-label"
-                                    htmlFor="thirdRadio">
-                                    Net Banking
-                                </label>
-                            </li>
-                            <li className="list-group-item">
-                                <input
-                                    className="form-check-input me-1"
-                                    type="radio"
-                                    name="listGroupRadio"
-                                    value=""
-                                    id="Wallets"
-                                    onClick={(e) => PaymentMethodSelecter(e)}
-                                />
-                                <label className="form-check-label"
-                                    htmlFor="fourRadio">
-                                    Wallets
-                                </label>
-                            </li>
-                            <li className="list-group-item">
-                                <input
-                                    className="form-check-input me-1"
-                                    type="radio"
-                                    name="listGroupRadio"
-                                    value=""
-                                    id="COD"
-                                    onClick={(e) => PaymentMethodSelecter(e)}
-                                />
-                                <label className="form-check-label"
-                                    htmlFor="fivethRadio">
-                                    Case on Delivery(COD)
-                                </label>
-                            </li>
-                        </ul>
-                        <div className=" container border rounded p-2 shadow">
-                            {PaymentDiv[PaymentMethod]}
+                        <h5 className="">Delivery Address'</h5>
+
+                        {!loading && data ? (
+                        <div className="border p-3 mt-2 d-flex rounded flex-wrap" style={{width:"760px",height:"200px",overflowY:"scroll"}}>
+                            {
+                                data.user.Address.map(({ _id, street, city, zipcode, state, country, number, type, name }, index) => {
+                                    console.log(street);
+                                    return (
+                                        <ul className="list-group m-2" key={_id} style={{width:"338px"}}>
+                                            <li className="list-group-item">
+                                                <input className="form-check-input me-1"
+                                                    type="radio"
+                                                    name="listGroupRadio"
+                                                    value=""
+                                                    id={`Radio${index}`}
+                                                    checked />
+                                                <label className="form-check-label Check_out_Address'_list"
+                                                    htmlFor={`Radio${index}`}
+
+                                                >
+                                                    <div className="">
+                                                        <div className="d-flex justify-content-between ">
+                                                            <span className="text-capitalize fw-bold">
+                                                                {name}
+                                                                <span
+                                                                    className="text-body-tertiary ms-2"
+                                                                    style={{ fontSize: "smaller" }}
+                                                                >
+                                                                    (default)
+                                                                </span>
+                                                            </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
+                                                                style={{ fontSize: "x-small" }}>
+                                                                {type}
+                                                            </span></div>
+                                                        <span className="mb-0">
+                                                            <span>
+                                                                {street}{" , "}{city},{zipcode}
+                                                            </span><br />
+                                                            <span>
+                                                                {state}{" , "}{country}
+                                                            </span>
+                                                        </span><br /><span>{number}</span>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    )
+                                })
+                            }
+
+                        </div>) : !data ? "Please Login ..." : "loading"}<br />
+                        <span className="bg-success-subtle btn btn-success text-success mt-3">
+                            {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW Address" : "ADD TO Address'"}
+                        </span>
+                        <div className="mt-4">
+                            <h5>Choose payment method</h5>
+                            <div className="border rounded p-2 shadow">{Apply}</div>
+                        </div>
+                        <div className=" mt-4 d-flex ">
+                            <ul className="list-group me-4 shadow"
+                                style={{ width: "330px" }}>
+                                <li className="list-group-item">
+                                    <input
+                                        className="form-check-input me-1 SelectedPayment"
+                                        type="radio"
+                                        name="listGroupRadio"
+                                        value=""
+                                        id="UPI"
+                                        onClick={(e) => PaymentMethodSelecter(e)}
+                                    />
+                                    <label className="form-check-label"
+                                        htmlFor="firstRadio">
+                                        UPI
+                                    </label>
+                                </li>
+                                <li className="list-group-item">
+                                    <input
+                                        className="form-check-input me-1"
+                                        type="radio"
+                                        name="listGroupRadio"
+                                        value=""
+                                        id="CreditDebitCard"
+                                        onClick={(e) => PaymentMethodSelecter(e)}
+                                    />
+                                    <label className="form-check-label"
+                                        htmlFor="secondRadio">
+                                        Credit/Debit Card
+                                    </label>
+                                </li>
+                                <li className="list-group-item">
+                                    <input
+                                        className="form-check-input me-1"
+                                        type="radio"
+                                        name="listGroupRadio"
+                                        value=""
+                                        id="NetBanking"
+                                        onClick={(e) => PaymentMethodSelecter(e)}
+                                    />
+                                    <label className="form-check-label"
+                                        htmlFor="thirdRadio">
+                                        Net Banking
+                                    </label>
+                                </li>
+                                <li className="list-group-item">
+                                    <input
+                                        className="form-check-input me-1"
+                                        type="radio"
+                                        name="listGroupRadio"
+                                        value=""
+                                        id="Wallets"
+                                        onClick={(e) => PaymentMethodSelecter(e)}
+                                    />
+                                    <label className="form-check-label"
+                                        htmlFor="fourRadio">
+                                        Wallets
+                                    </label>
+                                </li>
+                                <li className="list-group-item">
+                                    <input
+                                        className="form-check-input me-1"
+                                        type="radio"
+                                        name="listGroupRadio"
+                                        value=""
+                                        id="COD"
+                                        onClick={(e) => PaymentMethodSelecter(e)}
+                                    />
+                                    <label className="form-check-label"
+                                        htmlFor="fivethRadio">
+                                        Case on Delivery(COD)
+                                    </label>
+                                </li>
+                            </ul>
+                            <div className=" container border rounded p-2 shadow">
+                                {PaymentDiv[PaymentMethod]}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="container border rounded p-4 ms-4 h-100 mt-5 shadow">
-                <OrderSummmeryContainer
-                    element={location.state === null ? props.data.AddToCart : location.state}
-                />
+                <div className="container border rounded p-4 ms-4 h-100 mt-5 shadow">
+                    <OrderSummmeryContainer
+                        element={location.state === null ? props.data.AddToCart : location.state}
+                    />
+                </div>
             </div>
-        </div>
-        <Footer/>
-    </>
+            <Footer />
+        </>
     );
 }

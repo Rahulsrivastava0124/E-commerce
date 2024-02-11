@@ -31,7 +31,7 @@ export const CartCanvas = (props) => {
           {props.data.AddToCart.length !== 0 ? (
             <button
               className="btn btn-primary container"
-              onClick={() => navigate("CheckOut",{
+              onClick={() => navigate("/CheckOut",{
                 state:null
               })}
               data-bs-dismiss="offcanvas"
