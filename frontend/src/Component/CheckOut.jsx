@@ -377,54 +377,54 @@ export default function BuyItems(props) {
                         <h5 className="">Delivery Address'</h5>
 
                         {!loading && data ? (
-                        <div className="border p-3 mt-2 d-flex rounded flex-wrap" style={{width:"760px",height:"200px",overflowY:"scroll"}}>
-                            {
-                                data.user.Address.map(({ _id, street, city, zipcode, state, country, number, type, name }, index) => {
-                                    console.log(street);
-                                    return (
-                                        <ul className="list-group m-2" key={_id} style={{width:"338px"}}>
-                                            <li className="list-group-item">
-                                                <input className="form-check-input me-1"
-                                                    type="radio"
-                                                    name="listGroupRadio"
-                                                    value=""
-                                                    id={`Radio${index}`}
-                                                    checked />
-                                                <label className="form-check-label Check_out_Address'_list"
-                                                    htmlFor={`Radio${index}`}
+                            <div className="border p-3 mt-2 d-flex rounded flex-wrap" style={{ width: "760px", height: "200px", overflowY: "scroll" }}>
+                                {
+                                    data.user.Address.map(({ _id, street, city, zipcode, state, country, number, type, name }, index) => {
+                                        console.log(street);
+                                        return (
+                                            <ul className="list-group m-2" key={_id} style={{ width: "338px" }}>
+                                                <li className="list-group-item">
+                                                    <input className="form-check-input me-1"
+                                                        type="radio"
+                                                        name="listGroupRadio"
+                                                        value=""
+                                                        id={`Radio${index}`}
+                                                        checked />
+                                                    <label className="form-check-label Check_out_Address'_list"
+                                                        htmlFor={`Radio${index}`}
 
-                                                >
-                                                    <div className="">
-                                                        <div className="d-flex justify-content-between ">
-                                                            <span className="text-capitalize fw-bold">
-                                                                {name}
-                                                                <span
-                                                                    className="text-body-tertiary ms-2"
-                                                                    style={{ fontSize: "smaller" }}
-                                                                >
-                                                                    (default)
+                                                    >
+                                                        <div className="">
+                                                            <div className="d-flex justify-content-between ">
+                                                                <span className="text-capitalize fw-bold">
+                                                                    {name}
+                                                                    <span
+                                                                        className="text-body-tertiary ms-2"
+                                                                        style={{ fontSize: "smaller" }}
+                                                                    >
+                                                                        (default)
+                                                                    </span>
+                                                                </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
+                                                                    style={{ fontSize: "x-small" }}>
+                                                                    {type}
+                                                                </span></div>
+                                                            <span className="mb-0">
+                                                                <span>
+                                                                    {street}{" , "}{city},{zipcode}
+                                                                </span><br />
+                                                                <span>
+                                                                    {state}{" , "}{country}
                                                                 </span>
-                                                            </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
-                                                                style={{ fontSize: "x-small" }}>
-                                                                {type}
-                                                            </span></div>
-                                                        <span className="mb-0">
-                                                            <span>
-                                                                {street}{" , "}{city},{zipcode}
-                                                            </span><br />
-                                                            <span>
-                                                                {state}{" , "}{country}
-                                                            </span>
-                                                        </span><br /><span>{number}</span>
-                                                    </div>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    )
-                                })
-                            }
+                                                            </span><br /><span>{number}</span>
+                                                        </div>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        )
+                                    })
+                                }
 
-                        </div>) : !data ? "Please Login ..." : "loading"}<br />
+                            </div>) : !data ? "Please Login ..." : "loading"}<br />
                         <span className="bg-success-subtle btn btn-success text-success mt-3">
                             {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW Address" : "ADD TO Address'"}
                         </span>
