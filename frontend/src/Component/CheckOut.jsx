@@ -252,13 +252,14 @@ export default function BuyItems(props) {
             {PaymentOptionsCommonCode}
         </div>),
     };
-    let RedeemCode = (<div className="d-flex justify-content-between align-items-center my-2 px-2 ">
+    let RedeemCode = (
+    <div className="d-flex justify-content-between align-items-center  px-2 ">
         <span>
             <span className="fw-bold">Redeem gift card</span>
             <p>Gift card value will be deducted from your total amount</p>
         </span>
         <span
-            className="btn btn-outline-primary fw-bold shadow"
+            className="btn btn-outline-primary fw-bold shadow "
             style={{ border: "none" }}
             onClick={() => setApply(<>
                 <span className="d-flex justify-content-between align-items-center">
@@ -377,17 +378,16 @@ export default function BuyItems(props) {
                         <h5 className="">Delivery Address'</h5>
 
                         {!loading && data ? (
-                            <div className="border p-3 mt-2 d-flex rounded flex-wrap" style={{ width: "760px", height: "200px", overflowY: "scroll" }}>
+                            <div className="border  mt-2 d-flex rounded flex-wrap" style={{ width: "735px", height: "180px", overflowY: "scroll" }}>
                                 {
-                                    data.user.Address.map(({ _id, street, city, zipcode, state, country, number, type, name }, index) => {
-                                        console.log(street);
+                                    data.user.Address.map(({ _id, select, street, city, zipcode, state, country, number, type, name }, index) => {
                                         return (
-                                            <ul className="list-group m-2" key={_id} style={{ width: "338px" }}>
+                                            <ul className="list-group m-2" key={_id} style={{ width: "340px" }}>
                                                 <li className="list-group-item">
                                                     <input className="form-check-input me-1"
                                                         type="radio"
                                                         name="listGroupRadio"
-                                                        value=""
+                                                        value="true"
                                                         id={`Radio${index}`}
                                                         checked />
                                                     <label className="form-check-label Check_out_Address'_list"
@@ -402,7 +402,7 @@ export default function BuyItems(props) {
                                                                         className="text-body-tertiary ms-2"
                                                                         style={{ fontSize: "smaller" }}
                                                                     >
-                                                                        (default)
+                                                                        {select ? "(default)" : null}
                                                                     </span>
                                                                 </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
                                                                     style={{ fontSize: "x-small" }}>
@@ -423,14 +423,14 @@ export default function BuyItems(props) {
                                         )
                                     })
                                 }
-
-                            </div>) : !data ? "Please Login ..." : "loading"}<br />
-                        <span className="bg-success-subtle btn btn-success text-success mt-3">
+                            </div>
+                        ) : !data ? "Please Login ..." : "loading"}<br />
+                        <span className="bg-success-subtle btn btn-success text-success">
                             {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW Address" : "ADD TO Address'"}
                         </span>
                         <div className="mt-4">
                             <h5>Choose payment method</h5>
-                            <div className="border rounded p-2 shadow">{Apply}</div>
+                            <div className="border rounded p-3 shadow">{Apply}</div>
                         </div>
                         <div className=" mt-4 d-flex ">
                             <ul className="list-group me-4 shadow"
