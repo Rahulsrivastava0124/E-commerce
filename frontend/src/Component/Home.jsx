@@ -228,6 +228,7 @@ export const Home = (props) => {
           ArraySortProductData.map((element, tabIndex) => {
             let Wishvalue = false;
             let CartAddValue = false;
+            
             if (props.data.UserWish.length != 0) {
               for (let index = 0; index < props.data.UserWish.length; index++) {
                 if (props.data.UserWish[index].WishList.state.element.id === element.id) {
@@ -235,6 +236,7 @@ export const Home = (props) => {
                 }
               }
             }
+
             if (props.data.AddToCart.length != 0) {
               for (let index = 0; index < props.data.AddToCart.length; index++) {
                 if (props.data.AddToCart[index].Cart.state.element.id == element.id) {
@@ -242,7 +244,7 @@ export const Home = (props) => {
                 }
               }
             }
-            
+
             return (
               <ProductCardContainer
                 setProductpreviewData={setProductpreviewData}

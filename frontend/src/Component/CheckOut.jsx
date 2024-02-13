@@ -19,7 +19,6 @@ export default function BuyItems(props) {
     const navigate = useNavigate();
     const location = useLocation();
     const [PaymentMethod, setPaymentMethod] = useState("UPI");
-    const [UserData, setUserData] = useState("Please Login ...")
     const [GetUser_Data, { loading, data, error }] = useLazyQuery(getUser);
 
     let PaymentOptionsCommonCode = (<div className="text-center mt-2 ">
@@ -253,69 +252,69 @@ export default function BuyItems(props) {
         </div>),
     };
     let RedeemCode = (
-    <div className="d-flex justify-content-between align-items-center  px-2 ">
-        <span>
-            <span className="fw-bold">Redeem gift card</span>
-            <p>Gift card value will be deducted from your total amount</p>
-        </span>
-        <span
-            className="btn btn-outline-primary fw-bold shadow "
-            style={{ border: "none" }}
-            onClick={() => setApply(<>
-                <span className="d-flex justify-content-between align-items-center">
-                    <h6>
-                        Add{" "}
-                        <span className="">
-                            <span className="text-primary">On</span>
-                            <span className="text-warning">Market</span>
-                        </span>{" "}
-                        gift card
-                    </h6>{" "}
-                    <i
-                        className="bi bi-x-circle-fill fs-4 "
-                        onClick={() => setApply(RedeemCode)}
-                    ></i>
-                </span>
-                <div className=" me-5 mt-1">
-                    <span style={{ fontSize: "smaller" }}>
-                        Gift card value will be deducted from your total amount. You
-                        can redeem partial amount from your gift card.
+        <div className="d-flex justify-content-between align-items-center  px-2 ">
+            <span>
+                <span className="fw-bold">Redeem gift card</span>
+                <p>Gift card value will be deducted from your total amount</p>
+            </span>
+            <span
+                className="btn btn-outline-primary fw-bold shadow "
+                style={{ border: "none" }}
+                onClick={() => setApply(<>
+                    <span className="d-flex justify-content-between align-items-center">
+                        <h6>
+                            Add{" "}
+                            <span className="">
+                                <span className="text-primary">On</span>
+                                <span className="text-warning">Market</span>
+                            </span>{" "}
+                            gift card
+                        </h6>{" "}
+                        <i
+                            className="bi bi-x-circle-fill fs-4 "
+                            onClick={() => setApply(RedeemCode)}
+                        ></i>
                     </span>
+                    <div className=" me-5 mt-1">
+                        <span style={{ fontSize: "smaller" }}>
+                            Gift card value will be deducted from your total amount. You
+                            can redeem partial amount from your gift card.
+                        </span>
 
-                    <form className="row g-3 mt-2">
-                        <div className="col-auto w-75">
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="inputRedeemCode"
-                                placeholder="Enter 16-digit gift card number"
-                                required
-                            />
-                        </div>
-                        <div className="col-auto">
-                            <button type="submit"
-                                className="btn btn-primary mb-3">
-                                Apply
-                            </button>
-                        </div>
-                    </form>
-                    <h6 className="">Terms & Conditions</h6>
-                    <ul style={{ fontSize: "smaller" }}>
-                        <li>
-                            Gift card cannot be clubbed in with other promotional
-                            coupons and offers.
-                        </li>
-                        <li>
-                            Orders are not subject to cancellation that are placed with
-                            gift card.
-                        </li>
-                    </ul>
-                </div>
-            </>)}
-        >
-            Apply
-        </span>
-    </div>);
+                        <form className="row g-3 mt-2">
+                            <div className="col-auto w-75">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="inputRedeemCode"
+                                    placeholder="Enter 16-digit gift card number"
+                                    required
+                                />
+                            </div>
+                            <div className="col-auto">
+                                <button type="submit"
+                                    className="btn btn-primary mb-3">
+                                    Apply
+                                </button>
+                            </div>
+                        </form>
+                        <h6 className="">Terms & Conditions</h6>
+                        <ul style={{ fontSize: "smaller" }}>
+                            <li>
+                                Gift card cannot be clubbed in with other promotional
+                                coupons and offers.
+                            </li>
+                            <li>
+                                Orders are not subject to cancellation that are placed with
+                                gift card.
+                            </li>
+                        </ul>
+                    </div>
+                </>)}
+            >
+                Apply
+            </span>
+        </div>);
     const [Apply, setApply] = useState(RedeemCode);
 
     useEffect(() => {
@@ -329,9 +328,9 @@ export default function BuyItems(props) {
             });
 
         }
-        document
-            .getElementsByClassName("SelectedPayment")[0]
-            .setAttribute("checked", "true");
+        // document
+        //     .getElementsByClassName("SelectedPayment")[0]
+        //     .setAttribute("checked", "true");
     }, [props]);
 
     const PaymentMethodSelecter = (e) => {
@@ -375,16 +374,16 @@ export default function BuyItems(props) {
                         </span>
                     </h6>
                     <div className="mt-4">
-                        <h5 className="">Delivery Address'</h5>
+                        <h5 className="mb-4">Delivery Address</h5>
 
                         {!loading && data ? (
-                            <div className="border  mt-2 d-flex rounded flex-wrap" style={{ width: "735px", height: "180px", overflowY: "scroll" }}>
-                                {
-                                    data.user.Address.map(({ _id, select, street, city, zipcode, state, country, number, type, name }, index) => {
-                                        return (
-                                            <ul className="list-group m-2" key={_id} style={{ width: "340px" }}>
-                                                <li className="list-group-item">
-                                                    <input className="form-check-input me-1"
+                            <div className="border  mt-2  rounded " >
+                                <ul className="list-group d-flex flex-wrap flex-row" style={{ width: "735px", height: "180px", overflowY: "scroll" }}>
+                                    {
+                                        data.user.Address.map(({ _id, select, street, city, zipcode, state, country, number, type, name }, index) => {
+                                            return (
+                                                <li className="list-group-item m-2 border rounded" key={_id} style={{ width: "340px" }}>
+                                                    <input className="form-check-input "
                                                         type="radio"
                                                         name="listGroupRadio"
                                                         value="true"
@@ -419,20 +418,19 @@ export default function BuyItems(props) {
                                                         </div>
                                                     </label>
                                                 </li>
-                                            </ul>
-                                        )
-                                    })
-                                }
+                                            )
+                                        })
+                                    }
+                                    <li className="list-group-item m-2 border rounded d-flex justify-content-center align-items-center border-success bg-success-subtle" style={{ width: "340px" }}>
+                                        <i class="bi bi-plus-square-dotted h1 text-primary"></i>
+                                    </li>
+                                </ul>
                             </div>
                         ) : !data ? "Please Login ..." : "loading"}<br />
-                        <span className="bg-success-subtle btn btn-success text-success">
-                            {Object.keys(props.data.UserLogin.LoginData).length !== 0 ? "DELIVER TO NEW Address" : "ADD TO Address'"}
-                        </span>
-                        <div className="mt-4">
-                            <h5>Choose payment method</h5>
+                        <div>
                             <div className="border rounded p-3 shadow">{Apply}</div>
                         </div>
-                        <div className=" mt-4 d-flex ">
+                        {/* <div className=" mt-4 d-flex ">
                             <ul className="list-group me-4 shadow"
                                 style={{ width: "330px" }}>
                                 <li className="list-group-item">
@@ -509,7 +507,7 @@ export default function BuyItems(props) {
                             <div className=" container border rounded p-2 shadow">
                                 {PaymentDiv[PaymentMethod]}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

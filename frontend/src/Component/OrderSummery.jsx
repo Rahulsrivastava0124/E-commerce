@@ -76,7 +76,7 @@ export default function OrderSummery(props) {
       })}
       {props.element.length === 0 ? (
         <div className="text-center">
-          <img src={AddtoCart} alt="CartImage" className="w-100" />
+          <img src={AddtoCart} alt="CartImage" style={{height:"350px"}} />
           <h4 className="fw-bold text-center">Your cart in empty</h4>
           <p>It's a good day to buy the items you saved for later</p>
           <div className="text-center">
