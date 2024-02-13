@@ -18,12 +18,12 @@ const ProductCard = (props) => {
         <p className="text mb-0">Add to Cart</p>
       </button>
     ),
-    click: false,
+    click: props.CartAddValue,
     Count: 0,
   });
 
   let WishList_btn = (
-    <button className="CartBtn rounded text-bg-light" id={`Product_wish_btnID${element.id}`} onClick={(e) => Add_WishList()}>
+    <button className="CartBtn rounded text-bg-light" onClick={(e) => Add_WishList()}>
       <span className="IconContainer">
         <i className="bi bi-heart-fill"></i>
       </span>

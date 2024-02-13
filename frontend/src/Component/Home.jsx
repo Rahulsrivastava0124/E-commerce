@@ -227,19 +227,27 @@ export const Home = (props) => {
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
             let Wishvalue = false;
-            if (props.data.UserWish.length !=0) {
+            let CartAddValue = false;
+            if (props.data.UserWish.length != 0) {
               for (let index = 0; index < props.data.UserWish.length; index++) {
-                let data = document.getElementById(`Product_wish_btnID${props.data.UserWish[index].WishList.state.element.id}`);
                 if (props.data.UserWish[index].WishList.state.element.id === element.id) {
                   Wishvalue = true;
                 }
               }
             }
-
+            if (props.data.AddToCart.length != 0) {
+              for (let index = 0; index < props.data.AddToCart.length; index++) {
+                if (props.data.AddToCart[index].Cart.state.element.id == element.id) {
+                  CartAddValue = true;
+                }
+              }
+            }
+            
             return (
               <ProductCardContainer
                 setProductpreviewData={setProductpreviewData}
                 WishList_value={Wishvalue}
+                CartAddValue={CartAddValue}
                 element={element}
                 tabIndex={tabIndex}
                 link={props.link}
