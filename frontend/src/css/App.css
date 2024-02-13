@@ -13,8 +13,13 @@ a:hover {
 }
 
 .ScaleButtonSmall:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   transition: 0.2s;
+}
+
+.ScaleProductCard:hover img{
+  transform: scale(1.05);
+  transition: 0.5s;
 }
 .imageTransparentBackground {
   mix-blend-mode: multiply;

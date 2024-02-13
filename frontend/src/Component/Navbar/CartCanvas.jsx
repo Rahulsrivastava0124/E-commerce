@@ -16,7 +16,7 @@ export const CartCanvas = (props) => {
             className="offcanvas-title text-primary fw-bold"
             id="offcanvasRightLabel"
           >
-            Your Cart 
+            Your Cart
           </h5>
           <button
             type="button"
@@ -27,12 +27,12 @@ export const CartCanvas = (props) => {
         </div>
         <hr />
         <div className="offcanvas-body position-relative bg-body-tertiary">
-          <OrderSummmeryContainer element={props.data.AddToCart}  />
+          <OrderSummmeryContainer element={props.data.AddToCart} />
           {props.data.AddToCart.length !== 0 ? (
             <button
               className="btn btn-primary container"
-              onClick={() => navigate("/CheckOut",{
-                state:null
+              onClick={() => navigate("/CheckOut", {
+                state: null
               })}
               data-bs-dismiss="offcanvas"
             >

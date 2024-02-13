@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AddtoCart from "../Svg/AddToCart.gif";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderSummery(props) {
 
-  let navigate=useNavigate();
+  let navigate = useNavigate();
   let price = 0;
   const [ShippingCharge, setShippingCharge] = useState(40);
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function OrderSummery(props) {
           price + element.Cart.state.element.price * element.Cart.state.count;
         return (
           <div
-            className="d-flex bg-white mb-2 p-2 rounded shadow-sm align-items-center justify-content-between"
+            className="d-flex bg-white mb-2 p-2 rounded  align-items-center justify-content-between"
             key={index}
           >
             <div className="d-flex align-items-center ">
@@ -48,7 +48,7 @@ export default function OrderSummery(props) {
               />
               <div className="mx-2">
                 <p className="mb-0">
-                  {element.Cart.state.element.title.slice(0, 25)}
+                  {element.Cart.state.element.title.split(" ")[0]}{element.Cart.state.element.title.split(" ")[1]}
                 </p>
                 <p className="fw-bold">
                   <i className="bi bi-currency-rupee"></i>
