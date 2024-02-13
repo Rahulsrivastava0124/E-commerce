@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AllProductData, productsCategories } from "../server/productAPI.js";
-import SolidColorBackground from "../Svg/images/SolidColorBackground.jpg";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
-import { useLocation, useNavigate } from "react-router-dom";
 import FooterFeature from '../Component/Footer/FooterFeature'
 import NavbarContainer from "../containers/NavbarContainer.js";
 import Footer from "./Footer/Footer.jsx";
@@ -13,6 +11,7 @@ export const Home = (props) => {
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
   const [SortProductItems, setSortProductItems] = useState("");
+  const [WishList_value, setWishList_value] = useState(false)
   const ArrayData = [];
   let ArraySortProductData = [];
   const SortProductData = (e) => {
@@ -96,38 +95,38 @@ export const Home = (props) => {
                     className="d-block w-100 rounded-1 slider-container"
                     style={{ height: "500px" }}
                   >
-                  <div className="carousel-caption d-none d-md-block  text-start">
-                    <div className="d-flex">
-                      <div>
-                        <img
-                          className="rounded-1 imageTransparentBackground"
-                          src={element.image}
-                          alt={element.category}
-                          style={{
-                            width: "300px",
-                            height: "350px",
-                            margin: "30px 100px 30px -80px",
-                          }}
-                        />
-                      </div>
-                      <div className="mt-4">
-                        <h5 className="fs-2 mb-4 fw-bold text-dark">
-                          {element.title}
-                        </h5>
-                        <p className=" fs-5">
-                          {element.description.slice(0, 200)}
-                        </p>
+                    <div className="carousel-caption d-none d-md-block  text-start">
+                      <div className="d-flex">
                         <div>
-                          <button
-                            className="btn btn-warning my-3"
-                            onClick={(e) => AddToCart(element)}
-                          >
-                            Add to Cart
-                          </button>
+                          <img
+                            className="rounded-1 imageTransparentBackground"
+                            src={element.image}
+                            alt={element.category}
+                            style={{
+                              width: "300px",
+                              height: "350px",
+                              margin: "30px 100px 30px -80px",
+                            }}
+                          />
+                        </div>
+                        <div className="mt-4">
+                          <h5 className="fs-2 mb-4 fw-bold text-dark">
+                            {element.title}
+                          </h5>
+                          <p className=" fs-5">
+                            {element.description.slice(0, 200)}
+                          </p>
+                          <div>
+                            <button
+                              className="btn btn-warning my-3"
+                              onClick={(e) => AddToCart(element)}
+                            >
+                              Add to Cart
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                   </div>
                 </div>
               );
@@ -227,9 +226,20 @@ export const Home = (props) => {
       <div className=" d-flex flex-wrap justify-content-center mt-3">
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
+            let Wishvalue = false;
+            if (props.data.UserWish.length !=0) {
+              for (let index = 0; index < props.data.UserWish.length; index++) {
+                let data = document.getElementById(`Product_wish_btnID${props.data.UserWish[index].WishList.state.element.id}`);
+                if (props.data.UserWish[index].WishList.state.element.id === element.id) {
+                  Wishvalue = true;
+                }
+              }
+            }
+
             return (
               <ProductCardContainer
                 setProductpreviewData={setProductpreviewData}
+                WishList_value={Wishvalue}
                 element={element}
                 tabIndex={tabIndex}
                 link={props.link}

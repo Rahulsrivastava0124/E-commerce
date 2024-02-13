@@ -6,6 +6,9 @@ const ProductCard = (props) => {
   const navigate = useNavigate();
   const element = props.element;
   const tabIndex = props.element.id;
+
+  const [WishList, setWishList] = useState(props.WishList_value);
+
   const [AddToCardIcon, setAddToCardIcon] = useState({
     divElement: (
       <button className="CartBtn rounded" onClick={(e) => AddToCart(e, element)}>
@@ -19,18 +22,17 @@ const ProductCard = (props) => {
     Count: 0,
   });
 
-  const [WishList, setWishList] = useState(false)
   let WishList_btn = (
-    <button className="CartBtn rounded text-bg-light" onClick={(e) => Add_WishList()}>
+    <button className="CartBtn rounded text-bg-light" id={`Product_wish_btnID${element.id}`} onClick={(e) => Add_WishList()}>
       <span className="IconContainer">
-        <i class="bi bi-heart-fill"></i>
+        <i className="bi bi-heart-fill"></i>
       </span>
       <p className="text mb-0"> Wishlist</p>
     </button>)
 
-  let Remove_WishList_btn = (<button className="CartBtn rounded text-bg-danger " onClick={(e) => setWishList(false)}>
+  let Remove_WishList_btn = (<button className="CartBtn rounded text-bg-danger " onClick={(e) => RemoveToWishList(element)}>
     <span className="IconContainer">
-      <i class="bi bi-trash-fill"></i>
+      <i className="bi bi-trash-fill"></i>
     </span>
     <p className="text text-white mb-0"> Remove </p>
   </button>)
@@ -49,30 +51,8 @@ const ProductCard = (props) => {
   };
 
   useEffect(() => {
-    if (props.data.UserWish.length !== 0) {
-      for (let i = 0; i < props.data.UserWish.length; i++) {
-        if (
-          props.CardType === "Home" ||
-            props.CardType === " " ||
-            props.CardType === "All Product"
-            ? true
-            : props.data.UserWish[i].WishList.state.category ===
-            (props.CardType !== "Home" ? props.CardType : props.link)
-        ) {
-          const GET_ID = `${props.data.UserWish[i].WishList.state.category
-            .split(" ")
-            .join("")
-            .split(`'`)
-            .join("")}${props.data.UserWish[i].WishList.state.id}`;
-          setTimeout(() => {
-            document.getElementById(GET_ID).classList.add("bi-heart-fill");
-            document.getElementById(GET_ID).classList.remove("bi-heart");
-          }, 100);
-        }
-      }
-    }
-    getCountData();
-  }, [props]);
+    getCountData()
+  }, [props.data.UserWish, props.data.AddToCart]);
 
   const rateArray = Rating(element.rating.rate);
   const AddToCart = () => {
@@ -111,8 +91,14 @@ const ProductCard = (props) => {
       });
   };
 
+  const RemoveToWishList = (element) => {
+    props.RemoveToWishListHandler({ state: { element } });
+    setWishList(false)
+  };
+
+
   const Add_WishList = (element) => {
-    props.AddTowishlist({ state: { element: props.element } })
+    props.AddTowishlist({ state: { element:props.element } })
     setWishList(true)
   }
   return (

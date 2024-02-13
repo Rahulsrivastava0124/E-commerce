@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   AddTowishlist: (data) => dispatch(WishListToCart(data)),
-  RemoveTowishlist: (data) => dispatch(RemoveWishList(data)),
+  RemoveToWishListHandler: (data) => dispatch(RemoveWishList(data)),
   AddToCartHandler: (data) => dispatch(AddToCart(data)),
   RemoveToCartHandler: (data) => dispatch(RemoveToCart(data)),
 
