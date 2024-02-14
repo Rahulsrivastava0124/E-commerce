@@ -147,10 +147,10 @@ const YourOrder = (props) => {
                         </h6>
                       </div>
                     </div>
-                    <div className="d-flex align-items-center bg-body-secondary mt-2">
+                    <div className="d-flex align-items-center bg-body-secondary mt-2 p-2">
                       <img
                         src={logo}
-                        style={{ width: "120px", height: "80px" }}
+                        style={{ width: "100px", height: "50px" }}
                         alt=""
                       />
                       <h6 className="text-secondary">

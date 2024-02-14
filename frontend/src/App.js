@@ -46,9 +46,8 @@ function App(props) {
           theme="colored"
           stacked
         />
-
         <Routes>
-          {UserRoutes},
+          {UserRoutes },
           {AdminRoutes}
         </Routes>
       </BrowserRouter>

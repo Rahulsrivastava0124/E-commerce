@@ -20,7 +20,7 @@ export default function PaymentType({ Order_data, Order_Store_fn }) {
                 {
                     PaymentTypeButton.map(({ Title, call }, index) => {
                         return (
-                            <li className=' list-group-item'>
+                            <li className=' list-group-item' key={index}>
                                 <input class="form-check-input me-2" type="radio" name="exampleRadios" id={`exampleRadios${index}`} value="option1" defaultChecked />
                                 <label class="form-check-label w-75" htmlFor={`exampleRadios${index}`} onClick={() => setPaymentMethod(call)}>
                                     {Title}

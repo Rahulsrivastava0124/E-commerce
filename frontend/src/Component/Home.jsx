@@ -13,20 +13,23 @@ export const Home = (props) => {
   const [SortProductItems, setSortProductItems] = useState("");
   const [WishList_value, setWishList_value] = useState(false)
   const ArrayData = [];
+
   let ArraySortProductData = [];
+
   const SortProductData = (e) => {
     let Selected = document.getElementsByClassName("ActiveFilter")[0];
-    Selected.classList.remove("bg-warning-subtle");
+    Selected.classList.remove("bg-primary-subtle");
     Selected.children[0].classList.add("d-none");
     Selected.classList.remove("ActiveFilter");
-    e.target.classList.add("bg-warning-subtle");
+
+    e.target.classList.add("bg-primary-subtle");
     e.target.children[0].classList.remove("d-none");
     e.target.classList.add("ActiveFilter");
-    setSortProductItems(e.target.innerText);
+    setSortProductItems((e.target.innerText).toLowerCase());
   };
 
   function SortFilter() {
-    if (SortProductItems === "" || SortProductItems === "All Product") {
+    if (SortProductItems === "" || SortProductItems === "all product") {
       ArraySortProductData = productData;
     } else {
       for (let index = 0; index < productData.length; index++) {
@@ -51,7 +54,6 @@ export const Home = (props) => {
         ArrayData.push(element);
         index++;
       }
-      return null;
     });
   }
 
@@ -69,7 +71,7 @@ export const Home = (props) => {
           data-bs-ride="carousel"
         >
           <div className="carousel-indicators">
-            {ArrayData.map((element, index) => {
+            {ArrayData.map((_, index) => {
               return (
                 <button
                   type="button"
@@ -78,7 +80,7 @@ export const Home = (props) => {
                   className={`${index === 0 ? "active" : ""}`}
                   aria-current="true"
                   aria-label={index + 1}
-                  key={index}
+                  key={index + "carousel"}
                 ></button>
               );
             })}
@@ -89,7 +91,7 @@ export const Home = (props) => {
                 <div
                   className={`carousel-item border ${index === 0 ? "active" : null
                     }`}
-                  key={index}
+                  key={index + "inner"}
                 >
                   <div
                     className="d-block w-100 rounded-1 slider-container"
@@ -175,60 +177,62 @@ export const Home = (props) => {
           </div>
         </div>
       )}
-      <div className="container mt-3 rounded-1 shadow p-2 d-flex justify-content-between align-items-center">
-        <div className="">
-          <span className="fs-5"> Filter </span>
-        </div>
-        <div className="text-end d-flex">
-          <span className="d-flex align-items-center mx-1">
-            <button
-              className=" btn d-flex align-items-center badge border border-primary-subtle rounded-pill bg-warning-subtle text-primary-emphasis ActiveFilter"
-              onClick={(e) => SortProductData(e)}
-            >
-              All Product
-              <span className="  border-primary-subtle rounded-end-pill text-primary-emphasis">
-                <i className="bi bi-x-circle fs-6 mx-1 "></i>
-              </span>
-            </button>
-          </span>
-          {Array.isArray(Categories) ? (
-            Categories.map((element, index) => {
-              return (
-                <span
-                  className="d-flex align-items-center mx-1"
-                  key={element + index}
-                >
-                  <button
-                    className=" btn d-flex align-items-center badge border border-primary-subtle rounded-pill text-primary-emphasis  rounded-start-pill "
-                    onClick={(e) => SortProductData(e)}
-                  >
-                    {element}
-                    <span className=" d-none border-primary-subtle rounded-end-pill text-primary-emphasis ">
-                      <i className="bi bi-x-circle fs-6 mx-1 "></i>
-                    </span>
-                  </button>
-                </span>
-              );
-            })
-          ) : (
-            <p aria-hidden="true">
-              <span className="placeholder col-6"></span>
-            </p>
-          )}
-        </div>
-        {/* Filters */}
-      </div>
-      <h2 className="text-center mt-3 ">
+
+      <h2 className="text-center text-capitalize mt-3 ">
         {SortProductItems}
         <hr />
       </h2>
 
       <div className=" d-flex flex-wrap justify-content-center mt-3">
+        <div className="container mx-3 p-2 d-flex justify-content-between align-items-center">
+          <div className="">
+            <span className="fs-5"> Filter </span>
+          </div>
+          <div className="text-end d-flex">
+            <span className="d-flex align-items-center mx-1">
+              <span
+                className=" d-flex align-items-center badge bg-primary-subtle text-primary-emphasis ActiveFilter"
+                style={{ cursor: "pointer" }}
+                onClick={(e) => SortProductData(e)}
+              >
+                All Product
+                <span className=" rounded-end-pill text-primary-emphasis">
+                  <i className="bi bi-x-circle fs-6 mx-1 "></i>
+                </span>
+              </span>
+            </span>
+            {Array.isArray(Categories) ? (
+              Categories.map((element, index) => {
+                return (
+                  <span
+                    className="d-flex align-items-center mx-1"
+                    key={element + index}
+                  >
+                    <span
+                      className="  d-flex align-items-center badge text-primary-emphasis  text-capitalize"
+                      style={{ cursor: "pointer" }}
+                      onClick={(e) => SortProductData(e)}
+                    >
+                      {element}
+                      <span className=" d-none rounded-end-pill text-primary-emphasis ">
+                        <i className="bi bi-x-circle fs-6 mx-1 "></i>
+                      </span>
+                    </span>
+                  </span>
+                );
+              })
+            ) : (
+              <p aria-hidden="true">
+                <span className="placeholder col-6"></span>
+              </p>
+            )}
+          </div>
+        </div>
         {Array.isArray(productData) ? (
           ArraySortProductData.map((element, tabIndex) => {
             let Wishvalue = false;
             let CartAddValue = false;
-            
+
             if (props.data.UserWish.length != 0) {
               for (let index = 0; index < props.data.UserWish.length; index++) {
                 if (props.data.UserWish[index].WishList.state.element.id === element.id) {

@@ -56,10 +56,10 @@ export default [
             />
         }
         key="Address" />,
-    <Route path="WishList" element={<WishListContainer />} key="wishlist" />,
+    <Route path="/WishList" element={<WishListContainer />} key="wishlist" />,
     <Route path="/Profile/YourOrder" element={<ProtectedComponentContainer Component={YourOrderContainer} />} key="yourOrder" />,
     <Route path='/CheckOut' element={<CheckOutContainer />} key="checkout" />,
-    <Route path='ProductPreview' element={<PreviewProductContainer />} key="productpreview" />,
+    <Route path='/ProductPreview' element={<PreviewProductContainer />} key="productpreview" />,
     <Route path="/CheckOut/OrderPlaced" element={<ProtectedComponentContainer Component={OrderPlaced} key="orderPlaced" />} key="orderplaced" />,
-    <Route path='/Categories' element={<Main_Categories />} ></Route>
+    <Route path='/Categories' element={<Main_Categories />} key="Categoties" />
 ]
