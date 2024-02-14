@@ -33,7 +33,7 @@ function Login(props) {
     if (data) {
       props.addToLoginHandler({ state: data.data });
       toast.success("hello" + " " + data.data.username)
-      if (!(document.getAnimations("Login_checkBox").checked)) {
+      if (!(document.getAnimations("Login_checkBox").defaultChecked)) {
         localStorage.setItem("Token", data.data.token)
       }
       localStorage.setItem("Token", data.data.token)

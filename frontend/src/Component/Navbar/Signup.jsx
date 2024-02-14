@@ -20,7 +20,7 @@ function Signup() {
 
   const SubmitSigninForm = (e) => {
     e.preventDefault();
-    let checkBox = document.getElementById("term_checkBox").checked
+    let checkBox = document.getElementById("term_checkBox").defaultChecked
     if (SignupData.Email.length <= 8 || SignupData.FirstName <= 3 || SignupData.LastName <= 3 || SignupData.Password <= 5 || checkBox == false) {
       return setvelidateInputs(true)
     }

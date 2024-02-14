@@ -97,11 +97,11 @@ a:hover {
   stroke-width: 2px;
 }
 
-.heart-container .checkbox:checked ~ .svg-container .svg-filled {
+.heart-container .checkbox:defaultChecked ~ .svg-container .svg-filled {
   display: block;
 }
 
-.heart-container .checkbox:checked ~ .svg-container .svg-celebrate {
+.heart-container .checkbox:defaultChecked ~ .svg-container .svg-celebrate {
   display: block;
 }
 
@@ -171,29 +171,29 @@ a:hover {
   width: 70%;
 }
 
-#checkbox:checked + .toggle .bars {
+#checkbox:defaultChecked + .toggle .bars {
   position: absolute;
   transition-duration: 0.5s;
 }
 
-#checkbox:checked + .toggle #bar2 {
+#checkbox:defaultChecked + .toggle #bar2 {
   transform: scaleX(0);
   transition-duration: 0.5s;
 }
 
-#checkbox:checked + .toggle #bar1 {
+#checkbox:defaultChecked + .toggle #bar1 {
   width: 100%;
   transform: rotate(45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox:checked + .toggle #bar3 {
+#checkbox:defaultChecked + .toggle #bar3 {
   width: 100%;
   transform: rotate(-45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox:checked + .toggle {
+#checkbox:defaultChecked + .toggle {
   transition-duration: 0.5s;
   transform: rotate(180deg);
 }

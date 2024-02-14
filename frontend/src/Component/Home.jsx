@@ -10,7 +10,7 @@ export const Home = (props) => {
   const [productData, setProductData] = useState("");
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
-  const [SortProductItems, setSortProductItems] = useState("");
+  const [SortProductItems, setSortProductItems] = useState("all product");
   const [WishList_value, setWishList_value] = useState(false)
   const ArrayData = [];
 

@@ -71,8 +71,8 @@ export default function Admin_login_page() {
           </div>
           <div className='d-flex justify-content-between'>
             <div className="form-check form-switch mb-3">
-              <input className="form-check-input" type="checkbox" role="switch" style={{cursor:"pointer"}} id="flexSwitchCheckChecked" />
-              <label className="form-check-label text-body-tertiary" htmlFor="flexSwitchCheckChecked">Remember me </label>
+              <input className="form-check-input" type="checkbox" role="switch" style={{cursor:"pointer"}} id="flexSwitchCheckdefaultChecked" />
+              <label className="form-check-label text-body-tertiary" htmlFor="flexSwitchCheckdefaultChecked">Remember me </label>
             </div>
             <div>
               <span className='text-warning' style={{cursor:"pointer"}}>forget ? </span>

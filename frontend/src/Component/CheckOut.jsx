@@ -7,11 +7,24 @@ import { getUser } from "../gql/Query";
 import NavbarContainer from "../containers/NavbarContainer";
 import Footer from "./Footer/Footer";
 import PaymentType from "./PaymentType";
+import AddressInput from "./UserComponents/Address_input";
 
 export default function BuyItems(props) {
 
     const location = useLocation();
     const [GetUser_Data, { loading, data, error }] = useLazyQuery(getUser);
+
+    const Inputs = {
+        name: "",
+        street: "",
+        country: "",
+        type: "",
+        select: false,
+        state: "",
+        city: "",
+        number: "",
+        zipcode: ""
+    }
 
     let RedeemCode = (
         <div className="d-flex justify-content-between align-items-center  px-2 ">
@@ -79,19 +92,18 @@ export default function BuyItems(props) {
         </div>);
     const [Apply, setApply] = useState(RedeemCode);
 
+
     useEffect(() => {
         if (props.data.UserLogin.LoginData.state) {
             GetUser_Data({
                 variables: {
                     id: props.data.UserLogin.LoginData.state._id
                 }
-            }).then((data) => {
-                console.log("get user data ", data.data.user.Address);
-            });
+            })
         }
     }, [props]);
 
-    
+
     return (
         <>
             <NavbarContainer />
@@ -111,63 +123,70 @@ export default function BuyItems(props) {
                         </span>
                     </h6>
                     <div className="mt-4">
-                        <h5 className="mb-4">Delivery Address</h5>
-
                         {!loading && data ? (
-                            <div className="border  mt-2  rounded " >
-                                <ul className="list-group d-flex flex-wrap flex-row" style={{ width: "735px", height: "180px", overflowY: "scroll" }}>
-                                    {
-                                        data.user.Address.map(({ _id, select, street, city, zipcode, state, country, number, type, name }, index) => {
-                                            return (
-                                                <li className="list-group-item m-2 border rounded" key={_id} style={{ width: "340px" }}>
-                                                    <input className="form-check-input "
-                                                        type="radio"
-                                                        name="listGroupRadio"
-                                                        value="true"
-                                                        id={`Radio${index}`}
-                                                        checked />
-                                                    <label className="form-check-label Check_out_Address'_list"
-                                                        htmlFor={`Radio${index}`}
+                            <>
+                                <h5 className="mb-4">Delivery Address</h5>
+                                <div className="border  mt-2  rounded " >
+                                    <ul className="list-group d-flex flex-wrap flex-row" style={{ width: "735px", height: "180px", overflowY: "scroll" }}>
+                                        {
+                                            data.user.Address.map(({ _id, select, street, city, zipcode, state, country, number, type, name }, index) => {
+                                                return (
+                                                    <li className="list-group-item m-2 border rounded" key={_id} style={{ width: "340px" }}>
+                                                        <input className="form-check-input "
+                                                            type="radio"
+                                                            name="listGroupRadio"
+                                                            value="true"
+                                                            id={`Radio${index}`}
+                                                            defaultChecked />
+                                                        <label className="form-check-label Check_out_Address'_list"
+                                                            htmlFor={`Radio${index}`}
 
-                                                    >
-                                                        <div className="">
-                                                            <div className="d-flex justify-content-between ">
-                                                                <span className="text-capitalize fw-bold">
-                                                                    {name}
-                                                                    <span
-                                                                        className="text-body-tertiary ms-2"
-                                                                        style={{ fontSize: "smaller" }}
-                                                                    >
-                                                                        {select ? "(default)" : null}
+                                                        >
+                                                            <div className="">
+                                                                <div className="d-flex justify-content-between ">
+                                                                    <span className="text-capitalize fw-bold">
+                                                                        {name}
+                                                                        <span
+                                                                            className="text-body-tertiary ms-2"
+                                                                            style={{ fontSize: "smaller" }}
+                                                                        >
+                                                                            {select ? "(default)" : null}
+                                                                        </span>
+                                                                    </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
+                                                                        style={{ fontSize: "x-small" }}>
+                                                                        {type}
+                                                                    </span></div>
+                                                                <span className="mb-0">
+                                                                    <span>
+                                                                        {street}{" , "}{city},{zipcode}
+                                                                    </span><br />
+                                                                    <span>
+                                                                        {state}{" , "}{country}
                                                                     </span>
-                                                                </span><span className="bg-success-subtle btn btn-success disabled py-1 text-success"
-                                                                    style={{ fontSize: "x-small" }}>
-                                                                    {type}
-                                                                </span></div>
-                                                            <span className="mb-0">
-                                                                <span>
-                                                                    {street}{" , "}{city},{zipcode}
-                                                                </span><br />
-                                                                <span>
-                                                                    {state}{" , "}{country}
-                                                                </span>
-                                                            </span><br /><span>{number}</span>
-                                                        </div>
-                                                    </label>
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                    <li className="list-group-item m-2 border rounded d-flex justify-content-center align-items-center border-success bg-success-subtle" style={{ width: "340px" }}>
-                                        <i class="bi bi-plus-square-dotted h1 text-primary"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        ) : !data ? "Please Login ..." : "loading"}<br />
+                                                                </span><br /><span>{number}</span>
+                                                            </div>
+                                                        </label>
+                                                    </li>
+                                                )
+                                            })
+                                        }
+
+                                        <AddressInput userData={props.data.UserLogin.LoginData.state._id}
+                                            InputValue={Inputs}
+                                            Edit={false} />
+
+                                        <li className="list-group-item m-2 border rounded d-flex justify-content-center align-items-center border-success bg-success-subtle" style={{ width: "340px" }} data-bs-toggle="modal" id="AddressInputModal_btn"
+                                            data-bs-target="#AddressInputModal">
+                                            <i className="bi bi-plus-square-dotted h1 text-primary"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </>
+                        ) : !data ? <h6>Login to see your existing offers <span className="text-primary" data-bs-target="#LoginModalToggle" data-bs-toggle="modal"  style={{cursor:"pointer"}}> Login</span> </h6> : "loading"}<br />
                         <div>
                             <div className="border rounded p-3 shadow">{Apply}</div>
                         </div>
-                       {<PaymentType Order_data={props.data.AddToCart} Order_Store_fn={props.AddToOrderList}/>}
+                        {<PaymentType Order_data={props.data.AddToCart} Order_Store_fn={props.AddToOrderList} />}
                     </div>
                 </div>
 

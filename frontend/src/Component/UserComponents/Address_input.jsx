@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 
 const AddressInput = (props) => {
-
+    console.log(props);
     const [AddressInputData, setAddressInputData] = useState(props.InputValue)
 
     const [AddAddress, { loading, data, error }] = useMutation(NewAddress, {
@@ -29,8 +29,7 @@ const AddressInput = (props) => {
                     ChangeAddress: AddressInputData
                 }
             }
-        }).then((data) => {
-            console.log(data);
+        }).then(() => {
             document.getElementById("AddressInputModal_btn").click();
             toast.success("Updated successfull")
         })
@@ -40,13 +39,13 @@ const AddressInput = (props) => {
         e.preventDefault()
         const update = {
             ...AddressInputData,
-            _id: props.userData.data.UserLogin.LoginData.state._id
+            _id: props.userData
         }
         AddAddress({
             variables: {
                 AddressData: update
             }
-        }).then((data)=>{
+        }).then((data) => {
             toast.warning(" Address in updated !")
             document.getElementById("close_model_btn").click();
             setAddressInputData(props.InputValue);
@@ -55,7 +54,7 @@ const AddressInput = (props) => {
 
     useEffect(() => {
         setAddressInputData(props.InputValue)
-    }, [ props.InputValue]);
+    }, [props.InputValue]);
 
     return (
         <>
@@ -203,14 +202,14 @@ const AddressInput = (props) => {
                                             <input className="form-check-input"
                                                 type="checkbox"
                                                 value={AddressInputData.select}
-                                                id="flexCheckChecked"
+                                                id="flexCheckdefaultChecked"
                                                 onChange={(e) => setAddressInputData({
                                                     ...AddressInputData,
-                                                    select: e.target.checked
+                                                    select: e.target.defaultChecked
                                                 })}
                                             />
                                             <label className="form-check-label"
-                                                htmlFor="flexCheckChecked">
+                                                htmlFor="flexCheckdefaultChecked">
                                                 Active Address
                                             </label>
                                         </div>

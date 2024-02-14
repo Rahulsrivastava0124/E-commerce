@@ -28,8 +28,6 @@ const Addresses = (props) => {
     })
 
 
-
-
     const Inputs = {
         name: "",
         street: "",
@@ -83,7 +81,7 @@ const Addresses = (props) => {
             <span data-bs-toggle="modal" data-bs-target="#RemoveAddressModal" id="RemoveAddressButton"></span>
             {/* <!-- Modal --> */}
             <div className="modal fade" id="RemoveAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered w-25">
+                <div className="modal-dialog  w-25">
                     <div className="modal-content p-3 d-flex align-items-center">
                         <span style={{ width: "50px", height: "50px" }} className="d-flex align-items-center justify-content-center bg-danger-subtle rounded-circle">
                             <i className="bi bi-exclamation-triangle h3 text-danger"></i>
@@ -91,7 +89,7 @@ const Addresses = (props) => {
                         <h5 className="fw-semibold mt-1">Remove Address</h5>
                         <div className="modal-body">
                             Are you sure you want to <span className="text-warning">Remove</span> your <span className="text-warning">Address</span>?
-                            <div className="border rounded mt-2 p-2 bg-danger-subtle text-capitalize text-danger-emphasis">
+                            <div className="border rounded mt-3 p-2 bg-danger-subtle text-capitalize text-danger-emphasis">
                                 <span className="fw-bold">{!RemoveData == "" ? RemoveData.name : null}</span><br />
                                 <span>{!RemoveData == "" ? RemoveData.street : null}</span><br />
                                 <span>{!RemoveData == "" ? RemoveData.number : null}</span>
@@ -106,7 +104,7 @@ const Addresses = (props) => {
             </div>
             {getUserLoading ? <Loading /> :
                 <>
-                    <AddressInput userData={props}
+                    <AddressInput userData={props.data.UserLogin.LoginData.state._id}
                         InputValue={formData}
                         Edit={EditAddressData}
                     />
