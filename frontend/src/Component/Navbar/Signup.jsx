@@ -20,10 +20,12 @@ function Signup() {
 
   const SubmitSigninForm = (e) => {
     e.preventDefault();
-    let checkBox = document.getElementById("term_checkBox").defaultChecked
-    if (SignupData.Email.length <= 8 || SignupData.FirstName <= 3 || SignupData.LastName <= 3 || SignupData.Password <= 5 || checkBox == false) {
+    let checkBox = document.getElementById("term_checkBox").checked;
+
+    if (SignupData.Email.length >= 8 && SignupData.FirstName.length >= 3 && SignupData.LastName.length >= 3 && SignupData.Password.length >= 5 && checkBox === false) {
       return setvelidateInputs(true)
     }
+
     const userdata = {
       email: SignupData.Email,
       password: SignupData.Password,
@@ -37,6 +39,7 @@ function Signup() {
       }
     })
   }
+
   useEffect(() => {
     if (data) {
       document.getElementById("SigninLoginBtn").click()
@@ -174,7 +177,6 @@ function Signup() {
                 </span>
               </span>
             </div>
-
           </div>
         </div>
       </div>
