@@ -17,7 +17,7 @@ export default function Main_Categories() {
 
   return (
     <>
-      <NavbarContainer />
+      <NavbarContainer />8
       <div className="container  mt-4">
         <h1>  Categories</h1>
         <div className="d-flex align-items-center flex-wrap mt-5 justify-content-between">

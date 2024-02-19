@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { GetUsers } from "../server/UserAPI";
 
 const LoginSecurity = (props) => {
-
   const [LoginAndSecurityData, setLoginAndSecurityData] = useState({
     Email: "",
     UserName: "",
@@ -11,12 +10,11 @@ const LoginSecurity = (props) => {
     PhoneNumber: "",
   });
 
-  async function getUsersData() {
-  }
+  async function getUsersData() {}
 
   useEffect(() => {
     getUsersData();
-  },[]);
+  }, []);
 
   const EditUserInput = (e) => {
     if (e.target.classList.contains("bi-x-lg")) {
@@ -49,7 +47,7 @@ const LoginSecurity = (props) => {
 
   return (
     <>
-      <h3 className="text-center">Login & Security </h3>
+      <h3 className="text-center">User Info </h3>
       <div className="container">
         <form className="row g-3 w-50 m-auto">
           <div className="col-12 input-group">

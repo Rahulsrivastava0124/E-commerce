@@ -76,10 +76,10 @@ function Login(props) {
                         htmlFor="exampleInputUserName"
                         className="form-label"
                       >
-                        User Name
+                        Email
                       </label>
                       <input
-                        type="UserName"
+                        type="email"
                         className="form-control"
                         id="exampleInputUserName"
                         aria-describedby="emailHelp"

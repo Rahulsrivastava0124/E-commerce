@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AllProductData, productsCategories } from "../server/productAPI.js";
 import ProductCardContainer from "../containers/ProductCardContainer.js";
 import CardPlaceHolder from "./LoadingStructer/CardPlaceHolder";
-import FooterFeature from '../Component/Footer/FooterFeature'
+import FooterFeature from "../Component/Footer/FooterFeature";
 import NavbarContainer from "../containers/NavbarContainer.js";
 import Footer from "./Footer/Footer.jsx";
 
@@ -11,7 +11,7 @@ export const Home = (props) => {
   const [Categories, setCategories] = useState("");
   const [ProductpreviewData, setProductpreviewData] = useState(" ");
   const [SortProductItems, setSortProductItems] = useState("all product");
-  const [WishList_value, setWishList_value] = useState(false)
+  const [WishList_value, setWishList_value] = useState(false);
   const ArrayData = [];
 
   let ArraySortProductData = [];
@@ -25,7 +25,7 @@ export const Home = (props) => {
     e.target.classList.add("bg-primary-subtle");
     e.target.children[0].classList.remove("d-none");
     e.target.classList.add("ActiveFilter");
-    setSortProductItems((e.target.innerText).toLowerCase());
+    setSortProductItems(e.target.innerText.toLowerCase());
   };
 
   function SortFilter() {
@@ -48,7 +48,7 @@ export const Home = (props) => {
     GetProductData();
   }, []);
 
-  for (let index = 0; index < Categories.length;) {
+  for (let index = 0; index < Categories.length; ) {
     productData.map((element) => {
       if (element.category === Categories[index]) {
         ArrayData.push(element);
@@ -58,8 +58,8 @@ export const Home = (props) => {
   }
 
   const AddToCart = (element) => {
-    props.AddToCartHandler({ state: { element: element } })
-  }
+    props.AddToCartHandler({ state: { element: element } });
+  };
 
   return (
     <>
@@ -89,8 +89,9 @@ export const Home = (props) => {
             {ArrayData.map((element, index) => {
               return (
                 <div
-                  className={`carousel-item border ${index === 0 ? "active" : null
-                    }`}
+                  className={`carousel-item border ${
+                    index === 0 ? "active" : null
+                  }`}
                   key={index + "inner"}
                 >
                   <div
@@ -235,15 +236,25 @@ export const Home = (props) => {
 
             if (props.data.UserWish.length != 0) {
               for (let index = 0; index < props.data.UserWish.length; index++) {
-                if (props.data.UserWish[index].WishList.state.element.id === element.id) {
+                if (
+                  props.data.UserWish[index].WishList.state.element.id ===
+                  element.id
+                ) {
                   Wishvalue = true;
                 }
               }
             }
 
             if (props.data.AddToCart.length != 0) {
-              for (let index = 0; index < props.data.AddToCart.length; index++) {
-                if (props.data.AddToCart[index].Cart.state.element.id == element.id) {
+              for (
+                let index = 0;
+                index < props.data.AddToCart.length;
+                index++
+              ) {
+                if (
+                  props.data.AddToCart[index].Cart.state.element.id ==
+                  element.id
+                ) {
                   CartAddValue = true;
                 }
               }

@@ -13,7 +13,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import Toasts from "../Toasts";
 import { useNavigate } from "react-router-dom";
 import NavbarContainer from "../../containers/NavbarContainer";
-import Footer from '../Footer/Footer'
+import Footer from "../Footer/Footer";
 
 export const Profile = (props) => {
   const nevigate = useNavigate();
@@ -56,7 +56,7 @@ export const Profile = (props) => {
     Greeting();
   }, []);
 
-  const ClickedCard = (e) => { };
+  const ClickedCard = (e) => {};
 
   const Card_Array = [
     {
@@ -66,7 +66,7 @@ export const Profile = (props) => {
       Link: "YourOrder",
     },
     {
-      cardHeading: "Login & Security",
+      cardHeading: "User Info",
       cardTitle: "Edit name,and mobile number",
       CardIcon: lockIcon,
       Link: "Security",
@@ -94,13 +94,13 @@ export const Profile = (props) => {
   const LogOutUser = () => {
     const initialState = {};
     props.UserLogOutHandler(initialState);
-    localStorage.removeItem('Token')
+    localStorage.removeItem("Token");
     nevigate("/");
   };
 
   return (
     <>
-    <NavbarContainer/>
+      <NavbarContainer />
       <Toasts Toastsdata={location.state} />
       <div className="container mt-2">
         <div className="d-flex justify-content-between align-items-center">
@@ -163,7 +163,7 @@ export const Profile = (props) => {
         </div>
       </div>
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   );
 };

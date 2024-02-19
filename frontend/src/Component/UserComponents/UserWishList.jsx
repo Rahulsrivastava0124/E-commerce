@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 const WishListCart = (props) => {
   const navigate = useNavigate();
   const RemoveToWishList = (element) => {
-    props.RemoveToWishListHandler({ state: {element} });
+    props.RemoveToWishListHandler({ state: { element } });
   };
 
   const AddToCart = (element) => {
@@ -20,7 +20,12 @@ const WishListCart = (props) => {
       <div className="container d-flex mt-5 ">
         <div className=" p-3" style={{ width: "-webkit-fill-available" }}>
           <h2 className="mb-4">WishList</h2>
-          <h5 className=" fw-bold">Items <span className="fw-bold text-warning">({props.data.UserWish.length})</span> </h5>
+          <h5 className=" fw-bold">
+            Items{" "}
+            <span className="fw-bold text-warning">
+              ({props.data.UserWish.length})
+            </span>{" "}
+          </h5>
           {props.data.UserWish.length != 0 ? (
             props.data.UserWish.map((Element, index) => {
               return (
@@ -40,7 +45,9 @@ const WishListCart = (props) => {
                   />
                   <div className="d-flex mx-2 container justify-content-between align-items-center">
                     <div>
-                      <h6>{Element.WishList.state.element.title.slice(0, 45)}...</h6>
+                      <h6>
+                        {Element.WishList.state.element.title.slice(0, 45)}...
+                      </h6>
                       <h6>
                         {Element.WishList.state.element.rating.rate}
                         <i className="bi bi-star ms-1"></i>
@@ -56,13 +63,17 @@ const WishListCart = (props) => {
                     <div className="d-flex">
                       <span
                         className="btn btn-primary me-2"
-                        onClick={() => AddToCart(Element.WishList.state.element)}
+                        onClick={() =>
+                          AddToCart(Element.WishList.state.element)
+                        }
                       >
                         <i className="bi bi-cart3 me-1"></i> Add to Cart
                       </span>
                       <span
                         className="btn btn-outline-danger"
-                        onClick={() => RemoveToWishList(Element.WishList.state.element)}
+                        onClick={() =>
+                          RemoveToWishList(Element.WishList.state.element)
+                        }
                       >
                         <i className="bi bi-trash"></i>
                       </span>

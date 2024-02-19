@@ -1,7 +1,7 @@
-export const Error404=()=>{
-return(
+export const Error404 = () => {
+  return (
     <>
-    <h1 className="text-danger">404</h1>
+      <h1 className="text-danger">404</h1>
     </>
-)
-}
+  );
+};

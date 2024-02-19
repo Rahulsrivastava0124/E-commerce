@@ -46,8 +46,8 @@ export default function Admin_login_page() {
 
   return (
     <>
-      <form className='container w-50 mt-5 bg-light ps-0 shadow rounded-4 fw-medium d-flex' onSubmit={(e) => Admin_login_page(e)}>
-        <div className="Admin_login_logo_image bg-light w-50 rounded-start-4 me-3 bg-warning-subtle">
+      <form className='container w-50 mt-5 bg-light ps-0 shadow rounded-3 fw-medium d-flex' onSubmit={(e) => Admin_login_page(e)}>
+        <div className="Admin_login_logo_image bg-light w-50 rounded-start-3 me-3 bg-warning-subtle">
           <img src={AdminLoginLogo} alt="login_image" srcSet="" />
         </div>
         <div className="Input_field w-50 ms-5">
@@ -81,7 +81,7 @@ export default function Admin_login_page() {
           {loading ? <button className="btn btn-primary w-100 py-2" type="button" disabled>
             <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
             <span role="status">Loading...</span>
-          </button> : <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>}
+          </button> : <button className="btn btn-primary w-100 py-2" type="submit">Login</button>}
           <p className="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
         </div>
       </form>

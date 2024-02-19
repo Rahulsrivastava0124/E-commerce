@@ -1,10 +1,10 @@
-import { gql } from "apollo-server-core";
+import {gql} from "apollo-server-core";
 
 const typeDefs = gql`
     # Schema
     type Token{
         token:String
-        username:String 
+        username:String
         _id:ID
     }
 
@@ -48,8 +48,8 @@ const typeDefs = gql`
     }
 
     type ErrorMessage{
-    message:String
-}
+        message:String
+    }
     # Unions 
     union LoginToken = Token | ErrorMessage
 
@@ -67,14 +67,14 @@ const typeDefs = gql`
     }
 
     # Mutation inputs
-input  LoginTokenInput{
-    Token:String
-}
+    input  LoginTokenInput{
+        Token:String
+    }
 
-input Admin_login_input{
-    Email:String!
-    Password:String!
-}
+    input Admin_login_input{
+        Email:String!
+        Password:String!
+    }
 
     input AddressD{
         uniqueID:String!,

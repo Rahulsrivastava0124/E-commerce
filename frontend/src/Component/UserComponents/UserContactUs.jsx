@@ -3,7 +3,6 @@ import ContactUsImg from "../../Svg/images/ContactUs.jpg";
 const ContactUs = () => {
   return (
     <>
- 
       <h1 className="text-center">Contact Us</h1>
       <div className="ContactUs container">
         <div className="d-flex flax-wrap align-items-center justify-contect-center mx-5 border rounded-5">
@@ -67,11 +66,15 @@ const ContactUs = () => {
                   style={{ height: "100px}" }}
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary mt-3 col-3 m-auto">Submit</button>
+              <button
+                type="submit"
+                className="btn btn-primary mt-3 col-3 m-auto"
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
- 
       </div>
     </>
   );
