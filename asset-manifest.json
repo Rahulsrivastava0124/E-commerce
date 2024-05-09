@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5dc6ff2d.css",
-    "main.js": "/static/js/main.9ad7afb1.js",
+    "main.css": "/static/css/main.ea295df3.css",
+    "main.js": "/static/js/main.7ae49f75.js",
     "static/media/AddToCart.gif": "/static/media/AddToCart.82ced955083f7fe6d23a.gif",
     "static/media/LoginLogo.gif": "/static/media/LoginLogo.66db780ce656ab00d716.gif",
     "static/media/Signup.gif": "/static/media/Signup.d70d37a751817a4bf0b6.gif",
@@ -35,11 +35,11 @@
     "static/media/Account.svg": "/static/media/Account.2cd00a9d87dffb782fe89b31248cd187.svg",
     "static/media/hdfcLogo.webp": "/static/media/hdfcLogo.99eca2e11ad8eca4ea44.webp",
     "static/media/COD.webp": "/static/media/COD.0bead347bd85205cdfce.webp",
-    "main.5dc6ff2d.css.map": "/static/css/main.5dc6ff2d.css.map",
-    "main.9ad7afb1.js.map": "/static/js/main.9ad7afb1.js.map"
+    "main.ea295df3.css.map": "/static/css/main.ea295df3.css.map",
+    "main.7ae49f75.js.map": "/static/js/main.7ae49f75.js.map"
   },
   "entrypoints": [
-    "static/css/main.5dc6ff2d.css",
-    "static/js/main.9ad7afb1.js"
+    "static/css/main.ea295df3.css",
+    "static/js/main.7ae49f75.js"
   ]
 }
