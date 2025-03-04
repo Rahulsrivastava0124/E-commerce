@@ -9,7 +9,7 @@ export const Navbar = (props) => {
   const [LoginStates, setLoginStates] = useState(false);
   const NavLink = [
     {
-      Link_name: "Home",
+      Link_name: "Home data",
       path: "/",
       active: true,
       icon: <i className="bi bi-house me-1"></i>
