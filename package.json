@@ -1,7 +1,45 @@
-
-
 {
+  "name": "onmarket-ecommerce",
+  "version": "1.0.0",
+  "description": "Full-stack e-commerce application with React frontend and GraphQL backend",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:frontend": "npm start --prefix frontend",
+    "start:backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend",
+    "deploy": "npm run build && npm run deploy --prefix frontend",
+    "test": "npm test --prefix frontend",
+    "lint": "eslint frontend/src backend/",
+    "clean": "rm -rf frontend/node_modules backend/node_modules node_modules frontend/build"
+  },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
-  }
+    "gh-pages": "^6.1.1",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.45.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rahulsrivastava0124/onmarket-ecommerce.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "graphql",
+    "mongodb",
+    "nodejs",
+    "redux"
+  ],
+  "author": "Rahul Srivastava",
+  "license": "MIT"
 }
