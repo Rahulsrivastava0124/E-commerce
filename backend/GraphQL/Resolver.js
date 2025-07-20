@@ -5,10 +5,17 @@ import { JWT_SECRET } from "../config.js";
 
 const User = mongoose.model("User");
 const Admin_Login = mongoose.model("Admin_login");
+const Product = mongoose.model("Product");
 
 const resolvers = {
   Query: {
     getUser: async (_, { _id }) => await User.findOne({ _id }),
+    getAllProducts: async () => {
+      return await Product.find({}).sort({ createdAt: -1 });
+    },
+    getPublishedProducts: async () => {
+      return await Product.find({ published: true }).sort({ publishedAt: -1 });
+    },
   },
 
   Mutation: {
@@ -143,6 +150,53 @@ const resolvers = {
       }
       const token = jwt.sign({ userId: findAdmin._id }, JWT_SECRET);
       return { token };
+    },
+
+    // Toggle publish status for a single product
+    togglePublishStatus: async (_, { productId, published }) => {
+      const updateData = {
+        published,
+        publishedAt: published ? new Date() : null,
+      };
+      
+      const updatedProduct = await Product.findByIdAndUpdate(
+        productId,
+        updateData,
+        { new: true }
+      );
+      
+      if (!updatedProduct) {
+        throw new Error("Product not found");
+      }
+      
+      return updatedProduct;
+    },
+
+    // Bulk update publish status for multiple products
+    bulkPublishProducts: async (_, { productIds, published }) => {
+      try {
+        const updateData = {
+          published,
+          publishedAt: published ? new Date() : null,
+        };
+        
+        const result = await Product.updateMany(
+          { _id: { $in: productIds } },
+          updateData
+        );
+        
+        return {
+          success: true,
+          message: `Successfully ${published ? 'published' : 'unpublished'} ${result.modifiedCount} products`,
+          updatedCount: result.modifiedCount,
+        };
+      } catch (error) {
+        return {
+          success: false,
+          message: `Error updating products: ${error.message}`,
+          updatedCount: 0,
+        };
+      }
     },
   },
 };

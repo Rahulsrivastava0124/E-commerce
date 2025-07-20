@@ -30,12 +30,24 @@ const productSchema = mongoose.Schema({
     rating: {
         rate: {
             type: Number,
-            required
+            required: true
         },
         count: {
             type: Number,
             required: true
         }
+    },
+    published: {
+        type: Boolean,
+        default: false
+    },
+    publishedAt: {
+        type: Date,
+        default: null
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 })
 

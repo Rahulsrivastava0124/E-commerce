@@ -42,9 +42,36 @@ const typeDefs = gql`
         NewData:[Address]
     }
 
+    type Product{
+        _id:ID
+        id:String
+        title:String
+        price:Float
+        description:String
+        category:String
+        image:[String]
+        rating:Rating
+        published:Boolean
+        publishedAt:String
+        createdAt:String
+    }
+
+    type Rating{
+        rate:Float
+        count:Int
+    }
+
+    type BulkUpdateResult{
+        success:Boolean
+        message:String
+        updatedCount:Int
+    }
+
     # Query for server
     type Query{
         getUser(_id:ID!):User
+        getAllProducts:[Product]
+        getPublishedProducts:[Product]
     }
 
     type ErrorMessage{
@@ -63,6 +90,8 @@ const typeDefs = gql`
         RemoveAddress(RemoveAddress:RemoveAddressInput!):User
         UpdateAddress(UpdateAddressData:AddressDataInput!):Modified
         AdminLogin(Admin_login_data:Admin_login_input!):Token
+        togglePublishStatus(productId:ID!, published:Boolean!):Product
+        bulkPublishProducts(productIds:[ID!]!, published:Boolean!):BulkUpdateResult
 
     }
 

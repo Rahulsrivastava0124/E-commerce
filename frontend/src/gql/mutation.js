@@ -82,3 +82,23 @@ mutation($AdminData: Admin_login_input!) {
 	}
 }
 `
+
+export const TogglePublishStatus = gql`
+    mutation TogglePublishStatus($productId: ID!, $published: Boolean!) {
+        togglePublishStatus(productId: $productId, published: $published) {
+            _id
+            published
+            publishedAt
+        }
+    }
+`
+
+export const BulkPublishProducts = gql`
+    mutation BulkPublishProducts($productIds: [ID!]!, $published: Boolean!) {
+        bulkPublishProducts(productIds: $productIds, published: $published) {
+            success
+            message
+            updatedCount
+        }
+    }
+`
